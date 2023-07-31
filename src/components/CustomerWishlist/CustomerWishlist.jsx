@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 const CustomerWishlist = () => {
-	const BASE_URL = 'http://127.0.0.1:8000/api';
+	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [wishlists, setWishlists] = useState([]);
   const [totalResult,setTotalResult] = useState(0);
 	const [loading, setLoading] = useState(true);

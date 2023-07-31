@@ -9,7 +9,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 
 const SingleProduct = (props) => {
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const user = useSelector((state)=>state.auth);
   const [userWishlist,setUserWishlist] = useState({is_wishlist:false,id:null})
   const [loading,setLoading] = useState(true)

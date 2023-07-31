@@ -7,7 +7,7 @@ import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
+  const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const [loginFormData,setLoginFormData] = useState({
           'email':'',
           'password':''

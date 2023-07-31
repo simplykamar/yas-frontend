@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const CustomerAccountActivation = () => {
   const notifySuccess = (msg) => toast.success(msg);
   const notifyError = (msg) => toast.error(msg);
-  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
+  const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const {uid, token} = useParams()
   const [inputError,setInputError] = useState({'msg':"",'type':""})
   const [isFetching,setIsFetching] = useState(false);

@@ -12,7 +12,7 @@ import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import {resetCart} from '../../redux/cartSlice'
 
 const CheckoutStep2 = () => {
-	const BASE_URL = 'http://127.0.0.1:8000/api';
+	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [loading, setLoading] = useState(true);
   	const user = useSelector((state)=>state.auth);
   	const order = useSelector((state)=>state.order);

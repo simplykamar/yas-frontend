@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import { useSelector} from 'react-redux';
 
 const CustomerRegister = () => {
-  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
+  const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const [registerFormData,setregisterFormData] = useState({
           'name':'',
           'email':'',

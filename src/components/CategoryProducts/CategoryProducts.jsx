@@ -7,7 +7,7 @@ import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);

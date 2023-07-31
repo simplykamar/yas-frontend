@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Profile = () => {
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
     const [mobile,setMobile] = useState(null);
     const notifySuccess = (msg) => toast.success(msg);
     const notifyError = (msg) => toast.error(msg);

@@ -22,7 +22,7 @@ import Sidebar from './Sidebar'
 import './Navbar.css';
 
 const Navbar = () => {
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const cartData = useSelector((state)=>state.cart.products);
   const sum=0;
   const totalItems = cartData.reduce((sum,item)=>{return sum+item.quantity},0)

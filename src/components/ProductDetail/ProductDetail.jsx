@@ -10,7 +10,7 @@ import './ProductDetail.css';
 import axios from 'axios'
 
 const ProductDetail = () => {
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const {product_id} = useParams();
   const [product,setProduct] = useState([])
 	const [productTags,setProductTags] = useState([])  

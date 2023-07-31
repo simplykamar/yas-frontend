@@ -8,7 +8,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {clearOrder} from '../../redux/orderSlice';
 import {useNavigate} from 'react-router-dom';
 const ConfirmOrder = (props) => {
-  const baseUrl = 'http://127.0.0.1:8000/api/';
+  const baseUrl = 'https://yasonlinegifting.pythonanywhere.com/api/';
   const dispatch =useDispatch();
   const [paymentMode, setPaymentMode] = useState('');
   const cartData = useSelector((state)=>state.cart.products);

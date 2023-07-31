@@ -14,7 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const CustomerAddress = () => {
 	const notifySuccess = (msg) => toast.success(msg);
 	const notifyError = (msg) => toast.error(msg);
-	const BASE_URL = 'http://127.0.0.1:8000/api';
+	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);
