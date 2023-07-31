@@ -1,43 +1,43 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './App.css'
-import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Home/Home';
-import Categories from './Components/Categories/Categories';
-import CategoryProducts from './Components/CategoryProducts/CategoryProducts';
-import AllProducts from './Components/AllProducts/AllProducts';
-import ProductDetail from './Components/ProductDetail/ProductDetail';
-import PageNotFound from './Components/PageNotFound/PageNotFound';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import Categories from './components/Categories/Categories';
+import CategoryProducts from './components/CategoryProducts/CategoryProducts';
+import AllProducts from './components/AllProducts/AllProducts';
+import ProductDetail from './components/ProductDetail/ProductDetail';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
-import Checkout from './Components/Checkout/Checkout';
-import CheckoutStep1 from './Components/Checkout/CheckoutStep1';
-import CheckoutStep2 from './Components/Checkout/CheckoutStep2';
-import ConfirmOrder from './Components/Checkout/ConfirmOrder';
+import Checkout from './components/Checkout/Checkout';
+import CheckoutStep1 from './components/Checkout/CheckoutStep1';
+import CheckoutStep2 from './components/Checkout/CheckoutStep2';
+import ConfirmOrder from './components/Checkout/ConfirmOrder';
 
-import Thank from './Components/Checkout/Thank';
+import Thank from './components/Checkout/Thank';
 
-import CustomerRegister from './Components/CustomerRegister/CustomerRegister';
-import CustomerLogin from './Components/CustomerLogin/CustomerLogin';
+import CustomerRegister from './components/CustomerRegister/CustomerRegister';
+import CustomerLogin from './components/CustomerLogin/CustomerLogin';
 
-import CustomerWishlist from './Components/CustomerWishlist/CustomerWishlist';
-import Address from './Components/CustomerProfile/Address';
-import Profile from './Components/CustomerProfile/Profile';
-import Orders from './Components/CustomerProfile/Orders';
-import TagProducts from './Components/TagProducts/TagProducts';
-import CustomerAccountActivation from './Components/CustomerAccountActivation/CustomerAccountActivation';
-import CustomerRegisterSuccess from './Components/CustomerRegister/CustomerRegisterSuccess';
+import CustomerWishlist from './components/CustomerWishlist/CustomerWishlist';
+import Address from './components/CustomerProfile/Address';
+import Profile from './components/CustomerProfile/Profile';
+import Orders from './components/CustomerProfile/Orders';
+import TagProducts from './components/TagProducts/TagProducts';
+import CustomerAccountActivation from './components/CustomerAccountActivation/CustomerAccountActivation';
+import CustomerRegisterSuccess from './components/CustomerRegister/CustomerRegisterSuccess';
 
-import Register from './Components/seller/Register';
-import Login from './Components/seller/Login';
-import Dashboard from './Components/seller/Dashboard';
-import Products from './Components/seller/Products';
-import AddProduct from './Components/seller/AddProduct';
-import SellerOrders from './Components/seller/Orders';
-import Customers from './Components/seller/Customers';
-import Reports from './Components/seller/Reports';
-import Footer from './Components/Footer/Footer';
+import Register from './components/seller/Register';
+import Login from './components/seller/Login';
+import Dashboard from './components/seller/Dashboard';
+import Products from './components/seller/Products';
+import AddProduct from './components/seller/AddProduct';
+import SellerOrders from './components/seller/Orders';
+import Customers from './components/seller/Customers';
+import Reports from './components/seller/Reports';
+import Footer from './components/Footer/Footer';
 
-// import seller from './Components/seller/Register';
+// import seller from './components/seller/Register';
 
 import Protected from './Protected';
 import IsLogin from './IsLogin';
