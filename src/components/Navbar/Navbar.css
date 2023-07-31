@@ -1,0 +1,51 @@
+
+.navbar{
+	background-color:white !important;
+	border-bottom: 1px solid #dedcdc;
+}
+.navbar-brand{
+	color:#fa284b;
+	font-size:2rem;
+	font-weight:bolder;
+}
+.navbar-brand:hover{
+	color:#fc032c;
+}
+.navbar-brand:focus	{
+	color:#fc032c;
+}
+.input-group-text{
+	background-color:white !important;
+}
+input[type="search"]:focus{
+     outline: none !important;
+	 box-shadow: none !important;
+}
+
+
+.navbar-cart-badge{
+	background-color:#e36f7a;
+	position:absolute;
+	border-radius:100%;
+}
+
+.dropdown-item:active{ 
+	background-color:#f56c72;
+	}
+
+.search-item {
+	display:flex;
+	justify-content:center;
+	position:absolute;
+	width:100%;
+	z-index:999;
+	background-color:red !important
+
+}
+
+.search-item-list {
+	border-radius:20px;
+	position:relative;
+	background-color:blue !important
+}
+

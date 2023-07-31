@@ -1,0 +1,112 @@
+import SingleProduct from '../SingleProduct/SingleProduct';
+import img from '../../demo.png'
+import'./Home.css'
+import {Link} from 'react-router-dom';
+// imports logos
+import samedaydelivery from '../../images/logos/samedaydelivery.svg'
+import cake from '../../images/logos/cake.svg'
+import flower from '../../images/logos/flower.svg'
+import gourmet from '../../images/logos/gourmet.svg'
+import newarival from '../../images/logos/newarival.svg'
+import personalize from '../../images/logos/personalize.svg'
+import plant from '../../images/logos/plant.svg'
+import rakhi from '../../images/logos/rakhi.svg'
+import footersale from '../../images/other/footersale.webp'
+
+
+import Slider from '../Slider/Slider';
+import UniqueGift from '../Gift/UniqueGift';
+import CelebrateGift from '../Gift/CelebrateGift';
+const Home = () => {
+  
+	return(
+      <div className="">
+      <div className="container">
+        <header className="mt-5">
+          <div className="row g-2 header-menu-border">
+            <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
+                <div className="header-menu mt-2">
+                  <img src={rakhi} className="img-fluid header-menu-img"/>
+                  <p className="text-capitalize header-menu-text">rakhi</p>
+                </div>
+              </Link>
+                <div className="d-block d-lg-none header-menu-border-bottom"></div>
+            </div>
+              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <Link to="/category/same day delivery/13" className="text-decoration-none text-dark">
+                <div className="header-menu mt-2">
+                  <img src={samedaydelivery} className="img-fluid header-menu-img"/>
+                  <p className="text-capitalize header-menu-text">same day delivery</p>
+                </div>
+              </Link>
+                <div className="d-block d-lg-none header-menu-border-bottom"></div>
+            </div>
+              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <Link to="/category/cake/9" className="text-decoration-none text-dark">
+                <div className="header-menu mt-2">
+                    <img src={cake} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">cakes</p>
+                </div>
+              </Link>
+                <div className="d-block d-lg-none header-menu-border-bottom"></div>
+            </div>
+              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <Link to="/category/flowers/11" className="text-decoration-none text-dark">
+                <div className="header-menu mt-2">
+                    <img src={flower} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">flower</p>
+                </div>
+              </Link>
+            </div>
+              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <Link to="/category/personalized/12" className="text-decoration-none text-dark">
+                <div className="header-menu mt-2">
+                    <img src={personalize} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">personalized</p>
+                </div>
+              </Link>
+            </div>
+            <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <Link to="/category/plant/10" className="text-decoration-none text-dark">
+                <div className="header-menu mt-2">
+                    <img src={plant} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">plant</p>
+                </div>
+              </Link>
+            </div>
+          </div> 
+        </header>
+        <Slider/>
+        <UniqueGift/>
+        <CelebrateGift/>
+         <img src={footersale} className="img-fluid"/>
+        <section className="mt-5">
+          <div className="row">
+            <div className="col-lg-2 col-md-2 col-sm-2 col-2">
+            <h1 className="stats">Stats</h1>
+          </div>
+            <div className="col-lg-10 col-md-10 col-sm-10 col-10">
+              <div className="row">
+                <div className="col-lg-4 col-md-4 col-sm-4 col-4">
+                    <h1 className="stats-text">50+</h1>
+                    <p className="text-pink">Cities having same day delivery</p>              
+                </div>
+                <div className="col-lg-4 col-md-4 col-sm-4 col-4">
+                    <h1 className="stats-text">100+</h1>
+                    <p className="text-pink">Happy cutomer :)</p>              
+                </div>
+                <div className="col-lg-4 col-md-4 col-sm-4 col-4">
+                    <h1 className="stats-text">200+</h1>
+                    <p className="text-pink">Gift boxes delivered</p>              
+                </div>
+              </div>
+          </div>
+          </div>
+        </section>
+      </div>     
+       
+      </div>     
+		)
+}
+export default Home;

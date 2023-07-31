@@ -1,0 +1,46 @@
+.header-menu-border{
+	border: 1px solid #fa284b;
+	border-radius: 10px;
+}
+.header-menu{
+	border-right: 1px solid #fa284b;
+	text-align:center;
+/*	background-color:black*/
+
+}
+.header-menu-img{
+	transform:scale(.5);
+}
+.header-menu-text{
+	font-size: ;
+	line-height:0
+}
+/*display on mobile view*/
+.header-menu-border-bottom{
+	height:1px;
+	opacity:1;
+	background-color:#fa284b
+}
+
+.stats{
+	  writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    font-size: 5vw;
+    font-weight:600;
+    color:#dd2745;
+    border-left:8px solid #dd2745;
+}
+.stats-text{
+	font-size:5vw;
+	color:#bdbdbd
+}
+.app-img{
+	height:60px;
+}
+.social-icon{
+	font-size: 2.5rem !important;
+}
+footer{
+	background-color:#f1f1f1;
+	width:100%;
+}

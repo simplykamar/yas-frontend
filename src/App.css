@@ -1,0 +1,69 @@
+.line-height-0{
+	line-height:0;
+}
+.line-height-8{
+	line-height:.8;
+}
+.text-pink{
+	color: #fc032c;
+}
+.btn{
+	border-radius:0 !important;
+}
+.bg-pink{
+	background-color: #fc032c;
+}
+.fw-600{
+	font-weight:600
+}
+.product-card-title{
+	color:#666;
+}
+.btn-pink{
+	background-color: #f14b66 !important;
+	color:white !important
+}
+.btn-pink:hover{
+	background-color: #f53050;
+	color:white
+}
+.btn-white:hover{
+	border: 1px solid black !important;
+}
+.btn-outline-pink{
+	border: 1px solid #f53050;
+}
+
+.bg-outline-pink{
+	border:1px solid #f53050;
+	color: #f14b66;
+}
+.bg-outline-pink:hover{
+	color: red;
+}
+.cursor-pointer{
+	cursor:pointer;
+}
+.custom-shadow{
+	box-shadow:0 .1rem 1rem rgba(0, 0, 0, 0.10) !important
+}
+input,select:focus{
+	box-shadow:none!important;
+	border: 1px solid gray !important;
+
+}
+input,select{
+	border: 1px solid gray !important;
+}
+select{
+	height:50px !important;
+}
+.bg-rose{
+	background-color:#ffb2bf!important
+}
+.bg-white{
+	background-color:white!important;
+}
+.success-msg{
+	color:#08BD80 !important
+}

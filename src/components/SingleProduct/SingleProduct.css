@@ -1,0 +1,12 @@
+.product-card{
+	position:relative;
+	height:350px
+		}
+.product-card-wishlist-icon{
+	position:absolute;
+	right:0
+}
+.product-card-img{
+		height:200px;
+	}
+		
