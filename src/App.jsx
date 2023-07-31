@@ -27,14 +27,15 @@ import TagProducts from './components/TagProducts/TagProducts';
 import CustomerAccountActivation from './components/CustomerAccountActivation/CustomerAccountActivation';
 import CustomerRegisterSuccess from './components/CustomerRegister/CustomerRegisterSuccess';
 
-import Register from './components/seller/Register';
-import Login from './components/seller/Login';
-import Dashboard from './components/seller/Dashboard';
-import Products from './components/seller/Products';
-import AddProduct from './components/seller/AddProduct';
-import SellerOrders from './components/seller/Orders';
-import Customers from './components/seller/Customers';
-import Reports from './components/seller/Reports';
+// import Register from './components/seller/Register';
+// import Login from './components/seller/Login';
+// import Dashboard from './components/seller/Dashboard';
+// import Products from './components/seller/Products';
+// import AddProduct from './components/seller/AddProduct';
+// import SellerOrders from './components/seller/Orders';
+// import Customers from './components/seller/Customers';
+// import Reports from './components/seller/Reports';
+
 import Footer from './components/Footer/Footer';
 
 // import seller from './components/seller/Register';
@@ -75,14 +76,14 @@ function App() {
 
 
 {/* seller routes */}
-        <Route path="/seller/register" element={<Register/>}/>
-        <Route path="/seller/login" element={<Login/>}/>
-        <Route path="/seller/dashboard" element={<Dashboard/>}/>
-        <Route path="/seller/Products" element={<Products/>}/>
-        <Route path="/seller/add-product" element={<AddProduct/>}/>
-        <Route path="/seller/orders" element={<SellerOrders/>}/>
-        <Route path="/seller/customers" element={<Customers/>}/>
-        <Route path="/seller/reports" element={<Reports/>}/>
+        {/* <Route path="/seller/register" element={<Register/>}/> */}
+        {/* <Route path="/seller/login" element={<Login/>}/> */}
+        {/* <Route path="/seller/dashboard" element={<Dashboard/>}/> */}
+        {/* <Route path="/seller/Products" element={<Products/>}/> */}
+        {/* <Route path="/seller/add-product" element={<AddProduct/>}/> */}
+        {/* <Route path="/seller/orders" element={<SellerOrders/>}/> */}
+        {/* <Route path="/seller/customers" element={<Customers/>}/> */}
+        {/* <Route path="/seller/reports" element={<Reports/>}/> */}
 
       </Routes>
       <Footer/>
