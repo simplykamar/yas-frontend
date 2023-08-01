@@ -54,7 +54,7 @@ const Categories = () => {
                           <div className="col-lg-6 col-md-6 col-sm-6 col-6 p-2">
                             <div className="">
                               <h5 className="text-capitalize text-dark">{cat.title}</h5>
-                              <p className="text-secondary me-2">{cat.detail.slice(0,160)}...</p>
+                              <p className="text-secondary text-justify me-2 ">{cat.detail.slice(0,150)}...</p>
                               <Link to={`/category/${cat.title}/${cat.id}`} className="btn w-75 btn-pink">Explore</Link>
                             </div>
                           </div>

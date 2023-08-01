@@ -23,7 +23,7 @@ const Home = () => {
       <div className="">
       <div className="container">
         <header className="mt-5">
-          <div className="row g-2 header-menu-border">
+          <div className="row g-0 header-menu-border">
             <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
                 <div className="header-menu mt-2">

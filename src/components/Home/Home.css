@@ -5,18 +5,24 @@
 .header-menu{
 	border-right: 1px solid #fa284b;
 	text-align:center;
-/*	background-color:black*/
-
+/*	background-color:yellow;*/
+	height:130px;
 }
+
+.header-menu:hover .header-menu-img{
+	transform:scale(.6);
+}
+
 .header-menu-img{
+	transition:all ease 1.5s;
 	transform:scale(.5);
 }
 .header-menu-text{
-	font-size: ;
-	line-height:0
+	font-size: 14px;
 }
 /*display on mobile view*/
 .header-menu-border-bottom{
+	margin-top:5px;
 	height:1px;
 	opacity:1;
 	background-color:#fa284b

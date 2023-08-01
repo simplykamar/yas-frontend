@@ -70,3 +70,9 @@ select{
 .success-msg{
 	color:#08BD80 !important
 }
+.text-justify{
+	text-align:justify !important;
+}
+.text-small{
+	font-size:14px!important;
+}
