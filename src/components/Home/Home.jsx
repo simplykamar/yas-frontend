@@ -34,7 +34,7 @@ const Home = () => {
                 <div className="d-block d-lg-none header-menu-border-bottom"></div>
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
-            <Link to="/category/same day delivery/13" className="text-decoration-none text-dark">
+            <Link to="/category/same day delivery/15" className="text-decoration-none text-dark">
                 <div className="header-menu mt-2">
                   <img src={samedaydelivery} className="img-fluid header-menu-img"/>
                   <p className="text-capitalize header-menu-text">same day delivery</p>
@@ -43,7 +43,7 @@ const Home = () => {
                 <div className="d-block d-lg-none header-menu-border-bottom"></div>
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
-            <Link to="/category/cake/9" className="text-decoration-none text-dark">
+            <Link to="/category/cake/11" className="text-decoration-none text-dark">
                 <div className="header-menu mt-2">
                     <img src={cake} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">cakes</p>
@@ -52,7 +52,7 @@ const Home = () => {
                 <div className="d-block d-lg-none header-menu-border-bottom"></div>
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
-            <Link to="/category/flowers/11" className="text-decoration-none text-dark">
+            <Link to="/category/flowers/13" className="text-decoration-none text-dark">
                 <div className="header-menu mt-2">
                     <img src={flower} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">flower</p>
@@ -60,7 +60,7 @@ const Home = () => {
               </Link>
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
-            <Link to="/category/personalized/12" className="text-decoration-none text-dark">
+            <Link to="/category/personalized/14" className="text-decoration-none text-dark">
                 <div className="header-menu mt-2">
                     <img src={personalize} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">personalized</p>
@@ -68,7 +68,7 @@ const Home = () => {
               </Link>
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4 col-4">
-            <Link to="/category/plant/10" className="text-decoration-none text-dark">
+            <Link to="/category/plant/12" className="text-decoration-none text-dark">
                 <div className="header-menu mt-2">
                     <img src={plant} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">plant</p>

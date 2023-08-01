@@ -22,15 +22,15 @@ function closeNav() {
             <NavLink to="#" className="closebtn" onClick={closeNav}>&times;</NavLink>
             <div className="border m-2 rounded-3">
             <p className="text-uppercase fw-600 text-center bg-rose text-pink p-2">Top Collections</p>
-              <NavLink activeclassname="active" to="/category/same day delivery/13" className="sidenav-items">Same Day Delivery Gifts</NavLink>
-              <NavLink activeclassname="active" to="/category/cake/9" className="sidenav-items">Birthday Gifts</NavLink>
-              <NavLink  activeclassname="active" to="/category/personalized/12" className="sidenav-items">Personalized Gifts</NavLink>
+              <NavLink activeclassname="active" to="/category/same day delivery/15" className="sidenav-items">Same Day Delivery Gifts</NavLink>
+              <NavLink activeclassname="active" to="/category/cake/11" className="sidenav-items">Birthday Gifts</NavLink>
+              <NavLink  activeclassname="active" to="/category/personalized/14" className="sidenav-items">Personalized Gifts</NavLink>
             </div>
             <p className=" ms-2 mt-4 mb-3 fw-600 text-secondary text-uppercase">Personal occasions</p>
-            <NavLink to="/category/plant/10" className="sidenav-items">Plants Gifts</NavLink>
-            <NavLink to="/category/anniversary/15" className="sidenav-items">Anniversary Gifts</NavLink>
-            <NavLink to="/category/wedding/14" className="sidenav-items">Wedding & Engagement</NavLink>
-            <NavLink to="/category/flowers/11" className="sidenav-items">Best Wishes</NavLink>
+            <NavLink to="/category/plant/12" className="sidenav-items">Plants Gifts</NavLink>
+            <NavLink to="/category/anniversary/17" className="sidenav-items">Anniversary Gifts</NavLink>
+            <NavLink to="/category/wedding/16" className="sidenav-items">Wedding & Engagement</NavLink>
+            <NavLink to="/category/flowers/13" className="sidenav-items">Best Wishes</NavLink>
             <p className=" ms-2 mt-4 mb-3 fw-600 text-secondary text-uppercase">assistance</p>
             <div className="mb-3">
               <NavLink to="/customer/profile"  className="sidenav-items"><PersonOutlineTwoToneIcon fontSize='small'/> Profile</NavLink>
