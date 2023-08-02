@@ -93,7 +93,7 @@ const ProductDetail = () => {
    		tagLinks.push(<Link to={`/products/${tag}`} className="badge bg-outline-pink ms-2 text-decoration-none text-capitalize" key={i}>{tag}</Link>)
    } 
 	return(
-		<div className="container-fluid pt-5">
+		<div className="container-fluid pt-3">
 		{ !loading
 			?
 			<div className="row">
@@ -110,10 +110,10 @@ const ProductDetail = () => {
 								<img src={product.product_imgs[selectedImage].image} className="img-fluid mt-3"/>							
 						</div>
 					</div>
-					<div className="row d-lg-none d-md-none">
+					<div className="row mt-2 d-lg-none d-md-none">
 					{	
 						product.product_imgs?.map((img,index)=>{return(
-						<div className="col-lg-3 col-md-3 col-sm-3 col-3">
+						<div className="col-lg-2 col-md-2 col-sm-2 col-2">
 							<img src={img.image} key={img.id} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
 						</div>
 						
@@ -127,16 +127,16 @@ const ProductDetail = () => {
 					<p><small className="text-secondary">{product.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/> | 186 Rating</p>
 					 <h5>₹{product.price}<span className="text-secondary ms-2" style={{fontSize:"16px"}}> </span></h5>
 					 <p className="text-success fw-600">inclusive of all taxes</p>
-					 	<div className="mt-4">
+					 	<div className="mt-4 d-flex jus">
 							 { 
-							 <button className="btn btn-pink px-4 ms-2" onClick={()=>{dispatch(addToCart({
+							 <div><button className="btn btn-pink px-4 ms-2" onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
 									detail:product.detail,
 									quantity,
 									img:product.product_imgs[0].image
-							 }))}}> <ShoppingBagOutlinedIcon className="mb-1 me-2"/>Add Cart</button>
+							 }))}}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart</button></div>
 							 	}
 
 							 
@@ -144,15 +144,15 @@ const ProductDetail = () => {
                	!loading?
                 userWishlist.is_wishlist
                 ?
-                <button className="btn btn-white px-4 ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
-               		<FavoriteIcon className="text-danger"/>
+                <div><button className="btn btn-white px-4 ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+               		<FavoriteIcon className="text-danger me-1"/>
 								Wishlist
-							 </button>
+							 </button></div>
 							 :
-                <button className="btn btn-white px-4 ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
-								<FavoriteBorderOutlinedIcon />
+                <div><button className="btn btn-white px-4 ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
+								<FavoriteBorderOutlinedIcon className="me-1"/>
 								Wishlist
-							 </button>
+							 </button></div>
 							 :""
 							}
 							  
