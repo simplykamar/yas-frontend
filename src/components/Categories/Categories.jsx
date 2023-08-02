@@ -40,7 +40,7 @@ const Categories = () => {
         <div className="container">
             <div className="mt-4">
             <h4>All Categories</h4>
-            <div className="row g-4 mt-5">
+            <div className="row g-4 mt-3">
               { !loading?
                 categories.map((cat)=>{
                   return(
@@ -54,7 +54,7 @@ const Categories = () => {
                           <div className="col-lg-6 col-md-6 col-sm-6 col-6 p-2">
                             <div className="">
                               <h5 className="text-capitalize text-dark">{cat.title}</h5>
-                              <p className="text-secondary text-justify me-2 ">{cat.detail.slice(0,150)}...</p>
+                              <p className="text-secondary text-justify me-2 ">{cat.detail.slice(0,140)}...</p>
                               <Link to={`/category/${cat.title}/${cat.id}`} className="btn w-75 btn-pink">Explore</Link>
                             </div>
                           </div>
@@ -68,13 +68,12 @@ const Categories = () => {
                 <div className="spinner-border text-danger"></div>
               </div>
               }
-                
               </div>
                <div className="mt-5">
                 <h2>Occasions</h2>
                 <p className="text-secondary">Celebrate each occasion with a gift that has a lasting impression</p>
               </div>
-               <div className="row g-2 mt-3">
+               <div className="row g-2 mt-3 text-center">
                   <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <div className="">
                         <img src={birthday} className="img-fluid rounded-4"/>
@@ -91,7 +90,7 @@ const Categories = () => {
                       </div>
                   </div>
             </div>
-            <div className="row g-2 mt-4">
+            <div className="row g-2 mt-3 text-center">
                   <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <div className="">
                         <img src={babyshower} className="img-fluid rounded-4"/>

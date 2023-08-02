@@ -57,7 +57,7 @@ const CategoryProducts = () => {
                 products.length?
                   products.map((product)=>{
                     return(
-                       <div className="col-lg-3 col-md-3 col-sm-12 col-12" key={product.id}>
+                       <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
                           <SingleProduct rating={product.rating} id={product.id} image={product.product_imgs[0].image} title={product.title} price={product.price}/>
                         </div>
                       )
