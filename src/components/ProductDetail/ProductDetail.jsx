@@ -113,7 +113,7 @@ const ProductDetail = () => {
 					<div className="row mt-2 d-lg-none d-md-none">
 					{	
 						product.product_imgs?.map((img,index)=>{return(
-						<div className="col-lg-2 col-md-2 col-sm-2 col-2">
+						<div className="col-lg-3 col-md-3 col-sm-3 col-3">
 							<img src={img.image} key={img.id} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
 						</div>
 						
@@ -129,7 +129,7 @@ const ProductDetail = () => {
 					 <p className="text-success fw-600">inclusive of all taxes</p>
 					 	<div className="mt-4 d-flex">
 							 { 
-							 <div><button className="btn btn-pink px-4 ms-2 " onClick={()=>{dispatch(addToCart({
+							 <div><button className="btn btn-pink  " onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
@@ -144,12 +144,12 @@ const ProductDetail = () => {
                	!loading?
                 userWishlist.is_wishlist
                 ?
-                <div><button className="btn btn-white px-4 ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+                <div><button className="btn btn-white ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
                		<FavoriteIcon className="text-danger me-1"/>
 								Wishlist
 							 </button></div>
 							 :
-                <div><button className="btn btn-white px-4 ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
+                <div><button className="btn btn-white ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
 								<FavoriteBorderOutlinedIcon className="me-1"/>
 								Wishlist
 							 </button></div>
