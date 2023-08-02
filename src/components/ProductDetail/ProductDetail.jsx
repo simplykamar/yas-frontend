@@ -97,9 +97,9 @@ const ProductDetail = () => {
 		{ !loading
 			?
 			<div className="row">
-				<div className="col-lg-4 col-md-4 col-sm-12 col-12">
+				<div className="col-lg-5 col-md-5 col-sm-12 col-12">
 					<div className="row">
-						<div className="col-lg-3 col-md-3 col-sm-3 col-3 d-none d-lg-block d-md-block">
+						<div className="col-lg-2 col-md-2 d-none d-lg-block d-md-block">
 							{ 
 						product.product_imgs?.map((img,index)=>{return(
 						<img src={img.image} key={img.id} className="img-fluid img-thumbnail mt-3 cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
@@ -121,7 +121,7 @@ const ProductDetail = () => {
 					}
 					</div>
 				</div>
-				<div className="col-lg-8 col-md-8 col-sm-12 col-12">
+				<div className="col-lg-7 col-md-7 col-sm-12 col-12">
 					<h4 className="text-dark mt-3">{product.title}</h4>
 					{/* <p> {product.detail}</p> */}
 					<p><small className="text-secondary">{product.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/> | 186 Rating</p>
@@ -157,7 +157,7 @@ const ProductDetail = () => {
 							}
 							  
 						</div>
-						<p className="mt-4 text-secondary">{product.detail}</p>
+						<p className="mt-4 text-secondary text-justify">{product.detail}</p>
 						<h5>Tags</h5>
 							{tagLinks}
 				</div>
