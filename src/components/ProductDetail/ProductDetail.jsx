@@ -122,14 +122,14 @@ const ProductDetail = () => {
 					</div>
 				</div>
 				<div className="col-lg-8 col-md-8 col-sm-12 col-12">
-					<h4 className="text-dark mt-2">{product.title}</h4>
+					<h4 className="text-dark mt-3">{product.title}</h4>
 					{/* <p> {product.detail}</p> */}
 					<p><small className="text-secondary">{product.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/> | 186 Rating</p>
 					 <h5>₹{product.price}<span className="text-secondary ms-2" style={{fontSize:"16px"}}> </span></h5>
 					 <p className="text-success fw-600">inclusive of all taxes</p>
-					 	<div className="mt-4 d-flex jus">
+					 	<div className="mt-4 d-flex">
 							 { 
-							 <div><button className="btn btn-pink px-4 ms-2" onClick={()=>{dispatch(addToCart({
+							 <div><button className="btn btn-pink px-4 ms-2 " onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
