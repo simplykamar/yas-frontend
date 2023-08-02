@@ -88,7 +88,7 @@ const CheckoutStep1 = () => {
 
 	}
 	return(
-		<div className=" py-5 bg-light">
+		<div className="py-5 bg-light">
 				<div>
         <ToastContainer />
       </div>

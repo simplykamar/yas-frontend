@@ -20,7 +20,7 @@ const Checkout = (props) => {
       <h2 className="text-dark text-center mt-3">Shopping Cart</h2>
                 {
                   cartData.map((item,i)=>{return(
-                 <div className="row mt-5 border p-2 custom-shadow" key={item.id}>
+                 <div className="row mt-4 border p-2 custom-shadow" key={item.id}>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <Link to={`/product/${item.title}/${item.id}`} className="d-flex text-decoration-none text-dark"> 
                       <img src={item.img} className="img-fluid" style={{width:'100px'}}/> 
@@ -49,16 +49,35 @@ const Checkout = (props) => {
                   }
                       {/* <Link to="/categories" className="btn btn-secondary">Continue Shopping</Link> */}
                       {/* <Link to="/confirm-order" className="btn btn-success ms-3">Proceed to Payment</Link> */}
-            <div className="row mt-5 ">
-                <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                  <h4 className="text-secondary">Total Products: <span className="text-danger">{totalProducts}</span></h4>
+            <div className="mt-5 d-none d-md-block d-lg-block">
+                <div className="d-flex justify-content-between ">
+                    <div className="">
+                      <h4 className="text-secondary">Total Products: <span className="text-danger">{totalProducts}</span></h4>
+                    </div>
+                    <div className="">
+                      <h4 className="text-secondary">Total Amounts: <span className="text-danger">{totalAmounts}</span></h4>
+                    </div>
+                    <div className="">
+                      <Link to="/checkout-step-1" className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
+                    </div>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                  <h4 className="text-secondary">Total Amounts: <span className="text-danger">{totalAmounts}</span></h4>
+            </div>
+            <div className="mt-5 d-lg-none d-md-none">
+                <div className="d-flex justify-content-between">
+                    <div className="">
+                      <p className="text-secondary fw-600">Total Products: <span className="text-danger">{totalProducts}</span></p>
+                    </div>
+                    <div className="">
+                      |
+                    </div>
+                    <div className="">
+                      <p className="text-secondary fw-600">Total Amounts: <span className="text-danger">{totalAmounts}</span></p>
+                    </div>
+                    
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                  <Link to="/checkout-step-1" className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
-                </div>
+                <div className="">
+                      <Link to="/checkout-step-1" className="btn btn-pink d-block fw-600">PROCEED TO CHECKOUT</Link>
+                    </div>
             </div>
             </>
          :

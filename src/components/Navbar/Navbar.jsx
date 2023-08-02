@@ -161,10 +161,12 @@ function fetchProductsData(url){
                            { !productDataLoading
                             ?
                               searchProducts.map((item)=>{return(
-                                <div className="d-flex list-group-item mb-2" key={item.id} data-bs-dismiss="modal">
+                                <Link to={`/product/${item.title}/${item.id}`} key={item.id} className="text-dark text-capitalize text-decoration-none">
+                                <div className="d-flex list-group-item mb-2" data-bs-dismiss="modal">
                                 <img src={item.product_imgs[0].image} className="img-fluid" width='50'/>
-                                  <p className="line-height-8 mt-2 ms-2"><Link to={`/product/${item.title}/${item.id}`} className="text-dark text-capitalize text-decoration-none">{item.title.slice(0,35)}...</Link></p>
+                                  <p className="line-height-8 mt-2 ms-2">{item.title.slice(0,60)}...</p>
                                 </div>
+                                </Link>
                               )})
                             :"loading..."
                         }

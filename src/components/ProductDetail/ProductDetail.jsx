@@ -79,6 +79,7 @@ const ProductDetail = () => {
           }
    }
     useEffect(()=>{
+    	window.scrollTo(0,0);
         fetchData(BASE_URL+'/product/'+product_id);
           if(user.isAuthenticate){
         			checkUserWishlist();
