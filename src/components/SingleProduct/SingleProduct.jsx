@@ -85,7 +85,7 @@ const SingleProduct = (props) => {
                     </Link>
                   <div className="card-body p-2">
                     <Link to={`/product/${props.title}/${props.id}`} className="text-decoration-none">
-                    <p className="card-title fw-bold product-card-title" style={{fontSize:"14px"}}>{props.title.slice(0,40)}...</p>
+                    <p className="card-title fw-bold product-card-title" style={{fontSize:"14px"}}>{props.title.slice(0,35)}...</p>
                     </Link>
                     <p className="card-title text-dark fw-600">₹ {props.price}</p>
                     <span>
