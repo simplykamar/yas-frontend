@@ -107,14 +107,14 @@ const ProductDetail = () => {
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-								<img src={product.product_imgs[selectedImage].image} className="img-fluid img-thumbnail mt-3"/>							
+								<img src={product.product_imgs[selectedImage].image} className="img-fluid mt-3"/>							
 						</div>
 					</div>
 					<div className="row d-lg-none d-md-none">
 					{	
 						product.product_imgs?.map((img,index)=>{return(
 						<div className="col-lg-3 col-md-3 col-sm-3 col-3">
-							<img src={img.image} key={img.id} className="img-fluid img-thumbnail cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
+							<img src={img.image} key={img.id} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
 						</div>
 						
 						)})
