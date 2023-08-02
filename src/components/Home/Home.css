@@ -6,7 +6,7 @@
 	border-right: 1px solid #fa284b;
 	text-align:center;
 /*	background-color:yellow;*/
-	height:130px;
+	height:120px;
 }
 
 .header-menu:hover .header-menu-img{
@@ -14,11 +14,12 @@
 }
 
 .header-menu-img{
-	transition:all ease 1.5s;
+	transition:all ease 1s;
 	transform:scale(.5);
 }
 .header-menu-text{
 	font-size: 14px;
+	line-height:1;
 }
 /*display on mobile view*/
 .header-menu-border-bottom{
@@ -27,18 +28,23 @@
 	opacity:1;
 	background-color:#fa284b
 }
-
+.footersale-img{
+	min-height:150px;
+}
 .stats{
-	  writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
     transform: rotate(-180deg);
     font-size: 5vw;
     font-weight:600;
     color:#dd2745;
     border-left:8px solid #dd2745;
 }
-.stats-text{
+.main-stats-text{
 	font-size:5vw;
 	color:#bdbdbd
+}
+.stats-text{
+	font-size:12px;
 }
 .app-img{
 	height:60px;

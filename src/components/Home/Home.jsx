@@ -26,7 +26,7 @@ const Home = () => {
           <div className="row g-0 header-menu-border">
             <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
-                <div className="header-menu mt-2">
+                <div className="header-menu ">
                   <img src={rakhi} className="img-fluid header-menu-img"/>
                   <p className="text-capitalize header-menu-text">rakhi</p>
                 </div>
@@ -35,7 +35,7 @@ const Home = () => {
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/same day delivery/15" className="text-decoration-none text-dark">
-                <div className="header-menu mt-2">
+                <div className="header-menu ">
                   <img src={samedaydelivery} className="img-fluid header-menu-img"/>
                   <p className="text-capitalize header-menu-text">same day delivery</p>
                 </div>
@@ -44,7 +44,7 @@ const Home = () => {
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/cake/11" className="text-decoration-none text-dark">
-                <div className="header-menu mt-2">
+                <div className="header-menu ">
                     <img src={cake} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">cakes</p>
                 </div>
@@ -53,15 +53,16 @@ const Home = () => {
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/flowers/13" className="text-decoration-none text-dark">
-                <div className="header-menu mt-2">
+                <div className="header-menu ">
                     <img src={flower} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">flower</p>
                 </div>
               </Link>
+                <div className="d-none d-lg-none d-md-block header-menu-border-bottom"></div>
             </div>
               <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/personalized/14" className="text-decoration-none text-dark">
-                <div className="header-menu mt-2">
+                <div className="header-menu ">
                     <img src={personalize} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">personalized</p>
                 </div>
@@ -69,7 +70,7 @@ const Home = () => {
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4 col-4">
             <Link to="/category/plant/12" className="text-decoration-none text-dark">
-                <div className="header-menu mt-2">
+                <div className="header-menu ">
                     <img src={plant} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">plant</p>
                 </div>
@@ -80,7 +81,7 @@ const Home = () => {
         <Slider/>
         <UniqueGift/>
         <CelebrateGift/>
-         <img src={footersale} className="img-fluid"/>
+         <img src={footersale} className="img-fluid footersale-img"/>
         <section className="mt-5">
           <div className="row">
             <div className="col-lg-2 col-md-2 col-sm-2 col-2">
@@ -89,16 +90,16 @@ const Home = () => {
             <div className="col-lg-10 col-md-10 col-sm-10 col-10">
               <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="stats-text">50+</h1>
-                    <p className="text-pink">Cities having same day delivery</p>              
+                    <h1 className="main-stats-text">50+</h1>
+                    <p className="text-pink stats-text">Cities having same day delivery</p>              
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="stats-text">100+</h1>
-                    <p className="text-pink">Happy cutomer :)</p>              
+                    <h1 className="main-stats-text">100+</h1>
+                    <p className="text-pink stats-text">Happy cutomer:)</p>              
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="stats-text">200+</h1>
-                    <p className="text-pink">Gift boxes delivered</p>              
+                    <h1 className="main-stats-text">200+</h1>
+                    <p className="text-pink stats-text">Gift boxes delivered</p>              
                 </div>
               </div>
           </div>

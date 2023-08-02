@@ -83,9 +83,9 @@ function fetchProductsData(url){
       </ul>
 
       <ul className="navbar-nav ms-auto">
-        <li className="nav-item">
-          <Link to="/categories" className="nav-link">Categories</Link>
-        </li>
+        {/* <li className="nav-item"> */}
+        {/*   <Link to="/categories" className="nav-link">Categories</Link> */}
+        {/* </li> */}
        
       <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinks" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

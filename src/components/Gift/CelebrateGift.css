@@ -1,0 +1,9 @@
+
+.celebrate-img{
+	transition:all ease 1s;
+	cursor:pointer;
+}
+.celebrate-img:hover{
+	transform:scale(1.1);
+
+}
