@@ -208,7 +208,7 @@ ${user.user.user.name.toUpperCase()}
 								<small className="d-flex justify-content-between">Discount <span>0</span></small>
 								<small className="d-flex justify-content-between">Shipping Charges <span>Free</span></small>
 							</div><hr/>
-							<p className="fw-600 d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
+							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
 
 					</div>
 					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>

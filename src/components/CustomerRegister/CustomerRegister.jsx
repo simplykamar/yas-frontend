@@ -66,11 +66,11 @@ const CustomerRegister = () => {
    (registerFormData.re_password!='')  && (registerFormData.email!='')
 	return(
         <div className="container-fluid">
-            <div className="pt-5 login-container">
+            <div className="py-5 login-container">
             <div className="d-flex justify-content-center">
-            <div className="card" style={{minWidth:'400px'}}>
+            <div className="card" >
               <div className="mt-4 ms-4">
-              <h4 className="card-title text-dark">Sign in to complete your order</h4>
+              <h5 className="card-title text-dark">Sign in to complete your order</h5>
               <p>Already have an account? <Link to="/customer/login" className="text-decoration-none">Sign in</Link></p>
              </div> 
               <div  className="card-body">

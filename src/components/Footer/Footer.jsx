@@ -11,7 +11,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
 	return (
-		 <footer className="mt-3">
+		 <footer className="">
       <div className="container p-4">
           <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-6 col-12">
