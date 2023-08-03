@@ -162,12 +162,16 @@ ${user.user.user.name.toUpperCase()}
 				<div className="col-lg-8 col-md-8 col-sm-12 col-12 ">
 				<div className="bg-white p-4">
 					<p className="fw-600">Message Card <CardGiftcardTwoToneIcon color="warning"/></p><hr/>
+					<div className="table-responsive ">
+					<div className="table ">
 					<div className="d-flex justify-content-between">
 						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(1)}>General Gifting</button>
 						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(2)}>Birthday</button>
 						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(3)}>Anniversary</button>
 						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(4)}>Wedding</button>
 						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(5)}>House & warming</button>
+					</div>
+					</div>
 					</div>
 					<div className="form-check my-4 fw-600">
 					  <input id="personalize-msg" className="form-check-input" type="checkbox" onChange={(e)=>{setMsg(!msg)}} checked={msg}/>
@@ -211,7 +215,7 @@ ${user.user.user.name.toUpperCase()}
 							<p className="fw-600 d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
 
 					</div>
-					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5">PROCEED TO PAYMENT</Link>
+					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
 				</div>
 			</div>
 			</>

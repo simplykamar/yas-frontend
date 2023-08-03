@@ -55,7 +55,8 @@ const CheckoutStep1 = () => {
 						setNewAddress({
 							...newAddress,
 							[event.target.name]: event.target.value
-						})
+						});
+						console.log(newAddress);
 	}
 
 		function deleteAddress(id){
@@ -215,7 +216,7 @@ const CheckoutStep1 = () => {
          <p className="fw-600">TAG AS</p>
          <div className="d-flex">
          <div className=" form-check">
-           <input type="radio" id="floatingInputHomeTagGrid" onChange={inputHandler} name="tag" value={1} className="form-check-input" checked/>
+           <input type="radio" id="floatingInputHomeTagGrid" onChange={inputHandler} name="tag" value={1} className="form-check-input" />
            <label className="form-check-label" htmlFor="floatingInputHomeTagGrid"><HomeTwoToneIcon/>Home</label>
          </div>
          <div className="ms-2 form-check">
