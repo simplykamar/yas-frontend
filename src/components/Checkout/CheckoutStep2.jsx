@@ -28,6 +28,7 @@ const CheckoutStep2 = () => {
 
 
  	useEffect(()=>{
+      window.scrollTo(0,0);
  		console.log(order.address);
  		if(!order.address){
  			navigate('/checkout-step-1', {replace:true})

@@ -21,6 +21,7 @@ const ConfirmOrder = (props) => {
   const [isFetching,setIsFetching] = useState(false);
 
  useEffect(() => {
+      window.scrollTo(0,0);
     window.process = {
       ...window.process,
     };
@@ -136,7 +137,7 @@ const ConfirmOrder = (props) => {
   };
 
     return (
-      <div className=" py-5 bg-light">
+      <div className=" py-4 bg-light">
       <div className="container">
         { cartData.length?
         <>

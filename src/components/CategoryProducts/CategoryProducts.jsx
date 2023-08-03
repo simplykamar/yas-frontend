@@ -23,6 +23,7 @@ const CategoryProducts = () => {
               });
     }
     useEffect(()=>{
+      window.scrollTo(0,0);
       console.log("in cat product")
         fetchData(BASE_URL+`/products/?q=${category_slug}`);
       },[category_slug,]);

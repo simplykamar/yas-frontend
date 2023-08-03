@@ -6,12 +6,18 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import emptyCart from "../../images/other/emptycart.svg"
+import {useEffect} from 'react';
+
 const Checkout = (props) => {
   const cartData = useSelector((state)=>state.cart.products);
   const dispatch = useDispatch();
   const sum=0;
   const totalProducts = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
   const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
+   
+    useEffect(()=>{
+      window.scrollTo(0,0);
+    },[]);
     return (
       <div className="container" >
             { cartData.length?
