@@ -83,7 +83,7 @@ function fetchProductsData(url){
           </li>
       </ul>
 
-      <ul className="navbar-nav ms-auto me-5 me-lg-0 me-md-0">
+      <ul className="navbar-nav ms-auto me-4 me-lg-0 me-md-0">
         {/* <li className="nav-item"> */}
         {/*   <Link to="/categories" className="nav-link">Categories</Link> */}
         {/* </li> */}
