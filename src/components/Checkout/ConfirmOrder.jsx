@@ -151,11 +151,15 @@ const ConfirmOrder = (props) => {
             </div>
             <div className="stepper-item completed">
               <div className="step-counter">
-            <Link to="#" className="text-white text-decoration-none">
+            <Link to="/checkout-step-2" className="text-white text-decoration-none">
               2
               </Link>
               </div>
-              <div className="step-name">Order Summary</div>
+              <div className="step-name">
+              <Link to="/checkout-step-2" className="text-decoration-none">
+              Order Summary
+              </Link>
+              </div>
             </div>
             <div className="stepper-item active">
               <div className="step-counter">
