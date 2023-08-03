@@ -18,6 +18,7 @@ const ConfirmOrder = (props) => {
   const order = useSelector((state)=>state.order);
   const navigate = useNavigate();
   const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
+  const [isFetching,setIsFetching] = useState(false);
 
  useEffect(() => {
     window.process = {
@@ -28,6 +29,7 @@ const ConfirmOrder = (props) => {
       dispatch(resetCart());
       dispatch(clearOrder());
       console.log("in reset Order");
+      setIsFetching(false);
       navigate('/order-success',{replace:true});
   }
 
@@ -70,6 +72,7 @@ const ConfirmOrder = (props) => {
 
 
  const showRazorpay = async () => {
+    setIsFetching(true);
     const res = await loadScript();
 
     let bodyData = new FormData();
@@ -128,6 +131,8 @@ const ConfirmOrder = (props) => {
 
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
+      setIsFetching(false);
+    
   };
 
     return (
@@ -175,7 +180,16 @@ const ConfirmOrder = (props) => {
             </div>
         </div>
         <div className="text-center mt-5">
+        {
+                isFetching?
+                  <button className="btn btn-danger" disabled>
+                      <span className="spinner-border spinner-border-sm"> </span>
+                       Loading..
+                    </button>
+                :
         <button className="btn btn-danger" onClick={showRazorpay}> MAKE PAYMENT</button>
+              }
+
         </div>
         </>
       :
