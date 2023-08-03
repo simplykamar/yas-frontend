@@ -10,6 +10,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addToOrder,clearOrder} from '../../redux/orderSlice';
 import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import {resetCart} from '../../redux/cartSlice'
+import emptyCart from "../../images/other/emptycart.svg"
 
 const CheckoutStep2 = () => {
 	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -120,6 +121,8 @@ ${user.user.user.name.toUpperCase()}
 	return(
 		<div className=" py-5 bg-light">
 			<div className="container">
+			{ cartData.length?
+			  <>
 			<h4 className="text-center">Checkout</h4>
 				<div className="stepper-wrapper">
 					  <div className="stepper-item completed">
@@ -211,6 +214,13 @@ ${user.user.user.name.toUpperCase()}
 					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5">PROCEED TO PAYMENT</Link>
 				</div>
 			</div>
+			</>
+			:
+			  <div className="text-secondary text-center mt-5">
+                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+               <img src={emptyCart} className="img-fluid"/>
+             </div>        
+        }  
 		</div>
 		</div>
 		)

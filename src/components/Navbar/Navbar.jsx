@@ -15,7 +15,7 @@ import PrivacyTipTwoToneIcon from '@mui/icons-material/PrivacyTipTwoTone';
 import PowerSettingsNewTwoToneIcon from '@mui/icons-material/PowerSettingsNewTwoTone';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import axios from 'axios';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import img from '../../demo.png'
 
 import Sidebar from './Sidebar'
@@ -33,6 +33,7 @@ const Navbar = () => {
   const [categoryDataLoading, setCategoryDataLoading] = useState(true)
   const [productDataLoading, setProductDataLoading] = useState(true)
   const [isSearchResult, setIsSearchResult] = useState(false)
+
   const openModal= ()=> { setIsOpen( true )}
   const closeModal= ()=> { setIsOpen( false )}
 
@@ -73,16 +74,16 @@ function fetchProductsData(url){
   <Sidebar/>
     <Link className="navbar-brand ms-3" to="/">yas</Link>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav ms-auto">
+      <ul className="navbar-nav mx-auto">
           <li className="nav-item ">
           <span className="text-secondary cursor-pointer" data-bs-toggle="modal" data-bs-target="#searchModal">
           <span className="d-none d-md-block d-lg-inline-block">Search for gifts</span>
-            <SearchOutlinedIcon className="ms-2 " />
+            <SearchOutlinedIcon className="ms-lg-2 ms-md-2" style={{fontSize:'30px'}}/>
           </span>
           </li>
       </ul>
 
-      <ul className="navbar-nav ms-auto">
+      <ul className="navbar-nav ms-auto me-3 me-lg-0 me-md-0">
         {/* <li className="nav-item"> */}
         {/*   <Link to="/categories" className="nav-link">Categories</Link> */}
         {/* </li> */}
@@ -118,7 +119,7 @@ function fetchProductsData(url){
          <li className="nav-item">
           <Link to="/customer/wishlist" className="nav-link"><FavoriteBorderOutlinedIcon/></Link>
         </li>
-        <li className="nav-item me-4">
+        <li className="nav-item">
           <Link to="/checkout" className="nav-link"><ShoppingBagOutlinedIcon/><span className="badge navbar-cart-badge">{totalItems}</span></Link>
         </li>
       </ul>

@@ -11,6 +11,7 @@ import {addToOrder} from '../../redux/orderSlice';
 import {useNavigate} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import emptyCart from "../../images/other/emptycart.svg"
 
 const CheckoutStep1 = () => {
 	const notifySuccess = (msg) => toast.success(msg);
@@ -21,6 +22,7 @@ const CheckoutStep1 = () => {
   const user = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const cartData = useSelector((state)=>state.cart.products);
 
 // for add new address
 	const [newAddress, setNewAddress] = useState({
@@ -93,6 +95,8 @@ const CheckoutStep1 = () => {
         <ToastContainer />
       </div>
 			<div className="container">
+			  { cartData.length?
+			  <>
 			<div className="mb-5">
 				<div className="stepper-wrapper">
 					  <div className="stepper-item active">
@@ -239,6 +243,13 @@ const CheckoutStep1 = () => {
 
 			</div>
 			</div>
+			</>
+			:
+			  <div className="text-secondary text-center mt-5">
+                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+               <img src={emptyCart} className="img-fluid"/>
+             </div>        
+        }   
 		</div>
 		</div>
 		)

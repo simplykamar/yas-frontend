@@ -6,6 +6,7 @@ import './SingleProduct.css';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
 import StarIcon from '@mui/icons-material/Star';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const SingleProduct = (props) => {
@@ -13,11 +14,14 @@ const SingleProduct = (props) => {
   const user = useSelector((state)=>state.auth);
   const [userWishlist,setUserWishlist] = useState({is_wishlist:false,id:null})
   const [loading,setLoading] = useState(true)
+const notifySuccess = (text) => toast.success(text);
+
   const navigate = useNavigate()
    function removeFromWishlist(id){
           if(user.isAuthenticate){
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
+            notifySuccess('Remove from wishlist.');
              console.log(response);
             checkUserWishlist();
 
@@ -35,7 +39,8 @@ const SingleProduct = (props) => {
           formData.append('customer',user.user.id);
            axios.post(BASE_URL+`/customer-wishlist/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-             console.log(response);
+            notifySuccess('Added to wishlist.');
+            console.log(response);
             checkUserWishlist();
            })
            .catch(error=>{console.log(error)})
@@ -69,6 +74,7 @@ const SingleProduct = (props) => {
       },[])
     return (
       <div className="card product-card" >
+          <div><Toaster/></div>
                   <div className="product-card-wishlist-icon" style={{borderBottomLeftRadius:"20px",backgroundColor:"#e6e8e7"}}>
                     {
                       userWishlist.is_wishlist

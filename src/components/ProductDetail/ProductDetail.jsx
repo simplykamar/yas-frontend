@@ -8,6 +8,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import StarIcon from '@mui/icons-material/Star';
 import './ProductDetail.css';
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast';
 
 const ProductDetail = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -22,6 +23,7 @@ const ProductDetail = () => {
   const navigate = useNavigate()
   const user = useSelector((state)=>state.auth);
 	const cartData = useSelector((state)=>state.cart.products);
+const notifySuccess = (text) => toast.success(text);
 
   const fetchData = async (baseurl) => {
       await fetch(baseurl)
@@ -37,6 +39,7 @@ const ProductDetail = () => {
           if(user.isAuthenticate){
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
+            notifySuccess('Remove from wishlist.');
              console.log(response);
             checkUserWishlist();
 
@@ -54,6 +57,7 @@ const ProductDetail = () => {
           formData.append('customer',user.user.id);
            axios.post(BASE_URL+`/customer-wishlist/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
+            notifySuccess('Added to wishlist.');
              console.log(response);
             checkUserWishlist();
            })
@@ -95,6 +99,7 @@ const ProductDetail = () => {
    } 
 	return(
 		<div className="container-fluid pt-3">
+          <div><Toaster/></div>
 		{ !loading
 			?
 			<div className="row">
@@ -114,8 +119,8 @@ const ProductDetail = () => {
 					<div className="row mt-2 d-lg-none d-md-none">
 					{	
 						product.product_imgs?.map((img,index)=>{return(
-						<div className="col-lg-3 col-md-3 col-sm-3 col-3">
-							<img src={img.image} key={img.id} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
+						<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={img.id}>
+							<img src={img.image} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
 						</div>
 						
 						)})
@@ -130,14 +135,17 @@ const ProductDetail = () => {
 					 <p className="text-success fw-600">inclusive of all taxes</p>
 					 	<div className="mt-4 d-flex">
 							 { 
-							 <div><button className="btn btn-pink  " onClick={()=>{dispatch(addToCart({
+							 <div><button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
 									detail:product.detail,
 									quantity,
 									img:product.product_imgs[0].image
-							 }))}}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart</button></div>
+							 }));
+							 notifySuccess('Item added to cart');
+							}
+							}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart</button></div>
 							 	}
 
 							 

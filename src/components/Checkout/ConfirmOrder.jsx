@@ -7,6 +7,8 @@ import {useState,useEffect} from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {clearOrder} from '../../redux/orderSlice';
 import {useNavigate} from 'react-router-dom';
+import emptyCart from "../../images/other/emptycart.svg"
+
 const ConfirmOrder = (props) => {
   const baseUrl = 'https://yasonlinegifting.pythonanywhere.com/api/';
   const dispatch =useDispatch();
@@ -131,6 +133,8 @@ const ConfirmOrder = (props) => {
     return (
       <div className=" py-5 bg-light">
       <div className="container">
+        { cartData.length?
+        <>
       <h4 className="text-center">Proceed to payment</h4>
         <div className="stepper-wrapper">
             <div className="stepper-item completed">
@@ -169,6 +173,13 @@ const ConfirmOrder = (props) => {
         <div className="text-center mt-5">
         <button className="btn btn-danger" onClick={showRazorpay}> MAKE PAYMENT</button>
         </div>
+        </>
+      :
+        <div className="text-secondary text-center mt-5">
+                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+               <img src={emptyCart} className="img-fluid"/>
+             </div>        
+        }  
         </div>
         </div>
       )

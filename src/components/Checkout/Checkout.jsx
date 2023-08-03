@@ -76,7 +76,7 @@ const Checkout = (props) => {
                     
                 </div>
                 <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-pink d-block fw-600">PROCEED TO CHECKOUT</Link>
+                      <Link to="/checkout-step-1" className="btn btn-pink d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>
                     </div>
             </div>
             </>

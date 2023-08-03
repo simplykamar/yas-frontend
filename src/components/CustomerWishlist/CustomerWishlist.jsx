@@ -4,6 +4,8 @@ import axios from 'axios';
 import {useSelector} from 'react-redux';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
+
+
 const CustomerWishlist = () => {
 	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [wishlists, setWishlists] = useState([]);
@@ -30,7 +32,7 @@ const CustomerWishlist = () => {
 
 
 	return(
-		<div className=" py-5 bg-light">
+		<div className="py-5 bg-light">
 			<div className="container">
       <h4 className="text-capitalize text-center">
       My Wishlist
