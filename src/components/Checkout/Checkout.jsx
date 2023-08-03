@@ -20,7 +20,7 @@ const Checkout = (props) => {
       <h2 className="text-dark text-center mt-3">Shopping Cart</h2>
                 {
                   cartData.map((item,i)=>{return(
-                 <div className="row mt-4 border p-2 custom-shadow" key={item.id}>
+                 <div className="row mt-4 border p-2 pb-3 custom-shadow" key={item.id}>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <Link to={`/product/${item.title}/${item.id}`} className="d-flex text-decoration-none text-dark"> 
                       <img src={item.img} className="img-fluid" style={{width:'100px'}}/> 
@@ -34,15 +34,15 @@ const Checkout = (props) => {
                       </p>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                        
-                        <p className=" fw-600 ms-2 text-danger">₹ {item.price*item.quantity}</p>
-                        <span  className=" border p-1 px-2">
-                          <span className="cursor-pointer" onClick={()=>{dispatch(removeFromCart(item))}}><RemoveIcon/></span>
-                          <span className="mx-3">{item.quantity}</span>
-                          <span className="cursor-pointer" onClick={()=>{dispatch(addToCart(item))}}><AddIcon/></span>
-                        </span>
-                        <DeleteOutlineIcon className="ms-5 cursor-pointer" onClick={()=>{dispatch(deleteFromCart(item))}} />
-                      
+                        <div className="float-end">
+                          <p className=" fw-600 ms-2 text-danger">₹{item.price*item.quantity}</p>
+                          <span  className=" border p-1 px-2">
+                            <span className="cursor-pointer" onClick={()=>{dispatch(removeFromCart(item))}}><RemoveIcon/></span>
+                            <span className="mx-3">{item.quantity}</span>
+                            <span className="cursor-pointer" onClick={()=>{dispatch(addToCart(item))}}><AddIcon/></span>
+                          </span>
+                          <DeleteOutlineIcon className="ms-5 cursor-pointer" onClick={()=>{dispatch(deleteFromCart(item))}} />
+                      </div>
                     </div>
                     </div>
                     )})
@@ -55,14 +55,14 @@ const Checkout = (props) => {
                       <h4 className="text-secondary">Total Products: <span className="text-danger">{totalProducts}</span></h4>
                     </div>
                     <div className="">
-                      <h4 className="text-secondary">Total Amounts: <span className="text-danger">{totalAmounts}</span></h4>
+                      <h4 className="text-secondary">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></h4>
                     </div>
                     <div className="">
                       <Link to="/checkout-step-1" className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
                     </div>
                 </div>
             </div>
-            <div className="mt-5 d-lg-none d-md-none">
+            <div className="mt-5 d-lg-none d-md-none custom-shadow p-1">
                 <div className="d-flex justify-content-between">
                     <div className="">
                       <p className="text-secondary fw-600">Total Products: <span className="text-danger">{totalProducts}</span></p>

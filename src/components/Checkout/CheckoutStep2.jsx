@@ -119,7 +119,7 @@ ${user.user.user.name.toUpperCase()}
 
 
 	return(
-		<div className=" py-5 bg-light">
+		<div className=" py-3 bg-light">
 			<div className="container">
 			{ cartData.length?
 			  <>
