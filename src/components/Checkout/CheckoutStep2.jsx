@@ -34,8 +34,7 @@ const CheckoutStep2 = () => {
  		}
  	},[])
   	function cardClickHandler(cardType){
-  		const generalGiftMsg = `
-To,
+  		const generalGiftMsg = `To,
 XYZ
 
 It's hard to find someone who inspires you each day. Thank you for that. Here's a gesture of my gratitude and love.
@@ -44,8 +43,7 @@ It's hard to find someone who inspires you each day. Thank you for that. Here's 
 From
 ${user.user.user.name.toUpperCase()}
   		`
-  		const birthadayMsg = `
-To,
+  		const birthadayMsg = `To,
 XYZ
 
 You had my back, even behind my back. Friends like you are hard to come by. Here's wishing you the happiest birthday, my buddy!
@@ -54,8 +52,7 @@ You had my back, even behind my back. Friends like you are hard to come by. Here
 From
 ${user.user.user.name.toUpperCase()}
   		`
-  		const anniversaryMsg = `
-To,
+  		const anniversaryMsg = `To,
 XYZ
 
 Happy anniversary! May you celebrate many more years of togetherness, withstanding the tests of time to emerge stronger and happier.
@@ -64,8 +61,7 @@ Happy anniversary! May you celebrate many more years of togetherness, withstandi
 From
 ${user.user.user.name.toUpperCase()}
   		`
-  		const weddingMsg = `
-To,
+  		const weddingMsg = `To,
 XYZ
 
 Wishing you both lots of love and happiness, on this exciting and joyful day of your life.
@@ -74,8 +70,7 @@ Wishing you both lots of love and happiness, on this exciting and joyful day of 
 From
 ${user.user.user.name.toUpperCase()}
   		`
-  		const houseMsg = `
-To,
+  		const houseMsg = `To,
 XYZ
 
 With love, you continue to turn a new house into a home. Congratulations on your home sweet home. It's sure to welcome abundance and joy.
