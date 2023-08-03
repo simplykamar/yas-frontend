@@ -132,7 +132,7 @@ const ConfirmOrder = (props) => {
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
       setIsFetching(false);
-    
+
   };
 
     return (
@@ -187,7 +187,7 @@ const ConfirmOrder = (props) => {
                        Loading..
                     </button>
                 :
-        <button className="btn btn-danger" onClick={showRazorpay}> MAKE PAYMENT</button>
+        <button className="btn btn-danger px-5 py-2" onClick={showRazorpay}> MAKE PAYMENT</button>
               }
 
         </div>
