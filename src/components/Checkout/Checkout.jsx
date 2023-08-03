@@ -71,13 +71,13 @@ const Checkout = (props) => {
             <div className="mt-5 d-lg-none d-md-none custom-shadow p-1">
                 <div className="d-flex justify-content-between text-center">
                     <div className="">
-                      <p className="text-secondary fw-600">Total Products: <span className="text-danger">{totalProducts}</span></p>
+                      <p className="text-secondary fw-bold">Total Products: <span className="text-danger">{totalProducts}</span></p>
                     </div>
                     <div className="">
                       |
                     </div>
                     <div className="">
-                      <p className="text-secondary fw-600">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></p>
+                      <p className="text-secondary fw-bold">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></p>
                     </div>
                     
                 </div>
