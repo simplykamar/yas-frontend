@@ -211,7 +211,7 @@ ${user.user.user.name.toUpperCase()}
 							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
 
 					</div>
-					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
+					<Link to='/confirm-order' className="btn btn-danger w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
 				</div>
 			</div>
 			</>

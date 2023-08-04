@@ -83,12 +83,12 @@ const CustomerLogin = () => {
                 </div>
                 {
                 isFetching?
-                  <button className="mt-3 btn btn-pink w-100 py-2" disabled>
+                  <button className="mt-3 btn btn-danger w-100 py-2" disabled>
                       <span className="spinner-border spinner-border-sm"> </span>
                        Loading..
                     </button>
                 :
-                <button type="submit" className="btn btn-pink mt-3 w-100 py-2" disabled={!buttonEnable} onClick={submitHandler}>SIGN IN</button>
+                <button type="submit" className="btn btn-danger mt-3 w-100 py-2" disabled={!buttonEnable} onClick={submitHandler}>SIGN IN</button>
               }
                  
                  {inputError.type!="" && <small className="text-danger">{inputError.msg}</small>}

@@ -101,12 +101,12 @@ const CustomerRegister = () => {
                 
                  {
                 isFetching?
-                  <button className="mt-3 btn btn-pink w-100 py-2" disabled>
+                  <button className="mt-3 btn btn-danger w-100 py-2" disabled>
                       <span className="spinner-border spinner-border-sm"> </span>
                        Loading..
                     </button>
                 :
-                <button type="submit" onClick={submitHandler} disabled={!buttonEnable} className="btn btn-pink mt-3 w-100 py-2">SIGN UP</button>
+                <button type="submit" onClick={submitHandler} disabled={!buttonEnable} className="btn btn-danger mt-3 w-100 py-2">SIGN UP</button>
               }
                 
                 { inputError.type=='password' &&

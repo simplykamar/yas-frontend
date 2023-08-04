@@ -153,7 +153,7 @@ const CheckoutStep1 = () => {
 							</p>
 							<p className="text-capitalize">{item.address}</p>
 							<p><CallTwoToneIcon/> {item.mobile}</p>
-							<Link to="/checkout-step-2" onClick={()=>{dispatch(addToOrder({address:item.id}));}} className="btn btn-pink text-uppercase">deliver here</Link>
+							<Link to="/checkout-step-2" onClick={()=>{dispatch(addToOrder({address:item.id}));}} className="btn btn-danger text-uppercase">deliver here</Link>
 						</div>)})
 						:
 						<div className="text-secondary text-center">

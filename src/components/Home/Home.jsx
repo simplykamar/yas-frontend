@@ -91,15 +91,15 @@ const Home = () => {
               <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
                     <h1 className="main-stats-text">50+</h1>
-                    <p className="text-pink stats-text">Cities having same day delivery</p>              
+                    <p className="text-danger stats-text">Cities having same day delivery</p>              
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
                     <h1 className="main-stats-text">100+</h1>
-                    <p className="text-pink stats-text">Happy cutomer:)</p>              
+                    <p className="text-danger stats-text">Happy cutomer:)</p>              
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
                     <h1 className="main-stats-text">200+</h1>
-                    <p className="text-pink stats-text">Gift boxes delivered</p>              
+                    <p className="text-danger stats-text">Gift boxes delivered</p>              
                 </div>
               </div>
           </div>
