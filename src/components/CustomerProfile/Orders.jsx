@@ -41,7 +41,7 @@ const Orders = () => {
                   <Sidebar/>
                 </div>
                 <div className="col-lg-9 col-md-9 col-12 col-sm-12">
-                <p className="" style={{fontSize:'24px'}}>Past Orders</p>
+                <p className="mt-2" style={{fontSize:'24px'}}>Past Orders</p>
                   {
                     !loading?
                         orders.length?
@@ -50,7 +50,7 @@ const Orders = () => {
                                 <div className="col-lg-2 col-md-2 col-sm-12 col-12 text-center">
                                     <img src={img} className="img-fluid" width="80" height="80"/>
                                 </div>
-                                <div className="col-lg-10 col-md-10 col-sm-12 col-12 py-lg-3 py-md-3">
+                                <div className="col-lg-10 col-md-10 col-sm-12 col-12 py-lg-3 py-md-3 pb-2">
                                  { order.order.isPaid?
                                   <span className="float-end">
                                     <CheckCircleIcon color="success"/>
