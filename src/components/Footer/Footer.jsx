@@ -38,7 +38,7 @@ const Footer = () => {
               Online Gifts Delivery - Buy/Send gifts to India with FREE shipping from yas #1 online gift shop offers rakhis & rakhi gifts, flowers, cakes, personalized gifts delivery in India. Get same day and midnight delivery in over 350+ cities in India. Best Gift Ideas for various occasions and festivals. Get unique gift ideas for family & friends. Easy & fast gift delivery anywhere in India.
                 </p>
               </div>
-              <h1 className="text-center text-danger">yas</h1>
+              <h1 className="text-center text-pink">yas</h1>
               <div className="text-center text-small">yas Gifts India Copyright © 2023. All rights reserved</div>
         </footer>
 

@@ -21,7 +21,7 @@ function closeNav() {
          <div id="mySidenav" className="sidenav">
             <NavLink to="#" className="closebtn" onClick={closeNav}>&times;</NavLink>
             <div className="border m-2 rounded-3">
-            <p className="text-uppercase fw-600 text-center bg-rose text-pink p-2">Top Collections</p>
+            <p className="text-uppercase fw-bold text-center bg-rose text-danger p-2">Top Collections</p>
               <NavLink activeclassname="active" to="/category/same day delivery/15" className="sidenav-items">Same Day Delivery Gifts</NavLink>
               <NavLink activeclassname="active" to="/category/cake/11" className="sidenav-items">Birthday Gifts</NavLink>
               <NavLink  activeclassname="active" to="/category/personalized/14" className="sidenav-items">Personalized Gifts</NavLink>

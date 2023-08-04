@@ -135,7 +135,7 @@ const notifySuccess = (text) => toast.success(text);
 					 <p className="text-success fw-600">inclusive of all taxes</p>
 					 	<div className="mt-4 d-flex">
 							 { 
-							 <div><button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
+							 <div><button className="btn btn-danger" onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
