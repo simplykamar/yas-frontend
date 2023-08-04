@@ -33,16 +33,16 @@ const AllProducts = () => {
       setBaseurl(baseurl);
           console.log(baseurl)
     }
-    var limit=3;
-    var totalLinks = Math.round(totalResult/limit);
-    var links = [];
-    for(let i=1; i <= totalLinks; i++){
-      links.push(<li className="page-item" key={i}><Link className="page-link" onClick={()=>changeBaseurl(BASE_URL+`/products/?page=${i}`)} to={`/products/?page=${i}`}>{i}</Link> </li>)
-    }
+    // var limit=3;
+    // var totalLinks = Math.round(totalResult/limit);
+    // var links = [];
+    // for(let i=1; i <= totalLinks; i++){
+    //   links.push(<li className="page-item" key={i}><Link className="page-link" onClick={()=>changeBaseurl(BASE_URL+`/products/?page=${i}`)} to={`/products/?page=${i}`}>{i}</Link> </li>)
+    // }
  
 	return(
         <div className="container">
-            <div className="mt-4">
+            <div className="my-4">
             <h4>All Products</h4>
             <div className="row g-3 mt-3">
           {!loading?
@@ -59,7 +59,6 @@ const AllProducts = () => {
               </div>
 
               }
-                
               </div>
           </div> 
         </div>     

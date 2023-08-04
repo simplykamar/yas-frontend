@@ -71,7 +71,7 @@ const Orders = () => {
                                   }
                                   </p>
 
-                                  <small className="text-secondary text-capitalize">{order.order.address.address}</small>
+                                  <small className="text-secondary text-capitalize">{order.order.address.address} | {order.order.address.address_type==1&&"Home"}{order.order.address.address_type==2&&"Work"}{order.order.address.address_type==3&&"Other"}</small>
                                   <small className="text-secondary d-block">ORDER <mark style={{backgroundColor:'#fcf8e3'}}>#{order.order.id}</mark> | {order.order.order_time}</small>
                                   {
                                     order.order_items.map(product=>{return(
@@ -97,7 +97,7 @@ const Orders = () => {
                               </div>
                         )})
 
-                      :"No Order Items Found...!"
+                      :<div className="text-center"><small >No Order Items Found...!</small></div>
                   :
              <div className="text-center">
                 <div className="spinner-border text-danger"></div>

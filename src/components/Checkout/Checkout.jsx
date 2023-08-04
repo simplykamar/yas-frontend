@@ -19,11 +19,12 @@ const Checkout = (props) => {
       window.scrollTo(0,0);
     },[]);
     return (
-      <div className="container" >
+      <div className="container " >
+            <div className="my-4">
             { cartData.length?
 
       <>
-      <h2 className="text-dark text-center mt-3">Shopping Cart</h2>
+      <h2 className="text-dark text-center ">Shopping Cart</h2>
                 {
                   cartData.map((item,i)=>{return(
                  <div className="row mt-4 border p-2 pb-3 custom-shadow" key={item.id}>
@@ -87,11 +88,12 @@ const Checkout = (props) => {
             </div>
             </>
          :
-            <div className="text-secondary text-center mt-5">
+            <div className="text-secondary text-center mt-3">
                 <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
                <img src={emptyCart} className="img-fluid"/>
              </div>        
         }   
+      </div>      
       </div>      
       )
 }

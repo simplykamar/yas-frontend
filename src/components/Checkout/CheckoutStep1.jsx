@@ -158,8 +158,6 @@ const CheckoutStep1 = () => {
 						:
 						<div className="text-secondary text-center">
 						<FmdBadOutlinedIcon fontSize="large"/>
-
-
 							<p className="">Oops !! You don’t seem to have any saved addresses.</p>
 						</div>
 					:
@@ -245,7 +243,7 @@ const CheckoutStep1 = () => {
 			</div>
 			</>
 			:
-			  <div className="text-secondary text-center mt-5">
+			  <div className="text-secondary text-center">
                 <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
                <img src={emptyCart} className="img-fluid"/>
              </div>        

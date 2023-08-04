@@ -120,9 +120,12 @@ const CustomerAddress = () => {
 						:
 						<div className="text-secondary text-center">
 						<FmdBadOutlinedIcon fontSize="large"/>
-							<p className="">Oops !! You don’t seem to have any saved addresses.</p>
+							<small className="">Oops !! You don’t seem to have any saved addresses.</small>
 						</div>
-					: "loading..."
+					:
+             <div className="text-center">
+                <div className="spinner-border text-danger"></div>
+              </div>
 				}
 				
 				</div>

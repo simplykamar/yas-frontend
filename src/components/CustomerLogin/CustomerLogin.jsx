@@ -91,7 +91,7 @@ const CustomerLogin = () => {
                 <button type="submit" className="btn btn-pink mt-3 w-100 py-2" disabled={!buttonEnable} onClick={submitHandler}>SIGN IN</button>
               }
                  
-                 {inputError.type!="" && <p className="text-danger">{inputError.msg}</p>}
+                 {inputError.type!="" && <small className="text-danger">{inputError.msg}</small>}
               </form>
           </div> 
           </div> 

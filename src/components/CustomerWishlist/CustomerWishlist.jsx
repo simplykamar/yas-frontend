@@ -3,7 +3,6 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import SingleProduct from '../SingleProduct/SingleProduct';
-import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 
 
 const CustomerWishlist = () => {
@@ -54,13 +53,13 @@ const CustomerWishlist = () => {
               })
               :
             <div className="text-secondary text-center">
-            <AnnouncementOutlinedIcon fontSize="large"/>
-              <p className="">Oops !! You don’t seem to have any wishlist items.</p>
+              <small className="">Oops !! You don’t seem to have any wishlist items.</small>
             </div>
               :
              <div className="text-center">
                 <div className="spinner-border text-danger"></div>
-              </div>              }
+              </div>              
+            }
 			</div>
 		</div>
 		</div>

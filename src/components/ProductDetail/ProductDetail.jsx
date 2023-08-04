@@ -98,7 +98,7 @@ const notifySuccess = (text) => toast.success(text);
    		tagLinks.push(<Link to={`/products/${tag}`} className="badge bg-outline-pink ms-2 text-decoration-none text-capitalize" key={i}>{tag}</Link>)
    } 
 	return(
-		<div className="container-fluid pt-3">
+		<div className="container-fluid pt-lg-3 pt-md-3">
           <div><Toaster/></div>
 		{ !loading
 			?
@@ -113,7 +113,7 @@ const notifySuccess = (text) => toast.success(text);
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-								<img src={product.product_imgs[selectedImage].image} className="img-fluid mt-3"/>							
+								<img src={product.product_imgs[selectedImage].image} className="img-fluid"/>							
 						</div>
 					</div>
 					<div className="row mt-2 d-lg-none d-md-none">

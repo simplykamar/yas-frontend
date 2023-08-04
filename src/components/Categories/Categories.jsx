@@ -39,7 +39,7 @@ const Categories = () => {
 
   return(
         <div className="container">
-            <div className="mt-4">
+            <div className="my-4">
             <h4>All Categories</h4>
             <div className="row g-4 mt-3">
               { !loading?
@@ -56,7 +56,7 @@ const Categories = () => {
                             <div className="">
                               <h5 className="text-capitalize text-dark">{cat.title}</h5>
                               <p className="text-secondary text-justify me-2 ">{cat.detail.slice(0,140)}...</p>
-                              <Link to={`/category/${cat.title}/${cat.id}`} className="btn w-75 btn-pink">Explore</Link>
+                              <Link to={`/category/${cat.title}/${cat.id}`} className="btn w-75 btn-danger">Explore</Link>
                             </div>
                           </div>
                     </div>

@@ -10,13 +10,13 @@ const CustomerRegisterSuccess = () => {
 			<div>
 	        <ToastContainer />
 	      </div>
-			<div className="text-center p-5">
+			<div className="text-center p-3">
 				<div>
 					<img src={thanks} className="img-fluid" style={{width:"100px"}}/>
 					<h4 className="success-msg">Registration Successful!</h4>
-					<p>Your registration process is complete.</p>
-					<p>Account activation link send to your email</p>
-					<p className="text-danger">Account Not activate .</p>
+					<div><small>Your registration process is complete.</small></div>
+					<div><small>Account activation link send to your email</small></div>
+					<div><small className="text-danger">Account Not activate .</small></div>
 				</div>
 			</div>
 		</div>

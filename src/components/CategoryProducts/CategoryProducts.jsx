@@ -36,12 +36,12 @@ const CategoryProducts = () => {
               }
 	return(
         <div className="container">
-            <div className="mt-4">
+            <div className="my-4">
             <div className="row ">
         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="d-flex justify-content-between">
                 <div className="">
-                  <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>               
+                  <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>               
                   </div>
               <div className="d-flex">
                 <FilterListOutlinedIcon fontSize="large" className="fw-600 text-danger"/>
@@ -63,7 +63,7 @@ const CategoryProducts = () => {
                         </div>
                       )
                     })
-                  :"No category found..!"
+                  :<small>No found in this category..!</small>
 
               :
              <div className="text-center">

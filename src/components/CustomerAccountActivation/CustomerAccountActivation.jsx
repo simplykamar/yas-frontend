@@ -44,7 +44,7 @@ const CustomerAccountActivation = () => {
         <div>
               <ToastContainer />
             </div>
-            <div className="mt-5 d-flex align-items-center flex-column">
+            <div className="my-4 d-flex align-items-center flex-column">
               <h4>Verify your Account:</h4>
               {
                 isFetching?
@@ -53,19 +53,19 @@ const CustomerAccountActivation = () => {
                        Loading..
                     </button>
                 :
-              <button onClick={activate} className="mt-2 btn btn-primary text-uppercase fw-bold px-4 py-2">verify</button>           
+              <button onClick={activate} className="mt-2 px-5 btn btn-primary text-uppercase fw-bold px-4 py-2">verify</button>           
               }
               
               
                     { inputError.type=='success' &&
                       <div className="mt-3">
-                      <p className=" text-success">{inputError.msg[0]}</p>
-                      <p className=" text-success">{inputError.msg[1]}</p>
+                      <small className=" text-success">{inputError.msg[0]}</small>
+                      <small className=" text-success">{inputError.msg[1]}</small>
                       </div>
                     }
                     { inputError.type=='forbidden' &&
                       <div className="mt-3">
-                      <p className=" text-danger">{inputError.msg[0]}</p>
+                      <small className=" text-danger">{inputError.msg[0]}</small>
                       </div>
                     }
             </div>     
