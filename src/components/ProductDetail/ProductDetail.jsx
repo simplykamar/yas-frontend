@@ -127,7 +127,7 @@ const notifySuccess = (text) => toast.success(text);
 					}
 					</div>
 				</div>
-				<div className="col-lg-7 col-md-7 col-sm-12 col-12">
+				<div className="col-lg-7 col-md-7 col-sm-12 col-12 pb-4">
 					<h4 className="text-dark mt-3">{product.title}</h4>
 					{/* <p> {product.detail}</p> */}
 					<p><small className="text-secondary">{product.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/> | 186 Rating</p>
@@ -135,7 +135,7 @@ const notifySuccess = (text) => toast.success(text);
 					 <p className="text-success fw-600">inclusive of all taxes</p>
 					 	<div className="mt-4 d-flex">
 							 { 
-							 <div><button className="btn btn-danger" onClick={()=>{dispatch(addToCart({
+							 <div><button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
