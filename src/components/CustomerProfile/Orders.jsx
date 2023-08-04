@@ -7,8 +7,8 @@ import LoopOutlinedIcon from '@mui/icons-material/LoopOutlined';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
-import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const Orders = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -34,33 +34,34 @@ const Orders = () => {
         console.log("test");
       },[]);
   return(
-        <div className="container-fluid">
-            <div className="mt-4">
+        <div className="bg-light pb-4 pt-lg-4 pt-md-4">
+        <div className="container">
               <div className="row">
-                <div className="col-lg-3 col-md-3 col-12 col-sm-12">
+                <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-none d-md-block d-lg-block">
                   <Sidebar/>
                 </div>
-                <div className="col-lg-9 col-md-9 col-12 col-sm-12 p-5 bg-light">
+                <div className="col-lg-9 col-md-9 col-12 col-sm-12">
+                <p className="" style={{fontSize:'24px'}}>Past Orders</p>
                   {
                     !loading?
                         orders.length?
                         orders.map(order=>{return(
-                             <div className="row bg-white" key={order.order.id}>
-                                <div className="col-lg-2 col-md-2 col-sm-12 col-12">
-                                    <img src={img} className="img-fluid" />
+                             <div className="row bg-white mt-3" key={order.order.id}>
+                                <div className="col-lg-2 col-md-2 col-sm-12 col-12 text-center">
+                                    <img src={img} className="img-fluid" width="80" height="80"/>
                                 </div>
                                 <div className="col-lg-10 col-md-10 col-sm-12 col-12 py-3">
                                  { order.order.isPaid?
                                   <span className="float-end">
-                                    <CheckCircleOutlineOutlinedIcon color="success"/>
+                                    <CheckCircleIcon color="success"/>
                                   </span>
                                   :
                                   <span className="float-end">
-                                    <CancelOutlinedIcon className="text-danger"/>
+                                    <CancelIcon className="text-danger"/>
                                   </span>
                                 }
 
-                                  <p className="fw-600">{order.order_items[0].product.title.slice(0,20)}... 
+                                  <p className="fw-600 m-0">{order.order_items[0].product.title.slice(0,20)}... 
                                   { order.order_items.length>1 ?
                                     <span>
                                       and {order.order_items.length} more items
@@ -74,17 +75,23 @@ const Orders = () => {
                                   <small className="text-secondary d-block">ORDER <mark style={{backgroundColor:'#fcf8e3'}}>#{order.order.id}</mark> | {order.order.order_time}</small>
                                   {
                                     order.order_items.map(product=>{return(
-                                    <small key={product.product.id} className="d-block"> {product.product.title.slice(0,40)}... x {product.qty} </small>
+                                    <small key={product.product.id} className="d-block"> {product.product.title.slice(0,40)}... <span className="fw-bold">x {product.qty}</span> </small>
                                       )})
                                   }
                                   
                                   <hr/>
                                   <div className="d-flex justify-content-between">
                                     <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
-                                    <div>
-                                      <button className="btn btn-outline-danger me-4"><SupportAgentOutlinedIcon/>REORDER</button>
+                                    <div className="d-none d-lg-block d-md-block">
+                                      <button className="btn btn-outline-danger me-4"><SupportAgentOutlinedIcon/>HELP</button>
                                       <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
                                     </div>
+                                  </div>
+                                  <div className="d-lg-none d-md-none">
+                                      <div className="d-flex justify-content-between">
+                                          <button className="btn btn-outline-danger me-4"><SupportAgentOutlinedIcon/>HELP</button>
+                                          <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
+                                      </div>
                                   </div>
                                 </div>
                               </div>
@@ -99,7 +106,7 @@ const Orders = () => {
 
                 </div>
               </div>
-          </div> 
+        </div>     
         </div>     
     )
 }

@@ -66,7 +66,7 @@ const CustomerLogin = () => {
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
         <div className="container-fluid">
-            <div className="login-container py-5">
+            <div className="login-container py-4">
             <div className="d-flex justify-content-center">
             <div className="card custom-shadow" >
               <div  className="card-body">

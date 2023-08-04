@@ -46,28 +46,30 @@ const Profile = () => {
 
   }
   return(
-        <div className=" bg-light py-5">
+        <div className="bg-light pb-4 pt-lg-4 pt-md-4">
               <div>
               <ToastContainer />
             </div>
-            <div className="container-fluid">
+            <div className="container">
               <div className="row">
-                <div className="col-lg-3 col-md-3 col-12 col-sm-12">
+                <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-none d-md-block d-lg-block">
                   <Sidebar/>
                 </div>
                 <div className="col-lg-9 col-md-9 col-12 col-sm-12 bg-white py-3">
-                   <div className="row">
-                      <div className="col-lg-3 col-md-3 col-12 col-sm-12">
+                   <div className="row g-0">
+                      <div className="col-lg-5 col-md-3 col-12 col-sm-12 d-flex justify-content-center">
                           <div className="profile-image">{user.user.user.name[0].toUpperCase()}</div>
                       </div>
-                      <div className="col-lg-9 col-md-9 col-12 col-sm-12 text-secondary">
-                         <h4 className="text-uppercase text-dark">{user.user.user.name}</h4> <hr/>
+                      <div className="col-lg-7 col-md-9 col-12 col-sm-12 text-secondary d-flex justify-content-center">
+                         
+                         <div className=" ">
+                         <h4 className="text-uppercase text-dark text-center">{user.user.user.name}</h4> <hr/>
                          <p><MailOutlineOutlinedIcon className="me-2 "/> {user.user.user.email}</p>
                          {
                           user.user.mobile?
                          <p><CallOutlinedIcon className="me-2"/> +91{user.user.mobile}</p>
                          :
-                         <p className="text-danger cursor-pointer" data-bs-toggle="modal" data-bs-target="#mobileaddModal"><CallOutlinedIcon className="me-2"/> Add mobile no.</p>
+                         <p className="text-danger cursor-pointer " data-bs-toggle="modal" data-bs-target="#mobileaddModal"><CallOutlinedIcon className="me-2"/> Add mobile no.</p>
                          }
                          
                          <p><LocationOnOutlinedIcon className="me-2"/> India</p>
@@ -103,6 +105,7 @@ const Profile = () => {
                               </div>
                             </div>
                           </div>
+                      </div>
                       </div>
                     </div>
                 </div>

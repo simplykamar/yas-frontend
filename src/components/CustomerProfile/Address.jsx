@@ -85,18 +85,19 @@ const CustomerAddress = () => {
 
 	}
 	return(
-		<div className=" py-5 bg-light">
+		<div className="bg-light pb-4 pt-lg-4 pt-md-4">
 		<div>
         <ToastContainer />
       </div>
-			<div className="container-fluid">
+			<div className="container">
 							<div className="row">
-                <div className="col-lg-3 col-md-3 col-12 col-sm-12">
+                <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-none d-md-block d-lg-block">
                   <Sidebar/>
                 </div>
          <div className="col-lg-9 col-md-9 col-12 col-sm-12 bg-white py-3">
          	<div className="row">
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
+           <p className="" style={{fontSize:'24px'}}>Address Book</p>
 				{	!loading
 					?
 						addresses.length?
