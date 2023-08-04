@@ -36,13 +36,15 @@ body{
 .btn-outline-pink{
 	border: 1px solid #f53050;
 }
-
+.border-pink{
+	border:1px solid #f53050 !important;
+}
 .bg-outline-pink{
-	border:1px solid #f53050;
+	border:1px solid #f53050 !important;
 	color: #f14b66;
 }
 .bg-outline-pink:hover{
-	color: red;
+	color: red !important;
 }
 .cursor-pointer{
 	cursor:pointer;

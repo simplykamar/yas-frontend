@@ -83,13 +83,13 @@ const Orders = () => {
                                   <div className="d-flex justify-content-between">
                                     <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
                                     <div className="d-none d-lg-block d-md-block">
-                                      <button className="btn btn-outline-danger me-4"><SupportAgentOutlinedIcon/>HELP</button>
+                                      <button className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</button>
                                       <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
                                     </div>
                                   </div>
                                   <div className="d-lg-none d-md-none">
                                       <div className="d-flex justify-content-between">
-                                          <button className="btn btn-outline-danger me-4"><SupportAgentOutlinedIcon/>HELP</button>
+                                          <button className="btn text-danger border-pink px-4"><SupportAgentOutlinedIcon/>HELP</button>
                                           <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
                                       </div>
                                   </div>
