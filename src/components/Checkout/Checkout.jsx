@@ -65,7 +65,7 @@ const Checkout = (props) => {
                       <h4 className="text-secondary">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></h4>
                     </div>
                     <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
+                      <Link to="/checkout-step-1" className="btn btn-danger px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@ const Checkout = (props) => {
                     
                 </div>
                 <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-pink d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>
+                      <Link to="/checkout-step-1" className="btn btn-danger d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>
                     </div>
             </div>
             </>
