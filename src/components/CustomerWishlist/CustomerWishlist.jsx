@@ -47,7 +47,7 @@ const CustomerWishlist = () => {
               wishlists.map((item)=>{
                 return(
                    <div className="col-lg-3 col-md-3 col-sm-6 col-6" key={item.id}>
-                      <SingleProduct id={item.product.id} image={item.product.product_imgs[0].image} title={item.product.title} price={item.product.price} />
+                      <SingleProduct rating={item.product.rating} id={item.product.id} image={item.product.product_imgs[0].image} title={item.product.title} price={item.product.price} />
                     </div>
                   )
               })
