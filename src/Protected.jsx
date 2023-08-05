@@ -4,10 +4,7 @@ import {useNavigate,useLocation} from 'react-router-dom';
 
 const Protected = (props) =>{
 	const navigate = useNavigate();
-	 let targetUrl = useLocation().pathname;
-		 if(!targetUrl){
-	    	targetUrl="/";
-	  	}
+	 const targetUrl = useLocation().pathname;
 	const user = useSelector((state)=>state.auth);
 	console.log("Protected Component ",user)
 	console.log("Protected Component user id ",user.user)

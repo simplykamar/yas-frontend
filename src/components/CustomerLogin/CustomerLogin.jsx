@@ -6,7 +6,11 @@ import {useNavigate,Link,useLocation} from 'react-router-dom';
 import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
-  const targetUrl = useLocation().state;
+   let targetUrl = useLocation().state;
+   console.log(targetUrl)
+     if(!targetUrl){
+        targetUrl="/";
+      }
   const dispatch = useDispatch();
   const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const [loginFormData,setLoginFormData] = useState({
