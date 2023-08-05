@@ -36,9 +36,9 @@ const Checkout = (props) => {
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <p className="fw-bold ">Standard- FREE</p>
-                      <p>On 19-Jul-2023 between 17:00 hrs - 21:00 hrs
-                      Pincode - 110002 
-                      </p>
+                      {/* <p>On 19-Jul-2023 between 17:00 hrs - 21:00 hrs */}
+                      {/* Pincode - 110002  */}
+                      {/* </p> */}
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                         <div className="float-end">
