@@ -12,7 +12,7 @@ import './Footer.css'
 const Footer = () => {
 	return (
 		 <footer className="">
-      <div className="container p-4">
+      <div className="container p-4 pb-0">
           <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-6 col-12">
                   <p>Download our yas app for a better experience !!</p>
