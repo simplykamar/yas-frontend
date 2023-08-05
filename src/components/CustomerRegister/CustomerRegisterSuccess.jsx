@@ -1,11 +1,23 @@
 import thanks from '../../images/other/thanks.jpg'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import {useEffect} from 'react';
+import {useLocation,useNavigate} from 'react-router-dom';
 
 const CustomerRegisterSuccess = () => {
 	const notifySuccess = (msg) => toast.success(msg);
+	const navigate = useNavigate();
+	const isRegistered = useLocation().state;
 
+	useEffect(()=>{
+		if(!isRegistered){
+			navigate("/page-not-found",{replace:true});
+		}
+	},[]);
 	return(
+		<div>
+		{
+			isRegistered &&
 		<div onLoad={()=>{notifySuccess("Account activation link send !")}}>
 			<div>
 	        <ToastContainer />
@@ -19,6 +31,8 @@ const CustomerRegisterSuccess = () => {
 					<div><small className="text-danger">Account Not activate .</small></div>
 				</div>
 			</div>
+		</div>
+	}
 		</div>
 	)
 }

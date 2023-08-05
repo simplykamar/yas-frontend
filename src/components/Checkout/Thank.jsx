@@ -1,7 +1,19 @@
 import thanks from '../../images/other/thanks1.png'
-import {Link} from 'react-router-dom';
+import {Link,useLocation,useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
 const Thank = () => {
+	const navigate = useNavigate();
+	const isOrdered = useLocation().state;
+
+	useEffect(()=>{
+		if(!isOrdered){
+			navigate("/page-not-found",{replace:true});
+		}
+	},[]);
+
 	return (
+		<div>
+		{ isOrdered &&
 		<div className="text-center bg-light py-4">
 		<p className="fw-bold">Your order has been received</p>
 			<img src={thanks} className="img-fluid"/>
@@ -9,6 +21,8 @@ const Thank = () => {
 			<p><small className="text-secondary">Your order ID is 152486236</small></p>
 			<Link to="/" className="btn btn-danger text-uppercase">Continue shopping</Link>
 		</div>
+	}
+	</div>
 		)
 }
 

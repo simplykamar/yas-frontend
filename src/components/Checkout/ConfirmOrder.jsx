@@ -31,7 +31,7 @@ const ConfirmOrder = (props) => {
       dispatch(clearOrder());
       console.log("in reset Order");
       setIsFetching(false);
-      navigate('/order-success',{replace:true});
+      navigate('/order-success',{replace:true,state:true});
   }
 
   const handlePaymentSuccess = async (response) => {

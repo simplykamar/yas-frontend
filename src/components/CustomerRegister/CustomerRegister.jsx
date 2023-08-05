@@ -15,6 +15,7 @@ const CustomerRegister = () => {
     const navigate = useNavigate();
     const user = useSelector((state)=>state.auth);
     const [isFetching,setIsFetching] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
 
     useEffect(()=>{
     if (user.isAuthenticate){
@@ -43,7 +44,7 @@ const CustomerRegister = () => {
       .then(res=>{
         console.log(res);
         if(res.status===201){
-        navigate("/customer/register/success", {replace:true});
+        navigate("/customer/register/success", {replace:true,state:true});
         }
         setIsFetching(false);
       })
@@ -91,14 +92,17 @@ const CustomerRegister = () => {
                 {/*   </select> */}
                 {/* </div> */}
                 <div className="form-floating mt-4">
-                  <input type="password" id="floatingInputPasswordGrid" name="password" onChange={inputHandler} className="form-control" placeholder=" "/>
+                  <input type={showPassword?"text":"password"} id="floatingInputPasswordGrid" name="password" onChange={inputHandler} className="form-control" placeholder=" "/>
                   <label htmlFor="floatingInputPasswordGrid">Password*</label>
                 </div>
                 <div className="form-floating mt-4">
-                  <input type="password" id="floatingInputCnfPasswordGrid" name="re_password" onChange={inputHandler} className="form-control" placeholder=" "/>
+                  <input type={showPassword?"text":"password"} id="floatingInputCnfPasswordGrid" name="re_password" onChange={inputHandler} className="form-control" placeholder=" "/>
                   <label htmlFor="floatingInputCnfPasswordGrid">Confirm Password*</label>
                 </div>
-                
+                <div className="form-check form-switch mt-3">
+                  <input className="form-check-input cursor-pointer" onChange={()=>setShowPassword(!showPassword)}  type="checkbox" id="mySwitch" />
+                  <label className="form-check-label cursor-pointer" htmlFor="mySwitch">show password</label>
+                </div>
                  {
                 isFetching?
                   <button className="mt-3 btn btn-danger w-100 py-2" disabled>

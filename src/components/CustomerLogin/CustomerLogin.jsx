@@ -3,11 +3,11 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import { loginSuccess, loginFail, logout } from '../../redux/authSlice';
 import {useNavigate,Link,useLocation} from 'react-router-dom';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
    let targetUrl = useLocation().state;
-   console.log(targetUrl)
      if(!targetUrl){
         targetUrl="/";
       }
@@ -17,10 +17,10 @@ const CustomerLogin = () => {
           'email':'',
           'password':''
   })
-    const user = useSelector((state)=>state.auth);
-    console.log(user)
+  const user = useSelector((state)=>state.auth);
   const [isFetching,setIsFetching] = useState(false);
   const [inputError,setInputError] = useState({'msg':"",'type':""})
+  const [showPassword, setShowPassword] = useState(false)
   function inputHandler(event){
       setLoginFormData({
             ...loginFormData,
@@ -68,6 +68,7 @@ const CustomerLogin = () => {
         setIsFetching(false);
       })
   }
+
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
         <div className="container-fluid">
@@ -83,8 +84,12 @@ const CustomerLogin = () => {
                   <label htmlFor="floatingInputEmailGrid">Email id*</label>
                 </div>
                 <div className="form-floating mt-4">
-                  <input type="password" name="password" value={loginFormData.password} id="floatingInputPwdGrid" onChange={inputHandler} className="form-control"  placeholder="password"/>
+                  <input type={showPassword?"text":"password"} name="password" value={loginFormData.password} onChange={inputHandler} id="floatingInputPwdGrid" className="form-control"  placeholder="password"/>
                   <label htmlFor="floatingInputPwdGrid">Password*</label>
+                </div>
+                <div className="form-check form-switch mt-3">
+                  <input className="form-check-input cursor-pointer" onChange={()=>setShowPassword(!showPassword)}  type="checkbox" id="mySwitch" />
+                  <label className="form-check-label cursor-pointer" htmlFor="mySwitch">show password</label>
                 </div>
                 {
                 isFetching?
