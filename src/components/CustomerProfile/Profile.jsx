@@ -11,6 +11,7 @@ import axios from 'axios';
 import {updateUser} from '../../redux/authSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TextField from '@mui/material/TextField';
 
 const Profile = () => {
     const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -90,10 +91,17 @@ const Profile = () => {
                                 {/* <!-- Modal body --> */}
                                 <div className="modal-body">
                                 <form>
-                                   <div className="form-floating mt-3">
-                                     <input type="number" name="mobile" id="floatingInputMobileGrid" onChange={(e)=>{setMobile(e.target.value);console.log(mobile)}} className="form-control"  placeholder="Enter mobile no."/>
-                                     <label htmlFor="floatingInputMobileGrid">Mobile No.*</label>
-                                   </div>
+                                   <div className="mt-3">
+                                       <TextField
+                                        type="number"
+                                      onChange={(e)=>{setMobile(e.target.value)}}
+                                      name="mobile"
+                                      fullWidth
+                                        helperText="Please enter your mobile number"
+                                        id="demo-helper-text-misaligned"
+                                        label="Mobile No."
+                                      />
+                                    </div>
                                    </form>
                                 </div>
 

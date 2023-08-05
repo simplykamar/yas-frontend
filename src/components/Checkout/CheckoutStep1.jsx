@@ -12,6 +12,7 @@ import {useNavigate} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import emptyCart from "../../images/other/emptycart.svg"
+import TextField from '@mui/material/TextField';
 
 const CheckoutStep1 = () => {
 	const notifySuccess = (msg) => toast.success(msg);
@@ -176,7 +177,7 @@ const CheckoutStep1 = () => {
 							<p className="text-capitalize text-secondary">Place your order to new address</p>
 							<button  className="btn btn-outline-danger text-uppercase" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
 {/* <!-- The Address Modal --> */}
-<div className="modal fade" id="addressModal">
+<div className="modal" id="addressModal">
   <div className="modal-dialog">
     <div className="modal-content">
 
@@ -189,26 +190,48 @@ const CheckoutStep1 = () => {
       {/* <!-- Modal body --> */}
       <div className="modal-body">
       <form>
-          <div className="form-floating">
-           <input type="text" name="name" id="floatingInputNameGrid" onChange={inputHandler} className="form-control"  placeholder="Enter Name"/>
-           <label htmlFor="floatingInputNameGrid">Full Name*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="text" name="address" id="floatingInputAddressGrid" onChange={inputHandler} className="form-control"  placeholder="Enter address"/>
-           <label htmlFor="floatingInputAddressGrid">Complete Address*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="text" name="landmark" id="floatingInputLandmarkGrid" onChange={inputHandler} className="form-control"  placeholder="Enter landmark"/>
-           <label htmlFor="floatingInputLandmarkGrid">Landmark*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="number" name="pincode" id="floatingInputPincodeGrid" onChange={inputHandler} className="form-control"  placeholder="Enter pincode"/>
-           <label htmlFor="floatingInputPincodeGrid">Pincode*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="number" name="mobile" id="floatingInputMobileGrid" onChange={inputHandler} className="form-control"  placeholder="Enter mobile no."/>
-           <label htmlFor="floatingInputMobileGrid">Mobile No.*</label>
-         </div>
+       <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="name"
+         fullWidth
+         label="Name"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="address"
+         fullWidth
+         label="Address"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="landmark"
+         fullWidth
+         label="Landmark"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+          type="number"
+         onChange={inputHandler}
+         name="pincode"
+         fullWidth
+         label="Pincode"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+          type="number"
+         onChange={inputHandler}
+         name="mobile"
+         fullWidth
+         label="Mobile No."
+         />
+       </div>
          <div className=" mt-3">
          <p className="fw-600">TAG AS</p>
          <div className="d-flex">

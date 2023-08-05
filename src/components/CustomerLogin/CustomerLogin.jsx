@@ -3,7 +3,16 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import { loginSuccess, loginFail, logout } from '../../redux/authSlice';
 import {useNavigate,Link,useLocation} from 'react-router-dom';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import TextField from '@mui/material/TextField';
+
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
@@ -75,22 +84,44 @@ const CustomerLogin = () => {
             <div className="login-container py-4">
             <div className="d-flex justify-content-center">
             <div className="card custom-shadow" >
-              <div  className="card-body">
+              <div  className="card-body ">
               <h5 className="card-title text-dark">Sign in to complete your order</h5>
               <p>Don't have an account? <Link to="/customer/register" className="text-decoration-none">Sign up</Link></p>
-              <form>
-                 <div className="form-floating">
-                  <input type="email" name="email" value={loginFormData.email} id="floatingInputEmailGrid" onChange={inputHandler} className="form-control"  placeholder="Enter Email id"/>
-                  <label htmlFor="floatingInputEmailGrid">Email id*</label>
-                </div>
-                <div className="form-floating mt-4">
-                  <input type={showPassword?"text":"password"} name="password" value={loginFormData.password} onChange={inputHandler} id="floatingInputPwdGrid" className="form-control"  placeholder="password"/>
-                  <label htmlFor="floatingInputPwdGrid">Password*</label>
-                </div>
-                <div className="form-check form-switch mt-3">
-                  <input className="form-check-input cursor-pointer" onChange={()=>setShowPassword(!showPassword)}  type="checkbox" id="mySwitch" />
-                  <label className="form-check-label cursor-pointer" htmlFor="mySwitch">show password</label>
-                </div>
+              <form style={{maxWidth:'500px'}}>
+                <TextField id="email-input" name="email" label="Email ID" onChange={inputHandler} value={loginFormData.email} fullWidth variant="standard" />
+                  <FormControl fullWidth margin="normal" variant="standard">
+                      <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                      <Input
+                        id="standard-adornment-password"
+                        name="password"
+                        value={loginFormData.password}
+                        onChange={inputHandler}
+                        type={showPassword ? 'text' : 'password'}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={()=>setShowPassword(true)}
+                              onMouseDown={()=>setShowPassword(false)}
+                            >
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                {/*  <div className="form-floating"> */}
+                {/*   <input type="email" name="email" value={loginFormData.email} id="floatingInputEmailGrid" onChange={inputHandler} className="form-control"  placeholder="Enter Email id"/> */}
+                {/*   <label htmlFor="floatingInputEmailGrid">Email id</label> */}
+                {/* </div> */}
+                {/* <div className="form-floating mt-4"> */}
+                {/*   <input type={showPassword?"text":"password"} name="password" value={loginFormData.password} onChange={inputHandler} id="floatingInputPwdGrid" className="form-control"  placeholder="password"/> */}
+                {/*   <label htmlFor="floatingInputPwdGrid">Password</label> */}
+                {/* </div> */}
+                {/* <div className="form-check form-switch mt-3"> */}
+                {/*   <input className="form-check-input cursor-pointer" onChange={()=>setShowPassword(!showPassword)}  type="checkbox" id="mySwitch" /> */}
+                {/*   <label className="form-check-label cursor-pointer" htmlFor="mySwitch">show password</label> */}
+                {/* </div> */}
                 {
                 isFetching?
                   <button className="mt-3 btn btn-danger w-100 py-2" disabled>

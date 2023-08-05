@@ -20,6 +20,7 @@ import img from '../../demo.png'
 
 import Sidebar from './Sidebar'
 import './Navbar.css';
+import TextField from '@mui/material/TextField';
 
 const Navbar = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -136,10 +137,12 @@ function fetchProductsData(url){
 
                  <div className="modal-body pt-0 pb-5">
                  <form>
-                    <div className="form-floating mt-4">
-                      <input type="search" name="search" onChange={(e)=>{fetchSearchData(e.target.value)}} className="form-control rounded-5" placeholder="Search for gifts"  id="floatingSearchInputPwdGrid" />
+
+                    <div className="mt-4">
+                      <TextField InputProps={{ sx: { borderRadius: 10 } }} id="outlined-search" onChange={(e)=>{fetchSearchData(e.target.value)}} name="search" fullWidth label="Search for gifts" type="search" />
+                      {/* <input type="search" name="search" onChange={(e)=>{fetchSearchData(e.target.value)}} className="form-control rounded-5" placeholder="Search for gifts"  id="floatingSearchInputPwdGrid" /> */}
                       {/* <SearchOutlinedIcon style={{position:'absolute',right:'5',bottom:'15',zIndex:"999"}}/> */}
-                      <label htmlFor="floatingSearchInputPwdGrid">Search for gifts</label>
+                      {/* <label htmlFor="floatingSearchInputPwdGrid">Search for gifts</label> */}
                   </div>
                 </form>
                 {

@@ -17,11 +17,12 @@
 .input-group-text{
 	background-color:white !important;
 }
-input[type="search"]:focus{
-     outline: none !important;
-	 box-shadow: none !important;
+input[type="search"]{
+	 border: none !important;
 }
-
+.rounded-5{
+	border-radius:50% !important
+}
 
 .navbar-cart-badge{
 	background-color:#e36f7a;

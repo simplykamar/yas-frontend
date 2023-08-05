@@ -10,6 +10,7 @@ import Sidebar from './Sidebar'
 import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import TextField from '@mui/material/TextField';
 
 const CustomerAddress = () => {
 	const notifySuccess = (msg) => toast.success(msg);
@@ -151,31 +152,53 @@ const CustomerAddress = () => {
       {/* <!-- Modal body --> */}
       <div className="modal-body">
       <form>
-          <div className="form-floating">
-           <input type="text" name="name" id="floatingInputNameGrid" onChange={inputHandler} className="form-control"  placeholder="Enter Name" />
-           <label htmlFor="floatingInputNameGrid">Full Name*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="text" name="address" id="floatingInputAddressGrid" onChange={inputHandler} className="form-control"  placeholder="Enter address" />
-           <label htmlFor="floatingInputAddressGrid">Complete Address*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="text" name="landmark" id="floatingInputLandmarkGrid" onChange={inputHandler} className="form-control"  placeholder="Enter landmark" />
-           <label htmlFor="floatingInputLandmarkGrid">Landmark*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="number" name="pincode" id="floatingInputPincodeGrid" onChange={inputHandler} className="form-control"  placeholder="Enter pincode" />
-           <label htmlFor="floatingInputPincodeGrid">Pincode*</label>
-         </div>
-         <div className="form-floating mt-3">
-           <input type="number" name="mobile" id="floatingInputMobileGrid" onChange={inputHandler} className="form-control"  placeholder="Enter mobile no." />
-           <label htmlFor="floatingInputMobileGrid">Mobile No.*</label>
-         </div>
+       <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="name"
+         fullWidth
+         label="Name"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="address"
+         fullWidth
+         label="Address"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="landmark"
+         fullWidth
+         label="Landmark"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+          type="number"
+         onChange={inputHandler}
+         name="pincode"
+         fullWidth
+         label="Pincode"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+          type="number"
+         onChange={inputHandler}
+         name="mobile"
+         fullWidth
+         label="Mobile No."
+         />
+       </div>
          <div className=" mt-3">
          <p className="fw-600">TAG AS</p>
          <div className="d-flex">
          <div className=" form-check">
-           <input type="radio" id="floatingInputHomeTagGrid" onChange={inputHandler} name="tag" value={1} className="form-check-input" checked/>
+           <input type="radio" id="floatingInputHomeTagGrid" onChange={inputHandler} name="tag" value={1} className="form-check-input" />
            <label className="form-check-label" htmlFor="floatingInputHomeTagGrid"><HomeTwoToneIcon/>Home</label>
          </div>
          <div className="ms-2 form-check">

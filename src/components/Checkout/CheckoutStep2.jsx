@@ -11,8 +11,13 @@ import {addToOrder,clearOrder} from '../../redux/orderSlice';
 import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import {resetCart} from '../../redux/cartSlice'
 import emptyCart from "../../images/other/emptycart.svg"
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
 
 const CheckoutStep2 = () => {
+	  const [alignment, setAlignment] = useState('web');
+
 	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [loading, setLoading] = useState(true);
   	const user = useSelector((state)=>state.auth);
@@ -112,7 +117,10 @@ ${user.user.user.name.toUpperCase()}
 	// 		console.log("in createOrder");
 	// 		
 	// }
-
+  	function handleCardChange(e){
+  		setAlignment(e.target.value)
+  		console.log(e.target.value)
+  	}
 
 	return(
 		<div className=" py-3 bg-light">
@@ -159,16 +167,32 @@ ${user.user.user.name.toUpperCase()}
 				<div className="bg-white p-4">
 					<p className="fw-600">Message Card <CardGiftcardTwoToneIcon color="warning"/></p><hr/>
 					<div className="table-responsive ">
-					<div className="table ">
-					<div className="d-flex justify-content-between">
-						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(1)}>General Gifting</button>
-						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(2)}>Birthday</button>
-						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(3)}>Anniversary</button>
-						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(4)}>Wedding</button>
-						<button className="btn btn-white card-active" onClick={()=>cardClickHandler(5)}>House & warming</button>
+						<div className=" ">
+						{/* <div className="d-flex justify-content-between"> */}
+						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(1)}>General Gifting</button> */}
+						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(2)}>Birthday</button> */}
+						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(3)}>Anniversary</button> */}
+						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(4)}>Wedding</button> */}
+						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(5)}>House & warming</button> */}
+						{/* </div> */}
+						<ToggleButtonGroup
+					 sx={{gap:1}}
+					      color="warning"
+					      value={alignment}
+					      size="small"
+					      exclusive
+					      onChange={handleCardChange}
+					      aria-label="Platform"
+					    >
+					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(1)} value="General Gifting">General Gifting</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(2)} value="Birthday">Birthday</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(3)} value="Anniversary">Anniversary</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(4)} value="Wedding">Wedding</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(5)} value="House & warming">House & warming</ToggleButton>
+					    </ToggleButtonGroup>
+						</div>
 					</div>
-					</div>
-					</div>
+					 
 					<div className="form-check my-4 fw-600">
 					  <input id="personalize-msg" className="form-check-input" type="checkbox" onChange={(e)=>{setMsg(!msg)}} checked={msg}/>
 					  <label htmlFor="personalize-msg" className="form-check-label cursor-pointer">Personalize your greeting message</label>
