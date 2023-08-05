@@ -73,7 +73,7 @@ const CustomerRegister = () => {
               <h5 className="card-title text-dark">Sign in to complete your order</h5>
               <p>Already have an account? <Link to="/customer/login" className="text-decoration-none">Sign in</Link></p>
              </div> 
-              <div  className="card-body">
+              <div  className="card-body pt-0">
               <form>
                  <div className="form-floating">
                   <input type="text" name="name" id="floatingInputNameGrid" onChange={inputHandler} className="form-control"  placeholder="Enter Name"/>

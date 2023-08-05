@@ -1,17 +1,20 @@
 import {useEffect} from 'react';
 import { useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
-
+import {useNavigate,useLocation} from 'react-router-dom';
 
 const Protected = (props) =>{
 	const navigate = useNavigate();
+	 let targetUrl = useLocation().pathname;
+		 if(!targetUrl){
+	    	targetUrl="/";
+	  	}
 	const user = useSelector((state)=>state.auth);
 	console.log("Protected Component ",user)
 	console.log("Protected Component user id ",user.user)
 	const {Component} = props;
 	useEffect(()=>{
 		if (!user.isAuthenticate){
-				navigate("/customer/login",{replace:true});
+				navigate("/customer/login",{replace:true,state:targetUrl});
 		}
 	},[]);
 

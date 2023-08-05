@@ -2,10 +2,11 @@ import {useState} from 'react';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import { loginSuccess, loginFail, logout } from '../../redux/authSlice';
-import {useNavigate,Link} from 'react-router-dom';
+import {useNavigate,Link,useLocation} from 'react-router-dom';
 import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
+  const targetUrl = useLocation().state;
   const dispatch = useDispatch();
   const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const [loginFormData,setLoginFormData] = useState({
@@ -42,7 +43,7 @@ const CustomerLogin = () => {
                      axios.get(baseUrl+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})
                         .then(res=>{
                             dispatch(loginSuccess({...jwt_data,"user":res.data}));
-                            navigate("/", {replace:true});
+                            navigate(targetUrl, {replace:true});
                         })
                         .catch(error=>{
                           console.log(error);

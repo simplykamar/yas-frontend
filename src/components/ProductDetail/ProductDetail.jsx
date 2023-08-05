@@ -173,7 +173,7 @@ const notifySuccess = (text) => toast.success(text);
 				
 			</div>
 			:
-             <div className="text-center p-5">
+             <div className="text-center py-4">
                 <div className="spinner-border text-danger"></div>
               </div>
 			}

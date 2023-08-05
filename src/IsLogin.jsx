@@ -12,10 +12,13 @@ const IsLogin = (props) =>{
 				navigate("/",{replace:true});
 		}
 	},[]);
-
 	return (
 		<div>
-			<Component/>	
+
+			{
+				!user.isAuthenticate && <Component/>
+			}	
+
 		</div>
 		);
 }

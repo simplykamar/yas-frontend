@@ -74,7 +74,7 @@ const TagProducts = () => {
           </div> 
           </div> 
           :
-             <div className="text-center">
+             <div className="text-center py-4">
                 <div className="spinner-border text-danger"></div>
               </div>
           }
