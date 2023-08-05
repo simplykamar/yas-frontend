@@ -97,7 +97,7 @@ const CheckoutStep1 = () => {
 			<div className="container">
 			  { cartData.length?
 			  <>
-			<div className="mb-5">
+			<div className="mb-lg-3 mb-md-3">
 				<div className="stepper-wrapper">
 					  <div className="stepper-item active">
 					    <div className="step-counter">
