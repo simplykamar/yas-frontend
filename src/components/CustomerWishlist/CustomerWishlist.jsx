@@ -32,7 +32,7 @@ const CustomerWishlist = () => {
 
 
 	return(
-		<div className="py-5 bg-light">
+		<div className="py-4 bg-light">
 			<div className="container">
       <h4 className="text-capitalize text-center">
       My Wishlist
