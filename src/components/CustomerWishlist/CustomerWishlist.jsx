@@ -39,7 +39,7 @@ const CustomerWishlist = () => {
       <span className="text-secondary"> ({totalResult})</span> 
 
       </h4>
-			<div className="row mt-4">
+			<div className="row mt-3 g-3">
           {	!loading
 					?
             wishlists.length?
