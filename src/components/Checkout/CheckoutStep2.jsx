@@ -184,11 +184,11 @@ ${user.user.user.name.toUpperCase()}
 					      onChange={handleCardChange}
 					      aria-label="Platform"
 					    >
-					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(1)} value="General Gifting">General Gifting</ToggleButton>
-					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(2)} value="Birthday">Birthday</ToggleButton>
-					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(3)} value="Anniversary">Anniversary</ToggleButton>
-					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(4)} value="Wedding">Wedding</ToggleButton>
-					      <ToggleButton sx={{fontSize:'14px'}} onClick={()=>cardClickHandler(5)} value="House & warming">House & warming</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px',lineHeight:1}} onClick={()=>cardClickHandler(1)} value="General Gifting">General Gifting</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px',lineHeight:1}} onClick={()=>cardClickHandler(2)} value="Birthday">Birthday</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px',lineHeight:1}} onClick={()=>cardClickHandler(3)} value="Anniversary">Anniversary</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px',lineHeight:1}} onClick={()=>cardClickHandler(4)} value="Wedding">Wedding</ToggleButton>
+					      <ToggleButton sx={{fontSize:'14px',lineHeight:1}} onClick={()=>cardClickHandler(5)} value="House & warming">House & warming</ToggleButton>
 					    </ToggleButtonGroup>
 						</div>
 					</div>
