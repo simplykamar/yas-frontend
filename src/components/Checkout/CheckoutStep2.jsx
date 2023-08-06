@@ -177,7 +177,7 @@ ${user.user.user.name.toUpperCase()}
 						{/* </div> */}
 						<ToggleButtonGroup
 					 sx={{gap:1}}
-					      color="secondary"
+					      color="warning"
 					      value={alignment}
 					      size="small"
 					      exclusive
