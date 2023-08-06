@@ -2,13 +2,12 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import {useState,useEffect} from 'react';
 import {Link,useParams} from 'react-router-dom';
 import './CategoryProducts.css';
-import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import TuneIcon from '@mui/icons-material/Tune';
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
@@ -51,20 +50,20 @@ const CategoryProducts = () => {
                   <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>               
                   </div>
               <div className="d-flex">
-                <FilterListOutlinedIcon fontSize="large" className="fw-600 text-danger"/>
                   {/* <select className="form-select cursor-pointer" onChange={fetchDataByPriceFilter} style={{maxWidth:'200px'}}> */}
                   {/*     <option value="">Sort By</option> */}
                   {/*     <option value="price">Price Low to High</option> */}
                   {/*     <option value="-price">Price High to Low</option> */}
                   {/*   </select> */}
                     <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth>
-                          <InputLabel id="price-filter">Sort By</InputLabel>
+                        <FormControl  fullWidth id="price-filter-focus">
+                          <InputLabel id="price-filter" color="error" >
+                           <TuneIcon/>Sort By</InputLabel>
                           <Select
                             labelId="price-filter"
                             id="price-filter-select"
                             value={priceFilter}
-                            label="Sort By"
+                            label="Sort By......"
                             onChange={fetchDataByPriceFilter}
                           >
                             <MenuItem value="price">Price Low to High</MenuItem>
