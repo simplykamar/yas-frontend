@@ -3,6 +3,11 @@ import {useState,useEffect} from 'react';
 import {Link,useParams} from 'react-router-dom';
 import './CategoryProducts.css';
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const CategoryProducts = () => {
   const {category_id} = useParams();
@@ -11,6 +16,7 @@ const CategoryProducts = () => {
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [priceFilter, setPriceFilter] = useState("");
 
     const fetchData = (url) => {
             fetch(url)
@@ -29,6 +35,7 @@ const CategoryProducts = () => {
       },[category_slug,]);
     
         const fetchDataByPriceFilter = (e) => {
+          setPriceFilter(e.target.value);
           if(e.target.value!==""){
               fetchData(BASE_URL+`/products/?q=${category_slug}&sort=${e.target.value}`);
                 console.log(e.target.value);
@@ -45,11 +52,26 @@ const CategoryProducts = () => {
                   </div>
               <div className="d-flex">
                 <FilterListOutlinedIcon fontSize="large" className="fw-600 text-danger"/>
-                  <select className="form-select cursor-pointer" onChange={fetchDataByPriceFilter} style={{maxWidth:'200px'}}>
-                      <option value="">Sort By</option>
-                      <option value="price">Price Low to High</option>
-                      <option value="-price">Price High to Low</option>
-                    </select>
+                  {/* <select className="form-select cursor-pointer" onChange={fetchDataByPriceFilter} style={{maxWidth:'200px'}}> */}
+                  {/*     <option value="">Sort By</option> */}
+                  {/*     <option value="price">Price Low to High</option> */}
+                  {/*     <option value="-price">Price High to Low</option> */}
+                  {/*   </select> */}
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth>
+                          <InputLabel id="price-filter">Sort By</InputLabel>
+                          <Select
+                            labelId="price-filter"
+                            id="price-filter-select"
+                            value={priceFilter}
+                            label="Sort By"
+                            onChange={fetchDataByPriceFilter}
+                          >
+                            <MenuItem value="price">Price Low to High</MenuItem>
+                            <MenuItem value="-price">Price High to Low</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Box>
                </div>
          </div>           
          <div className="row g-3 mt-3">

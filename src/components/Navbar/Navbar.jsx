@@ -137,7 +137,6 @@ function fetchProductsData(url){
 
                  <div className="modal-body pt-0 pb-5">
                  <form>
-
                     <div className="mt-4">
                       <TextField InputProps={{ sx: { borderRadius: 10 } }} id="outlined-search" onChange={(e)=>{fetchSearchData(e.target.value)}} name="search" fullWidth label="Search for gifts" type="search" />
                       {/* <input type="search" name="search" onChange={(e)=>{fetchSearchData(e.target.value)}} className="form-control rounded-5" placeholder="Search for gifts"  id="floatingSearchInputPwdGrid" /> */}
