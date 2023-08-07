@@ -113,7 +113,7 @@ const notifySuccess = (text) => toast.success(text);
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-								<img src={product.product_imgs[selectedImage].image} className="img-fluid"/>							
+								<img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							
 						</div>
 					</div>
 					<div className="row mt-2 d-lg-none d-md-none">
