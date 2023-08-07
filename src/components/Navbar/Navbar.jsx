@@ -68,10 +68,10 @@ function fetchProductsData(url){
         setIsSearchResult(false);
     }
   }
-	return(
+  return(
     <>
-		<div className="sticky-top">
-			<nav className="navbar navbar-expand navbar-light bg-light">
+    <div className="sticky-top">
+      <nav className="navbar navbar-expand navbar-light bg-light">
   <div className="container">
   <Sidebar/>
     <Link className="navbar-brand ms-3" to="/">yas</Link>
@@ -79,8 +79,7 @@ function fetchProductsData(url){
       <ul className="navbar-nav mx-auto">
           <li className="nav-item ">
           <span className="text-secondary cursor-pointer" data-bs-toggle="modal" data-bs-target="#searchModal">
-          <span className="d-none d-md-block d-lg-inline-block">Search for gifts</span>
-            <SearchOutlinedIcon className="ms-lg-2 ms-md-2" style={{fontSize:'30px'}}/>
+          <span className=""><span className="d-none d-md-inline-block d-lg-inline-block">Search for gifts</span><SearchOutlinedIcon className="" style={{fontSize:'30px'}}/></span>
           </span>
           </li>
       </ul>
@@ -183,9 +182,9 @@ function fetchProductsData(url){
                  </div>
                </div>
             </div>
-		</div>
+    </div>
     </>
 
-		)
+    )
 }
 export default Navbar; 
