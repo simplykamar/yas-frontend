@@ -133,9 +133,65 @@ const notifySuccess = (text) => toast.success(text);
 					<p><small className="text-secondary">{product.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/> | 186 Rating</p>
 					 <h5>₹{product.price}<span className="text-secondary ms-2" style={{fontSize:"16px"}}> </span></h5>
 					 <p className="text-success fw-600">inclusive of all taxes</p>
-					 	<div className="mt-4 d-flex">
-							 { 
-							 <div><button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
+						<div className="d-none d-lg-block d-md-block">
+						 	<div className="mt-4 d-flex">
+								 <div className="">
+								 <button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
+								 		id:product.id,
+										title:product.title,
+										price:product.price,
+										detail:product.detail,
+										quantity,
+										img:product.product_imgs[0].image
+								 }));
+								 notifySuccess('Item added to cart');
+								}
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart
+								</button>
+								</div>
+								 
+	               {
+	               	!loading?
+	                userWishlist.is_wishlist
+	                ?
+	                <div><button className="btn btn-white ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+	               		<FavoriteIcon className="text-danger me-1"/>
+									Wishlist
+								 </button></div>
+								 :
+	                <div><button className="btn btn-white ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
+									<FavoriteBorderOutlinedIcon className="me-1"/>
+									Wishlist
+								 </button></div>
+								 :""
+								}
+								  
+							</div>
+						</div>
+{/* for mobile view */}
+						<div className="d-lg-none d-md-none">
+								<div className="mt-4 d-flex justify-content-center fixed-bottom bg-white shadow py-2">
+               {
+               	!loading?
+                userWishlist.is_wishlist
+                ?
+                <div>
+	                <button className="btn btn-white me-5 py-2 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+	               		<FavoriteIcon className="text-danger me-1"/>
+									Wishlist
+								 </button>
+							 </div>
+							 :
+                <div>
+	                <button className="btn btn-white me-5 py-2 border" onClick={()=>{addToWishlist(product_id)}}>
+									<FavoriteBorderOutlinedIcon className="me-1"/>
+									Wishlist
+								 </button>
+							 </div>
+							 :""
+							}
+							   <div className="">
+							 <button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
 							 		id:product.id,
 									title:product.title,
 									price:product.price,
@@ -145,27 +201,12 @@ const notifySuccess = (text) => toast.success(text);
 							 }));
 							 notifySuccess('Item added to cart');
 							}
-							}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart</button></div>
-							 	}
-
-							 
-               {
-               	!loading?
-                userWishlist.is_wishlist
-                ?
-                <div><button className="btn btn-white ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
-               		<FavoriteIcon className="text-danger me-1"/>
-								Wishlist
-							 </button></div>
-							 :
-                <div><button className="btn btn-white ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
-								<FavoriteBorderOutlinedIcon className="me-1"/>
-								Wishlist
-							 </button></div>
-							 :""
-							}
-							  
+							}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart
+							</button>
+							</div>
 						</div>
+						</div>
+
 						<p className="mt-4 text-secondary text-justify">{product.detail}</p>
 						<h5>Tags</h5>
 							{tagLinks}
