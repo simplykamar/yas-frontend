@@ -69,6 +69,7 @@ function fetchProductsData(url){
     }
   }
 	return(
+    <>
 		<div className="sticky-top">
 			<nav className="navbar navbar-expand navbar-light bg-light">
   <div className="container">
@@ -127,6 +128,8 @@ function fetchProductsData(url){
     </div>
   </div>
 </nav>
+  </div>
+
         <div className="modal" id="searchModal">
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
@@ -180,8 +183,9 @@ function fetchProductsData(url){
                  </div>
                </div>
             </div>
-           </div>
 		</div>
+    </>
+
 		)
 }
 export default Navbar; 
