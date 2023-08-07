@@ -61,7 +61,7 @@ const Orders = () => {
                                   </span>
                                 }
 
-                                  <p className="fw-600 m-0">{order.order_items[0].product.title.slice(0,20)}... 
+                                  <p className="fw-600 m-0">{order.order_items[0].product.title.slice(0,30)}... 
                                   { order.order_items.length>1 ?
                                     <span>
                                       and {order.order_items.length} more items
