@@ -17,7 +17,7 @@ const Orders = () => {
   const user= useSelector((state)=>state.auth);
 
   const fetchData = (url) => {
-          axios.get(url)
+          axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
               setorders(response.data);
               console.log(response.data);

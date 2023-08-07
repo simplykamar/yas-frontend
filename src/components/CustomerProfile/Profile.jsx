@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import TextField from '@mui/material/TextField';
 
 const Profile = () => {
-    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+    const BASE_URL = 'http://127.0.0.1:8000/api';
     const [mobile,setMobile] = useState(null);
     const notifySuccess = (msg) => toast.success(msg);
     const notifyError = (msg) => toast.error(msg);
@@ -22,13 +22,13 @@ const Profile = () => {
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const dispatch = useDispatch()
     const [errorMsg, setErrorMsg] = useState({msg:'',type:'',status:''});
-    console.log(user.user)
+    console.log(user.access)
 
     function addMobile(){
             const formData = new FormData();
             formData.append('mobile',mobile);
             console.log(formData)
-            axios.patch(BASE_URL+`/customer/${user.user.id}`,formData)
+            axios.patch(BASE_URL+`/customer/${user.user.id}`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
               notifySuccess("Mobile no. successfully added !")
               console.log(response.data);

@@ -18,7 +18,7 @@ const CustomerAccountActivation = () => {
         const formData = new FormData();
         formData.append('uid',uid);
         formData.append('token',token);
-       axios.post(baseUrl+'auth/users/activation/',formData)
+       axios.post(baseUrl+'auth/users/activation/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
       .then(res=>{
         console.log(res);
         if(res.status===204){

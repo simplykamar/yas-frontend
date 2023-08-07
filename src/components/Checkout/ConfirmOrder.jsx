@@ -47,6 +47,7 @@ const ConfirmOrder = (props) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          "Authorization" : `JWT ${user.access}`
         },
       })
         .then((res) => {
@@ -92,6 +93,7 @@ const ConfirmOrder = (props) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Authorization" : `JWT ${user.access}`
       },
       data: bodyData,
     }).then((res) => {

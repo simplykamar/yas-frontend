@@ -15,7 +15,7 @@ const CategoryProducts = () => {
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [priceFilter, setPriceFilter] = useState("");
+  const [filterBy, setFilterBy] = useState("");
 
     const fetchData = (url) => {
             fetch(url)
@@ -33,8 +33,8 @@ const CategoryProducts = () => {
         fetchData(BASE_URL+`/products/?q=${category_slug}`);
       },[category_slug,]);
     
-        const fetchDataByPriceFilter = (e) => {
-          setPriceFilter(e.target.value);
+        const fetchFilterData = (e) => {
+          setFilterBy(e.target.value);
           if(e.target.value!==""){
               fetchData(BASE_URL+`/products/?q=${category_slug}&sort=${e.target.value}`);
                 console.log(e.target.value);
@@ -62,10 +62,11 @@ const CategoryProducts = () => {
                           <Select
                             labelId="price-filter"
                             id="price-filter-select"
-                            value={priceFilter}
+                            value={filterBy}
                             label="Sort By......"
-                            onChange={fetchDataByPriceFilter}
+                            onChange={fetchFilterData}
                           >
+                            <MenuItem value="-id">Latest First</MenuItem>
                             <MenuItem value="price">Price Low to High</MenuItem>
                             <MenuItem value="-price">Price High to Low</MenuItem>
                           </Select>

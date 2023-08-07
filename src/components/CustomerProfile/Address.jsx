@@ -55,7 +55,7 @@ const CustomerAddress = () => {
 	}
 
 		function deleteAddress(id){
-						axios.delete(BASE_URL+`/customer-address/${id}`)
+						axios.delete(BASE_URL+`/customer-address/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
 							notifySuccess("Address successfully deleted !")
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
@@ -72,7 +72,7 @@ const CustomerAddress = () => {
 						formData.append('mobile',newAddress.mobile);
 						formData.append('address_type',newAddress.tag);
 						console.log(formData)
-						axios.post(BASE_URL+'/customer-address/',formData)
+						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
 							notifySuccess("New address added !")
 							console.log(response);
