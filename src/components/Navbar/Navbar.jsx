@@ -69,7 +69,7 @@ function fetchProductsData(url){
     }
   }
 	return(
-		<div>
+		<div className="sticky-top">
 			<nav className="navbar navbar-expand navbar-light bg-light">
   <div className="container">
   <Sidebar/>
