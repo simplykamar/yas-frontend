@@ -207,7 +207,7 @@ const notifySuccess = (text) => toast.success(text);
 						</div>
 						</div>
 						<div className="mt-4">
-							<h5>Description</h5>
+							<p className="fw-600 mb-1">Description</p>
 							<p className=" text-secondary text-justify">{product.detail}</p>
 						</div>
 						<h5>Tags</h5>
