@@ -73,7 +73,7 @@ const SingleProduct = (props) => {
           }
    }
       useEffect(()=>{
-        // toast.remove();
+        toast.remove();
           if(user.isAuthenticate){
             checkUserWishlist();
            }
