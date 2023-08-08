@@ -148,17 +148,7 @@ const ProductDetail = () => {
 								 <div className="">
 								 {
 								 		cartData.find((item)=>item.id==product_id)?
-								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
-								 		id:product.id,
-										title:product.title,
-										price:product.price,
-										detail:product.detail,
-										quantity,
-										img:product.product_imgs[0].image
-								 }));
-								 notifySuccess('Item added to cart');
-								}
-								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
+								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600"> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
 								</Link>
 								:
 								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
@@ -181,12 +171,12 @@ const ProductDetail = () => {
 	               	!loading?
 	                userWishlist.is_wishlist
 	                ?
-	                <div><button className="btn btn-white ms-5 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+	                <div><button className="btn btn-white ms-5 border fw-600" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
 	               		<FavoriteIcon className="text-danger me-1"/>
 									Wishlist
 								 </button></div>
 								 :
-	                <div><button className="btn btn-white ms-5 border" onClick={()=>{addToWishlist(product_id)}}>
+	                <div><button className="btn btn-white ms-5 border fw-600" onClick={()=>{addToWishlist(product_id)}}>
 									<FavoriteBorderOutlinedIcon className="me-1"/>
 									Wishlist
 								 </button></div>
@@ -220,17 +210,7 @@ const ProductDetail = () => {
 							   <div className="">
 							 {
 								 		cartData.find((item)=>item.id==product_id)?
-								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
-								 		id:product.id,
-										title:product.title,
-										price:product.price,
-										detail:product.detail,
-										quantity,
-										img:product.product_imgs[0].image
-								 }));
-								 notifySuccess('Item added to cart');
-								}
-								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
+								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600"> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
 								</Link>
 								:
 								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
