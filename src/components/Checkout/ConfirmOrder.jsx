@@ -21,7 +21,6 @@ const ConfirmOrder = (props) => {
   const [isFetching,setIsFetching] = useState(false);
 
  useEffect(() => {
-      window.scrollTo(0,0);
     window.process = {
       ...window.process,
     };

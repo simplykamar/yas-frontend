@@ -16,7 +16,7 @@ const Checkout = (props) => {
   const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
    
     useEffect(()=>{
-      window.scrollTo(0,0);
+      // window.scrollTo(0,0);
     },[]);
     return (
       <div className="container " >

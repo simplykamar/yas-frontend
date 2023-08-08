@@ -42,7 +42,6 @@ const CustomerAddress = () => {
               .catch(error=>{console.log(error)})
     }
 	useEffect(()=>{
-      window.scrollTo(0,0);
 		fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 
 	},[])

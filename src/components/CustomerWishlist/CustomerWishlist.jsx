@@ -25,7 +25,6 @@ const CustomerWishlist = () => {
               .catch(error=>{console.log(error)})
     }
 	useEffect(()=>{
-      window.scrollTo(0,0);
 		fetchWishlist(BASE_URL+`/customer-wishlist/?customer=${user.user.id}`);
 
 	},[])

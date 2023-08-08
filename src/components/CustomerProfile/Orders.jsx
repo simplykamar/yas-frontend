@@ -29,7 +29,6 @@ const Orders = () => {
     }
 
     useEffect(()=>{
-      window.scrollTo(0,0);
         fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`);
         console.log("test");
       },[]);
