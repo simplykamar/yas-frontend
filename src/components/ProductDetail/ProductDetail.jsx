@@ -124,7 +124,7 @@ const ProductDetail = () => {
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-							<InnerImageZoom src={product.product_imgs[selectedImage].image} zoomScale={2} zoomType="hover" zoomSrc={product.product_imgs[selectedImage].image}  />
+							<InnerImageZoom src={product.product_imgs[selectedImage].image} zoomScale={1.5} zoomType="hover" zoomSrc={product.product_imgs[selectedImage].image}  />
 								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
