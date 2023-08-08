@@ -9,6 +9,8 @@ import StarIcon from '@mui/icons-material/Star';
 import './ProductDetail.css';
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast';
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
 const ProductDetail = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -24,7 +26,6 @@ const ProductDetail = () => {
   const user = useSelector((state)=>state.auth);
 	const cartData = useSelector((state)=>state.cart.products);
 	console.log(cartData)
-  console.log(cartData.find((item)=>item.id==product_id))
 
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
@@ -123,7 +124,8 @@ const ProductDetail = () => {
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-								<img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							
+							<InnerImageZoom src={product.product_imgs[selectedImage].image} zoomScale={2} zoomType="hover" zoomSrc={product.product_imgs[selectedImage].image}  />
+								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
 					<div className="row mt-2 d-lg-none d-md-none">
