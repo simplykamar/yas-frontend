@@ -23,6 +23,9 @@ const ProductDetail = () => {
   const navigate = useNavigate()
   const user = useSelector((state)=>state.auth);
 	const cartData = useSelector((state)=>state.cart.products);
+	console.log(cartData)
+  console.log(cartData.find((item)=>item.id==product_id))
+
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 
@@ -30,10 +33,10 @@ const ProductDetail = () => {
       await fetch(baseurl)
               .then((response)=>response.json())
               .then((data)=>{
-                console.log(data.tag_list)
                 setProduct(data);
                 setLoading(false);
                 setProductTags(data.tag_list)
+                
               });
     }
     function removeFromWishlist(id){
@@ -80,7 +83,6 @@ const ProductDetail = () => {
         axios.get(BASE_URL+`/customer-check-wishlist/?customer=${user.user.id}&product=${product_id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then(response=>{
                 setUserWishlist(response.data)
-                console.log(response.data)
               })
               .catch(error=>{
                 console.log(error)
@@ -98,9 +100,8 @@ const ProductDetail = () => {
         			checkUserWishlist();
         			console.log("isAuthenticate")
         }
-          
-           
       },[product_id,]);
+
     const tagLinks = []
    for (let i = 0; i<productTags.length; i++){
    		let tag = productTags[i].trim();
@@ -145,7 +146,9 @@ const ProductDetail = () => {
 						<div className="d-none d-lg-block d-md-block">
 						 	<div className="mt-4 d-flex">
 								 <div className="">
-								 <button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
+								 {
+								 		cartData.find((item)=>item.id==product_id)?
+								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
 								 		id:product.id,
 										title:product.title,
 										price:product.price,
@@ -155,8 +158,23 @@ const ProductDetail = () => {
 								 }));
 								 notifySuccess('Item added to cart');
 								}
-								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
+								</Link>
+								:
+								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
+								 		id:product.id,
+										title:product.title,
+										price:product.price,
+										detail:product.detail,
+										quantity,
+										img:product.product_imgs[0].image
+								 }));
+								 notifySuccess('Item added to cart');
+								}
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To Cart
 								</button>
+
+								}
 								</div>
 								 
 	               {
@@ -200,18 +218,35 @@ const ProductDetail = () => {
 							 :""
 							}
 							   <div className="">
-							 <button className="btn btn-pink" onClick={()=>{dispatch(addToCart({
-							 		id:product.id,
-									title:product.title,
-									price:product.price,
-									detail:product.detail,
-									quantity,
-									img:product.product_imgs[0].image
-							 }));
-							 notifySuccess('Item added to cart');
-							}
-							}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add Cart
-							</button>
+							 {
+								 		cartData.find((item)=>item.id==product_id)?
+								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
+								 		id:product.id,
+										title:product.title,
+										price:product.price,
+										detail:product.detail,
+										quantity,
+										img:product.product_imgs[0].image
+								 }));
+								 notifySuccess('Item added to cart');
+								}
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
+								</Link>
+								:
+								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
+								 		id:product.id,
+										title:product.title,
+										price:product.price,
+										detail:product.detail,
+										quantity,
+										img:product.product_imgs[0].image
+								 }));
+								 notifySuccess('Item added to cart');
+								}
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To Cart
+								</button>
+
+								}
 							</div>
 						</div>
 						</div>
