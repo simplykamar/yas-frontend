@@ -1,3 +1,6 @@
-.set-min-width{
+.set-min-width {
+	min-width:100% !important
+}
+.set-min-width img {
 	min-width:100% !important
 }

@@ -11,7 +11,6 @@ import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
-
 const ProductDetail = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const {product_id} = useParams();
@@ -124,7 +123,7 @@ const ProductDetail = () => {
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-							<InnerImageZoom src={product.product_imgs[selectedImage].image} zoomScale={1.5} zoomType="hover" zoomSrc={product.product_imgs[selectedImage].image}  />
+							<InnerImageZoom src={product.product_imgs[selectedImage].image} zoomScale={1.5} zoomType="hover" zoomSrc={product.product_imgs[selectedImage].image} className="set-min-width" />
 								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
