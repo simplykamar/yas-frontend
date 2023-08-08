@@ -25,6 +25,7 @@ const CheckConnection = () => {
     });
 	return (
 		<div>
+				<img src={wifierror} className="img-fluid d-none"/>
 			{
 				isOnline ?
 					<App />:
