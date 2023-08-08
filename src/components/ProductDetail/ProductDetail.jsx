@@ -23,7 +23,8 @@ const ProductDetail = () => {
   const navigate = useNavigate()
   const user = useSelector((state)=>state.auth);
 	const cartData = useSelector((state)=>state.cart.products);
-const notifySuccess = (text) => toast.success(text);
+	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 
   const fetchData = async (baseurl) => {
       await fetch(baseurl)
@@ -36,14 +37,18 @@ const notifySuccess = (text) => toast.success(text);
               });
     }
     function removeFromWishlist(id){
+          notifySuccess('Remove from wishlist.');
           if(user.isAuthenticate){
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-            notifySuccess('Remove from wishlist.');
              console.log(response);
             checkUserWishlist();
 
-           }) 
+           })
+          .catch(error=>{
+           	notifyError('Error try again!');
+           	console.log(error)
+         })
           }
           else{
               navigate('/customer/login',{replace:true})
@@ -51,17 +56,20 @@ const notifySuccess = (text) => toast.success(text);
            
    }
    function addToWishlist(id){
+          notifySuccess('Added to wishlist.');
           if(user.isAuthenticate){
           const formData = new FormData();
           formData.append('product',id);
           formData.append('customer',user.user.id);
            axios.post(BASE_URL+`/customer-wishlist/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-            notifySuccess('Added to wishlist.');
              console.log(response);
             checkUserWishlist();
            })
-           .catch(error=>{console.log(error)})
+           .catch(error=>{
+           	notifyError('Error try again!');
+           	console.log(error)
+         })
            }
           else{
               navigate('/customer/login',{replace:true})
@@ -84,6 +92,7 @@ const notifySuccess = (text) => toast.success(text);
    }
     useEffect(()=>{
     	window.scrollTo(0,0);
+    	toast.remove();
         fetchData(BASE_URL+'/product/'+product_id);
           if(user.isAuthenticate){
         			checkUserWishlist();
