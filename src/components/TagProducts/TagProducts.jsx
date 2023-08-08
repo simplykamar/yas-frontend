@@ -20,6 +20,7 @@ const TagProducts = () => {
               });
     }
     useEffect(()=>{
+            window.scrollTo(0,0);
         fetchData(BASE_URL+`/products/?q=${tag}`);
       },[]);
        const fetchDataByPriceFilter = (e) => {
