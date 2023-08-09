@@ -10,7 +10,7 @@ import {useState,useEffect} from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
+import toast, { Toaster } from 'react-hot-toast';
 
 
   const Orders = () => {
@@ -19,6 +19,9 @@ import Stack from '@mui/material/Stack';
     const [loading,setLoading] = useState(true);
     const user= useSelector((state)=>state.auth);
     const [orderRating, setOrderRating] = useState(1)
+    const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+    const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+
     const ratedLabels = {
            1: 'Useless',
            2: 'Poor',
@@ -38,20 +41,18 @@ import Stack from '@mui/material/Stack';
             });
     }
   async function addProductRating(orderID){
-    console.log(user.user.id)
-    console.log(orderID)
-    console.log(orderRating)
     const formData = new FormData();
     formData.append('rating',orderRating)
     await axios.patch(BASE_URL+`/customer-order-rating/${orderID}`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
     .then(response=>{
+      notifySuccess('Rating submit')
       fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`)
       console.log(response)
     })
     .catch(err=>{
+      notifyError('Error! try again..')
       console.log(err)
     })
-      console.log(orderRating)
   }
     useEffect(()=>{
       window.scrollTo(0,0);
@@ -75,11 +76,6 @@ import Stack from '@mui/material/Stack';
                              <div className="row bg-white mt-3" key={order.order.id}>
                                 <div className="col-lg-2 col-md-2 col-sm-12 col-12 text-center">
                                     <img src={img} className="img-fluid" width="80" height="80"/>
-                                        <Stack spacing={1}>
-                                        {/* <Rating name="size-small" defaultValue={2} size="small" /> */}
-                                        {/* <Rating name="size-medium" defaultValue={2} /> */}
-                                        {/* <Rating name="size-large" defaultValue={2} size="large" /> */}
-                                      </Stack>
                                 </div>
                                 <div className="col-lg-10 col-md-10 col-sm-12 col-12 py-lg-3 py-md-3 pb-2">
                                  { order.order.isPaid?
