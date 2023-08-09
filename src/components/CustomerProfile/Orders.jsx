@@ -62,6 +62,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
   return(
         <div className="bg-light pb-4 pt-lg-4 pt-md-4">
+         <div><Toaster /></div>
         <div className="container">
               <div className="row">
                 <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-none d-md-block d-lg-block">
