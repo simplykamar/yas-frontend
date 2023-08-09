@@ -9,13 +9,23 @@ import axios from 'axios';
 import {useState,useEffect} from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
 
-const Orders = () => {
-  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
-  const [orders,setorders] = useState([]);
-  const [loading,setLoading] = useState(true);
-  const user= useSelector((state)=>state.auth);
 
+  const Orders = () => {
+    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api/';
+    const [orders,setorders] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const user= useSelector((state)=>state.auth);
+    const [orderRating, setOrderRating] = useState(1)
+    const ratedLabels = {
+           1: 'Useless',
+           2: 'Poor',
+           3: 'Ok',
+           4: 'Good',
+           5: 'Excellent',
+      };
   const fetchData = (url) => {
           axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
@@ -27,12 +37,28 @@ const Orders = () => {
               console.log(error);
             });
     }
-
+  async function addProductRating(orderID){
+    console.log(user.user.id)
+    console.log(orderID)
+    console.log(orderRating)
+    const formData = new FormData();
+    formData.append('rating',orderRating)
+    await axios.patch(BASE_URL+`/customer-order-rating/${orderID}`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
+    .then(response=>{
+      fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`)
+      console.log(response)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+      console.log(orderRating)
+  }
     useEffect(()=>{
       window.scrollTo(0,0);
         fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`);
         console.log("test");
       },[]);
+
   return(
         <div className="bg-light pb-4 pt-lg-4 pt-md-4">
         <div className="container">
@@ -49,6 +75,11 @@ const Orders = () => {
                              <div className="row bg-white mt-3" key={order.order.id}>
                                 <div className="col-lg-2 col-md-2 col-sm-12 col-12 text-center">
                                     <img src={img} className="img-fluid" width="80" height="80"/>
+                                        <Stack spacing={1}>
+                                        {/* <Rating name="size-small" defaultValue={2} size="small" /> */}
+                                        {/* <Rating name="size-medium" defaultValue={2} /> */}
+                                        {/* <Rating name="size-large" defaultValue={2} size="large" /> */}
+                                      </Stack>
                                 </div>
                                 <div className="col-lg-10 col-md-10 col-sm-12 col-12 py-lg-3 py-md-3 pb-2">
                                  { order.order.isPaid?
@@ -77,23 +108,80 @@ const Orders = () => {
                                     order.order_items.map(product=>{return(
                                     <small key={product.product.id} className="d-block"> {product.product.title.slice(0,40)}... <span className="fw-bold">x {product.qty}</span> </small>
                                       )})
-                                  }
+                                  }  
                                   
-                                  <hr/>
-                                  <div className="d-flex justify-content-between">
-                                    <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
-                                    <div className="d-none d-lg-block d-md-block">
-                                      <button className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</button>
-                                      <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
+                                   <div className="d-none d-lg-block d-md-block">
+                                    { order.order.isPaid?
+                                      order.order.rating ?
+                                               <div className="d-flex justify-content-end">
+                                                 <Rating name="size-large" size="large" value={order.order.rating} readOnly />
+                                               </div>                           
+                                           
+                                        :  
+                                          <div className="d-flex justify-content-end">
+                                            <p className="m-0 text-warning fw-600 cursor-pointer" data-bs-toggle="modal" data-bs-target={`#${order.order.id}`}>Rate this item</p>
+                                          </div> 
+                                  :""
+                                } 
                                     </div>
-                                  </div>
+                                                     
+                                  <hr/>             
+                                    <div className="d-none d-lg-block d-md-block">
+                                      <div className="d-flex justify-content-between">
+                                        <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
+                                        <div className="">
+                                          <button className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</button>
+                                          <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
+                                        </div>
+                                    </div>  
+                                  </div>  
                                   <div className="d-lg-none d-md-none">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
+                                         { order.order.isPaid?
+                                            order.order.rating ?
+                                                <div className="">
+                                                  <Rating name="size-large" size="large" value={order.order.rating} readOnly />
+                                                </div>                           
+                                              :  
+                                                <div className="">
+                                                  <p className="m-0 text-warning fw-600 cursor-pointer" data-bs-toggle="modal" data-bs-target={`#${order.order.id}`}>Rate this item</p>
+                                                </div> 
+                                        :""
+                                        }
+                                  </div>
+                                      
                                       <div className="d-flex justify-content-between">
                                           <button className="btn text-danger border-pink px-4"><SupportAgentOutlinedIcon/>HELP</button>
                                           <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
                                       </div>
                                   </div>
                                 </div>
+                                {/*Modal for product rating */}
+                        <div className="modal" id={order.order.id}>
+                            <div className="modal-dialog modal-dialog-centered">
+                              <div className="modal-content">
+
+                                {/* <!-- Modal Header --> */}
+                                <div className="modal-header">
+                                  <h4 className="modal-title">Rate Your Order</h4>
+                                  <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                {/* <!-- Modal body --> */}
+                                <div className="modal-body text-center">
+                                  <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" />
+                                </div>
+
+                                {/* <!-- Modal footer --> */}
+                                <div className="modal-footer">
+                                  <button type="button" onClick={()=>{addProductRating(order.order.id)}} className="btn btn-danger w-100 py-2 text-uppercase" data-bs-dismiss="modal">Submit your feedback</button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
                               </div>
                         )})
 
@@ -103,7 +191,6 @@ const Orders = () => {
                 <div className="spinner-border text-danger"></div>
               </div>
                   }
-
                 </div>
               </div>
         </div>     
