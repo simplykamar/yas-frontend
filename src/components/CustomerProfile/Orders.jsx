@@ -141,7 +141,7 @@ import Stack from '@mui/material/Stack';
                                          { order.order.isPaid?
                                             order.order.rating ?
                                                 <div className="">
-                                                  <Rating name="size-large" size="large" value={order.order.rating} readOnly />
+                                                  <Rating name="size-medium" value={order.order.rating} readOnly />
                                                 </div>                           
                                               :  
                                                 <div className="">
