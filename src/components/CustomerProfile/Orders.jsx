@@ -35,7 +35,6 @@ import rating5 from '../../images/other/rating/5.png'
            5: 'loved it',
       };
        const ratedImage = {
-           0: rating,
            1: rating1,
            2: rating2,
            3: rating3,
@@ -54,6 +53,7 @@ import rating5 from '../../images/other/rating/5.png'
             });
     }
   async function addProductRating(orderID){
+    console.log(orderRating)
     const formData = new FormData();
     formData.append('rating',orderRating)
     await axios.patch(BASE_URL+`/customer-order-rating/${orderID}`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
@@ -181,7 +181,12 @@ import rating5 from '../../images/other/rating/5.png'
                                 {/* <!-- Modal body --> */}
                                 <div className="modal-body text-center h-50">
                                 <h2 className="text-uppercase">{ratedLabels[orderRating]}</h2>
-                                <img src={ratedImage[orderRating]} className="img-fluid" style={{width:'150px',height:'150px'}}/>
+                                {orderRating?
+                                  <img src={ratedImage[orderRating]} className="img-fluid" style={{width:'150px',height:'150px'}}/>
+                                :
+                                  <img src={rating} className="img-fluid" style={{width:'150px',height:'150px'}}/>
+                                }
+                                  
                                   <div>                                
                                     <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" className="mt-3 d-inline-block"/>
                                   </div>
