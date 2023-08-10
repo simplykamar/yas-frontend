@@ -181,7 +181,7 @@ import rating5 from '../../images/other/rating/5.png'
                                 {/* <!-- Modal body --> */}
                                 <div className="modal-body text-center h-50">
                                 <h2 className="text-uppercase">{ratedLabels[orderRating]}</h2>
-                                <img src={ratedImage[orderRating]} className="img-fluid w-50" style={{maxHeight:'160px'}}/>
+                                <img src={ratedImage[orderRating]} className="img-fluid" style={{width:'150px',height:'150px'}}/>
                                   <div>                                
                                     <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" className="mt-3 d-inline-block"/>
                                   </div>
