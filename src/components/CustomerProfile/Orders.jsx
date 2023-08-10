@@ -11,23 +11,36 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Rating from '@mui/material/Rating';
 import toast, { Toaster } from 'react-hot-toast';
-
+import rating from '../../images/other/rating.png'
+import rating1 from '../../images/other/rating/1.png'
+import rating2 from '../../images/other/rating/2.png'
+import rating3 from '../../images/other/rating/3.png'
+import rating4 from '../../images/other/rating/4.png'
+import rating5 from '../../images/other/rating/5.png'
 
   const Orders = () => {
     const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api/';
     const [orders,setorders] = useState([]);
     const [loading,setLoading] = useState(true);
     const user= useSelector((state)=>state.auth);
-    const [orderRating, setOrderRating] = useState(1)
+    const [orderRating, setOrderRating] = useState(0)
     const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
     const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 
     const ratedLabels = {
-           1: 'Useless',
-           2: 'Poor',
-           3: 'Ok',
+           1: 'very bad',
+           2: 'bad',
+           3: 'average',
            4: 'Good',
-           5: 'Excellent',
+           5: 'loved it',
+      };
+       const ratedImage = {
+           0: rating,
+           1: rating1,
+           2: rating2,
+           3: rating3,
+           4: rating4,
+           5: rating5,
       };
   const fetchData = (url) => {
           axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
@@ -166,8 +179,12 @@ import toast, { Toaster } from 'react-hot-toast';
                                 </div>
 
                                 {/* <!-- Modal body --> */}
-                                <div className="modal-body text-center">
-                                  <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" />
+                                <div className="modal-body text-center h-50">
+                                <h2 className="text-uppercase">{ratedLabels[orderRating]}</h2>
+                                <img src={ratedImage[orderRating]} className="img-fluid w-50" style={{maxHeight:'160px'}}/>
+                                  <div>                                
+                                    <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" className="mt-3 d-inline-block"/>
+                                  </div>
                                 </div>
 
                                 {/* <!-- Modal footer --> */}

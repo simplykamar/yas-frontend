@@ -10,7 +10,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
 	return(
-        <div className="container sticky-top">
+        <div className="container sticky-top" style={{zIndex:'999'}}>
             <div className="list-group">
                 <NavLink activeclassname="active" to="/customer/profile" className="list-group-item sidebar-active py-3"><AccountCircleOutlinedIcon/> Profile</NavLink>
                 <NavLink activeclassname="active" to="/customer/orders" className="list-group-item sidebar-active py-3"><LocalMallTwoToneIcon/> Orders History</NavLink>
