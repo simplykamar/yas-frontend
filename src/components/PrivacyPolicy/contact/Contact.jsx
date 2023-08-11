@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Contact =()=>{
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const [isFetching,setIsFetching] = useState(false);
     const notifySuccess = (msg) => toast.success(msg);
