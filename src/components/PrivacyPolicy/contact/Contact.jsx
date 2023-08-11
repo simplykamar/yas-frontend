@@ -1,5 +1,4 @@
 import './Contact.css'
-import { useRef } from 'react';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -29,7 +28,6 @@ const Contact =()=>{
         'query':'',
         'msg':'',
     })
-    const form = useRef();
     const sendEmail = async (e) => {
         e.preventDefault()
         setIsFetching(true);
@@ -48,13 +46,6 @@ const Contact =()=>{
             notifyError('Error try again!')
               setIsFetching(false);
         })
-      // emailjs.sendForm('service_1d3xw51', 'template_wtweok3', form.current, 'TJZioM5_xu0R2HDv6')
-      //   .then((result) => {
-      //       console.log(result.text);
-      //       console.log("message sent")
-      //   }, (error) => {
-      //       console.log(error.text);
-      //   });
           setIsFetching(false);
     };
 
@@ -66,8 +57,7 @@ const Contact =()=>{
     return(
         <div>
         <ToastContainer />
-            <div className="container-fluid px-5 py-4 text-dark" id='contact'>
-
+            <div className="container-fluid px-lg-5 px-md-5 py-4 text-dark" id='contact'>
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12 col-12 ">
                     <div >
@@ -84,7 +74,7 @@ const Contact =()=>{
                         <p className='fw-600 m-0'>Phone:</p>
                         <small className='d-block' style={{color:'var(--gray)',textDecoration:'none'}} >+91 8958229050</small>
                         <small className='d-block' style={{color:'var(--gray)',textDecoration:'none'}} >+91 8958229050</small>
-                        <small className='d-block' style={{fontSize:14, color:"grey"}}>(9 AM to 10 PM IST throuhout the week)</small>
+                        <small className='d-block' style={{fontSize:14, color:"grey"}}>(9 AM to 10 PM throuhout the week)</small>
                     </div>
                     <div className='contact mt-4 '>
                         <p className='fw-600 m-0'>Address:</p>
@@ -106,7 +96,7 @@ const Contact =()=>{
                     </div>
                 </div>
                 <div className=" col-lg-6 col-md-6 col-sm-12 col-12">
-                    <form  className=' form-wrapper '  ref={form} onSubmit={sendEmail}>
+                    <form  className=' form-wrapper '>
                         <h4 className="pb-4">Raise a ticket</h4>
                         <Box sx={{ minWidth: 120 }}>
                         <FormControl  fullWidth id="contact-us-focus">
