@@ -96,7 +96,7 @@ const Contact =()=>{
                     </div>
                 </div>
                 <div className=" col-lg-6 col-md-6 col-sm-12 col-12">
-                    <form  className=' form-wrapper '>
+                    <form  className=' form-wrapper' onSubmit={sendEmail}>
                         <h4 className="pb-4">Raise a ticket</h4>
                         <Box sx={{ minWidth: 120 }}>
                         <FormControl  fullWidth id="contact-us-focus">
@@ -176,7 +176,7 @@ const Contact =()=>{
                        Loading..
                     </button>
                 :
-                    <button className='mt-3 btn btn-danger w-100 py-3 text-uppercase'  type="submit"  onSubmit={sendEmail}>Send Message</button>  
+                    <button className='mt-3 btn btn-danger w-100 py-3 text-uppercase'>Send Message</button>  
               }
                     </form>
                 
