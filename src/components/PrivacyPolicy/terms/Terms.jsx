@@ -2,7 +2,7 @@ import "./Terms.css"
 function Terms(){
     return(
         <div className="container">
-                <h1 className="text-center my-4 head"> Terms & Policy </h1>
+                <h1 className="text-center my-4 head"> Terms & Conditions </h1>
                 <p className="fw-600">By using this site the user has unconditionally accepted the terms and conditions of use as given hereunder and/or elsewhere in the site.</p>
                 <ol className="">
                     <li className=""><p>The user may carefully read all the information on products and services as provided in relevant sections and in FAQs.</p></li>

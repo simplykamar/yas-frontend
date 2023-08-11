@@ -102,13 +102,13 @@ function fetchProductsData(url){
               { user.isAuthenticate ? 
                   <>
                     {/* <li><Link to="/customer/dashboard" className="dropdown-item">Dashboard</Link></li> */}
-                     <li><Link to='/customer/profile' className="dropdown-item"><PersonOutlineTwoToneIcon fontSize='small'/> Profile</Link></li>
+                     <li><Link to='/customer/profile' className="dropdown-item"><PersonOutlineTwoToneIcon fontSize='small'/>Profile</Link></li>
                      <li><Link to='' className="dropdown-item"><LocalShippingTwoToneIcon fontSize='small'/> Track Order</Link></li>
-                     <li><Link to='/customer/orders' className="dropdown-item"><LocalMallTwoToneIcon fontSize='small'/> Order History</Link></li>
-                     <li><Link to='/customer/addressbook' className="dropdown-item"><ListAltTwoToneIcon fontSize='small'/> Address Book</Link></li>
-                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
-                     <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy Policy</Link></li>
-                     <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms & Conditions</Link></li>
+                     <li><Link to='/customer/orders' className="dropdown-item"><LocalMallTwoToneIcon fontSize='small'/>Order History</Link></li>
+                     <li><Link to='/customer/addressbook' className="dropdown-item"><ListAltTwoToneIcon fontSize='small'/>Address Book</Link></li>
+                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/>Contact Us</Link></li>
+                     <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/>Privacy</Link></li>
+                     <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/>Terms</Link></li>
                      <li><Link to='' className="dropdown-item" onClick={()=>{dispatch(logout());dispatch(clearOrder())}}><PowerSettingsNewTwoToneIcon fontSize='small'/> Logout</Link></li>
                   </>
                   :

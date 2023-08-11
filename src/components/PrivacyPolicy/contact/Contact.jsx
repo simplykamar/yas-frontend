@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,6 +61,9 @@ const Contact =()=>{
         setContactUSFormData({...contactUsFormData,
               [event.target.name]:event.target.value});
     }
+     useEffect(()=>{
+      window.scrollTo(0,0);
+      },[]);
     return(
         <div>
         <ToastContainer />
