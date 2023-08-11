@@ -41,6 +41,13 @@ const Contact =()=>{
         await axios.post(BASE_URL+`/contact-us/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
         .then(response=>{
             notifySuccess(`Ticket Raised! Your ticket ID: ${response.data.ticketId}`);
+            setContactUSFormData({
+                    'name':'',
+                    'email':'',
+                    'mobile':'',
+                    'query':'',
+                    'msg':'',
+                })
         })
         .catch(err=>{
             notifyError('Error try again!')
@@ -67,23 +74,23 @@ const Contact =()=>{
                     
                     <div className='contact mt-4' >  
                         <p className='fw-600 m-0'>Email:</p>
-                        <small className=' ' style={{color:'var(--gray)',textDecoration:'none'}} >project.rihan@gmail.com</small>
+                        <small className=' ' style={{color:'var(--gray)'}} >workwithkamar@gmail.com</small>
                     </div>
 
                     <div className='contact mt-4'>
                         <p className='fw-600 m-0'>Phone:</p>
-                        <small className='d-block' style={{color:'var(--gray)',textDecoration:'none'}} >+91 8958229050</small>
-                        <small className='d-block' style={{color:'var(--gray)',textDecoration:'none'}} >+91 8958229050</small>
-                        <small className='d-block' style={{fontSize:14, color:"grey"}}>(9 AM to 10 PM throuhout the week)</small>
+                        <small className='d-block' style={{color:'var(--gray)'}} >+91 9634142017</small>
+                        <small className='d-block' style={{color:'var(--gray)'}} >+91 9045371255</small>
+                        <small className='d-block text-secondary' >(9 AM to 10 PM throuhout the week)</small>
                     </div>
                     <div className='contact mt-4 '>
                         <p className='fw-600 m-0'>Address:</p>
                         
                             <small>unit no 2 , A wing<br/>
-                                2nd Floor , Times Squre Building<br/>
-                                Andheri Kurla Road  , Marol<br/>
-                                Andheri East , Mumbai-40059<br/>
-                                Maharashtra</small>
+                                2nd Floor , Sheesh Mahal<br/>
+                                near Clock Tower ,<br/>
+                                Lucknow - 226003<br/>
+                                Uttarpradesh</small>
                     </div>
                     <div className='my-4'>
                         <h4>Social:</h4>
