@@ -186,7 +186,6 @@ import rating5 from '../../images/other/rating/5.png'
                                 :
                                   <img src={rating} className="img-fluid" style={{width:'150px',height:'150px'}}/>
                                 }
-                                  
                                   <div>                                
                                     <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" className="mt-3 d-inline-block"/>
                                   </div>
@@ -196,7 +195,6 @@ import rating5 from '../../images/other/rating/5.png'
                                 <div className="modal-footer">
                                   <button type="button" onClick={()=>{addProductRating(order.order.id)}} className="btn btn-danger w-100 py-2 text-uppercase" data-bs-dismiss="modal">Submit your feedback</button>
                                 </div>
-
                               </div>
                             </div>
                           </div>

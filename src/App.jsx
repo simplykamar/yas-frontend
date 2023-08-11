@@ -27,6 +27,10 @@ import TagProducts from './components/TagProducts/TagProducts';
 import CustomerAccountActivation from './components/CustomerAccountActivation/CustomerAccountActivation';
 import CustomerRegisterSuccess from './components/CustomerRegister/CustomerRegisterSuccess';
 
+import Contact from './components/PrivacyPolicy/contact/Contact';
+import Terms from './components/PrivacyPolicy/terms/Terms';
+import Privacy from './components/PrivacyPolicy/privacy/Privacy';
+
 // import Register from './components/seller/Register';
 // import Login from './components/seller/Login';
 // import Dashboard from './components/seller/Dashboard';
@@ -58,6 +62,10 @@ function App() {
         <Route path="/customer/register" element={<IsLogin Component={CustomerRegister}/>}/>
         <Route path="/customer/register/success" element={<IsLogin Component={CustomerRegisterSuccess}/>}/>
         <Route path="/customer/login" element={<IsLogin Component={CustomerLogin}/>}/>
+        
+        <Route path="/contact-us" element={ <Protected Component={Contact} /> } />
+        <Route path="/terms" element={ <Protected Component={Terms} /> } />
+        <Route path="/privacy" element={ <Protected Component={Privacy} /> } />
         
         <Route path="/customer/addressbook" element={ <Protected Component={Address} /> } />
         <Route path="/customer/orders" element={<Protected Component={Orders} /> }/>

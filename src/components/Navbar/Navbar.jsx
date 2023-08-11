@@ -14,6 +14,7 @@ import WifiCalling3TwoToneIcon from '@mui/icons-material/WifiCalling3TwoTone';
 import PrivacyTipTwoToneIcon from '@mui/icons-material/PrivacyTipTwoTone';
 import PowerSettingsNewTwoToneIcon from '@mui/icons-material/PowerSettingsNewTwoTone';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
+import InventoryTwoToneIcon from '@mui/icons-material/InventoryTwoTone';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
 import img from '../../demo.png'
@@ -105,8 +106,9 @@ function fetchProductsData(url){
                      <li><Link to='' className="dropdown-item"><LocalShippingTwoToneIcon fontSize='small'/> Track Order</Link></li>
                      <li><Link to='/customer/orders' className="dropdown-item"><LocalMallTwoToneIcon fontSize='small'/> Order History</Link></li>
                      <li><Link to='/customer/addressbook' className="dropdown-item"><ListAltTwoToneIcon fontSize='small'/> Address Book</Link></li>
-                     <li><Link to='' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
-                     <li><Link to='' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy Policy</Link></li>
+                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
+                     <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy Policy</Link></li>
+                     <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms & Conditions</Link></li>
                      <li><Link to='' className="dropdown-item" onClick={()=>{dispatch(logout());dispatch(clearOrder())}}><PowerSettingsNewTwoToneIcon fontSize='small'/> Logout</Link></li>
                   </>
                   :

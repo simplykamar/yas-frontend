@@ -35,7 +35,8 @@ const CustomerRegister = () => {
   function inputHandler(event){
       setregisterFormData({
             ...registerFormData,
-              [event.target.name]:event.target.value}
+              [event.target.name]:event.target.value
+            }
         )
   }
   function submitHandler(event){

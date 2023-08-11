@@ -1,0 +1,21 @@
+.form-wrapper{
+    border: 1px solid rgb(205, 23, 23);
+    padding: 20px;
+
+}
+.contact{
+    border-left: 3px solid rgb(205, 23, 23);
+    padding-left: 10px;
+}
+.icon{
+    display: flex;
+    gap: 1rem;
+}
+.m-icon{
+    width: 35px!important;
+    height: 35px!important;
+    color: grey;
+}
+.form-wrapper input[type='email']{
+    border: 0!important;
+}
