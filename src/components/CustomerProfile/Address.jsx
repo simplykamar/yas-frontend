@@ -117,10 +117,8 @@ const CustomerAddress = () => {
 							<p className="text-capitalize">{item.address}</p>
 							<p><CallTwoToneIcon/> {item.mobile}</p>
 						</div>)})
-						:
-						<div className="text-secondary text-center">
-							<small className="">Oops !! You don’t seem to have any saved addresses.</small>
-						</div>
+						:""
+						
 					:
              <div className="text-center">
                 <div className="spinner-border text-danger"></div>
