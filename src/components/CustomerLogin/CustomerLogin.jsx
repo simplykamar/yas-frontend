@@ -118,8 +118,8 @@ const CustomerLogin = () => {
                 :
                 <button type="submit" className="btn btn-danger mt-3 w-100 py-2" disabled={!buttonEnable} onClick={submitHandler}>SIGN IN</button>
               }
-                 
                  {inputError.type!="" && <small className="text-danger">{inputError.msg}</small>}
+              <div className="d-flex justify-content-end mt-2"><Link to="/reset-password" className="text-decoration-none">Forgot Password?</Link></div>
               </form>
           </div> 
           </div> 
