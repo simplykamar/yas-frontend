@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom'
 import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
-import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
@@ -158,8 +157,7 @@ const CheckoutStep1 = () => {
 						</div>)})
 						:
 						<div className="text-secondary text-center">
-						<FmdBadOutlinedIcon fontSize="large"/>
-							<p className="">Oops !! You don’t seem to have any saved addresses.</p>
+							<small className="">Oops !! You don’t seem to have any saved addresses.</small>
 						</div>
 					:
              <div className="text-center">

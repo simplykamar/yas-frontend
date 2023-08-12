@@ -18,7 +18,6 @@ const Thank = () => {
 		<p className="fw-bold">Your order has been received</p>
 			<img src={thanks} className="img-fluid"/>
 			<p>Thank you for your purchase</p>
-			<p><small className="text-secondary">Your order ID is 152486236</small></p>
 			<Link to="/" className="btn btn-danger text-uppercase">Continue shopping</Link>
 		</div>
 	}

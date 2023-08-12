@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import { loginSuccess, loginFail, logout } from '../../redux/authSlice';
 import {useNavigate,Link,useLocation} from 'react-router-dom';
 import TextField from '@mui/material/TextField';
-
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -37,20 +36,20 @@ const CustomerLogin = () => {
         )
   }
 
-    function submitHandler(event){
+    async function submitHandler(event){
     setIsFetching(true);
     event.preventDefault();
     const formData = new FormData();
     formData.append('email',loginFormData.email)
     formData.append('password',loginFormData.password)
 
-    axios.post(baseUrl+'auth/jwt/create/',formData)
+    await axios.post(baseUrl+'auth/jwt/create/',formData)
       .then(res=>{
         if(res.status===200){
           let userID = null;
           let accessToken = res.data.access;
           let jwt_data = res.data
-           axios.get(baseUrl+"auth/users/me/",{headers:{"Authorization" : `JWT ${accessToken}`}})
+            axios.get(baseUrl+"auth/users/me/",{headers:{"Authorization" : `JWT ${accessToken}`}})
                 .then(res=>{
                    userID = res.data.id;
                      axios.get(baseUrl+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})

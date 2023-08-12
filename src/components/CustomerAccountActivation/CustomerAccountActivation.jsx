@@ -59,8 +59,8 @@ const CustomerAccountActivation = () => {
               
                     { inputError.type=='success' &&
                       <div className="mt-3">
-                      <small className=" text-success">{inputError.msg[0]}</small>
-                      <small className=" text-success">{inputError.msg[1]}</small>
+                      <small className=" text-success d-block">{inputError.msg[0]}</small>
+                      <small className=" text-success d-block">{inputError.msg[1]}</small>
                       </div>
                     }
                     { inputError.type=='forbidden' &&

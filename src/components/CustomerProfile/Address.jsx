@@ -7,7 +7,6 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import Sidebar from './Sidebar'
-import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import TextField from '@mui/material/TextField';
@@ -120,7 +119,6 @@ const CustomerAddress = () => {
 						</div>)})
 						:
 						<div className="text-secondary text-center">
-						<FmdBadOutlinedIcon fontSize="large"/>
 							<small className="">Oops !! You don’t seem to have any saved addresses.</small>
 						</div>
 					:
