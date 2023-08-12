@@ -33,9 +33,6 @@ const CheckoutStep1 = () => {
 					landmark:"",
 					tag:1,
 	});
-
-
-
 	async function fetchAddresses(url){
       await axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then((response)=>{
@@ -155,10 +152,7 @@ const CheckoutStep1 = () => {
 							<p><CallTwoToneIcon/> {item.mobile}</p>
 							<Link to="/checkout-step-2" onClick={()=>{dispatch(addToOrder({address:item.id}));}} className="btn btn-danger text-uppercase">deliver here</Link>
 						</div>)})
-						:
-						<div className="text-secondary text-center">
-							<small className="">Oops !! You don’t seem to have any saved addresses.</small>
-						</div>
+						:""
 					:
              <div className="text-center">
                 <div className="spinner-border text-danger"></div>

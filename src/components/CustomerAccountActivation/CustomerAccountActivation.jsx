@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const CustomerAccountActivation = () => {
   const notifySuccess = (msg) => toast.success(msg);
   const notifyError = (msg) => toast.error(msg);
-  const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
+  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/';
   const {uid, token} = useParams()
   const [inputError,setInputError] = useState({'msg':"",'type':""})
   const [isFetching,setIsFetching] = useState(false);
@@ -18,7 +18,7 @@ const CustomerAccountActivation = () => {
         const formData = new FormData();
         formData.append('uid',uid);
         formData.append('token',token);
-       axios.post(baseUrl+'auth/users/activation/',formData)
+       axios.post(BASE_URL+'auth/users/activation/',formData)
       .then(res=>{
         console.log(res);
         if(res.status===204){

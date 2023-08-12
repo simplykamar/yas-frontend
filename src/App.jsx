@@ -18,6 +18,8 @@ import Thank from './components/Checkout/Thank';
 
 import CustomerRegister from './components/CustomerRegister/CustomerRegister';
 import CustomerLogin from './components/CustomerLogin/CustomerLogin';
+import ForgotPassword from './components/CustomerLogin/ForgotPassword';
+import GetResetPaswordLink from './components/CustomerLogin/GetResetPaswordLink';
 
 import CustomerWishlist from './components/CustomerWishlist/CustomerWishlist';
 import Address from './components/CustomerProfile/Address';
@@ -62,6 +64,8 @@ function App() {
         <Route path="/customer/register" element={<IsLogin Component={CustomerRegister}/>}/>
         <Route path="/customer/register/success" element={<IsLogin Component={CustomerRegisterSuccess}/>}/>
         <Route path="/customer/login" element={<IsLogin Component={CustomerLogin}/>}/>
+        <Route path="/reset-password" element={<GetResetPaswordLink/>}/>
+        <Route path="/set-new-password/:uid/:token" element={<ForgotPassword/>}/>
         
         <Route path="/contact-us" element={ <Protected Component={Contact} /> } />
         <Route path="/terms" element={ <Protected Component={Terms} /> } />
