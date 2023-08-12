@@ -15,7 +15,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
-   let targetUrl = useLocation().state;
+  let targetUrl = useLocation().state;
      if(!targetUrl){
         targetUrl="/";
       }
@@ -35,7 +35,6 @@ const CustomerLogin = () => {
               [event.target.name]:event.target.value}
         )
   }
-
     async function submitHandler(event){
     setIsFetching(true);
     event.preventDefault();
@@ -55,6 +54,7 @@ const CustomerLogin = () => {
                      axios.get(baseUrl+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})
                         .then(res=>{
                             dispatch(loginSuccess({...jwt_data,"user":res.data}));
+                            setIsFetching(false);
                             navigate(targetUrl, {replace:true});
                         })
                         .catch(error=>{
@@ -65,7 +65,7 @@ const CustomerLogin = () => {
                   console.log(error);
                 });
         }
-        setIsFetching(false);
+        
       })
       .catch(error=>{
         if(error.response.status===401){
