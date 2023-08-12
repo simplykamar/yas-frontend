@@ -19,7 +19,7 @@ import rating4 from '../../images/other/rating/4.png'
 import rating5 from '../../images/other/rating/5.png'
 
   const Orders = () => {
-    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api/';
+    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
     const [orders,setorders] = useState([]);
     const [loading,setLoading] = useState(true);
     const user= useSelector((state)=>state.auth);
@@ -112,7 +112,7 @@ import rating5 from '../../images/other/rating/5.png'
                                   }
                                   </p>
 
-                                  <small className="text-secondary text-capitalize">{order.order.address.address} | {order.order.address.address_type==1&&"Home"}{order.order.address.address_type==2&&"Work"}{order.order.address.address_type==3&&"Other"}</small>
+                                  <small className="text-secondary text-capitalize">{order.order.address} | {order.order.address_type==1&&"Home"}{order.order.address_type==2&&"Work"}{order.order.address_type==3&&"Other"}</small>
                                   <small className="text-secondary d-block">ORDER <mark style={{backgroundColor:'#fcf8e3'}}>#{order.order.id}</mark> | {order.order.order_time}</small>
                                   {
                                     order.order_items.map(product=>{return(

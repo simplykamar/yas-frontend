@@ -59,67 +59,67 @@ const UniqueGift = () => {
 	        <SwiperSlide>
             <Link to="/category/cake/11" className="text-decoration-none text-dark">
 	        			<img src={birthdaygift} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">birthday gifts</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">birthday gifts</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
             <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
 	        		<img src={rakhi} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">rakhi </p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">rakhi </p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/fashion & lifestyle/22" className="text-decoration-none text-dark">
 	        		<img src={fashion} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">fashion & lifestyle</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">fashion & lifestyle</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/gourmet/21" className="text-decoration-none text-dark">
 	        			<img src={gourmet} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">gourmet</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">gourmet</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/jewellery/20" className="text-decoration-none text-dark">
 	        			<img src={jewellery} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">jewellery</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">jewellery</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/home & living/23" className="text-decoration-none text-dark">
 	        			<img src={homeliving} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">home & living</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">home & living</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/anniversary/17" className="text-decoration-none text-dark">
 	        			<img src={anniversary} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">anniversary gifts</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">anniversary gifts</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/mango cake/24" className="text-decoration-none text-dark">
 	        			<img src={mangocake} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">mango cakes</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">mango cakes</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/marvel collection/18" className="text-decoration-none text-dark">
 	        			<img src={marvel} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">marvel collection</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">marvel collection</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/disney collection/19" className="text-decoration-none text-dark">
 	        			<img src={disney} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">disney collection</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">disney collection</p>
             </Link>
 	        </SwiperSlide>
 	        <SwiperSlide>
-            <Link to="/category/rakhi/" className="text-decoration-none text-dark">
+            <Link to="/category/wedding/16" className="text-decoration-none text-dark">
 	        			<img src={wedding} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text mt-1">wedding gifts</p>
+               <p className="text-center text-capitalize header-menu-text m-0 mt-1">wedding gifts</p>
             </Link>
 	        </SwiperSlide>
 

@@ -2,7 +2,6 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import img from '../../demo.png'
 import'./Home.css'
 import {Link} from 'react-router-dom';
-// imports logos
 import samedaydelivery from '../../images/logos/samedaydelivery.svg'
 import cake from '../../images/logos/cake.svg'
 import flower from '../../images/logos/flower.svg'
@@ -12,8 +11,6 @@ import personalize from '../../images/logos/personalize.svg'
 import plant from '../../images/logos/plant.svg'
 import rakhi from '../../images/logos/rakhi.svg'
 import footersale from '../../images/other/footersale.webp'
-
-
 import Slider from '../Slider/Slider';
 import UniqueGift from '../Gift/UniqueGift';
 import CelebrateGift from '../Gift/CelebrateGift';
@@ -81,7 +78,7 @@ const Home = () => {
         <Slider/>
         <UniqueGift/>
         <CelebrateGift/>
-         <img src={footersale} className="img-fluid footersale-img"/>
+         <Link to="/category/sale/24"><img src={footersale} className="img-fluid footersale-img"/></Link>
         <section className="mt-5">
           <div className="row">
             <div className="col-lg-2 col-md-2 col-sm-2 col-2">

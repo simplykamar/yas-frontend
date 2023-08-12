@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom';
 import husband from '../../images/celebrategift/husband.png'
 import wife from '../../images/celebrategift/wife.png'
 import cakes from '../../images/celebrategift/cakes.png'
@@ -20,31 +20,31 @@ const CelebrateGift = () => {
 				</div>
 				<div className="row mt-5">
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
-						<img src={forher} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/for her/25"><img src={forher} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3 ">
-						<img src={flowers} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/flowers/13"><img src={flowers} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
-						<img src={couples} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/couples/29"><img src={couples} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
-						<img src={husband} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/husband/27"><img src={husband} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 				</div>
 
 				<div className="row mt-3">
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
-						<img src={cakes} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/cake/11"><img src={cakes} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
-						<img src={personalized} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/personalized/14"><img src={personalized} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
-						<img src={wife} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/wife/28"><img src={wife} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3 ">
-						<img src={forhim} className="img-fluid rounded-4 celebrate-img"/>
+						<Link to="/category/for him/26"><img src={forhim} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>
 				</div>
 	</div>

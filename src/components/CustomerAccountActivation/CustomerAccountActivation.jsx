@@ -23,7 +23,7 @@ const CustomerAccountActivation = () => {
         console.log(res);
         if(res.status===204){
           notifySuccess("Account Activation successfully !")
-          setInputError({'type':"success",'msg':["Account Activation successfully","Now you can login to your account"]})
+          setInputError({'type':"success",'msg':["Account Activation successfully"," Now you can login to your account"]})
         }
         setIsFetching(false);
 
