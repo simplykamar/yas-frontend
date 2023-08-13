@@ -1,13 +1,13 @@
 import {useEffect,useState} from 'react';
 import { useSelector,useDispatch} from 'react-redux';
-import {useNavigate,useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {loginSuccess,logout} from './redux/authSlice';
-const Protected = (props) =>{
+
+const VerifyToken = (props) =>{
 	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/';
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	 const targetUrl = useLocation().pathname;
 	const user = useSelector((state)=>state.auth);
 	const {Component} = props;
 	const [tokenChecked,setTokenChecked] = useState(false);
@@ -41,22 +41,21 @@ const Protected = (props) =>{
 			}
 		})
 		.catch(err=>{
-			console.log("tokene xpired!");
+			console.log("tokene expired!");
 			if(err.response.status===401){
 				// refreshToken();
 				dispatch(logout());
-				navigate("/customer/login",{replace:true,state:targetUrl});
+				setTokenChecked(true);
 			}
 		})
 	}
 	useEffect(()=>{
-		if (!user.isAuthenticate){
-				navigate("/customer/login",{replace:true,state:targetUrl});
-		}
-		else{
+		if (user.isAuthenticate){
 			verifyLoginToken();
 		}
-
+		else{
+			setTokenChecked(true);
+		}
 	},[]);
 
 	return (
@@ -67,4 +66,4 @@ const Protected = (props) =>{
 		</div>
 		);
 }
-export default Protected;
+export default VerifyToken;

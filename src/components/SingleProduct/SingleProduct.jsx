@@ -19,16 +19,14 @@ const SingleProduct = (props) => {
 
   const navigate = useNavigate()
    function removeFromWishlist(id){
-          notifySuccess('Remove from wishlist.');
           if(user.isAuthenticate){
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-             console.log(response);
+            notifySuccess('Remove from wishlist.');
             checkUserWishlist();
            })
             .catch(error=>{
             notifyError('Error try again!');
-            console.log(error)
          })
           }
           else{
@@ -37,14 +35,13 @@ const SingleProduct = (props) => {
            
    }
    function addToWishlist(id){
-            notifySuccess('Added to wishlist.');
           if(user.isAuthenticate){
           const formData = new FormData();
           formData.append('product',id);
           formData.append('customer',user.user.id);
            axios.post(BASE_URL+`/customer-wishlist/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-            console.log(response);
+            notifySuccess('Added to wishlist.');
             checkUserWishlist();
            })
           .catch(error=>{
@@ -60,9 +57,7 @@ const SingleProduct = (props) => {
               axios.get(BASE_URL+`/customer-check-wishlist/?customer=${user.user.id}&product=${props.id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
                   .then(response=>{
                     setUserWishlist(response.data)
-                    console.log(response.data)
                     setLoading(false)
-                    console.log(userWishlist)
                   })
                   .catch(error=>{
                     console.log(error)
