@@ -33,6 +33,7 @@ const GetResetPaswordLink = () => {
 				setIsFetching(false);
 			})
 	}
+
 	return (
 		<div className="container-fluid">
 			<div>
@@ -45,7 +46,7 @@ const GetResetPaswordLink = () => {
               			<h5 className="card-title text-dark">Reset your password</h5>
 			            <form style={{maxWidth:'500px'}} onSubmit={getResetLink}>
 			            <small className="text-secondary">Password reset link will be sent to registered email id</small>
-			              <TextField required={true} margin="normal" id="email-input" name="email" label="Email ID" onChange={(e)=>{setEmail(e.target.value)}} value={email} fullWidth variant="standard" />
+			              <TextField type='email' required={true} margin="normal" id="email-input" name="email" label="Email ID" onChange={(e)=>{setEmail(e.target.value)}} value={email} fullWidth variant="standard" />
 		                  	{
 				                isFetching?
 				                  <button className="mt-3 btn btn-danger w-100 py-2" disabled>
@@ -53,7 +54,11 @@ const GetResetPaswordLink = () => {
 				                       Loading..
 				                    </button>
 				                :
-		                  <button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase">send reset link</button>
+				                	email.length?
+		                  		<button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase">send reset link</button>
+              						:
+		                  		<button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase" disabled={true}>send reset link</button>
+
               }
               <div className="mt-2 text-center text-secondary">
 	              <small className="m-0 p-0">or login to continue</small>

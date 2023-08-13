@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import { loginSuccess, loginFail, logout } from '../../redux/authSlice';
@@ -16,9 +16,6 @@ import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
   let targetUrl = useLocation().state;
-     if(!targetUrl){
-        targetUrl="/";
-      }
   const dispatch = useDispatch();
   const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const [loginFormData,setLoginFormData] = useState({
@@ -76,7 +73,11 @@ const CustomerLogin = () => {
         setIsFetching(false);
       })
   }
-
+  useEffect(()=>{
+    if(!targetUrl){
+        targetUrl="/";
+      }
+  },[])
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
         <div className="container-fluid">
@@ -87,7 +88,7 @@ const CustomerLogin = () => {
               <h5 className="card-title text-dark">Sign in to complete your order</h5>
               <p>Don't have an account? <Link to="/customer/register" className="text-decoration-none">Sign up</Link></p>
               <form style={{maxWidth:'500px'}}>
-                <TextField id="email-input" name="email" label="Email ID" onChange={inputHandler} value={loginFormData.email} fullWidth variant="standard" />
+                <TextField type="email" id="email-input" name="email" label="Email ID" onChange={inputHandler} value={loginFormData.email} fullWidth variant="standard" />
                   <FormControl fullWidth margin="normal" variant="standard">
                       <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                       <Input

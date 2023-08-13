@@ -64,6 +64,7 @@ const ForgotPassword = () => {
         }
       })
   }
+    const buttonEnable =(resetPasswordFormData.new_password!='') && (resetPasswordFormData.re_new_password!='') 
   return(
        <div className="container-fluid bg-light">
             <div>
@@ -114,7 +115,7 @@ const ForgotPassword = () => {
                                Loading..
                             </button>
                         :
-                <button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase">set password</button>
+                <button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase" disabled={!buttonEnable}>set password</button>
               }
                { inputError.type=='email' &&
                   <div className="mt-3">

@@ -87,7 +87,7 @@ const CustomerRegister = () => {
               <div  className="card-body pt-0">
               <form style={{maxWidth:'500px'}}>
                 <TextField id="name-input" name="name" label="Name" onChange={inputHandler} value={registerFormData.name} fullWidth variant="standard" />
-                <TextField id="email-input" margin="normal" name="email" label="Email ID" onChange={inputHandler} value={registerFormData.email} fullWidth variant="standard" />
+                <TextField type="email" id="email-input" margin="normal" name="email" label="Email ID" onChange={inputHandler} value={registerFormData.email} fullWidth variant="standard" />
                 <FormControl fullWidth margin="normal" variant="standard">
                       <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                       <Input
