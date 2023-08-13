@@ -55,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-    <VerifyToken Component={Navbar}/>
+    <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/categories" element={<VerifyToken Component={Categories}/>}/>
