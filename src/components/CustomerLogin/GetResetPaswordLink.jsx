@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+import {Link} from 'react-router-dom'
 const GetResetPaswordLink = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/';
   const notifySuccess = (msg) => toast.success(msg);
@@ -55,6 +55,12 @@ const GetResetPaswordLink = () => {
 				                :
 		                  <button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase">send reset link</button>
               }
+              <div className="mt-2 text-center text-secondary">
+	              <hr className="w-25 d-inline-block m-0"/>
+	              <small className="mx-2">or login to continue</small>
+	              <hr className="w-25 d-inline-block m-0"/>
+              </div>
+              		<Link to="/customer/login" className="mt-4 btn btn-dark bg-white text-dark w-100 text-uppercase">Login</Link>
 			             </form>
 			             </div>
 		             </div>

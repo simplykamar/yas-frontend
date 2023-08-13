@@ -30,8 +30,9 @@ const ConfirmOrder = (props) => {
       dispatch(resetCart());
       dispatch(clearOrder());
       console.log("in reset Order");
-      setIsFetching(false);
       navigate('/order-success',{replace:true,state:true});
+      setIsFetching(false);
+
   }
 
   const handlePaymentSuccess = async (response) => {
@@ -134,7 +135,7 @@ const ConfirmOrder = (props) => {
 
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
-      setIsFetching(false);
+    setIsFetching(false);    
 
   };
 
