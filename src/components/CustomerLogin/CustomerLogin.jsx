@@ -16,6 +16,9 @@ import './CustomerLogin.css';
 const CustomerLogin = () => {
   const navigate = useNavigate();
   let targetUrl = useLocation().state;
+  if(!targetUrl){
+        targetUrl="/";
+      }
   const dispatch = useDispatch();
   const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
   const [loginFormData,setLoginFormData] = useState({
@@ -73,11 +76,6 @@ const CustomerLogin = () => {
         setIsFetching(false);
       })
   }
-  useEffect(()=>{
-    if(!targetUrl){
-        targetUrl="/";
-      }
-  },[])
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
         <div className="container-fluid">

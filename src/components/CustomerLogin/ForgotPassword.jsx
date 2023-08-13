@@ -45,7 +45,9 @@ const ForgotPassword = () => {
       .then(response=>{
         setIsFetching(false);
         if(response.status===204){
-          notifySuccess("password successfully changed.")
+          setResetPasswordFormData('');
+          notifySuccess("password successfully changed");
+          setInputError('');
         }
         resetPasswordFormData('')
       })
