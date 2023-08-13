@@ -10,10 +10,12 @@ const CustomerRegisterSuccess = () => {
 	const isRegistered = useLocation().state;
 
 	useEffect(()=>{
+      window.scrollTo(0,0);
 		if(!isRegistered){
 			navigate("/page-not-found",{replace:true});
 		}
 	},[]);
+
 	return(
 		<div>
 		{
