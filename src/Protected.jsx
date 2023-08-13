@@ -36,11 +36,12 @@ const Protected = (props) =>{
 		await axios.post(BASE_URL+'auth/jwt/verify/',formData)
 		.then(response=>{
 			if(response.status===200){
+				console.log("token still valid");
 				setTokenChecked(true);
 			}
 		})
 		.catch(err=>{
-			alert("Session timeout! Login to continue");
+			console.log("tokene xpired!");
 			if(err.response.status===401){
 				// refreshToken();
 				dispatch(logout());
