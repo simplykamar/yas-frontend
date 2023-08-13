@@ -132,19 +132,21 @@ const CustomerRegister = () => {
                 
                 { inputError.type=='password' &&
                   <div className="mt-3">
-                  <small className="text-danger">{inputError.msg[0]}</small>
-                  <small className="text-danger">{inputError.msg[1]}</small>
-                  <small className="text-danger">{inputError.msg[2]}</small>
+                  <ul className="text-danger">
+                     <li><small>{inputError.msg[0]}</small></li>
+                     <li><small>{inputError.msg[1]}</small></li>
+                     <li><small>{inputError.msg[2]}</small></li>
+                  </ul>
                   </div>
                 }
                 { inputError.type=='non_field_errors' &&
                   <div className="mt-3">
-                  <small className="text-danger">{inputError.msg[0]}</small>
+                  <li className="text-danger"><small className="text-danger">{inputError.msg[0]}</small></li>
                   </div>
                 }
                 { inputError.type=='email' &&
                   <div className="mt-3">
-                  <small className="text-danger">{inputError.msg[0]}</small>
+                  <li className="text-danger"><small className="text-danger">{inputError.msg[0]}</small></li>
                   </div>
                 }
                
