@@ -11,25 +11,23 @@ const Protected = (props) =>{
 	const user = useSelector((state)=>state.auth);
 	const {Component} = props;
 	const [tokenChecked,setTokenChecked] = useState(false);
-// 
-// 	async function refreshToken(){
-// 
-// 		const formData = new FormData();
-// 		formData.append('refresh',user.refresh)
-// 		await axios.post(BASE_URL+'auth/jwt/refresh/',formData)
-// 		.then(response=>{
-// 			console.log("token generated!");
-// 			console.log(response);
-// 			user.access = response.data.access;
-// 			user.refresh = response.data.refresh;
-// 			dispatch(loginSuccess(user));
-// 			setTokenChecked(true);
-// 		})
-// 		.catch(err=>{
-// 			setTokenChecked(true);
-// 			console.log(err)
-// 			})
-// 	}
+
+	async function refreshToken(){
+
+		const formData = new FormData();
+		formData.append('refresh',user.refresh)
+		await axios.post(BASE_URL+'auth/jwt/refresh/',formData)
+		.then(response=>{
+			console.log("token generated!");
+			user.access = response.data.access;
+			user.refresh = response.data.refresh;
+			dispatch(loginSuccess(user));
+			setTokenChecked(true);
+		})
+		.catch(err=>{
+			setTokenChecked(true);
+			})
+	}
 	async function verifyLoginToken(){
 		const formData = new FormData();
 		formData.append('token',user.access)
@@ -41,11 +39,9 @@ const Protected = (props) =>{
 			}
 		})
 		.catch(err=>{
-			console.log("tokene xpired!");
+			console.log("tokene expired!");
 			if(err.response.status===401){
-				// refreshToken();
-				dispatch(logout());
-				navigate("/customer/login",{replace:true,state:targetUrl});
+				refreshToken();
 			}
 		})
 	}

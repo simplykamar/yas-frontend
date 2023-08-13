@@ -57,16 +57,16 @@ const SingleProduct = (props) => {
    }
    function checkUserWishlist(){
           if(user.isAuthenticate){
-        axios.get(BASE_URL+`/customer-check-wishlist/?customer=${user.user.id}&product=${props.id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
-              .then(response=>{
-                setUserWishlist(response.data)
-                console.log(response.data)
-                setLoading(false)
-                console.log(userWishlist)
-              })
-              .catch(error=>{
-                console.log(error)
-              })
+              axios.get(BASE_URL+`/customer-check-wishlist/?customer=${user.user.id}&product=${props.id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
+                  .then(response=>{
+                    setUserWishlist(response.data)
+                    console.log(response.data)
+                    setLoading(false)
+                    console.log(userWishlist)
+                  })
+                  .catch(error=>{
+                    console.log(error)
+                  })
               }
           else{
               navigate('/customer/login',{replace:true})
