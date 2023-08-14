@@ -5,6 +5,7 @@ import { loginSuccess, loginFail, logout } from '../../redux/authSlice'
 import {useParams} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+
 const CustomerAccountActivation = () => {
   const notifySuccess = (msg) => toast.success(msg);
   const notifyError = (msg) => toast.error(msg);
@@ -20,7 +21,6 @@ const CustomerAccountActivation = () => {
         formData.append('token',token);
        axios.post(BASE_URL+'auth/users/activation/',formData)
       .then(res=>{
-        console.log(res);
         if(res.status===204){
           notifySuccess("Account Activation successfully !")
           setInputError({'type':"success",'msg':["Account Activation successfully"," Now you can login to your account"]})
@@ -33,7 +33,6 @@ const CustomerAccountActivation = () => {
           notifyError("Activation token expired !")
           setInputError({'type':"forbidden",'msg':["Activation token expired"]})
         }
-        console.log(error);
         setIsFetching(false);
 
         })
@@ -57,8 +56,6 @@ useEffect(()=>{
                 :
               <button onClick={activate} className="mt-2 px-5 btn btn-primary text-uppercase fw-bold px-4 py-2">verify</button>           
               }
-              
-              
                     { inputError.type=='success' &&
                       <div className="mt-3">
                       <small className=" text-success d-block">{inputError.msg[0]}</small>

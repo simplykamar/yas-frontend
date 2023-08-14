@@ -58,20 +58,15 @@ const CustomerLogin = () => {
                             navigate(targetUrl, {replace:true});
                         })
                         .catch(error=>{
-                          console.log(error);
                         })
                 })
                 .catch(error=>{
-                  console.log(error);
                 });
         }
-        
       })
       .catch(error=>{
         if(error.response.status===401){
             setInputError({'msg':"Invalid user name or password",'type':"error"})
-           console.log(error)
-           console.log(error.response.status);
         }
         setIsFetching(false);
       })

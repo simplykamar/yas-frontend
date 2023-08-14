@@ -14,10 +14,8 @@ import emptyCart from "../../images/other/emptycart.svg"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-
 const CheckoutStep2 = () => {
-	  const [alignment, setAlignment] = useState('web');
-
+	const [alignment, setAlignment] = useState('web');
 	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [loading, setLoading] = useState(true);
   	const user = useSelector((state)=>state.auth);
@@ -31,10 +29,8 @@ const CheckoutStep2 = () => {
   	const dispatch = useDispatch();
   	const navigate = useNavigate();
 
-
  	useEffect(()=>{
       window.scrollTo(0,0);
- 		console.log(order.address);
  		if(!order.address){
  			navigate('/checkout-step-1', {replace:true})
  		}
@@ -85,7 +81,6 @@ With love, you continue to turn a new house into a home. Congratulations on your
 From
 ${user.user.user.name.toUpperCase()}
   		`
-  		console.log(cardType)
   		switch(cardType){
   			case 1: 
   				setMsgContent(generalGiftMsg);
@@ -104,24 +99,10 @@ ${user.user.user.name.toUpperCase()}
   				break;
 
   		}
-  		console.log(msgContent)
   	}
-	// function createOrder(){
-	// 		const order = {
-	// 			user:{user:user.user.id,access:user.access,refresh:user.refresh},
-	// 			orderItems:cartData,
-	// 		}
-	// 		dispatch(addToOrder(order));
-	// 		// dispatch(resetCart());
-	// 		// dispatch(clearOrder());
-	// 		console.log("in createOrder");
-	// 		
-	// }
   	function handleCardChange(e){
   		setAlignment(e.target.value)
-  		console.log(e.target.value)
   	}
-
 	return(
 		<div className=" py-3 bg-light">
 			<div className="container">
@@ -168,13 +149,6 @@ ${user.user.user.name.toUpperCase()}
 					<p className="fw-600">Message Card <CardGiftcardTwoToneIcon color="warning"/></p><hr/>
 					<div className="table-responsive ">
 						<div className=" ">
-						{/* <div className="d-flex justify-content-between"> */}
-						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(1)}>General Gifting</button> */}
-						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(2)}>Birthday</button> */}
-						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(3)}>Anniversary</button> */}
-						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(4)}>Wedding</button> */}
-						{/* 	<button className="btn btn-white card-active" onClick={()=>cardClickHandler(5)}>House & warming</button> */}
-						{/* </div> */}
 						<ToggleButtonGroup
 					 sx={{gap:1}}
 					      color="secondary"
@@ -202,7 +176,7 @@ ${user.user.user.name.toUpperCase()}
 						msg &&
 					<div className="">
 					  <p className="">Your Message</p>
-						<textarea className="form-control msg-textarea" onChange={(e)=>{setMsgContent(e.target.value);console.log(msgContent)}} value={msgContent} defaultValue={msgContent}></textarea>
+						<textarea className="form-control msg-textarea" onChange={(e)=>{setMsgContent(e.target.value)}} value={msgContent} ></textarea>
 					</div>
 			}
 				</div>
@@ -249,6 +223,5 @@ ${user.user.user.name.toUpperCase()}
 		</div>
 		)
 }
-
 
 export default CheckoutStep2;

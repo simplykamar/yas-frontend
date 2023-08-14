@@ -42,11 +42,11 @@ const Contact =()=>{
         .then(response=>{
             notifySuccess(`Ticket Raised! Your ticket ID: ${response.data.ticketId}`);
             setContactUSFormData({
-                    'name':'',
-                    'email':'',
-                    'mobile':'',
-                    'query':'',
-                    'msg':'',
+                'name':'',
+                'email':'',
+                'mobile':'',
+                'query':'',
+                'msg':'',
                 })
         })
         .catch(err=>{

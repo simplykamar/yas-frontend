@@ -16,7 +16,6 @@ export const cartSlice = createSlice({
       else{
         state.products.push(action.payload);
       }
-      console.log("addToCart reducer")
     },
     removeFromCart(state,action) {
       const item = state.products.find(item=>item.id===action.payload.id)
@@ -26,7 +25,6 @@ export const cartSlice = createSlice({
       else{
         state.products.push(action.payload);
       }
-      console.log("remove reducer")
       
     },
      deleteFromCart(state,action) {
@@ -34,7 +32,6 @@ export const cartSlice = createSlice({
         state.products = state.products.filter(item=>item.id!==action.payload.id)
     },
     resetCart(state) {
-            console.log("empty cart reducer");
             state.products=[];
     },
   },

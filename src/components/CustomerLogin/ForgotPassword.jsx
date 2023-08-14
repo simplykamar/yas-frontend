@@ -89,7 +89,6 @@ const ForgotPassword = () => {
                         value={resetPasswordFormData.new_password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
-                        
                       />
                     </FormControl>
                     <FormControl fullWidth margin="normal" variant="standard">
@@ -145,7 +144,6 @@ const ForgotPassword = () => {
                   <small className="">or login to continue</small>
                 </div>
                   <Link to="/customer/login" className="mt-4 btn btn-dark bg-white text-dark w-100 text-uppercase">Login</Link>
-                   
               </form>
           </div> 
           </div> 

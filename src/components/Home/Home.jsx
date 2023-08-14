@@ -1,5 +1,4 @@
 import SingleProduct from '../SingleProduct/SingleProduct';
-import img from '../../demo.png'
 import'./Home.css'
 import {Link} from 'react-router-dom';
 import samedaydelivery from '../../images/logos/samedaydelivery.svg'

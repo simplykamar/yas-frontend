@@ -17,7 +17,6 @@ import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import InventoryTwoToneIcon from '@mui/icons-material/InventoryTwoTone';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
-import img from '../../demo.png'
 
 import Sidebar from './Sidebar'
 import './Navbar.css';
@@ -45,7 +44,8 @@ function fetchCategoriesData(url){
       setCategories(response.data)
       setCategoryDataLoading(false);
     })
-    .catch((error)=>{console.log(error)})
+    .catch((error)=>{
+  })
 }
 function fetchProductsData(url){
     axios.get(url)
@@ -56,11 +56,11 @@ function fetchProductsData(url){
         setIsSearchResult(true)
       }
     })
-    .catch((error)=>{console.log(error)})
+    .catch((error)=>{
+  })
 }
   function fetchSearchData(q){
     if(q.length){
-      console.log(q);
       fetchCategoriesData(BASE_URL+`/categories/?q=${q}`);
       fetchProductsData(BASE_URL+`/products/?q=${q}`);
     }else{
@@ -103,7 +103,7 @@ function fetchProductsData(url){
                   <>
                     {/* <li><Link to="/customer/dashboard" className="dropdown-item">Dashboard</Link></li> */}
                      <li><Link to='/customer/profile' className="dropdown-item"><PersonOutlineTwoToneIcon fontSize='small'/> Profile</Link></li>
-                     <li><Link to='' className="dropdown-item"><LocalShippingTwoToneIcon fontSize='small'/> Track Order</Link></li>
+                     {/* <li><Link to='' className="dropdown-item"><LocalShippingTwoToneIcon fontSize='small'/> Track Order</Link></li> */}
                      <li><Link to='/customer/orders' className="dropdown-item"><LocalMallTwoToneIcon fontSize='small'/> Order History</Link></li>
                      <li><Link to='/customer/addressbook' className="dropdown-item"><ListAltTwoToneIcon fontSize='small'/> Address Book</Link></li>
                      <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
@@ -143,9 +143,6 @@ function fetchProductsData(url){
                  <form>
                     <div className="mt-4">
                       <TextField InputProps={{ sx: { borderRadius: 10 } }} id="outlined-search" onChange={(e)=>{fetchSearchData(e.target.value)}} name="search" fullWidth label="Search for gifts" type="search" />
-                      {/* <input type="search" name="search" onChange={(e)=>{fetchSearchData(e.target.value)}} className="form-control rounded-5" placeholder="Search for gifts"  id="floatingSearchInputPwdGrid" /> */}
-                      {/* <SearchOutlinedIcon style={{position:'absolute',right:'5',bottom:'15',zIndex:"999"}}/> */}
-                      {/* <label htmlFor="floatingSearchInputPwdGrid">Search for gifts</label> */}
                   </div>
                 </form>
                 {
@@ -179,8 +176,6 @@ function fetchProductsData(url){
                         }
                       </div>
                 }
-              
-
                  </div>
                </div>
             </div>

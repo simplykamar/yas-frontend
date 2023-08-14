@@ -37,10 +37,10 @@ const CheckoutStep1 = () => {
       await axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then((response)=>{
               	setAddresses(response.data);
-              	console.log(response);
               	setLoading(false);
           })
-              .catch(error=>{console.log(error)})
+              .catch(error=>{
+            })
     }
 	useEffect(()=>{
       window.scrollTo(0,0);
@@ -52,13 +52,11 @@ const CheckoutStep1 = () => {
 							...newAddress,
 							[event.target.name]: event.target.value
 						});
-						console.log(newAddress);
 	}
 
 		function deleteAddress(id){
 						axios.delete(BASE_URL+`/customer-address/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
-							console.log(response);
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 							notifySuccess("Address successfully deleted !")
 						})
@@ -73,16 +71,13 @@ const CheckoutStep1 = () => {
 						formData.append('pincode',newAddress.pincode);
 						formData.append('mobile',newAddress.mobile);
 						formData.append('address_type',newAddress.tag);
-						console.log(formData)
 						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
 							notifySuccess("New address added !")
-							console.log(response);
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 						})
 						.catch(error=>{
 							notifyError(error.response.data.msg)
-							console.log(error)
 					})
 
 	}
@@ -158,7 +153,6 @@ const CheckoutStep1 = () => {
                 <div className="spinner-border text-danger"></div>
               </div>
 				}
-				
 				</div>
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
 
@@ -243,7 +237,6 @@ const CheckoutStep1 = () => {
          </div>
          </form>
       </div>
-
       {/* <!-- Modal footer --> */}
       <div className="modal-footer">
         <button type="button" className="btn btn-danger w-100 py-3 text-uppercase" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
@@ -253,7 +246,6 @@ const CheckoutStep1 = () => {
   </div>
 </div>
 						</div>
-
 			</div>
 			</div>
 			</>
@@ -267,6 +259,5 @@ const CheckoutStep1 = () => {
 		</div>
 		)
 }
-
 
 export default CheckoutStep1;

@@ -13,33 +13,21 @@ const TagProducts = () => {
             fetch(url)
               .then((response)=>response.json())
               .then((data)=>{
-                console.log(data)
                 setProducts(data);
                 setTotalResult(data.length)
                 setLoading(false);
               });
     }
     useEffect(()=>{
-            window.scrollTo(0,0);
+        window.scrollTo(0,0);
         fetchData(BASE_URL+`/products/?q=${tag}`);
       },[]);
        const fetchDataByPriceFilter = (e) => {
           if(e.target.value!==""){
               fetchData(BASE_URL+`/products/?q=${tag}&sort=${e.target.value}`);
-                console.log(e.target.value);
           }
               }
-    
-    // function changeBaseurl(baseurl){
-    //   setBaseurl(baseurl);
-    //       console.log(baseurl)
-    // }
-    // var limit=1;
-    // var totalLinks =totalResult/limit;
-    // var links = [];
-    // for(let i=1; i <= totalLinks; i++){
-    //   links.push(<li className="page-item" key={i}><Link className="page-link" onClick={()=>changeBaseurl(BASE_URL+`/products/${tag}?page=${i}`)} to={`/products/${tag}?page=${i}`}>{i}</Link> </li>)
-    // }
+
 	return(
        <div className="container">
             <div className="my-4">

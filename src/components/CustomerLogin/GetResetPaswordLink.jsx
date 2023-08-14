@@ -4,6 +4,7 @@ import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import {Link} from 'react-router-dom'
+
 const GetResetPaswordLink = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/';
   const notifySuccess = (msg) => toast.success(msg);
@@ -21,7 +22,6 @@ const GetResetPaswordLink = () => {
 				if(response.status===204){
 					notifySuccess("password reset link sent.")
 				}
-				console.log(response);
 				setIsFetching(false);
 				setEmail('')
 			})
@@ -29,7 +29,6 @@ const GetResetPaswordLink = () => {
 				if(err.response.status==400){
 					notifyError("Email not registered with us.!")
 				}
-				console.log(err.response.status);
 				setIsFetching(false);
 			})
 	}
@@ -58,7 +57,6 @@ const GetResetPaswordLink = () => {
 		                  		<button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase">send reset link</button>
               						:
 		                  		<button type="submit" className="btn btn-danger mt-3 w-100 py-2 text-uppercase" disabled={true}>send reset link</button>
-
               }
               <div className="mt-2 text-center text-secondary">
 	              <small className="m-0 p-0">or login to continue</small>

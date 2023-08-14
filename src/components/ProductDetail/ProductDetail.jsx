@@ -11,6 +11,7 @@ import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+
 const ProductDetail = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const {product_id} = useParams();
@@ -24,7 +25,6 @@ const ProductDetail = () => {
   const navigate = useNavigate()
   const user = useSelector((state)=>state.auth);
 	const cartData = useSelector((state)=>state.cart.products);
-	console.log(cartData)
 
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
@@ -44,19 +44,16 @@ const ProductDetail = () => {
           if(user.isAuthenticate){
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-             console.log(response);
             checkUserWishlist();
 
            })
           .catch(error=>{
            	notifyError('Error try again!');
-           	console.log(error)
          })
           }
           else{
               navigate('/customer/login',{replace:true})
           }
-           
    }
    function addToWishlist(id){
           notifySuccess('Added to wishlist.');
@@ -98,7 +95,6 @@ const ProductDetail = () => {
         fetchData(BASE_URL+'/product/'+product_id);
           if(user.isAuthenticate){
         			checkUserWishlist();
-        			console.log("isAuthenticate")
         }
       },[product_id,]);
 
@@ -164,10 +160,8 @@ const ProductDetail = () => {
 								}
 								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To Cart
 								</button>
-
 								}
 								</div>
-								 
 	               {
 	               	!loading?
 	                userWishlist.is_wishlist
@@ -183,10 +177,9 @@ const ProductDetail = () => {
 								 </button></div>
 								 :""
 								}
-								  
 							</div>
 						</div>
-{/* for mobile view */}
+								{/* for mobile view */}
 						<div className="d-lg-none d-md-none">
 								<div className="mt-4 d-flex justify-content-center fixed-bottom bg-white shadow py-2">
                {
@@ -226,7 +219,6 @@ const ProductDetail = () => {
 								}
 								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To Cart
 								</button>
-
 								}
 							</div>
 						</div>
@@ -238,7 +230,6 @@ const ProductDetail = () => {
 						<h5>Tags</h5>
 							{tagLinks}
 				</div>
-				
 			</div>
 			:
              <div className="text-center py-4">

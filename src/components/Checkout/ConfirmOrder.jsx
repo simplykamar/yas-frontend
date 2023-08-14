@@ -1,4 +1,3 @@
-import img from '../../demo.png';
 import {Link} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
 import {removeFromCart,resetCart} from '../../redux/cartSlice';
@@ -29,16 +28,13 @@ const ConfirmOrder = (props) => {
   function resetOrder(){
       dispatch(resetCart());
       dispatch(clearOrder());
-      console.log("in reset Order");
       navigate('/order-success',{replace:true,state:true});
       setIsFetching(false);
-
   }
 
   const handlePaymentSuccess = async (response) => {
     try {
       let bodyData = new FormData();
-
       // we will send the response we've got from razorpay to the backend to validate the payment
       bodyData.append("response", JSON.stringify(response));
       await axios({
@@ -52,18 +48,16 @@ const ConfirmOrder = (props) => {
         },
       })
         .then((res) => {
-          console.log("Everything is OK!",res);
           resetOrder();
           // setName("");
           // setAmount("");
 
         })
         .catch((err) => {
-          console.log(err);
-          console.log("in payment error")
+          alert(" payment error")
         });
     } catch (error) {
-      console.log(error);
+          alert(" payment error")
     }
   };
 
@@ -98,7 +92,6 @@ const ConfirmOrder = (props) => {
       },
       data: bodyData,
     }).then((res) => {
-        console.log(res)
       return res;
     });
 
@@ -115,7 +108,6 @@ const ConfirmOrder = (props) => {
       image: "https://raw.githubusercontent.com/simplykamar/simplykamar.github.io/main/img/logo-removebg-preview.png", // add image url
       order_id: data.data.payment.id,
       handler: function (response) {
-        console.log("razor pay response",response)
         // we will handle success by calling handlePaymentSuccess method and
         // will pass the response that we've got from razorpay
         handlePaymentSuccess(response);

@@ -45,32 +45,26 @@ import rating5 from '../../images/other/rating/5.png'
           axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
               setorders(response.data);
-              console.log(response.data);
               setLoading(false);
             })
             .catch(error=>{
-              console.log(error);
             });
     }
   async function addProductRating(orderID){
-    console.log(orderRating)
     const formData = new FormData();
     formData.append('rating',orderRating)
     await axios.patch(BASE_URL+`/customer-order-rating/${orderID}`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
     .then(response=>{
       notifySuccess('Rating submit')
       fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`)
-      console.log(response)
     })
     .catch(err=>{
       notifyError('Error! try again..')
-      console.log(err)
     })
   }
     useEffect(()=>{
       window.scrollTo(0,0);
         fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`);
-        console.log("test");
       },[]);
 
   return(
@@ -126,7 +120,6 @@ import rating5 from '../../images/other/rating/5.png'
                                                <div className="d-flex justify-content-end">
                                                  <Rating name="size-large" size="large" value={order.order.rating} readOnly />
                                                </div>                           
-                                           
                                         :  
                                           <div className="d-flex justify-content-end">
                                             <p className="m-0 text-warning fw-600 cursor-pointer" data-bs-toggle="modal" data-bs-target={`#${order.order.id}`}>Rate this item</p>
@@ -198,10 +191,8 @@ import rating5 from '../../images/other/rating/5.png'
                               </div>
                             </div>
                           </div>
-
-                              </div>
+                      </div>
                         )})
-
                       :<div className="text-center"><small >No Order Items Found...!</small></div>
                   :
              <div className="text-center">

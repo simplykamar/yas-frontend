@@ -18,7 +18,6 @@ const CustomerAddress = () => {
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);
-  console.log(user.user.id)
 
 // for add new address
 	const [newAddress, setNewAddress] = useState({
@@ -30,15 +29,14 @@ const CustomerAddress = () => {
 					tag:1,
 	});
 
-
 	async function fetchAddresses(url){
       await axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then((response)=>{
               	setAddresses(response.data);
-              	console.log(response.data);
               	setLoading(false);
           })
-              .catch(error=>{console.log(error)})
+              .catch(error=>{
+            })
     }
 	useEffect(()=>{
       window.scrollTo(0,0);
@@ -70,19 +68,15 @@ const CustomerAddress = () => {
 						formData.append('pincode',newAddress.pincode);
 						formData.append('mobile',newAddress.mobile);
 						formData.append('address_type',newAddress.tag);
-						console.log(formData)
 						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
 							notifySuccess("New address added !")
-							console.log(response);
 						fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 
 						})
 						.catch(error=>{
 							notifyError(error.response.data.msg)
-							console.log(error)
 						})
-
 	}
 	return(
 		<div className="bg-light pb-4 pt-lg-4 pt-md-4">
@@ -112,22 +106,18 @@ const CustomerAddress = () => {
 										{item.address_type===1 && <span className="ms-2 bg-light fw-light text-dark">Home</span>}
 										{item.address_type===2 && <span className="ms-2 bg-light fw-light text-dark">Work</span>}
 										{item.address_type===3 && <span className="ms-2 bg-light fw-light text-dark">Other</span>}
-									
 							</p>
 							<p className="text-capitalize">{item.address}</p>
 							<p><CallTwoToneIcon/> {item.mobile}</p>
 						</div>)})
 						:""
-						
 					:
              <div className="text-center">
                 <div className="spinner-border text-danger"></div>
               </div>
 				}
-				
 				</div>
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
-
 					<div className="custom-shadow bg-white p-4 mb-4" >
 							<p className="fw-bold text-capitalize">
 									add new address
@@ -209,12 +199,10 @@ const CustomerAddress = () => {
          </div>
          </form>
       </div>
-
       {/* <!-- Modal footer --> */}
       <div className="modal-footer">
         <button type="button" className="btn btn-danger w-100 py-3 text-uppercase" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
       </div>
-
     </div>
   </div>
 </div>

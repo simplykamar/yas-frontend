@@ -11,7 +11,6 @@ import flowers from '../../images/celebrategift/flowers.png'
 import './CelebrateGift.css'
 
 const CelebrateGift = () => {
-
 	return (
 	<div className="my-3">
 				<div>

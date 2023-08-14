@@ -11,7 +11,6 @@ import {NavLink} from 'react-router-dom';
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
 }
-
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
@@ -37,13 +36,9 @@ function closeNav() {
               <NavLink to="/customer/orders"  className="sidenav-items"><LocalMallTwoToneIcon fontSize='small'/> Order History</NavLink>
               <NavLink to="#"><SupportAgentTwoToneIcon fontSize='small'/> Customer Service</NavLink>
             </div>
-                     
-
       </div>
-
       {/* <!-- Use any element to open the sidenav --> */}
     <img src={HambergerIcon} onClick={openNav} className="mt-2 cursor-pointer"/>
-
     </div>
   );
 }

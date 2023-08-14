@@ -21,7 +21,6 @@ const CategoryProducts = () => {
             fetch(url)
               .then((response)=>response.json())
               .then((data)=>{
-                console.log(data)
                 setProducts(data);
                 setTotalResult(data.length)
                 setLoading(false);
@@ -29,7 +28,6 @@ const CategoryProducts = () => {
     }
     useEffect(()=>{
       window.scrollTo(0,0);
-      console.log("in cat product")
         fetchData(BASE_URL+`/products/?q=${category_slug}`);
       },[category_slug,]);
     
@@ -37,7 +35,6 @@ const CategoryProducts = () => {
           setFilterBy(e.target.value);
           if(e.target.value!==""){
               fetchData(BASE_URL+`/products/?q=${category_slug}&sort=${e.target.value}`);
-                console.log(e.target.value);
           }
               }
 	return(
@@ -50,11 +47,6 @@ const CategoryProducts = () => {
                   <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>               
                   </div>
               <div className="d-flex">
-                  {/* <select className="form-select cursor-pointer" onChange={fetchDataByPriceFilter} style={{maxWidth:'200px'}}> */}
-                  {/*     <option value="">Sort By</option> */}
-                  {/*     <option value="price">Price Low to High</option> */}
-                  {/*     <option value="-price">Price High to Low</option> */}
-                  {/*   </select> */}
                     <Box sx={{ minWidth: 120 }}>
                         <FormControl  fullWidth id="price-filter-focus">
                           <InputLabel id="price-filter" color="error" >
@@ -86,7 +78,6 @@ const CategoryProducts = () => {
                       )
                     })
                   :<small>No found in this category..!</small>
-
               :
              <div className="text-center">
                 <div className="spinner-border text-danger"></div>
@@ -94,16 +85,9 @@ const CategoryProducts = () => {
               }
                 
               </div>
-              {/* <nav aria-label="Page navigation example" className="mt-5"> */}
-              {/*   <ul className="pagination"> */}
-              {/*     <li className="page-item"><Link className="page-link" to="#">Previous</Link></li> */}
-              {/*     {links}  */}
-              {/*   </ul> */}
-              {/* </nav> */}
           </div> 
           </div> 
           </div> 
-
         </div>     
 		)
 }

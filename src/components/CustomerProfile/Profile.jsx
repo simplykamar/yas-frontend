@@ -1,4 +1,3 @@
-import img from '../../demo.png'
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import Sidebar from './Sidebar'
 import {Link} from 'react-router-dom';
@@ -22,12 +21,10 @@ const Profile = () => {
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const dispatch = useDispatch()
     const [errorMsg, setErrorMsg] = useState({msg:'',type:'',status:''});
-    console.log(user.access)
 
     function addMobile(){
             const formData = new FormData();
             formData.append('mobile',mobile);
-            console.log(formData)
             axios.patch(BASE_URL+`/customer/${user.user.id}`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
               notifySuccess("Mobile no. successfully added !")
@@ -38,13 +35,10 @@ const Profile = () => {
             })
             .catch(error=>{
               notifyError(error.response.data.mobile[0])
-              console.log(error.response)
               if(error.response.status==400){
                 setErrorMsg({msg:error.response.data.mobile,type:'error',status:400})
-              console.log(error.response.data.mobile)
               }
           })
-
   }
   return(
         <div className="bg-light pb-4 pt-lg-4 pt-md-4">
@@ -109,7 +103,6 @@ const Profile = () => {
                                 <div className="modal-footer">
                                   <button type="button" className="btn btn-danger w-100 py-2 text-uppercase" onClick={addMobile} data-bs-dismiss="modal">Add mobile no.</button>
                                 </div>
-
                               </div>
                             </div>
                           </div>

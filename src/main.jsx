@@ -9,10 +9,10 @@ import CheckConnection from './CheckConnection'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <CheckConnection/>
-    </BrowserRouter>
-</Provider>
+      <BrowserRouter>
+        <CheckConnection/>
+      </BrowserRouter>
+    </Provider>
 
   </React.StrictMode>,
 )

@@ -4,8 +4,6 @@ import wifierror from './images/other/wifierror.png'
 const CheckConnection = () => {
 	const [isOnline,setIsOnline] = useState(navigator.onLine);
 	useEffect(() => {
-	console.log(navigator.onLine)
-
     	function onlineHandler() {
       		setIsOnline(true);
     	}

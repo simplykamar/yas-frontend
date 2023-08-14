@@ -1,4 +1,3 @@
-import img from '../../demo.png'
 import {Link} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
 import {removeFromCart,addToCart,resetCart,deleteFromCart} from '../../redux/cartSlice'
@@ -20,9 +19,8 @@ const Checkout = (props) => {
     },[]);
     return (
       <div className="container " >
-            <div className="my-4">
-            { cartData.length?
-
+       <div className="my-4">
+       { cartData.length?
       <>
       <h2 className="text-dark text-center ">Shopping Cart</h2>
                 {
@@ -54,8 +52,6 @@ const Checkout = (props) => {
                     </div>
                     )})
                   }
-                      {/* <Link to="/categories" className="btn btn-secondary">Continue Shopping</Link> */}
-                      {/* <Link to="/confirm-order" className="btn btn-success ms-3">Proceed to Payment</Link> */}
             <div className="mt-5 d-none d-md-block d-lg-block">
                 <div className="d-flex justify-content-between ">
                     <div className="">
@@ -80,7 +76,6 @@ const Checkout = (props) => {
                     <div className="">
                       <p className="text-secondary fw-bold">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></p>
                     </div>
-                    
                 </div>
                 <div className="">
                       <Link to="/checkout-step-1" className="btn btn-danger d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>

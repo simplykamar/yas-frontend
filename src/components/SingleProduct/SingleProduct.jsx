@@ -8,7 +8,6 @@ import axios from 'axios';
 import StarIcon from '@mui/icons-material/Star';
 import toast, { Toaster } from 'react-hot-toast';
 
-
 const SingleProduct = (props) => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const user = useSelector((state)=>state.auth);
@@ -32,7 +31,6 @@ const SingleProduct = (props) => {
           else{
               navigate('/customer/login',{replace:true})
           }
-           
    }
    function addToWishlist(id){
           if(user.isAuthenticate){
@@ -46,7 +44,6 @@ const SingleProduct = (props) => {
            })
           .catch(error=>{
             notifyError('Error try again!');
-            console.log(error)
          })           }
           else{
               navigate('/customer/login',{replace:true})
@@ -60,7 +57,6 @@ const SingleProduct = (props) => {
                     setLoading(false)
                   })
                   .catch(error=>{
-                    console.log(error)
                   })
               }
           else{
@@ -72,7 +68,6 @@ const SingleProduct = (props) => {
           if(user.isAuthenticate){
             checkUserWishlist();
            }
-         
       },[])
     return (
       <div>
@@ -87,7 +82,6 @@ const SingleProduct = (props) => {
                         <FavoriteBorderOutlinedIcon onClick={()=>{addToWishlist(props.id)}} fontSize="large" className="cursor-pointer" style={{color:"#b6b8b7"}}/>
                        
                         }
-                      
                         </div>
                       <Link to={`/product/${props.title}/${props.id}`}>
                       <img src={props.image} className="card-img-top product-card-img"/>

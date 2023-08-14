@@ -17,7 +17,6 @@ const Sidebar = () => {
                 <NavLink activeclassname="active" to="/customer/addressbook" className="list-group-item sidebar-active py-3"><ListAltTwoToneIcon/> Address Book</NavLink>
                 <NavLink activeclassname="active" onClick={()=>{dispatch(logout())}} to="/customer/login" className="sidebar-active list-group-item py-3"><PowerSettingsNewTwoToneIcon/> Logout</NavLink>
             </div>
-
         </div>     
 		)
 }

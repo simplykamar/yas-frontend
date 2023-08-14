@@ -4,25 +4,22 @@ import axios from 'axios';
 import {useSelector} from 'react-redux';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
-
 const CustomerWishlist = () => {
 	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
 	const [wishlists, setWishlists] = useState([]);
   const [totalResult,setTotalResult] = useState(0);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);
-  console.log(user.user.id)
-
 
 	async function fetchWishlist(url){
       await axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then((response)=>{
               	setWishlists(response.data);
-              	console.log(response.data);
                 setTotalResult(response.data.length)
               	setLoading(false);
           })
-              .catch(error=>{console.log(error)})
+              .catch(error=>{
+            })
     }
 	useEffect(()=>{
       window.scrollTo(0,0);
@@ -30,14 +27,12 @@ const CustomerWishlist = () => {
 
 	},[])
 
-
 	return(
 		<div className="py-4 bg-light">
 			<div className="container">
       <h4 className="text-capitalize text-center">
-      My Wishlist
-      <span className="text-secondary"> ({totalResult})</span> 
-
+        My Wishlist
+        <span className="text-secondary"> ({totalResult})</span> 
       </h4>
 			<div className="row mt-3 g-3">
           {	!loading
@@ -65,6 +60,5 @@ const CustomerWishlist = () => {
 		</div>
 		)
 }
-
 
 export default CustomerWishlist;

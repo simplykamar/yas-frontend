@@ -7,7 +7,6 @@ import house from '../../images/occasion/house.webp'
 import wedding from '../../images/occasion/wedding.webp'
 import wishes from '../../images/occasion/wishes.jpg'
 
-
 const Categories = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const [categories,setCategories] = useState([])
@@ -15,12 +14,10 @@ const Categories = () => {
   const [baseurl,setBaseurl] = useState(BASE_URL+'/categories');
   const [loading, setLoading] = useState(true);
 
-
     const fetchData = (baseurl) => {
       fetch(baseurl)
               .then((response)=>response.json())
               .then((data)=>{
-                console.log(data);
                 setCategories(data);
                 setTotalResult(data.count);
                 setLoading(false);
@@ -29,12 +26,10 @@ const Categories = () => {
     useEffect(()=>{
       window.scrollTo(0,0);
         fetchData(baseurl);
-        console.log("test");
       },[baseurl])
 
   function changeBaseurl(baseurl){
       setBaseurl(baseurl);
-          console.log(baseurl);
     }
 
   return(
