@@ -4,41 +4,101 @@ import WifiCalling3TwoToneIcon from '@mui/icons-material/WifiCalling3TwoTone';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import SupportAgentTwoToneIcon from '@mui/icons-material/SupportAgentTwoTone';
 import HambergerIcon from '../../images/logos/HambergerIcon.svg';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {useState} from 'react';
+
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';          
+import sidebarImg from '../../images/other/sidebar.svg'
 
  const Sidebar = () => {
-// Set the width of the side navigation to 250px
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
+  const [open, setOpen] = useState(false);
+  
   return (
-    <div >
-         <div id="mySidenav" className="sidenav">
-            <NavLink to="#" className="closebtn" onClick={closeNav}>&times;</NavLink>
-            <div className="border m-2 rounded-3">
-            <p className="text-uppercase fw-bold text-center bg-rose text-danger p-2">Top Collections</p>
-              <NavLink activeclassname="active" to="/category/same day delivery/15" className="sidenav-items">Same Day Delivery Gifts</NavLink>
-              <NavLink activeclassname="active" to="/category/cake/11" className="sidenav-items">Birthday Gifts</NavLink>
-              <NavLink  activeclassname="active" to="/category/personalized/14" className="sidenav-items">Personalized Gifts</NavLink>
-            </div>
-            <p className=" ms-2 mt-4 mb-3 fw-600 text-secondary text-uppercase">Personal occasions</p>
-            <NavLink to="/category/plant/12" className="sidenav-items">Plants Gifts</NavLink>
-            <NavLink to="/category/anniversary/17" className="sidenav-items">Anniversary Gifts</NavLink>
-            <NavLink to="/category/wedding/16" className="sidenav-items">Wedding & Engagement</NavLink>
-            <NavLink to="/category/flowers/13" className="sidenav-items">Best Wishes</NavLink>
-            <p className=" ms-2 mt-4 mb-3 fw-600 text-secondary text-uppercase">assistance</p>
-            <div className="mb-3">
-              <NavLink to="/customer/profile"  className="sidenav-items"><PersonOutlineTwoToneIcon fontSize='small'/> Profile</NavLink>
-              <NavLink to="/customer/orders"  className="sidenav-items"><LocalMallTwoToneIcon fontSize='small'/> Order History</NavLink>
-              <NavLink to="#"><SupportAgentTwoToneIcon fontSize='small'/> Customer Service</NavLink>
-            </div>
+    <div>
+      <SwipeableDrawer 
+      open={open} anchor={"left"} 
+      onClose={() => setOpen(false)} 
+      onOpen={() => setOpen(true)}
+      >
+        <DialogTitle style={{width:'280px'}} className="d-flex justify-content-end px-0">
+                 <div
+                  style={{padding:'10px',backgroundColor:'#e2e8f0',borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px'}}
+                 >
+                   <ArrowBackIcon
+                  onClick={() => setOpen(false)} 
+                  className="cursor-pointer"
+                  />
+                 </div>
+            </DialogTitle>
+      <div className="px-3">
+      <List onClick={() => setOpen(false)} className="border p-0" >
+      <div className="text-uppercase fw-bold text-dark py-2 d-flex justify-content-around" style={{backgroundColor:'#e2e8f0'}}>
+        <p>
+          Top Collections
+        </p>
+        <img src={sidebarImg} className="img-fluid"/>
       </div>
-      {/* <!-- Use any element to open the sidenav --> */}
-    <img src={HambergerIcon} onClick={openNav} className="mt-2 cursor-pointer"/>
+        <ListItem  button component={Link} to={'/category/same day delivery/15'}>
+          <ListItemText primary={"Same Day Delivery Gifts"}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'/category/cake/11'}>
+          <ListItemText primary={"Birthday Gifts"}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'/category/personalized/14'}>
+          <ListItemText primary={"Personalized Gifts"}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'/category/rakhi/8'}>
+          <ListItemText primary={"Rakhi"}/>
+        </ListItem>
+      </List>
+      </div>
+      <div className="px-3">
+      <List onClick={() => setOpen(false)} className="">
+        <p className=" ms-2 my-2 fw-600 text-secondary text-uppercase">Personal occasions</p>
+        <ListItem  button component={Link} to={'/category/plant/12'}>
+          <ListItemText primary={"Plants Gifts"}/>
+        </ListItem>
+         <ListItem  button component={Link} to={'/category/anniversary/17'}>
+          <ListItemText primary={"Anniversary Gifts"}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'/category/wedding/16'}>
+          <ListItemText primary={"Wedding & Engagement"}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'/category/flowers/13'}>
+          <ListItemText primary={"Best Wishes"}/>
+        </ListItem>
+      </List>
+      </div>
+      <div className="px-3">
+        <List onClick={() => setOpen(false)} className="">
+          <p className=" ms-2 my-2 fw-600 text-secondary text-uppercase">assistance</p>
+          <ListItem  button component={Link} to={'/customer/profile'}>
+          <PersonOutlineTwoToneIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"Profile"}/>
+        </ListItem>
+         <ListItem  button component={Link} to={'/customer/orders'}>
+         <LocalMallTwoToneIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"Order History"}/>
+        </ListItem>
+         <ListItem  button component={Link} to={'/contact-us'}>
+         <SupportAgentTwoToneIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"Customer Service"}/>
+        </ListItem>
+        </List>
+      </div>
+      </SwipeableDrawer>
+    <img src={HambergerIcon} onClick={() => setOpen(true)} className="mt-2 cursor-pointer"/>
     </div>
   );
 }

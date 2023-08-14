@@ -86,7 +86,7 @@ const Home = () => {
             <div className="col-lg-10 col-md-10 col-sm-10 col-10">
               <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="main-stats-text">50+</h1>
+                    <h1 className="main-stats-text">5+</h1>
                     <p className="text-danger stats-text">Cities having same day delivery</p>              
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">

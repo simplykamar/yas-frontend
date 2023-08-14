@@ -128,16 +128,18 @@ import rating5 from '../../images/other/rating/5.png'
                                 } 
                                     </div>
                                                      
-                                  <hr/>             
+                                  <hr/>    
+                                           {/* for deskop view */}
                                     <div className="d-none d-lg-block d-md-block">
                                       <div className="d-flex justify-content-between">
                                         <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
                                         <div className="">
-                                          <button className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</button>
-                                          <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
+                                          <Link to='/contact-us' className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</Link>
+                                          <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-danger"><LoopOutlinedIcon/>REORDER</Link>
                                         </div>
                                     </div>  
                                   </div>  
+                                  {/* for mobile view */}
                                   <div className="d-lg-none d-md-none">
                                     <div className="d-flex justify-content-between">
                                         <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
@@ -153,10 +155,9 @@ import rating5 from '../../images/other/rating/5.png'
                                         :""
                                         }
                                   </div>
-                                      
                                       <div className="d-flex justify-content-between">
-                                          <button className="btn text-danger border-pink px-4"><SupportAgentOutlinedIcon/>HELP</button>
-                                          <button className="btn btn-danger"><LoopOutlinedIcon/>REORDER</button>
+                                          <Link to='/contact-us' className="btn text-danger border-pink px-4"><SupportAgentOutlinedIcon/>HELP</Link>
+                                          <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-danger"><LoopOutlinedIcon/>REORDER</Link>
                                       </div>
                                   </div>
                                 </div>
