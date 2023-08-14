@@ -47,7 +47,6 @@ import Footer from './components/Footer/Footer';
 // import seller from './components/seller/Register';
 
 import Protected from './Protected';
-import VerifyToken from './VerifyToken';
 import IsLogin from './IsLogin';
 import { Routes, Route} from 'react-router-dom';
 
@@ -58,10 +57,10 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/categories" element={<VerifyToken Component={Categories}/>}/>
-        <Route path="/category/:category_slug/:category_id" element={<VerifyToken Component={CategoryProducts}/>}/>
-        <Route path="/products" element={<VerifyToken Component={AllProducts}/>}/>
-        <Route path="/product/:product_slug/:product_id" element={<VerifyToken Component={ProductDetail}/>}/>
+        <Route path="/categories" element={<Categories/>}/>
+        <Route path="/category/:category_slug/:category_id" element={<CategoryProducts/>}/>
+        <Route path="/products" element={<AllProducts/>}/>
+        <Route path="/product/:product_slug/:product_id" element={<ProductDetail/>}/>
         <Route path="/customer/register" element={<IsLogin Component={CustomerRegister}/>}/>
         <Route path="/customer/register/success" element={<IsLogin Component={CustomerRegisterSuccess}/>}/>
         <Route path="/customer/login" element={<IsLogin Component={CustomerLogin}/>}/>
@@ -75,9 +74,9 @@ function App() {
         <Route path="/customer/addressbook" element={ <Protected Component={Address} /> } />
         <Route path="/customer/orders" element={<Protected Component={Orders} /> }/>
         <Route path="/customer/profile" element={<Protected Component={Profile}/>}/>
-        {/*  */}
+
         <Route path="/customer/wishlist" element={<Protected Component={CustomerWishlist}/>}/>
-        <Route path="/products/:tag/" element={<VerifyToken Component={TagProducts}/>}/>
+        <Route path="/products/:tag/" element={<TagProducts/>}/>
         <Route path="/confirm-order" element={<Protected Component={ConfirmOrder}/>}/>
         <Route path="/activate/:uid/:token" element={<CustomerAccountActivation/>}/>
 
