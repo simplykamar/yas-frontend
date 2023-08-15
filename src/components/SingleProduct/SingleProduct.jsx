@@ -7,7 +7,8 @@ import {useSelector} from 'react-redux';
 import axios from 'axios';
 import StarIcon from '@mui/icons-material/Star';
 import toast, { Toaster } from 'react-hot-toast';
-
+import ProgressiveImage from "react-progressive-graceful-image";
+import yas from '../../images/other/yas.png'
 const SingleProduct = (props) => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const user = useSelector((state)=>state.auth);
@@ -91,7 +92,16 @@ const SingleProduct = (props) => {
                         }
                         </div>
                       <Link to={`/product/${props.title}/${props.id}`}>
-                      <img src={props.image} className="card-img-top product-card-img"/>
+                      <ProgressiveImage src={props.image} placeholder={yas}>
+                          {(src, loading) => (
+                            <img
+                              className={`card-img-top product-card-img${loading ? " loading" : " loaded"}`}
+                              src={src}
+                              alt={props.title}
+                            />
+                            )}
+                          </ProgressiveImage>
+                      {/* <img src={props.image} className="card-img-top product-card-img"/> */}
                         </Link>
                       <div className="card-body p-2">
                         <Link to={`/product/${props.title}/${props.id}`} className="text-decoration-none">

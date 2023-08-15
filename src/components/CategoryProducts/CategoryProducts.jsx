@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TuneIcon from '@mui/icons-material/Tune';
+
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
