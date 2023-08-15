@@ -151,7 +151,7 @@ const ProductDetail = () => {
 								 <div className="">
 								 {
 								 		cartData.find((item)=>item.id==product_id)?
-								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600"> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
+								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600"> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to bag
 								</Link>
 								:
 								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
@@ -164,7 +164,7 @@ const ProductDetail = () => {
 								 }));
 								 notifySuccess('Item added to cart');
 								}
-								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To Cart
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To bag
 								</button>
 								}
 								</div>
@@ -210,10 +210,10 @@ const ProductDetail = () => {
 							   <div className="">
 							 {
 								 		cartData.find((item)=>item.id==product_id)?
-								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600"> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to Cart
+								 <Link to="/checkout" className="btn btn-pink text-uppercase fw-600"> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Go to bag
 								</Link>
 								:
-								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{dispatch(addToCart({
+								<button className="btn btn-pink text-uppercase fw-600" onClick={()=>{vibrate();dispatch(addToCart({
 								 		id:product.id,
 										title:product.title,
 										price:product.price,
@@ -223,7 +223,7 @@ const ProductDetail = () => {
 								 }));
 								 notifySuccess('Item added to cart');
 								}
-								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To Cart
+								}> <ShoppingBagOutlinedIcon className="mb-1 me-1"/>Add To bag
 								</button>
 								}
 							</div>

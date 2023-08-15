@@ -17,6 +17,13 @@ const SingleProduct = (props) => {
   const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 
   const navigate = useNavigate()
+  
+  function vibrate(){
+    if(!("vibrate" in navigator)){
+       return;
+  }
+  navigator.vibrate(100);
+}
    function removeFromWishlist(id){
           if(user.isAuthenticate){
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
@@ -77,9 +84,9 @@ const SingleProduct = (props) => {
                         {
                           userWishlist.is_wishlist
                           ?
-                            <FavoriteIcon onClick={()=>{removeFromWishlist(userWishlist.id)}} fontSize="large" className="cursor-pointer text-danger"/>
+                            <FavoriteIcon onClick={()=>{vibrate();removeFromWishlist(userWishlist.id)}} fontSize="large" className="cursor-pointer text-danger"/>
                           :
-                        <FavoriteBorderOutlinedIcon onClick={()=>{addToWishlist(props.id)}} fontSize="large" className="cursor-pointer" style={{color:"#b6b8b7"}}/>
+                        <FavoriteBorderOutlinedIcon onClick={()=>{vibrate();addToWishlist(props.id)}} fontSize="large" className="cursor-pointer" style={{color:"#b6b8b7"}}/>
                        
                         }
                         </div>

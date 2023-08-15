@@ -22,7 +22,7 @@ const Checkout = (props) => {
        <div className="my-4">
        { cartData.length?
       <>
-      <h2 className="text-dark text-center ">Shopping Cart</h2>
+      <h2 className="text-dark text-center ">Shopping Bag</h2>
                 {
                   cartData.map((item,i)=>{return(
                  <div className="row mt-4 border p-2 pb-3 custom-shadow" key={item.id}>
