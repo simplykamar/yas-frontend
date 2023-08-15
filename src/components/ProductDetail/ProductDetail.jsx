@@ -143,7 +143,16 @@ const ProductDetail = () => {
 					{	
 						product.product_imgs?.map((img,index)=>{return(
 						<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={img.id}>
-							<img src={img.image} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
+							<ProgressiveImage src={img.image} placeholder={yas}>
+               {(src, loading) => (
+                 <img
+                    className={`img-fluid img-thumbnail mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
+                		src={src}
+                		 onClick={()=>{setSelectedImage(index)}}
+                 />
+                 )}
+               </ProgressiveImage>
+							{/* <img src={img.image} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/> */}
 						</div>
 						
 						)})
