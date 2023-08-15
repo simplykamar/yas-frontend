@@ -78,8 +78,8 @@ const Home = () => {
         <UniqueGift/>
         <CelebrateGift/>
          <Link to="/category/sale/24"><img src={footersale} className="img-fluid footersale-img"/></Link>
-        <section className="mt-5">
-          <div className="row">
+        <section className="mt-5 ">
+          <div className="row d-none">
             <div className="col-lg-2 col-md-2 col-sm-2 col-2">
             <h1 className="stats">Stats</h1>
           </div>
