@@ -23,7 +23,7 @@ import sidebarImg from '../../images/other/sidebar.svg'
 
  const Sidebar = () => {
   const [open, setOpen] = useState(false);
-  
+ 
   return (
     <div>
       <SwipeableDrawer 
@@ -33,12 +33,10 @@ import sidebarImg from '../../images/other/sidebar.svg'
       >
         <DialogTitle style={{width:'280px'}} className="d-flex justify-content-end px-0">
                  <div
-                  style={{padding:'10px',backgroundColor:'#e2e8f0',borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px'}}
+                  style={{cursor:'pointer',padding:'10px',backgroundColor:'#e2e8f0',borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px'}}
+                  onClick={() => setOpen(false)}
                  >
-                   <ArrowBackIcon
-                  onClick={() => setOpen(false)} 
-                  className="cursor-pointer"
-                  />
+                   <ArrowBackIcon/>
                  </div>
             </DialogTitle>
       <div className="px-3">

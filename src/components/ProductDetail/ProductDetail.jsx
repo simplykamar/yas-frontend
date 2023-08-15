@@ -28,7 +28,13 @@ const ProductDetail = () => {
 
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
-
+ 
+ function vibrate(){
+    if(!("vibrate" in navigator)){
+       return;
+  }
+  navigator.vibrate(100);
+}
   const fetchData = async (baseurl) => {
       await fetch(baseurl)
               .then((response)=>response.json())
@@ -187,14 +193,14 @@ const ProductDetail = () => {
                 userWishlist.is_wishlist
                 ?
                 <div>
-	                <button className="btn btn-white me-5 py-2 border" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+	                <button className="btn btn-white me-5 py-2 border" onClick={()=>{vibrate();removeFromWishlist(userWishlist.id)}}>
 	               		<FavoriteIcon className="text-danger me-1"/>
 									Wishlist
 								 </button>
 							 </div>
 							 :
                 <div>
-	                <button className="btn btn-white me-5 py-2 border" onClick={()=>{addToWishlist(product_id)}}>
+	                <button className="btn btn-white me-5 py-2 border" onClick={()=>{vibrate();addToWishlist(product_id)}}>
 									<FavoriteBorderOutlinedIcon className="me-1"/>
 									Wishlist
 								 </button>
