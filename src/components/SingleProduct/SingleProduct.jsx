@@ -9,6 +9,7 @@ import StarIcon from '@mui/icons-material/Star';
 import toast, { Toaster } from 'react-hot-toast';
 import ProgressiveImage from "react-progressive-graceful-image";
 import yas from '../../images/other/yas.png'
+
 const SingleProduct = (props) => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const user = useSelector((state)=>state.auth);

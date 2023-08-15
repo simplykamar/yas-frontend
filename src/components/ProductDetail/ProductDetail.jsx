@@ -11,6 +11,8 @@ import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import ProgressiveImage from "react-progressive-graceful-image";
+import yas from '../../images/other/yas.png'
 
 const ProductDetail = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
@@ -120,7 +122,15 @@ const ProductDetail = () => {
 						<div className="col-lg-2 col-md-2 d-none d-lg-block d-md-block">
 							{ 
 						product.product_imgs?.map((img,index)=>{return(
-						<img src={img.image} key={img.id} className="img-fluid img-thumbnail mt-3 cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
+						 <ProgressiveImage src={img.image} placeholder={yas}>
+               {(src, loading) => (
+                 <img
+                    className={`img-fluid img-thumbnail mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
+                		src={src}
+                 />
+                 )}
+               </ProgressiveImage>
+						// <img src={img.image} key={img.id} className="img-fluid img-thumbnail mt-3 cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
 						)})
 					}
 						</div>
