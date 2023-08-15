@@ -141,7 +141,8 @@ const ProductDetail = () => {
 								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
-					<div className="row mt-2 d-lg-none d-md-none">
+					{/* for mobile view */}
+					<div className="row mt-1 d-lg-none d-md-none">
 					{	
 						product.product_imgs?.map((img,index)=>{return(
 						<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={img.id}>
