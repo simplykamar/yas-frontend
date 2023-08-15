@@ -122,13 +122,12 @@ const ProductDetail = () => {
 						<div className="col-lg-2 col-md-2 d-none d-lg-block d-md-block">
 							{ 
 						product.product_imgs?.map((img,index)=>{return(
-						 <ProgressiveImage src={img.image} placeholder={yas}>
+						 <ProgressiveImage src={img.image} placeholder={yas} key={img.id}>
                {(src, loading) => (
                  <img
                     className={`img-fluid rounded mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
                 		src={src}
                 		alt="product image"
-                		key={img.id}
                 		onClick={()=>{setSelectedImage(index)}}
                  />
                  )}
@@ -149,7 +148,7 @@ const ProductDetail = () => {
 							<ProgressiveImage src={img.image} placeholder={yas}>
                {(src, loading) => (
                  <img
-                    className={`img-fluid rounded cursor-pointer${loading ? " loading" : " loaded"}`}
+                    className={`img-fluid cursor-pointer${loading ? " loading" : " loaded"}`}
                 		src={src}
                 		alt="product image"
                 		onClick={()=>{setSelectedImage(index)}}
@@ -158,7 +157,6 @@ const ProductDetail = () => {
                </ProgressiveImage>
 							{/* <img src={img.image} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/> */}
 						</div>
-						
 						)})
 					}
 					</div>
