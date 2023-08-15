@@ -125,8 +125,11 @@ const ProductDetail = () => {
 						 <ProgressiveImage src={img.image} placeholder={yas}>
                {(src, loading) => (
                  <img
-                    className={`img-fluid img-thumbnail mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
+                    className={`img-fluid rounded mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
                 		src={src}
+                		alt="product image"
+                		key={img.id}
+                		onClick={()=>{setSelectedImage(index)}}
                  />
                  )}
                </ProgressiveImage>
@@ -146,9 +149,10 @@ const ProductDetail = () => {
 							<ProgressiveImage src={img.image} placeholder={yas}>
                {(src, loading) => (
                  <img
-                    className={`img-fluid img-thumbnail mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
+                    className={`img-fluid rounded cursor-pointer${loading ? " loading" : " loaded"}`}
                 		src={src}
-                		 onClick={()=>{setSelectedImage(index)}}
+                		alt="product image"
+                		onClick={()=>{setSelectedImage(index)}}
                  />
                  )}
                </ProgressiveImage>
