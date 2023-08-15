@@ -40,7 +40,7 @@ const Contact =()=>{
         formData.append('customer',user.user.id)
         await axios.post(BASE_URL+`/contact-us/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
         .then(response=>{
-            notifySuccess(`Ticket Raised! Your ticket ID: ${response.data.ticketId}`);
+            notifySuccess("Ticket Raised! Check your mail");
             setContactUSFormData({
                 'name':'',
                 'email':'',

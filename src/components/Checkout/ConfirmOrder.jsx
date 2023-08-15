@@ -18,6 +18,13 @@ const ConfirmOrder = (props) => {
   const navigate = useNavigate();
   const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
   const [isFetching,setIsFetching] = useState(false);
+   
+   function vibrate(){
+    if(!("vibrate" in navigator)){
+       return;
+  }
+  navigator.vibrate(100);
+}
 
  useEffect(() => {
       window.scrollTo(0,0);
@@ -183,7 +190,7 @@ const ConfirmOrder = (props) => {
                        Loading..
                     </button>
                 :
-        <button className="btn btn-danger px-5 py-2" onClick={showRazorpay}> MAKE PAYMENT</button>
+        <button className="btn btn-danger px-5 py-2" onClick={()=>{vibrate();showRazorpay()}}> MAKE PAYMENT</button>
               }
 
         </div>

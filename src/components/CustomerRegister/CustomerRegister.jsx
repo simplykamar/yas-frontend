@@ -48,11 +48,9 @@ const CustomerRegister = () => {
     formData.append('re_password',registerFormData.re_password)
     formData.append('email',registerFormData.email)
     formData.append('account_type',1)
-    console.log(formData)
 
     axios.post(baseUrl+'auth/users/',formData)
       .then(res=>{
-        console.log(res);
         if(res.status===201){
         navigate("/customer/register/success", {replace:true,state:true});
         }
@@ -68,11 +66,9 @@ const CustomerRegister = () => {
         else if(error.response.data.email){
           setInputError({'type':"email",'msg':error.response.data.email})
         }
-        console.log(error)
         setIsFetching(false);
       })
   }
-  console.log(registerFormData)
   const buttonEnable = (registerFormData.name!='') && (registerFormData.password!='') &&
    (registerFormData.re_password!='')  && (registerFormData.email!='')
 	return(
@@ -133,9 +129,9 @@ const CustomerRegister = () => {
                 { inputError.type=='password' &&
                   <div className="mt-3">
                   <ul className="text-danger">
-                     <li><small>{inputError.msg[0]}</small></li>
-                     <li><small>{inputError.msg[1]}</small></li>
-                     <li><small>{inputError.msg[2]}</small></li>
+                     {inputError.msg[0]&&<li><small>{inputError.msg[0]}</small></li>}
+                     {inputError.msg[1]&&<li><small>{inputError.msg[1]}</small></li>}
+                     {inputError.msg[2]&&<li><small>{inputError.msg[2]}</small></li>}
                   </ul>
                   </div>
                 }

@@ -78,7 +78,7 @@ function App() {
         <Route path="/customer/wishlist" element={<Protected Component={CustomerWishlist}/>}/>
         <Route path="/products/:tag/" element={<TagProducts/>}/>
         <Route path="/confirm-order" element={<Protected Component={ConfirmOrder}/>}/>
-        <Route path="/activate/:uid/:token" element={<CustomerAccountActivation/>}/>
+        <Route path="/activate/:uid/:token" element={<IsLogin Component={CustomerAccountActivation}/>}/>
 
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/order-success" element={<Protected Component={Thank}/>}/>

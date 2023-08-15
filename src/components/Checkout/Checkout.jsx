@@ -13,7 +13,14 @@ const Checkout = (props) => {
   const sum=0;
   const totalProducts = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
   const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
-   
+  
+   function vibrate(){
+    if(!("vibrate" in navigator)){
+       return;
+  }
+  navigator.vibrate(100);
+}
+
     useEffect(()=>{
       window.scrollTo(0,0);
     },[]);
@@ -34,19 +41,18 @@ const Checkout = (props) => {
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <p className="fw-bold ">Standard- FREE</p>
-                      <p>On 10-Aug-2023 between 17:00 hrs - 21:00 hrs
-                      Pincode - 110002 
+                      <p>On 25-Aug-2023 between 10:00 AM - 05:00 PM
                       </p>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                         <div className="float-end">
                           <p className=" fw-600 ms-2 text-danger">₹{item.price*item.quantity}</p>
                           <span  className=" border p-1 px-2">
-                            <span className="cursor-pointer" onClick={()=>{dispatch(removeFromCart(item))}}><RemoveIcon/></span>
+                            <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(removeFromCart(item))}}><RemoveIcon/></span>
                             <span className="mx-3">{item.quantity}</span>
-                            <span className="cursor-pointer" onClick={()=>{dispatch(addToCart(item))}}><AddIcon/></span>
+                            <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(addToCart(item))}}><AddIcon/></span>
                           </span>
-                          <DeleteOutlineIcon className="ms-5 cursor-pointer" onClick={()=>{dispatch(deleteFromCart(item))}} />
+                          <DeleteOutlineIcon className="ms-5 cursor-pointer" onClick={()=>{vibrate();dispatch(deleteFromCart(item))}} />
                       </div>
                     </div>
                     </div>

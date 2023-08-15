@@ -36,7 +36,7 @@ const Footer = () => {
               <p className="fw-bold">Welcome to yas! The No.1 Online Gift Shop</p>
               <p className="text-justify text-small">
               Create Blissful Memories with yas Unique Gift Items - Online Gift Delivery in India
-              Online Gifts Delivery - Buy/Send gifts to India with FREE shipping from yas #1 online gift shop offers rakhis & rakhi gifts, flowers, cakes, personalized gifts delivery in India. Get same day and midnight delivery in over 350+ cities in India. Best Gift Ideas for various occasions and festivals. Get unique gift ideas for family & friends. Easy & fast gift delivery anywhere in India.
+              Online Gifts Delivery - Buy/Send gifts to India with FREE shipping from yas #1 online gift shop offers rakhis & rakhi gifts, flowers, cakes, personalized gifts delivery in India. Get same day and midnight delivery in over 5+ cities in India. Best Gift Ideas for various occasions and festivals. Get unique gift ideas for family & friends. Easy & fast gift delivery anywhere in India.
                 </p>
               </div>
               <h1 className="text-center text-pink">yas</h1>
