@@ -28,7 +28,6 @@ const Profile = () => {
             axios.patch(BASE_URL+`/customer/${user.user.id}`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
               notifySuccess("Mobile no. successfully added !")
-              console.log(response.data);
               dispatch(updateUser({user:response.data}))
               setUser({...user,user:response.data})
               setErrorMsg({msg:'',type:'',status:''})
