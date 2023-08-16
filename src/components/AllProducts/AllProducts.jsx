@@ -19,6 +19,7 @@ const AllProducts = () => {
               });
     }
     useEffect(()=>{
+      document.title="all products";
       window.scrollTo(0,0);
         fetchData(baseurl)
       },[baseurl])

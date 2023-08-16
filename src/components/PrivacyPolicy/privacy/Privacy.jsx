@@ -1,4 +1,10 @@
+import {useEffect} from 'react';
+
+
 function Privacy(){
+   useEffect(()=>{
+      document.title="Privacy & Policy";
+  },[])
     return(
         <div className="container">
             <h1 className="text-center my-4 head"> Privacy & Policy </h1>

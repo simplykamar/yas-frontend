@@ -62,6 +62,7 @@ const Contact =()=>{
               [event.target.name]:event.target.value});
     }
      useEffect(()=>{
+      document.title="Contact US | yas";
       window.scrollTo(0,0);
       },[]);
     return(

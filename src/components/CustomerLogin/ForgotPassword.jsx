@@ -69,6 +69,10 @@ const ForgotPassword = () => {
         }
       })
   }
+  useEffect(()=>{
+      document.title="Login in into yas | Log in or Sign up";
+
+  },[])
     const buttonEnable =(resetPasswordFormData.new_password!='') && (resetPasswordFormData.re_new_password!='') 
   return(
        <div className="container-fluid bg-light">

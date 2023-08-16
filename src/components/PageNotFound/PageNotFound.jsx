@@ -1,7 +1,10 @@
 import notFound from '../../images/other/404.svg';
+import {useEffect} from 'react';
 
 const PageNotFound = () => {
-
+  useEffect(()=>{
+      document.title="404 | yas";
+  },[])
 	return(
 			<div className="container-fluid text-center">
             	<div className="py-4 ">

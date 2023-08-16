@@ -6,6 +6,7 @@ const Thank = () => {
 	const isOrdered = useLocation().state;
 
 	useEffect(()=>{
+      document.title="Order Successfully placed";
 		if(!isOrdered){
 			navigate("/page-not-found",{replace:true});
 		}

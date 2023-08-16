@@ -38,6 +38,7 @@ const CustomerAccountActivation = () => {
         })
       }
 useEffect(()=>{
+      document.title="Activate Your Account";
       window.scrollTo(0,0);
   },[])
 	return(

@@ -61,9 +61,11 @@ function fetchProductsData(url){
 }
   function fetchSearchData(q){
     if(q.length){
+      document.title=q;
       fetchCategoriesData(BASE_URL+`/categories/?q=${q}`);
       fetchProductsData(BASE_URL+`/products/?q=${q}`);
     }else{
+      document.title="yas: Online Gifts Shopping";
       setSearchProducts([]);
       setCategories([]);
         setIsSearchResult(false);

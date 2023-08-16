@@ -30,6 +30,7 @@ const CheckoutStep2 = () => {
   	const navigate = useNavigate();
 
  	useEffect(()=>{
+      document.title="Checkout | Order Summary";
       window.scrollTo(0,0);
  		if(!order.address){
  			navigate('/checkout-step-1', {replace:true})

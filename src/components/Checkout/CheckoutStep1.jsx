@@ -43,6 +43,7 @@ const CheckoutStep1 = () => {
             })
     }
 	useEffect(()=>{
+      document.title="Checkout | Select Address";
       window.scrollTo(0,0);
 		fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 	},[])

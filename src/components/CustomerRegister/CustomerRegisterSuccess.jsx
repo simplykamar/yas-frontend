@@ -10,6 +10,7 @@ const CustomerRegisterSuccess = () => {
 	const isRegistered = useLocation().state;
 
 	useEffect(()=>{
+      document.title="Account Successfully Created";
       window.scrollTo(0,0);
 		if(!isRegistered){
 			navigate("/page-not-found",{replace:true});

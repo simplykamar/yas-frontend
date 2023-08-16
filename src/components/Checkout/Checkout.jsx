@@ -22,6 +22,7 @@ const Checkout = (props) => {
 }
 
     useEffect(()=>{
+      document.title="Shopping Bag";
       window.scrollTo(0,0);
     },[]);
     return (

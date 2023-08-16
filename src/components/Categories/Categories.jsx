@@ -24,6 +24,7 @@ const Categories = () => {
               });
     }
     useEffect(()=>{
+      document.title="Best Gifts Collections";
       window.scrollTo(0,0);
         fetchData(baseurl);
       },[baseurl])
@@ -35,7 +36,8 @@ const Categories = () => {
   return(
         <div className="container">
             <div className="my-4">
-            <h4>All Categories</h4>
+            {/* <h4>All Categories</h4> */}
+            <h4 className="">Sale - Upto 70% Off</h4>
             <div className="row g-4 mt-3">
               { !loading?
                 categories.map((cat)=>{

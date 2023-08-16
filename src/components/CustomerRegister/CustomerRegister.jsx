@@ -69,6 +69,10 @@ const CustomerRegister = () => {
         setIsFetching(false);
       })
   }
+    useEffect(()=>{
+      document.title="Login in into yas | Log in or Sign up";
+
+  },[])
   const buttonEnable = (registerFormData.name!='') && (registerFormData.password!='') &&
    (registerFormData.re_password!='')  && (registerFormData.email!='')
 	return(

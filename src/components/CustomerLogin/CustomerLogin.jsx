@@ -71,6 +71,10 @@ const CustomerLogin = () => {
         setIsFetching(false);
       })
   }
+  useEffect(()=>{
+      document.title="Login in into yas | Log in or Sign up";
+
+  },[])
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
         <div className="container-fluid">

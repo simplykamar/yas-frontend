@@ -32,7 +32,9 @@ const GetResetPaswordLink = () => {
 				setIsFetching(false);
 			})
 	}
-
+ useEffect(()=>{
+      document.title="Login in into yas | Log in or Sign up";
+  },[])
 	return (
 		<div className="container-fluid">
 			<div>

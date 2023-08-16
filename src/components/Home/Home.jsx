@@ -13,50 +13,53 @@ import footersale from '../../images/other/footersale.webp'
 import Slider from '../Slider/Slider';
 import UniqueGift from '../Gift/UniqueGift';
 import CelebrateGift from '../Gift/CelebrateGift';
+import {useEffect} from 'react';
 const Home = () => {
   
+   useEffect(()=>{
+      document.title="yas: Online Gifts Shopping";
+  },[])
 	return(
       <div className="">
       <div className="container">
         <header className="mt-4">
           <div className="row g-0 header-menu-border py-1">
-            <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
                 <div className="header-menu ">
                   <img src={rakhi} className="img-fluid header-menu-img"/>
                   <p className="text-capitalize header-menu-text">rakhi</p>
                 </div>
               </Link>
-                <div className="d-block d-lg-none header-menu-border-bottom"></div>
+                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
             </div>
-              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/same day delivery/15" className="text-decoration-none text-dark">
                 <div className="header-menu ">
                   <img src={samedaydelivery} className="img-fluid header-menu-img"/>
                   <p className="text-capitalize header-menu-text">same day delivery</p>
                 </div>
               </Link>
-                <div className="d-block d-lg-none header-menu-border-bottom"></div>
+                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
             </div>
-              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/cake/11" className="text-decoration-none text-dark">
                 <div className="header-menu ">
                     <img src={cake} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">cakes</p>
                 </div>
               </Link>
-                <div className="d-block d-lg-none header-menu-border-bottom"></div>
+                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
             </div>
-              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/flowers/13" className="text-decoration-none text-dark">
                 <div className="header-menu ">
                     <img src={flower} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">flower</p>
                 </div>
               </Link>
-                <div className="d-none d-lg-none d-md-block header-menu-border-bottom"></div>
             </div>
-              <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/personalized/14" className="text-decoration-none text-dark">
                 <div className="header-menu ">
                     <img src={personalize} className="img-fluid header-menu-img"/>
@@ -64,7 +67,7 @@ const Home = () => {
                 </div>
               </Link>
             </div>
-            <div className="col-lg-2 col-md-3 col-sm-4 col-4">
+            <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/plant/12" className="text-decoration-none text-dark">
                 <div className="header-menu ">
                     <img src={plant} className="img-fluid header-menu-img"/>
@@ -77,7 +80,7 @@ const Home = () => {
         <Slider/>
         <UniqueGift/>
         <CelebrateGift/>
-         <Link to="/category/sale/24"><img src={footersale} className="img-fluid footersale-img"/></Link>
+         <Link to="/categories"><img src={footersale} className="img-fluid footersale-img"/></Link>
         <section className="mt-5 ">
           <div className="row d-none">
             <div className="col-lg-2 col-md-2 col-sm-2 col-2">

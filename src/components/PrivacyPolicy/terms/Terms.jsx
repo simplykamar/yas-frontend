@@ -1,5 +1,10 @@
 import "./Terms.css"
+import {useEffect} from 'react';
+
 function Terms(){
+   useEffect(()=>{
+      document.title="Terms & Conditions";
+  },[])
     return(
         <div className="container">
                 <h1 className="text-center my-4 head"> Terms & Conditions </h1>

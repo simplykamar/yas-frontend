@@ -2,6 +2,12 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import {useState,useEffect} from 'react';
 import {Link,useParams} from 'react-router-dom';
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import TuneIcon from '@mui/icons-material/Tune';
 
 const TagProducts = () => {
   const {tag} = useParams();
@@ -9,6 +15,8 @@ const TagProducts = () => {
   const [products,setProducts] = useState([])
   const [loading, setLoading] = useState(true);
   const [totalResult,setTotalResult] = useState(0);
+  const [filterBy, setFilterBy] = useState("");
+
     const fetchData = (url) => {
             fetch(url)
               .then((response)=>response.json())
@@ -19,10 +27,13 @@ const TagProducts = () => {
               });
     }
     useEffect(()=>{
+      document.title=tag;
         window.scrollTo(0,0);
         fetchData(BASE_URL+`/products/?q=${tag}`);
       },[]);
-       const fetchDataByPriceFilter = (e) => {
+     
+        const fetchFilterData = (e) => {
+          setFilterBy(e.target.value);
           if(e.target.value!==""){
               fetchData(BASE_URL+`/products/?q=${tag}&sort=${e.target.value}`);
           }
@@ -36,15 +47,27 @@ const TagProducts = () => {
         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="d-flex justify-content-between">
                 <div className="">
+                <small className="text-secondary d-block">Showing results for:</small>
                   <h4 className="text-capitalize d-inline">{tag}</h4><small className="text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>
                </div>
-              <div className="d-flex">
-                <FilterListOutlinedIcon fontSize="large" className="fw-600 text-danger"/>
-                  <select className="form-select cursor-pointer" onChange={fetchDataByPriceFilter} style={{maxWidth:'200px'}}>
-                      <option value="">Sort By</option>
-                      <option value="price">Price Low to High</option>
-                      <option value="-price">Price High to Low</option>
-                    </select>
+             <div className="d-flex">
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl  fullWidth id="price-filter-focus">
+                          <InputLabel id="price-filter" color="error" >
+                           <TuneIcon/>Sort By</InputLabel>
+                          <Select
+                            labelId="price-filter"
+                            id="price-filter-select"
+                            value={filterBy}
+                            label="Sort By......"
+                            onChange={fetchFilterData}
+                          >
+                            <MenuItem value="-id">Latest First</MenuItem>
+                            <MenuItem value="price">Price Low to High</MenuItem>
+                            <MenuItem value="-price">Price High to Low</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Box>
                </div>
          </div>
            <div className="row g-3 mt-3">
@@ -57,9 +80,7 @@ const TagProducts = () => {
                   )
               })
               }
-                
               </div>
-            
           </div> 
           </div> 
           :

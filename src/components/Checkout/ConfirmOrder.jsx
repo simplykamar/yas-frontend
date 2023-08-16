@@ -27,6 +27,7 @@ const ConfirmOrder = (props) => {
 }
 
  useEffect(() => {
+      document.title="Checkout | Proceed to payment";
       window.scrollTo(0,0);
     window.process = {
       ...window.process,

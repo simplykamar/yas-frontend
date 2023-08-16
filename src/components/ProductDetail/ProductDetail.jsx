@@ -17,6 +17,7 @@ import yas from '../../images/other/yas.png'
 const ProductDetail = () => {
   const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
   const {product_id} = useParams();
+  const {product_slug} = useParams();
   const [product,setProduct] = useState([])
 	const [productTags,setProductTags] = useState([])  
 	const [ quantity, setQuantity ] = useState(1);
@@ -98,6 +99,7 @@ const ProductDetail = () => {
           }
    }
     useEffect(()=>{
+      document.title=product_slug;
     	window.scrollTo(0,0);
     	toast.remove();
         fetchData(BASE_URL+'/product/'+product_id);

@@ -28,6 +28,7 @@ const CategoryProducts = () => {
               });
     }
     useEffect(()=>{
+      document.title=category_slug;
       window.scrollTo(0,0);
         fetchData(BASE_URL+`/products/?q=${category_slug}`);
       },[category_slug,]);
