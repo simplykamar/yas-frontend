@@ -31,7 +31,7 @@ const CustomerRegisterSuccess = () => {
 					<h4 className="success-msg">Registration Successful!</h4>
 					<div><small>Your registration process is complete.</small></div>
 					<div><small>Account activation link send to your email</small></div>
-					<div><small className="text-danger">Account Not activate .</small></div>
+					<div><small className="text-danger">Account Not activate!</small></div>
 				</div>
 			</div>
 		</div>

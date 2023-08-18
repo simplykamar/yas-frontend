@@ -113,7 +113,7 @@ const ConfirmOrder = (props) => {
       currency: "INR",
       name: "yas online gifting",
       description: "please make a payment",
-      image: "https://raw.githubusercontent.com/simplykamar/simplykamar.github.io/main/img/logo-removebg-preview.png", // add image url
+      image: "https://images2.imgbox.com/3e/24/Vt07a54A_o.png", // add image url
       order_id: data.data.payment.id,
       handler: function (response) {
         // we will handle success by calling handlePaymentSuccess method and
