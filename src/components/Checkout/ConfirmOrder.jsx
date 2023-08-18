@@ -191,7 +191,7 @@ const ConfirmOrder = (props) => {
                        Loading..
                     </button>
                 :
-        <button className="btn btn-danger px-5 py-2" onClick={()=>{vibrate();showRazorpay()}}> MAKE PAYMENT</button>
+        <button className="btn btn-danger px-5 py-2" onClick={()=>{vibrate();showRazorpay()}}>MAKE PAYMENT</button>
               }
 
         </div>

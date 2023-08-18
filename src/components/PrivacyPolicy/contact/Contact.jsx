@@ -47,13 +47,18 @@ const Contact =()=>{
                 'mobile':'',
                 'query':'',
                 'msg':'',
-                })
+                });
+          setIsFetching(false);
         })
         .catch(err=>{
+            if(err.response.data.msg){
+                notifyError(err.response.data.msg)
+            }
+            else{
             notifyError('Error try again!')
+            }
               setIsFetching(false);
         })
-          setIsFetching(false);
     };
 
     function inputHandler(event)

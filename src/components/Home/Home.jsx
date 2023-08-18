@@ -44,7 +44,11 @@ const Home = () => {
             </div>
               <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/cake/11" className="text-decoration-none text-dark">
-                <div className="header-menu ">
+                <div className="d-lg-none d-md-none header-menu border-0">
+                    <img src={cake} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">cakes</p>
+                </div>
+                <div className="d-none d-lg-block d-md-block header-menu">
                     <img src={cake} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">cakes</p>
                 </div>
@@ -69,7 +73,7 @@ const Home = () => {
             </div>
             <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/plant/12" className="text-decoration-none text-dark">
-                <div className="header-menu ">
+                <div className="header-menu " style={{border:0}}>
                     <img src={plant} className="img-fluid header-menu-img"/>
                     <p className="text-capitalize header-menu-text">plant</p>
                 </div>
