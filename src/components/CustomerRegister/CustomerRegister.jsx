@@ -57,6 +57,7 @@ const CustomerRegister = () => {
         setIsFetching(false);
       })
       .catch(error=>{
+        console.log(error)
         if(error.response.data.password){
           setInputError({'type':"password",'msg':error.response.data.password})
         }
