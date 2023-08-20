@@ -107,7 +107,7 @@ const Contact =()=>{
                         <h4>Social:</h4>
                         <div className='icon'>
                         <a href="#"><FacebookRoundedIcon className='m-icon'/></a>
-                        <a href="#"><InstagramIcon  className='m-icon'/></a>
+                        <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><InstagramIcon className="m-icon" style={{color:"rgb(225 42 121)"}}/></a>
                         <a href="#"><TwitterIcon  className='m-icon'/></a>
                         <a href="#"> <LinkedInIcon  className='m-icon'/>  </a>             
                         </div>

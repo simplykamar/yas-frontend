@@ -191,7 +191,12 @@ const ConfirmOrder = (props) => {
                        Loading..
                     </button>
                 :
-        <button className="btn btn-danger px-5 py-2" onClick={()=>{vibrate();showRazorpay()}}>MAKE PAYMENT</button>
+                <>
+                  <button className="btn btn-danger px-5 py-2" onClick={()=>{vibrate();showRazorpay()}}>MAKE PAYMENT</button>
+                   <small className="d-block text-success mt-3">
+                   You can make test payment with +91 9634142017 and choose any payment option on razorpay app(for fast payment choose PayZapp wallet, Pay Later or any Netbanking service)
+                   </small>     
+              </>
               }
 
         </div>

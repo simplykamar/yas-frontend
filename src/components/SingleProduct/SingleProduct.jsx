@@ -95,11 +95,13 @@ const SingleProduct = (props) => {
                       <Link to={`/product/${props.title}/${props.id}`}>
                       <ProgressiveImage src={props.image} placeholder={yas}>
                           {(src, loading) => (
+                            <div className="product-card-img-inner">
                             <img
                               className={`card-img-top product-card-img${loading ? " loading" : " loaded"}`}
                               src={src}
                               alt={props.title}
                             />
+                            </div>
                             )}
                           </ProgressiveImage>
                       {/* <img src={props.image} className="card-img-top product-card-img"/> */}

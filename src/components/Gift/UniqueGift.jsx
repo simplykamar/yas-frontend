@@ -15,8 +15,12 @@ import wedding from '../../images/uniquegift/wedding.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/pagination';
 // import required modules
 import './UniqueGift.css'
+import {  Pagination } from 'swiper/modules';
+
+
 const UniqueGift = () => {
 
 	return (
@@ -32,7 +36,7 @@ const UniqueGift = () => {
           slidesPerView={6}
 	        centeredSlides={false}
 					spaceBetween={-200}
-	        className="mySwiper"
+	        className="mySwiper pe-5"
 	         breakpoints={{
             0:{
               slidesPerView:3,
@@ -56,7 +60,7 @@ const UniqueGift = () => {
             },
           }}
 	      >
-	        <SwiperSlide>
+	        <SwiperSlide className="">
             <Link to="/category/cake/11" className="text-decoration-none text-dark">
 	        			<img src={birthdaygift} className="img-fluid"/>
                <p className="text-center text-capitalize header-menu-text m-0 mt-1">birthday gifts</p>

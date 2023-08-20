@@ -3,10 +3,20 @@
 	height:350px
 		}
 .product-card-wishlist-icon{
+	z-index:999;
 	position:absolute;
 	right:0
 }
+.product-card-img-inner{
+		overflow:hidden;
+	}
+
 .product-card-img{
 		height:200px;
+		transition:all ease 1s;
+	}
+		
+.product-card-img:hover{
+		transform:scale(1.2);
 	}
 		

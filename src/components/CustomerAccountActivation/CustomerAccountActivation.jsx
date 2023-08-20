@@ -62,7 +62,7 @@ useEffect(()=>{
                       <div className="mt-3">
                       <small className=" text-success d-block">{inputError.msg[0]}</small>
                       <small className=" text-success d-block">{inputError.msg[1]}</small>
-                      <Link to="/customer/login" className="mt-4  text-dark text-uppercase">Login</Link>
+                      <Link to="/customer/login" className="mt-4  text-dark text-uppercase"><small>Login</small></Link>
                       </div>
                     }
                     { inputError.type=='forbidden' &&

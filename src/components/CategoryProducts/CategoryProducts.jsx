@@ -21,7 +21,6 @@ const CategoryProducts = () => {
     const fetchData = (url) => {
             axios.get(url)
               .then((response)=>{
-                console.log(response)
                 setProducts(response.data);
                 setTotalResult(response.data.length)
                 setLoading(false);
