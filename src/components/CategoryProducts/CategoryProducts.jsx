@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TuneIcon from '@mui/icons-material/Tune';
-
+import axios from 'axios';
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
@@ -19,13 +19,14 @@ const CategoryProducts = () => {
   const [filterBy, setFilterBy] = useState("");
 
     const fetchData = (url) => {
-            fetch(url)
-              .then((response)=>response.json())
-              .then((data)=>{
-                setProducts(data);
-                setTotalResult(data.length)
+            axios.get(url)
+              .then((response)=>{
+                console.log(response)
+                setProducts(response.data);
+                setTotalResult(response.data.length)
                 setLoading(false);
-              });
+              })
+              .catch(err=>console.log(err))
     }
     useEffect(()=>{
       document.title=category_slug;
