@@ -12,7 +12,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
-  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  const BASE_URL = 'http://3.25.71.133/api';
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);

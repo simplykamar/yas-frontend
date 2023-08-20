@@ -13,7 +13,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const CustomerRegister = () => {
-  const [baseUrl,setBaseUrl] = useState('https://yasonlinegifting.pythonanywhere.com/');
+  const [baseUrl,setBaseUrl] = useState('http://3.25.71.133/');
   const [registerFormData,setregisterFormData] = useState({
           'name':'',
           'email':'',
@@ -57,7 +57,6 @@ const CustomerRegister = () => {
         setIsFetching(false);
       })
       .catch(error=>{
-        console.log(error)
         if(error.response.data.password){
           setInputError({'type':"password",'msg':error.response.data.password})
         }

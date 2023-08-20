@@ -8,7 +8,7 @@ import wedding from '../../images/occasion/wedding.webp'
 import wishes from '../../images/occasion/wishes.jpg'
 
 const Categories = () => {
-  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  const BASE_URL = 'http://3.25.71.133/api';
   const [categories,setCategories] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [baseurl,setBaseurl] = useState(BASE_URL+'/categories');

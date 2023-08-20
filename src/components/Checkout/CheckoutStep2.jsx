@@ -16,7 +16,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 const CheckoutStep2 = () => {
 	const [alignment, setAlignment] = useState('web');
-	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  	const BASE_URL = 'http://3.25.71.133/api';
 	const [loading, setLoading] = useState(true);
   	const user = useSelector((state)=>state.auth);
   	const order = useSelector((state)=>state.order);

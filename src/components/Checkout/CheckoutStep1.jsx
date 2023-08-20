@@ -16,7 +16,7 @@ import TextField from '@mui/material/TextField';
 const CheckoutStep1 = () => {
 	const notifySuccess = (msg) => toast.success(msg);
 	const notifyError = (msg) => toast.error(msg);
-	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  const BASE_URL = 'http://3.25.71.133/api';
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);

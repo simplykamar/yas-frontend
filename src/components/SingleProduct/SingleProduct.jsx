@@ -11,7 +11,7 @@ import ProgressiveImage from "react-progressive-graceful-image";
 import yas from '../../images/other/yas.png'
 
 const SingleProduct = (props) => {
-  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  const BASE_URL = 'http://3.25.71.133/api';
   const user = useSelector((state)=>state.auth);
   const [userWishlist,setUserWishlist] = useState({is_wishlist:false,id:null})
   const [loading,setLoading] = useState(true)

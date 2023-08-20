@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Contact =()=>{
-    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  const BASE_URL = 'http://3.25.71.133/api';
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const [isFetching,setIsFetching] = useState(false);
     const notifySuccess = (msg) => toast.success(msg);
@@ -40,6 +40,7 @@ const Contact =()=>{
         formData.append('customer',user.user.id)
         await axios.post(BASE_URL+`/contact-us/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
         .then(response=>{
+            console.log(response)
             notifySuccess("Ticket Raised! Check your mail");
             setContactUSFormData({
                 'name':'',
@@ -51,6 +52,7 @@ const Contact =()=>{
           setIsFetching(false);
         })
         .catch(err=>{
+            console.log(err)
             if(err.response.data.msg){
                 notifyError(err.response.data.msg)
             }

@@ -15,7 +15,7 @@ import ProgressiveImage from "react-progressive-graceful-image";
 import yas from '../../images/other/yas.png'
 
 const ProductDetail = () => {
-  const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+  const BASE_URL = 'http://3.25.71.133/api';
   const {product_id} = useParams();
   const {product_slug} = useParams();
   const [product,setProduct] = useState([])

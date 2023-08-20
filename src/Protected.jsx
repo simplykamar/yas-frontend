@@ -5,7 +5,6 @@ import axios from 'axios';
 import {loginSuccess,logout} from './redux/authSlice';
 
 const Protected = (props) =>{
-	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/';
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const targetUrl = useLocation().pathname;
