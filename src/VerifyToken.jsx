@@ -5,7 +5,7 @@ import axios from 'axios';
 import {loginSuccess,logout} from './redux/authSlice';
 
 const VerifyToken = (props) =>{
-	const BASE_URL = 'http://3.25.71.133/';
+	const BASE_URL = 'https://simplykamar.tech/';
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const user = useSelector((state)=>state.auth);

@@ -13,7 +13,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const CustomerRegister = () => {
-  const [baseUrl,setBaseUrl] = useState('http://3.25.71.133/');
+  const [baseUrl,setBaseUrl] = useState('https://simplykamar.tech/');
   const [registerFormData,setregisterFormData] = useState({
           'name':'',
           'email':'',

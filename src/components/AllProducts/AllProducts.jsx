@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 const AllProducts = () => {
-  const BASE_URL = 'http://3.25.71.133/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [baseurl,setBaseurl] = useState(BASE_URL+'/products');

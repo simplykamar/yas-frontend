@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const ForgotPassword = () => {
-  const BASE_URL = 'http://3.25.71.133/';
+  const BASE_URL = 'https://simplykamar.tech/';
   const notifySuccess = (msg) => toast.success(msg);
   const notifyError = (msg) => toast.error(msg);
   const {uid, token} = useParams()

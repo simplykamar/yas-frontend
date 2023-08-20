@@ -19,7 +19,7 @@ import rating4 from '../../images/other/rating/4.png'
 import rating5 from '../../images/other/rating/5.png'
 
   const Orders = () => {
-    const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
     const [orders,setorders] = useState([]);
     const [loading,setLoading] = useState(true);
     const user= useSelector((state)=>state.auth);

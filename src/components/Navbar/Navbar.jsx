@@ -23,7 +23,7 @@ import './Navbar.css';
 import TextField from '@mui/material/TextField';
 
 const Navbar = () => {
-  const BASE_URL = 'http://3.25.71.133/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
   const cartData = useSelector((state)=>state.cart.products);
   const sum=0;
   const totalItems = cartData.reduce((sum,item)=>{return sum+item.quantity},0)

@@ -14,7 +14,7 @@ import TextField from '@mui/material/TextField';
 const CustomerAddress = () => {
 	const notifySuccess = (msg) => toast.success(msg);
 	const notifyError = (msg) => toast.error(msg);
-	const BASE_URL = 'https://yasonlinegifting.pythonanywhere.com/api';
+	const BASE_URL = 'https://simplykamar.tech/api';
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);

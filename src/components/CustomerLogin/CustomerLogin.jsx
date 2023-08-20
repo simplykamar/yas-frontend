@@ -20,7 +20,7 @@ const CustomerLogin = () => {
         targetUrl="/";
       }
   const dispatch = useDispatch();
-  const [baseUrl,setBaseUrl] = useState('http://3.25.71.133/');
+  const [baseUrl,setBaseUrl] = useState('https://simplykamar.tech/');
   const [loginFormData,setLoginFormData] = useState({
           'email':'',
           'password':''

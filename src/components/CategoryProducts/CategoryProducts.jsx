@@ -12,7 +12,7 @@ import axios from 'axios';
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
-  const BASE_URL = 'http://3.25.71.133/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);

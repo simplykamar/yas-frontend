@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import {Link} from 'react-router-dom'
 
 const GetResetPaswordLink = () => {
-  const BASE_URL = 'http://3.25.71.133/';
+  const BASE_URL = 'https://simplykamar.tech/';
   const notifySuccess = (msg) => toast.success(msg);
   const notifyError = (msg) => toast.error(msg);
   const [email,setEmail] = useState('');

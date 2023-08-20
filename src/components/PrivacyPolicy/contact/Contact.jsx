@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Contact =()=>{
-  const BASE_URL = 'http://3.25.71.133/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const [isFetching,setIsFetching] = useState(false);
     const notifySuccess = (msg) => toast.success(msg);

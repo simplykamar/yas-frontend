@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import emptyCart from "../../images/other/emptycart.svg"
 
 const ConfirmOrder = (props) => {
-  const baseUrl = 'http://3.25.71.133/api/';
+  const baseUrl = 'https://simplykamar.tech/api/';
   const dispatch =useDispatch();
   const [paymentMode, setPaymentMode] = useState('');
   const cartData = useSelector((state)=>state.cart.products);
