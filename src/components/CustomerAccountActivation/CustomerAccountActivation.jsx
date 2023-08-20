@@ -5,6 +5,7 @@ import { loginSuccess, loginFail, logout } from '../../redux/authSlice'
 import {useParams} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import {Link} from 'react-router-dom';
 
 const CustomerAccountActivation = () => {
   const notifySuccess = (msg) => toast.success(msg);
@@ -61,6 +62,7 @@ useEffect(()=>{
                       <div className="mt-3">
                       <small className=" text-success d-block">{inputError.msg[0]}</small>
                       <small className=" text-success d-block">{inputError.msg[1]}</small>
+                      <Link to="/customer/login" className="mt-4  text-dark text-uppercase">Login</Link>
                       </div>
                     }
                     { inputError.type=='forbidden' &&
