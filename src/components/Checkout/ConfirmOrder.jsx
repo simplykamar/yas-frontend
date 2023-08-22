@@ -42,6 +42,7 @@ const ConfirmOrder = (props) => {
   }
 
   const handlePaymentSuccess = async (response) => {
+    setIsFetching(true);
     try {
       let bodyData = new FormData();
       // we will send the response we've got from razorpay to the backend to validate the payment
