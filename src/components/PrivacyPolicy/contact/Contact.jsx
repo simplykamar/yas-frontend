@@ -85,7 +85,9 @@ const Contact =()=>{
                     
                     <div className='contact mt-4' >  
                         <p className='fw-600 m-0'>Email:</p>
-                        <small className=' ' style={{color:'var(--gray)'}} >workwithkamar@gmail.com</small>
+                        <small className='d-block ' style={{color:'var(--gray)'}} >kamar@yasgifts.me</small>
+                        <small className='d-block ' style={{color:'var(--gray)'}} >contact@yasgifts.me</small>
+                        <small className='d-block ' style={{color:'var(--gray)'}} >support@yasgifts.me</small>
                     </div>
 
                     <div className='contact mt-4'>

@@ -7,6 +7,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {clearOrder} from '../../redux/orderSlice';
 import {useNavigate} from 'react-router-dom';
 import emptyCart from "../../images/other/emptycart.svg"
+import payment from "../../images/other/payment.png"
 
 const ConfirmOrder = (props) => {
   const baseUrl = 'https://simplykamar.tech/api/';
@@ -196,6 +197,7 @@ const ConfirmOrder = (props) => {
                    <small className="d-block text-success mt-3">
                    You can make test payment with +91 9634142017 and choose any payment option on razorpay app(for fast payment choose PayZapp wallet, Pay Later or any Netbanking service)
                    </small>     
+                   <img src={payment} className="img-fluid w-25"/>
               </>
               }
 
