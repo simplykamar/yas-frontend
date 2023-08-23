@@ -58,10 +58,14 @@ const ConfirmOrder = (props) => {
         },
       })
         .then((res) => {
-          resetOrder();
+          if (res.status===200){
+            resetOrder();
+          }
+          else{
+          setIsFetching(false);
+          }
           // setName("");
           // setAmount("");
-
         })
         .catch((err) => {
           alert(" payment error")
