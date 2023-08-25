@@ -68,8 +68,11 @@ function App() {
         <Route path="/set-new-password/:uid/:token" element={<IsLogin Component={ForgotPassword}/>}/>
         
         <Route path="/contact-us" element={ <Protected Component={Contact} /> } />
-        <Route path="/terms" element={ <Protected Component={Terms} /> } />
-        <Route path="/privacy" element={ <Protected Component={Privacy} /> } />
+        {/* <Route path="/terms" element={ <Protected Component={Terms} /> } /> */}
+        {/* <Route path="/privacy" element={ <Protected Component={Privacy} /> } /> */}
+        
+        <Route path="/terms" element={ <Terms/> } />
+        <Route path="/privacy" element={ <Privacy/> } />
         
         <Route path="/customer/addressbook" element={ <Protected Component={Address} /> } />
         <Route path="/customer/orders" element={<Protected Component={Orders} /> }/>

@@ -108,7 +108,6 @@ function fetchProductsData(url){
                      {/* <li><Link to='' className="dropdown-item"><LocalShippingTwoToneIcon fontSize='small'/> Track Order</Link></li> */}
                      <li><Link to='/customer/orders' className="dropdown-item"><LocalMallTwoToneIcon fontSize='small'/> Order History</Link></li>
                      <li><Link to='/customer/addressbook' className="dropdown-item"><ListAltTwoToneIcon fontSize='small'/> Address Book</Link></li>
-                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
                      <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy</Link></li>
                      <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms</Link></li>
                      <li><Link to='' className="dropdown-item" onClick={()=>{dispatch(logout());dispatch(clearOrder())}}><PowerSettingsNewTwoToneIcon fontSize='small'/> Logout</Link></li>
@@ -117,6 +116,10 @@ function fetchProductsData(url){
                   <>
                     <li><Link to="/customer/register" className="dropdown-item">Register</Link></li>
                     <li><Link to="/customer/login" className="dropdown-item">Login</Link></li>
+                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
+                    <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy</Link></li>
+                     <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms</Link></li>
+
                   </>
               }
             </ul>
