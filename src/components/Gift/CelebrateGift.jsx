@@ -33,9 +33,9 @@ const CelebrateGift = () => {
 				</div>
 
 				<div className="row mt-3">
-					{/* <div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3"> */}
-					{/* 	<Link to="/category/cake/11"><img src={cakes} className="img-fluid rounded-4 celebrate-img"/></Link> */}
-					{/* </div> */}
+					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
+						<Link to="/category/cake/11"><img src={cakes} className="img-fluid rounded-4 celebrate-img"/></Link>
+					</div>
 					<div className="col-lg-3 col-md-3 col-sm-6 col-6 mb-lg-0 mb-md-0 mb-3">
 						<Link to="/category/personalized/14"><img src={personalized} className="img-fluid rounded-4 celebrate-img"/></Link>
 					</div>

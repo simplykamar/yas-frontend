@@ -111,18 +111,12 @@ function fetchProductsData(url){
                      <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
                      <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy</Link></li>
                      <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms</Link></li>
-                     <li><Link to='/refund' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Return</Link></li>
                      <li><Link to='' className="dropdown-item" onClick={()=>{dispatch(logout());dispatch(clearOrder())}}><PowerSettingsNewTwoToneIcon fontSize='small'/> Logout</Link></li>
                   </>
                   :
                   <>
                     <li><Link to="/customer/register" className="dropdown-item">Register</Link></li>
                     <li><Link to="/customer/login" className="dropdown-item">Login</Link></li>
-                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
-                    <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy</Link></li>
-                     <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms</Link></li>
-                     <li><Link to='/refund' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Return</Link></li>
-
                   </>
               }
             </ul>

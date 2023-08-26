@@ -42,19 +42,19 @@ const Home = () => {
               </Link>
                 <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
             </div>
-            {/*   <div className="col-lg-2 col-md-2 col-sm-4 col-4"> */}
-            {/* <Link to="/category/cake/21" className="text-decoration-none text-dark"> */}
-            {/*     <div className="d-lg-none d-md-none header-menu border-0"> */}
-            {/*         <img src={cake} className="img-fluid header-menu-img"/> */}
-            {/*         <p className="text-capitalize header-menu-text">cakes</p> */}
-            {/*     </div> */}
-            {/*     <div className="d-none d-lg-block d-md-block header-menu"> */}
-            {/*         <img src={cake} className="img-fluid header-menu-img"/> */}
-            {/*         <p className="text-capitalize header-menu-text">gourmet</p> */}
-            {/*     </div> */}
-            {/*   </Link> */}
-            {/*     <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div> */}
-            {/* </div> */}
+              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
+            <Link to="/category/cake/11" className="text-decoration-none text-dark">
+                <div className="d-lg-none d-md-none header-menu border-0">
+                    <img src={cake} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">cakes</p>
+                </div>
+                <div className="d-none d-lg-block d-md-block header-menu">
+                    <img src={cake} className="img-fluid header-menu-img"/>
+                    <p className="text-capitalize header-menu-text">cakes</p>
+                </div>
+              </Link>
+                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
+            </div>
               <div className="col-lg-2 col-md-2 col-sm-4 col-4">
             <Link to="/category/flowers/13" className="text-decoration-none text-dark">
                 <div className="header-menu ">

@@ -17,22 +17,22 @@ const Footer = () => {
 		 <footer className="">
       <div className="container p-4 pb-0">
           <div className="row">
-                {/* <div className="col-lg-6 col-md-6 col-sm-12 col-12"> */}
-                {/*   <p>Download our yas app for a better experience !!</p> */}
-                {/*   <div className="d-flex justify-content-between"> */}
-                {/*     <img src={androidapp} className="img-fluid" width="150" height="150"/> */}
-                {/*     <img src={appleapp} className="img-fluid" width="150" height="150"/> */}
-                {/*   </div> */}
-                {/*   <small className="text-danger">App currently under development</small> */}
-                {/* </div> */}
+                <div className="col-lg-6 col-md-6 col-sm-12 col-12">
+                  <p>Download our yas app for a better experience !!</p>
+                  <div className="d-flex justify-content-between">
+                    <img src={androidapp} className="img-fluid" width="150" height="150"/>
+                    <img src={appleapp} className="img-fluid" width="150" height="150"/>
+                  </div>
+                  <small className="text-danger">App currently under development</small>
+                </div>
                 <div className="col-lg-6 col-md-6 col-sm-12 col-12 pt-4 p-lg-0 p-md-0 text-center">
                   <p className="">Follow us on:</p>
                   <div className="">
-                    {/* <FacebookOutlinedIcon className="social-icon" style={{color:"gray"}}/> */}
+                    <FacebookOutlinedIcon className="social-icon" style={{color:"gray"}}/>
                      <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><InstagramIcon className="social-icon mx-3" style={{color:"rgb(225 42 121)"}}/></a>
-                     {/* <LinkedInIcon className="social-icon" style={{color:"gray"}}/> */}
+                     <LinkedInIcon className="social-icon" style={{color:"gray"}}/>
                      {/* <LinkedInIcon className="social-icon" style={{color:"rgb(78 68 175)"}}/> */}
-                    {/* <YouTubeIcon className="social-icon ms-3" style={{color:"gray"}}/> */}
+                    <YouTubeIcon className="social-icon ms-3" style={{color:"gray"}}/>
                   </div>
                 </div>
               </div><hr/>
