@@ -60,12 +60,12 @@ const UniqueGift = () => {
             },
           }}
 	      >
-	        <SwiperSlide className="">
-            <Link to="/category/cake/11" className="text-decoration-none text-dark">
-	        			<img src={birthdaygift} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text m-0 mt-1">birthday gifts</p>
-            </Link>
-	        </SwiperSlide>
+	        {/* <SwiperSlide className=""> */}
+         {/*    <Link to="/category/cake/11" className="text-decoration-none text-dark"> */}
+	        {/* 			<img src={birthdaygift} className="img-fluid"/> */}
+         {/*       <p className="text-center text-capitalize header-menu-text m-0 mt-1">birthday gifts</p> */}
+         {/*    </Link> */}
+	        {/* </SwiperSlide> */}
 	        <SwiperSlide>
             <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
 	        		<img src={rakhi} className="img-fluid"/>
@@ -102,12 +102,12 @@ const UniqueGift = () => {
                <p className="text-center text-capitalize header-menu-text m-0 mt-1">anniversary gifts</p>
             </Link>
 	        </SwiperSlide>
-	        <SwiperSlide>
-            <Link to="/category/mango cake/24" className="text-decoration-none text-dark">
-	        			<img src={mangocake} className="img-fluid"/>
-               <p className="text-center text-capitalize header-menu-text m-0 mt-1">mango cakes</p>
-            </Link>
-	        </SwiperSlide>
+	        {/* <SwiperSlide> */}
+         {/*    <Link to="/category/mango cake/24" className="text-decoration-none text-dark"> */}
+	        {/* 			<img src={mangocake} className="img-fluid"/> */}
+         {/*       <p className="text-center text-capitalize header-menu-text m-0 mt-1">mango cakes</p> */}
+         {/*    </Link> */}
+	        {/* </SwiperSlide> */}
 	        <SwiperSlide>
             <Link to="/category/marvel collection/18" className="text-decoration-none text-dark">
 	        			<img src={marvel} className="img-fluid"/>

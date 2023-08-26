@@ -50,9 +50,9 @@ import sidebarImg from '../../images/other/sidebar.svg'
         <ListItem  button component={Link} to={'/category/same day delivery/15'}>
           <ListItemText primary={"Same Day Delivery Gifts"}/>
         </ListItem>
-        <ListItem  button component={Link} to={'/category/cake/11'}>
-          <ListItemText primary={"Birthday Gifts"}/>
-        </ListItem>
+        {/* <ListItem  button component={Link} to={'/category/cake/11'}> */}
+        {/*   <ListItemText primary={"Birthday Gifts"}/> */}
+        {/* </ListItem> */}
         <ListItem  button component={Link} to={'/category/personalized/14'}>
           <ListItemText primary={"Personalized Gifts"}/>
         </ListItem>

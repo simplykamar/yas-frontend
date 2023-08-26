@@ -39,8 +39,8 @@ const Slider = () => {
 	      >
 	        <SwiperSlide><Link to="/category/rakhi/8"><img src={rakhi} className="img-fluid home-slider-img"/></Link></SwiperSlide>
 	        <SwiperSlide><Link to="/category/rakhi/8"><img src={rakhi2} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/cake/9"><img src={birthday} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/cake/9"><img src={cake} className="img-fluid home-slider-img"/></Link></SwiperSlide>
+	        {/* <SwiperSlide><Link to="/category/cake/9"><img src={birthday} className="img-fluid home-slider-img"/></Link></SwiperSlide> */}
+	        {/* <SwiperSlide><Link to="/category/cake/9"><img src={cake} className="img-fluid home-slider-img"/></Link></SwiperSlide> */}
 	        <SwiperSlide><Link to="/category/personalized/12"><img src={gift} className="img-fluid home-slider-img"/></Link></SwiperSlide>
 	        <SwiperSlide><Link to="/category/flowers/11"><img src={flower} className="img-fluid home-slider-img"/></Link></SwiperSlide>
 	        <SwiperSlide><Link to="/category/cake/9"><img src={happiness} className="img-fluid home-slider-img"/></Link></SwiperSlide>
