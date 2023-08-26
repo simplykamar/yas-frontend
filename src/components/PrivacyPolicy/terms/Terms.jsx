@@ -47,7 +47,7 @@ function Terms(){
                     <p>If the user has any questions, doubts or confusion in regard to any of the terms & conditions set out herein, he should seek clarifications from us through email support@yasgifts.me and should wait for a written clarification before using the service</p>
                     </li>
                     <li>
-                    <p>We are committed to delivering your ordered items promptly and efficiently. Our standard delivery timeframe is designed to ensure you receive your items in a timely manner. Most orders are processed and shipped within 2 to 3 business days from the date of purchase. Please note that this timeframe may vary based on factors such as item availability, location, and any unforeseen circumstances. We strive to keep you updated on the status of your order every step of the way.</p>
+                    <p>We are committed to delivering your ordered items promptly and efficiently. Our standard delivery timeframe is designed to ensure you receive your items in a timely manner. Most orders are processed and delivered within 2 to 3 business days from the date of purchase. Please note that this timeframe may vary based on factors such as item availability, location, and any unforeseen circumstances. We strive to keep you updated on the status of your order every step of the way.</p>
                     </li>
                     <li className="">
                     <p>In case of a query, concern, or complaint in relation to compliance issues related to Consumer Protection (E-Commerce) Rules, Consumer Protection Act and Information Technology (Sensitive Personal Data or Information) Rules, please contact Mr. Mohd ALi (Compliance Officer) at contact@yasgifts.me.</p>
