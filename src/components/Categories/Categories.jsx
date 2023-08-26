@@ -71,40 +71,40 @@ const Categories = () => {
                 <h2>Occasions</h2>
                 <p className="text-secondary">Celebrate each occasion with a gift that has a lasting impression</p>
               </div>
-               <div className="row g-2 mt-3 text-center">
-                  <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <div className="">
-                        <img src={birthday} className="img-fluid rounded-4"/>
-                      </div>
-                  </div>
-                   <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <div className="">
-                        <img src={wedding} className="img-fluid rounded-4"/>
-                      </div>
-                  </div>
-                   <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <div className="">
-                          <img src={house} className="img-fluid rounded-4"/>
-                      </div>
-                  </div>
-            </div>
-            <div className="row g-2 mt-3 text-center">
-                  <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <div className="">
-                        <img src={babyshower} className="img-fluid rounded-4"/>
-                      </div>
-                  </div>
-                   <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <div className="">
-                        <img src={anniversary} className="img-fluid rounded-4"/>
-                      </div>
-                  </div>
-                   <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <div className="">
-                        <img src={wishes} className="img-fluid rounded-4"/>
-                      </div>
-                  </div>
-            </div>  
+            {/*    <div className="row g-2 mt-3 text-center"> */}
+            {/*       <div className="col-lg-4 col-md-4 col-sm-12 col-12"> */}
+            {/*           <div className=""> */}
+            {/*             <img src={birthday} className="img-fluid rounded-4"/> */}
+            {/*           </div> */}
+            {/*       </div> */}
+            {/*        <div className="col-lg-4 col-md-4 col-sm-12 col-12"> */}
+            {/*           <div className=""> */}
+            {/*             <img src={wedding} className="img-fluid rounded-4"/> */}
+            {/*           </div> */}
+            {/*       </div> */}
+            {/*        <div className="col-lg-4 col-md-4 col-sm-12 col-12"> */}
+            {/*           <div className=""> */}
+            {/*               <img src={house} className="img-fluid rounded-4"/> */}
+            {/*           </div> */}
+            {/*       </div> */}
+            {/* </div> */}
+            {/* <div className="row g-2 mt-3 text-center"> */}
+            {/*       <div className="col-lg-4 col-md-4 col-sm-12 col-12"> */}
+            {/*           <div className=""> */}
+            {/*             <img src={babyshower} className="img-fluid rounded-4"/> */}
+            {/*           </div> */}
+            {/*       </div> */}
+            {/*        <div className="col-lg-4 col-md-4 col-sm-12 col-12"> */}
+            {/*           <div className=""> */}
+            {/*             <img src={anniversary} className="img-fluid rounded-4"/> */}
+            {/*           </div> */}
+            {/*       </div> */}
+            {/*        <div className="col-lg-4 col-md-4 col-sm-12 col-12"> */}
+            {/*           <div className=""> */}
+            {/*             <img src={wishes} className="img-fluid rounded-4"/> */}
+            {/*           </div> */}
+            {/*       </div> */}
+            {/* </div>   */}
           </div> 
         </div>     
     )
