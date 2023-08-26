@@ -1,18 +1,18 @@
 
 const Refund = () => {
 	return(
-		<div className="container py-5">
-			<h4>Return and Refund Policy</h4>
+		<div className="container">
+            <h1 className="text-center my-4 head"> Return and Refund Policy </h1>
 			<p>Thank you for your purchase. We hope you are happy with your purchase. However, if you are not completely satisfied with your purchase for any reason, you may return it to us for a full refund only. Please see below for more information on our return policy.</p>
 			<h4>Return</h4>
 			<p className="">All returns must be postmarked within three (3) days of the purchase date. All returned items must be in new and unused condition, with all original tags and labels attached.
 </p>
 			<h4>RETURN PROCESS</h4>
-			<p>To return an item, please email customer service at contact@yasgifts.me to obtain a Return Merchandise Authorization (RMA) number. After receiving a RMA number, place the item securely in its original packaging, and mail your return to the following address:<br/>
+			<p>To return an item, please email customer service at contact@yasgifts.me to obtain a Return Product Authorization (RPA) number. After receiving a RPA number, place the item securely in its original packaging, and mail your return to the following address:<br/>
 <div className="fw-600">
 yasgifts<br/>
 Attn: Returns<br/>
-RMA #<br/>
+RPA #<br/>
 Unit no 2 , A wing 2nd Floor , Sheesh Mahal near Clock Tower , Lucknow
 Lucknow, Uttarpradesh 226003<br/>
 India<br/>
