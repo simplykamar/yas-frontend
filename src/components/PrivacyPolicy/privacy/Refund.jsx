@@ -38,6 +38,13 @@ After receiving your return and inspecting the condition of your item, we will p
 			</ul>
 			<p>For defective or damaged products, please contact us to arrange a refund or exchange.
 </p>
+		<h4>Cancellation</h4>
+		<ul>
+		<li>You have the option to request an order cancellation within 2 days from the date of purchase. After this 2-day period, your order will likely have moved into the processing or shipping stages and cannot be cancelled.</li>
+		<li>Orders that have not yet been processed for shipping are eligible for cancellation. Orders that have already been processed, shipped, or are in transit cannot be cancelled. </li>		
+		<li>If your cancellation request is approved within the specified cancellation window and the payment has been made, we will initiate a refund to your original payment method within 5 business days.</li>
+		<li>Refunds may take some time to reflect in your account depending on your payment provider's policies.</li>
+		</ul>
 		<h4>QUESTIONS</h4>		
 		<p>If you have any questions concerning our return policy, please contact us at:
 </p>
