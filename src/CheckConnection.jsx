@@ -23,6 +23,7 @@ const CheckConnection = () => {
     });
 	return (
 		<div>
+			<App />
 			
 
 		</div>
