@@ -23,8 +23,7 @@ const CheckConnection = () => {
     });
 	return (
 
-			// <App />
-		<h1 className="text-center text-pink">site under maintenance</h1>
+			<App />
 		
 		)
 			
