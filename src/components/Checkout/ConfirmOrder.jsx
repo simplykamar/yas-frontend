@@ -28,11 +28,11 @@ const ConfirmOrder = (props) => {
   const user = useSelector((state)=>state.auth);
   const order = useSelector((state)=>state.order);
   const navigate = useNavigate();
-  const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
+  const [totalAmounts,setTotalAmounts] = useState(0)
   const [isFetching,setIsFetching] = useState(false);
   const [paymentUTRNumber,setPaymentUTRNumber] = useState('');
   const [paymentReciept,setPaymentReciept] = useState('');
-    console.log(cartData)
+    console.log(order)
    
    function vibrate(){
     if(!("vibrate" in navigator)){
@@ -44,12 +44,25 @@ const ConfirmOrder = (props) => {
  //  setPaymentInfo({...paymentInfo,[event.target.name]:event.target.value});
  //  console.log(event.target.files[0])
  // }
+function getCartTotalPrice(){
+      let bodyData = new FormData();
+      bodyData.append("cartData", JSON.stringify(cartData));
+        axios.post(baseUrl+'cart-total-price/',bodyData,{headers:{"Content-Type": 'multipart/form-data',"Authorization" : `JWT ${user.access}`}})
+          .then(response=>{
+            setTotalAmounts(response.data.totalAmount)
+          console.log(response)
+        })
+        .catch(error=>{
+          console.log(error);
+        })
+      }
  useEffect(() => {
       document.title="Checkout | Proceed to payment";
       window.scrollTo(0,0);
     window.process = {
       ...window.process,
     };
+    getCartTotalPrice();
   }, []);
   function resetOrder(){
       dispatch(resetCart());
@@ -65,6 +78,7 @@ const ConfirmOrder = (props) => {
     bodyData.append("cartData", JSON.stringify(cartData));
     bodyData.append("customer", JSON.stringify(user.user.id));
     bodyData.append("address", JSON.stringify(order.address));
+    bodyData.append("giftCard", JSON.stringify(order.giftCard));
     bodyData.append("paymentReciept", paymentReciept);
     bodyData.append("paymentUTRNumber", JSON.stringify(paymentUTRNumber));
 

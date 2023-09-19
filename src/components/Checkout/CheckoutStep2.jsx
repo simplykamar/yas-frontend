@@ -7,7 +7,7 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import './Checkout.css';
 import {useSelector, useDispatch} from 'react-redux';
-import {addToOrder,clearOrder} from '../../redux/orderSlice';
+import {addToOrder} from '../../redux/orderSlice';
 import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import {resetCart} from '../../redux/cartSlice'
 import emptyCart from "../../images/other/emptycart.svg"
@@ -24,6 +24,7 @@ const CheckoutStep2 = () => {
   	const cartData = useSelector((state)=>state.cart.products);
 	const [msg, setMsg] = useState(false);
 	const [msgContent, setMsgContent] = useState('');
+	const [msgTitle, setMsgTitle] = useState('');
 	const sum=0;
   	const totalProducts = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
   	const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
@@ -45,8 +46,7 @@ It's hard to find someone who inspires you each day. Thank you for that. Here's 
 
 
 From
-${user.user.user.name.toUpperCase()}
-  		`
+${user.user.user.name.toUpperCase()}`
   		const birthadayMsg = `To,
 XYZ
 
@@ -54,8 +54,7 @@ You had my back, even behind my back. Friends like you are hard to come by. Here
 
 
 From
-${user.user.user.name.toUpperCase()}
-  		`
+${user.user.user.name.toUpperCase()}`
   		const anniversaryMsg = `To,
 XYZ
 
@@ -63,8 +62,7 @@ Happy anniversary! May you celebrate many more years of togetherness, withstandi
 
 
 From
-${user.user.user.name.toUpperCase()}
-  		`
+${user.user.user.name.toUpperCase()}`
   		const weddingMsg = `To,
 XYZ
 
@@ -72,8 +70,7 @@ Wishing you both lots of love and happiness, on this exciting and joyful day of 
 
 
 From
-${user.user.user.name.toUpperCase()}
-  		`
+${user.user.user.name.toUpperCase()}`
   		const houseMsg = `To,
 XYZ
 
@@ -104,6 +101,8 @@ ${user.user.user.name.toUpperCase()}
   	}
   	function handleCardChange(e){
   		setAlignment(e.target.value)
+  		setMsgTitle(e.target.value)
+  		console.log(msgContent)
   	}
 	return(
 		<div className=" py-3 bg-light">
@@ -209,7 +208,7 @@ ${user.user.user.name.toUpperCase()}
 							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
 
 					</div>
-					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
+					<Link onClick={()=>{dispatch(addToOrder({giftCard:{exist:msg,title:msgTitle,msg:msgContent}}))}} to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
 				</div>
 			</div>
 			</>

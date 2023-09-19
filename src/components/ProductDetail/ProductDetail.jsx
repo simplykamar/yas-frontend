@@ -581,8 +581,8 @@ const ProductDetail = () => {
 			                           	 {
 			                           	 	cartData.find((item)=>item.id==product_id)
 										 								?
-		                                	<Link to="/checkout" className="btn btn-pink text-uppercase py-2 w-100" data-bs-dismiss="modal">
-		                                	 <ShoppingCartOutlinedIcon className=""/>Go to cart
+		                                	<Link to="/checkout" className="btn btn-pink text-uppercase py-2 w-100" >
+		                                	 <span data-bs-dismiss="modal"><ShoppingCartOutlinedIcon />Go to cart</span>
 																			</Link>
 			                           	 :
 	                                		<button className="btn btn-pink text-uppercase w-100 py-2" onClick={validate}>

@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = { 
-  customer:null,
-  orderItems:null,
+  // customer:null,
+  // orderItems:null,
   address:null,
+  giftCard:null,
  }
 
 export const orderSlice = createSlice({
@@ -11,11 +12,14 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     addToOrder(state,action) {
+      console.log("order slice",action.payload)
       if(action.payload.address)
         state.address = action.payload.address;      
-      else
-        state.customer = action.payload.user;      
-        state.orderItems = action.payload.orderItems;      
+      else if(action.payload.giftCard)
+        state.giftCard = action.payload.giftCard
+      // else
+        // state.customer = action.payload.user;      
+        // state.orderItems = action.payload.orderItems;      
     },
     clearOrder(state) {
         state.address = null;      
