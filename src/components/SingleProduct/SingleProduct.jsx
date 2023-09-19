@@ -1,6 +1,7 @@
 import { Link,useNavigate } from 'react-router-dom';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined';
 import {useState,useEffect} from 'react';
 import './SingleProduct.css';
 import {useSelector} from 'react-redux';
@@ -11,7 +12,8 @@ import ProgressiveImage from "react-progressive-graceful-image";
 import yas from '../../images/other/yas.png'
 
 const SingleProduct = (props) => {
-  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'https://simplykamar.tech/api';
+    const BASE_URL = 'http://127.0.0.1:8000/api';
   const user = useSelector((state)=>state.auth);
   const [userWishlist,setUserWishlist] = useState({is_wishlist:false,id:null})
   const [loading,setLoading] = useState(true)
@@ -110,10 +112,41 @@ const SingleProduct = (props) => {
                         <Link to={`/product/${props.title}/${props.id}`} className="text-decoration-none">
                         <p className="card-title fw-bold product-card-title" style={{fontSize:"14px"}}>{props.title.slice(0,35)}...</p>
                         </Link>
-                        <p className="card-title text-dark fw-600">₹ {props.price}</p>
-                        <span>
-                          <small className="text-secondary">{props.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/>
-                        </span>
+                        <div className="d-flex flex-wrap">
+                        <span className="card-title text-dark fw-600">₹ {props.price}</span>
+                          {
+                            (props.discount!==0)&&
+                            <>
+                              <span className="text-decoration-line-through text-small text-light-gray mx-2">₹ {props.oldPrice}</span> 
+                              <span>
+                                <span className="p-1" style={{border:'1px solid #35b847',color:'#35b847',borderRadius:'5px',fontSize:'10px'}}> {props.discount}% OFF</span> 
+                              </span>                            
+                            </>
+                            
+                        }
+                        </div>
+                        <div className="d-flex flex-wrap">
+                          <small className="text-secondary text-small">{props.rating}</small>
+                          <StarIcon style={{color:'#ffd400'}} fontSize=""/>
+                          {
+                            (props.label===2)&& <span className="fw-600 px-1" style={{fontSize:'10px',borderRadius:'5px',backgroundColor:'green',color:'white'}}>Bestseller</span>
+                          }
+                          {
+                            (props.label===3)&& <span className="fw-600 px-1" style={{fontSize:'10px',borderRadius:'5px',backgroundColor:'green',color:'white'}}>Special Offer</span>
+                          }
+                          {
+                            (props.label===4)&& <span className="fw-600 px-1" style={{fontSize:'10px',borderRadius:'5px',backgroundColor:'green',color:'white'}}>Premium</span>
+                          }
+                          {
+                            (props.label===5)&& <span className="fw-600 px-1" style={{fontSize:'10px',borderRadius:'5px',backgroundColor:'green',color:'white'}}>Value Pack</span>
+                          }
+                          {
+                            (props.label===6)&& <span className="fw-600 px-1" style={{fontSize:'10px',borderRadius:'5px',backgroundColor:'green',color:'white'}}>Top Rated</span>
+                          }
+                          {
+                            props.isPersonalize && <span className="text-secondary ms-1" style={{fontSize:'10px'}}><BrushOutlinedIcon style={{fontSize:'14px'}}/>Personalizable</span>
+                          }
+                        </div>
                       </div>
                     </div>
           </div>

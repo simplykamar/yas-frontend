@@ -4,6 +4,7 @@ import {removeFromCart,addToCart,resetCart,deleteFromCart} from '../../redux/car
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined';
 import emptyCart from "../../images/other/emptycart.svg"
 import {useEffect} from 'react';
 
@@ -22,7 +23,7 @@ const Checkout = (props) => {
 }
 
     useEffect(()=>{
-      document.title="Shopping Bag";
+      document.title="Shopping cart";
       window.scrollTo(0,0);
     },[]);
     return (
@@ -30,7 +31,7 @@ const Checkout = (props) => {
        <div className="my-4">
        { cartData.length?
       <>
-      <h2 className="text-dark text-center ">Shopping Bag</h2>
+      <h2 className="text-dark text-center ">Shopping cart</h2>
                 {
                   cartData.map((item,i)=>{return(
                  <div className="row mt-4 border p-2 pb-3 custom-shadow" key={item.id}>
@@ -39,16 +40,21 @@ const Checkout = (props) => {
                       <img src={item.img} className="img-fluid" style={{width:'100px'}}/> 
                       <p className="ms-2">{item.title}</p>
                       </Link>
+                      {
+                        item.is_personalize
+                        &&
+                        <div className="text-small my-2"><BrushOutlinedIcon fontSize="small"/> Personalizable</div>
+                        }
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                      <p className="fw-bold ">Standard- FREE</p>
-                      <p>On 25-Aug-2023 between 10:00 AM - 05:00 PM
-                      </p>
+                      <div className="fw-bold text-small">Standard- No Delivery Fees</div>
+                      <div className="text-small text-secondary">Estimated delivery between 4-5 business days
+                      </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <div className="float-end">
-                          <p className=" fw-600 ms-2 text-danger">₹{item.price*item.quantity}</p>
-                          <span  className=" border p-1 px-2">
+                        <div className="float-end ">
+                          <p className=" fw-600 ms-2 text-danger">₹ {item.price*item.quantity}</p>
+                          <span  className=" border p-1 px-2 rounded-15">
                             <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(removeFromCart(item))}}><RemoveIcon/></span>
                             <span className="mx-3">{item.quantity}</span>
                             <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(addToCart(item))}}><AddIcon/></span>
@@ -65,10 +71,10 @@ const Checkout = (props) => {
                       <h4 className="text-secondary">Total Products: <span className="text-danger">{totalProducts}</span></h4>
                     </div>
                     <div className="">
-                      <h4 className="text-secondary">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></h4>
+                      <h4 className="text-secondary">Total Amounts: <span className="text-danger">₹ {totalAmounts}</span></h4>
                     </div>
                     <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-danger px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
+                      <Link to="/checkout-step-1" className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
                     </div>
                 </div>
             </div>
@@ -81,11 +87,11 @@ const Checkout = (props) => {
                       |
                     </div>
                     <div className="">
-                      <p className="text-secondary fw-bold">Total Amounts: <span className="text-danger">₹{totalAmounts}</span></p>
+                      <p className="text-secondary fw-bold">Total Amounts: <span className="text-danger">₹ {totalAmounts}</span></p>
                     </div>
                 </div>
                 <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-danger d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>
+                      <Link to="/checkout-step-1" className="btn btn-pink d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>
                     </div>
             </div>
             </>

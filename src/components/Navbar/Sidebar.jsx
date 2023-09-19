@@ -1,8 +1,7 @@
 import './Sidebar.css';
-import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';
-import WifiCalling3TwoToneIcon from '@mui/icons-material/WifiCalling3TwoTone';
-import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
-import SupportAgentTwoToneIcon from '@mui/icons-material/SupportAgentTwoTone';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import HambergerIcon from '../../images/logos/HambergerIcon.svg';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
@@ -82,15 +81,15 @@ import sidebarImg from '../../images/other/sidebar.svg'
         <List onClick={() => setOpen(false)} className="">
           <p className=" ms-2 my-2 fw-600 text-secondary text-uppercase">assistance</p>
           <ListItem  button component={Link} to={'/customer/profile'}>
-          <PersonOutlineTwoToneIcon fontSize='small' className="me-2"/>
+          <PersonOutlineIcon fontSize='small' className="me-2"/>
           <ListItemText primary={"Profile"}/>
         </ListItem>
          <ListItem  button component={Link} to={'/customer/orders'}>
-         <LocalMallTwoToneIcon fontSize='small' className="me-2"/>
+         <LocalMallOutlinedIcon fontSize='small' className="me-2"/>
           <ListItemText primary={"Order History"}/>
         </ListItem>
          <ListItem  button component={Link} to={'/contact-us'}>
-         <SupportAgentTwoToneIcon fontSize='small' className="me-2"/>
+         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
           <ListItemText primary={"Customer Service"}/>
         </ListItem>
         </List>

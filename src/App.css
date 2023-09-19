@@ -1,7 +1,9 @@
 body{
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
+	font-family: 'Happy Monkey', cursive;
 }
-
+.text-black-primary{
+	color:#373838 !important
+}
 .line-height-0{
 	line-height:0;
 }
@@ -9,7 +11,7 @@ body{
 	line-height:.8;
 }
 .text-pink{
-	color: #fc032c;
+	color: #fc7e93;
 }
 .btn{
 	border-radius:0 !important;
@@ -23,32 +25,23 @@ body{
 .product-card-title{
 	color:#666;
 }
-.btn-pink{
-	background-color: #f14b66 !important;
-	color:white !important
-}
-.btn-pink:hover{
-	background-color: #f53050;
-	color:white
+
+.btn-white{
+	border-radius:15px !important;
 }
 .btn-white:hover{
 	border: 1px solid black !important;
 }
-.btn-outline-pink{
-	border: 1px solid #f53050;
-}
+
 .border-pink{
-	border:1px solid #f53050 !important;
+	border:1px solid #fc7e93 !important;
 }
-.bg-outline-pink{
-	border:1px solid #f53050 !important;
-	color: #f14b66;
-}
-.bg-outline-pink:hover{
-	color: red !important;
-}
+
 .cursor-pointer{
 	cursor:pointer;
+}
+.cursor-text{
+	cursor:text !important;
 }
 .custom-shadow{
 	box-shadow:0 .1rem 1rem rgba(0, 0, 0, 0.10) !important
@@ -77,13 +70,63 @@ select{
 	text-align:justify !important;
 }
 .text-small{
-	font-size:14px!important;
+	font-size:12px!important;
 }
 /*.MuiOutlinedInput-notchedOutline {
   border-width: 1px !important;
   border-color: pink !important;
 }
 */
-#price-filter-focus .Mui-focused .MuiOutlinedInput-notchedOutline {
+/*#price-filter-focus .Mui-focused .MuiOutlinedInput-notchedOutline {
   border: 1px solid black !important;
+}*/
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: 1px solid #fc7e93 !important;
+}
+.btn-pink{
+	background-color: #fc7e93;
+	border-radius:15px !important;
+	border-bottom:2px solid #fa375e !important;
+	border-left:2px solid #fa375e !important;
+	color: white !important;
+	font-weight:bold;
+}
+
+.btn-pink:active{
+	background-color: #ff6e89 !important;
+}
+.btn-pink:hover{
+	background-image:linear-gradient(to right,#fa375e  , #fc7e93);
+/*background-color: #fa375e !important*/
+}
+.rounded-15{
+	border-radius:15px !important;
+}
+.bg-outline-pink{
+	border:1px solid #ff6e89 !important;
+	color: #f14b66;
+}
+.bg-outline-pink:hover{
+	color: #fc7e93 !important;
+}
+.btn-pink-disabled{
+	background-color:#fc9aaa;
+	border-radius:15px !important;
+	border-bottom:2px solid #fc7e93 !important;
+	border-left:2px solid #fc7e93 !important;
+	color: white !important;
+	font-weight:bold;
+	cursor:text !important;
+}
+.btn-pink-disabled:hover{
+	background-color:#fc9aaa !important;
+}
+.btn-pink-disabled:active{
+	background-color:#fc9aaa !important;
+}
+.text-light-gray{
+	color: #b5b1b1 !important;
+}
+.yas-text-secondary{
+	color: #1c9B97 !important;
 }

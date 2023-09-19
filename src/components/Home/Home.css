@@ -1,32 +1,36 @@
 .header-menu-border{
-	border: 1px solid #fa284b;
+/*	border: 1px solid #fc7e93;*/
 	border-radius: 10px;
 }
 .header-menu{
-	border-right: 1px solid #fa284b;
+/*	border-right: 1px solid #fc7e93;*/
 	text-align:center;
-/*	background-color:yellow;*/
-	height:120px;
+	height:100px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
 }
 
 .header-menu:hover .header-menu-img{
-	transform:scale(.6);
+	transform:scale(1.2);
 }
 
 .header-menu-img{
 	transition:all ease 1s;
-	transform:scale(.5);
+	width:50px;
+	height:50px;
 }
 .header-menu-text{
-	font-size: 14px;
+	margin-top:5px;
+	font-size: 10px;
 	line-height:1;
 }
 /*display on mobile view*/
 .header-menu-border-bottom{
-	margin-top:5px;
 	height:1px;
 	opacity:1;
-	background-color:#fa284b
+	background-color:#fc7e93
 }
 .footersale-img{
 	min-height:150px;

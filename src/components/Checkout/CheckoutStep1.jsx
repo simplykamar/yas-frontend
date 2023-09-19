@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import emptyCart from "../../images/other/emptycart.svg"
 import TextField from '@mui/material/TextField';
+import CheckIcon from '@mui/icons-material/Check';
 
 const CheckoutStep1 = () => {
 	const notifySuccess = (msg) => toast.success(msg);
@@ -94,12 +95,11 @@ const CheckoutStep1 = () => {
 				<div className="stepper-wrapper">
 					  <div className="stepper-item active">
 					    <div className="step-counter">
-					  <Link to="/checkout-step-1" className="text-decoration-none">
-					    1
+					  <Link to="/checkout-step-1" className="text-decoration-none text-dark">
 					    </Link>
 					    </div>
 					    <div className="step-name">
-					  <Link to="/checkout-step-1" className="text-decoration-none">
+					  <Link to="/checkout-step-1" className="text-decoration-none text-secondary">
 					    Delivery Details
 					    </Link>
 					    </div>
@@ -107,7 +107,6 @@ const CheckoutStep1 = () => {
 					  <div className="stepper-item">
 					    <div className="step-counter">
 					  <Link to="#" className="text-decoration-none text-secondary">
-					    2
 					    </Link>
 					    </div>
 					    <div className="step-name text-secondary">Order Summary</div>
@@ -115,7 +114,6 @@ const CheckoutStep1 = () => {
 					  <div className="stepper-item ">
 					    <div className="step-counter">
 					  <Link to="#" className="text-secondary text-decoration-none">
-					    3
 					    </Link>
 					    </div>
 					    <div className="step-name">
@@ -146,7 +144,7 @@ const CheckoutStep1 = () => {
 							</p>
 							<p className="text-capitalize">{item.address}</p>
 							<p><CallTwoToneIcon/> {item.mobile}</p>
-							<Link to="/checkout-step-2" onClick={()=>{dispatch(addToOrder({address:item.id}));}} className="btn btn-danger text-uppercase">deliver here</Link>
+							<Link to="/checkout-step-2" onClick={()=>{dispatch(addToOrder({address:item.id}));}} className="btn btn-pink text-uppercase">deliver here</Link>
 						</div>)})
 						:""
 					:
@@ -162,7 +160,7 @@ const CheckoutStep1 = () => {
 									add new address
 							</p>
 							<p className="text-capitalize text-secondary">Place your order to new address</p>
-							<button  className="btn btn-outline-danger text-uppercase" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
+							<button  className="btn btn-pink text-uppercase" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
 {/* <!-- The Address Modal --> */}
 <div className="modal" id="addressModal">
   <div className="modal-dialog">
@@ -240,7 +238,7 @@ const CheckoutStep1 = () => {
       </div>
       {/* <!-- Modal footer --> */}
       <div className="modal-footer">
-        <button type="button" className="btn btn-danger w-100 py-3 text-uppercase" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
+        <button type="button" className="btn btn-pink w-100 py-3 text-uppercase" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
       </div>
 
     </div>

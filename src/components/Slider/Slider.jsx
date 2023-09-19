@@ -1,13 +1,8 @@
-import birthday from '../../images/slider/birthday.webp'
-import cake from '../../images/slider/cake.webp'
-import flower from '../../images/slider/flower.webp'
-import gift from '../../images/slider/gift.webp'
-import rakhi from '../../images/slider/rakhi.webp'
-import rakhi2 from '../../images/slider/rakhi2.jpg'
-import happiness from '../../images/slider/happiness.jpg'
 import {Link} from 'react-router-dom';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import axios from 'axios';
+import {useEffect,useState} from 'react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -20,9 +15,28 @@ import './Slider.css'
 import 'swiper/css/free-mode';
 
 const Slider = () => {
+    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const [homeBanner,setHomeBanner] = useState([]);
+    const [loading,setLoading] = useState(false);
 
+    function fetchHomeBannerData(url){
+        setLoading(true);
+        axios.get(url)
+        .then(response=>{
+            console.log(response);
+            setHomeBanner(response.data)
+            setLoading(false);
+        })
+        .catch(error=>{
+            console.log(error);
+            setLoading(false);
+        })
+    }
+   useEffect(()=>{
+      fetchHomeBannerData(BASE_URL+'/home-banner-items')
+  },[])
 	return (
-	<div className="mt-5">
+	<div className="mt-4">
 		<Swiper
 	        spaceBetween={30}
 	        centeredSlides={true}
@@ -30,20 +44,30 @@ const Slider = () => {
 	          delay: 2500,
 	          disableOnInteraction: false,
 	        }}
-	        pagination={{
-	          clickable: true,
-	        }}
+	        // pagination={{
+	        //   clickable: true,
+	        // }}
 	        // navigation={true}
-	        modules={[Autoplay, Pagination, Navigation]}
+	        modules={[Autoplay, Navigation]}
 	        className="mySwiper"
 	      >
-	        <SwiperSlide><Link to="/category/rakhi/8"><img src={rakhi} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/rakhi/8"><img src={rakhi2} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/cake/9"><img src={birthday} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/cake/9"><img src={cake} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/personalized/12"><img src={gift} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/flowers/11"><img src={flower} className="img-fluid home-slider-img"/></Link></SwiperSlide>
-	        <SwiperSlide><Link to="/category/cake/9"><img src={happiness} className="img-fluid home-slider-img"/></Link></SwiperSlide>
+	       {
+                !loading
+                ?
+                    homeBanner.map(item=>{
+                        return(
+                                <SwiperSlide>
+	                                <Link to={`/category/${item.category.title}/${item.category.id}`}>
+	                             	   <img src={item.image} className="img-fluid home-slider-img"/>
+	                                </Link>
+                                </SwiperSlide>
+                            )
+                    })
+                :
+                 <div className="text-center">
+                    <div className="spinner-border text-danger"></div>
+                  </div>
+            }
 	     
       </Swiper>
 	</div>

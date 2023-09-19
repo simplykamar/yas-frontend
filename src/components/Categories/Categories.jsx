@@ -8,7 +8,9 @@ import wedding from '../../images/occasion/wedding.webp'
 import wishes from '../../images/occasion/wishes.jpg'
 
 const Categories = () => {
-  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'https://simplykamar.tech/api';
+  const BASE_URL = 'http://127.0.0.1:8000/api';
+  
   const [categories,setCategories] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [baseurl,setBaseurl] = useState(BASE_URL+'/categories');

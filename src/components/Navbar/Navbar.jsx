@@ -2,19 +2,20 @@ import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import { logout } from '../../redux/authSlice';
 import { clearOrder } from '../../redux/orderSlice';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
-import ListAltTwoToneIcon from '@mui/icons-material/ListAltTwoTone';
-import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';
-import WifiCalling3TwoToneIcon from '@mui/icons-material/WifiCalling3TwoTone';
-import PrivacyTipTwoToneIcon from '@mui/icons-material/PrivacyTipTwoTone';
-import PowerSettingsNewTwoToneIcon from '@mui/icons-material/PowerSettingsNewTwoTone';
-import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
-import InventoryTwoToneIcon from '@mui/icons-material/InventoryTwoTone';
+import PinDropOutlinedIcon from '@mui/icons-material/PinDropOutlined';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
+import GppMaybeOutlinedIcon from '@mui/icons-material/GppMaybeOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
+import InputAdornment from '@mui/material/InputAdornment';
+import yaslogo from '../../images/logos/yaslogo.png'
 import axios from 'axios';
 import {useState,useEffect} from 'react';
 
@@ -23,7 +24,8 @@ import './Navbar.css';
 import TextField from '@mui/material/TextField';
 
 const Navbar = () => {
-  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'https://simplykamar.tech/api';
+  const BASE_URL = 'http://127.0.0.1:8000/api';
   const cartData = useSelector((state)=>state.cart.products);
   const sum=0;
   const totalItems = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
@@ -34,6 +36,7 @@ const Navbar = () => {
   const [categoryDataLoading, setCategoryDataLoading] = useState(true)
   const [productDataLoading, setProductDataLoading] = useState(true)
   const [isSearchResult, setIsSearchResult] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const openModal= ()=> { setIsOpen( true )}
   const closeModal= ()=> { setIsOpen( false )}
@@ -60,6 +63,7 @@ function fetchProductsData(url){
   })
 }
   function fetchSearchData(q){
+    console.log(q)
     if(q.length){
       document.title=q;
       fetchCategoriesData(BASE_URL+`/categories/?q=${q}`);
@@ -74,28 +78,37 @@ function fetchProductsData(url){
   return(
     <>
     <div className="sticky-top">
-      <nav className="navbar navbar-expand navbar-light bg-light">
+      <nav className="navbar navbar-expand navbar-light bg-light ">
   <div className="container">
   <Sidebar/>
-    <Link className="navbar-brand ms-3" to="/">yas</Link>
+    <Link className="navbar-brand ms-3" to="/"><img src={yaslogo} className="img-fluid" style={{width:'50px',height:'30px'}}/></Link>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav mx-auto">
-          <li className="nav-item ">
-          <span className="text-secondary cursor-pointer" data-bs-toggle="modal" data-bs-target="#searchModal">
-          <span className=""><span className="d-none d-md-inline-block d-lg-inline-block">Search for gifts</span><SearchOutlinedIcon className="" style={{fontSize:'30px'}}/></span>
+      <ul className="navbar-nav">
+          <li className="nav-item d-none d-md-block d-lg-block">
+            <span className="text-secondary cursor-pointer" data-bs-toggle="modal" data-bs-target="#searchModal">
+            <span className="border py-2 px-5 rounded-5 bg-light"><SearchOutlinedIcon/> <span className="d-none d-md-inline-block d-lg-inline-block">Search for gifts</span></span>
           </span>
           </li>
       </ul>
-
-      <ul className="navbar-nav ms-auto me-4 me-lg-0 me-md-0">
-        {/* <li className="nav-item"> */}
-        {/*   <Link to="/categories" className="nav-link">Categories</Link> */}
-        {/* </li> */}
-       
-      <li className="nav-item dropdown">
+      {/* show cart on mobile view */}
+      <ul className="d-lg-none d-md-none navbar-nav ms-auto me-3">
+        <li className="nav-item">
+          <Link to="/checkout" className="nav-link"><ShoppingCartOutlinedIcon/><span className="badge navbar-cart-badge">{totalItems}</span></Link>
+        </li>
+        </ul>
+        {/* Hide navbar items on mobile view */}
+      <div className="d-none d-md-inline-block d-lg-inline-block ms-auto">
+      <ul className="navbar-nav">
+       <li className="nav-item">
+          <Link to="/customer/wishlist" className="nav-link"><FavoriteBorderOutlinedIcon/></Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/checkout" className="nav-link"><ShoppingCartOutlinedIcon/><span className="badge navbar-cart-badge">{totalItems}</span></Link>
+        </li>
+      <li className="nav-item dropdown ms-4">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinks" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 { user.isAuthenticate ? 
-                    <span className="fw-600" style={{padding:'1px 6px 1px 6px',border:'2px solid black',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>
+                    <span className="fw-600" style={{padding:'1px 6px 1px 6px',border:'2px solid #545252',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>
                     :
                      <AccountCircleOutlinedIcon/>
               }
@@ -104,14 +117,13 @@ function fetchProductsData(url){
               { user.isAuthenticate ? 
                   <>
                     {/* <li><Link to="/customer/dashboard" className="dropdown-item">Dashboard</Link></li> */}
-                     <li><Link to='/customer/profile' className="dropdown-item"><PersonOutlineTwoToneIcon fontSize='small'/> Profile</Link></li>
-                     {/* <li><Link to='' className="dropdown-item"><LocalShippingTwoToneIcon fontSize='small'/> Track Order</Link></li> */}
-                     <li><Link to='/customer/orders' className="dropdown-item"><LocalMallTwoToneIcon fontSize='small'/> Order History</Link></li>
-                     <li><Link to='/customer/addressbook' className="dropdown-item"><ListAltTwoToneIcon fontSize='small'/> Address Book</Link></li>
-                     <li><Link to='/contact-us' className="dropdown-item"><WifiCalling3TwoToneIcon fontSize='small'/> Contact Us</Link></li>
-                     <li><Link to='/privacy' className="dropdown-item"><PrivacyTipTwoToneIcon fontSize='small'/> Privacy</Link></li>
-                     <li><Link to='/terms' className="dropdown-item"><InventoryTwoToneIcon fontSize='small'/> Terms</Link></li>
-                     <li><Link to='' className="dropdown-item" onClick={()=>{dispatch(logout());dispatch(clearOrder())}}><PowerSettingsNewTwoToneIcon fontSize='small'/> Logout</Link></li>
+                     <li><Link to='/customer/profile' className="dropdown-item"><PersonOutlineIcon fontSize='small'/> Profile</Link></li>
+                     <li><Link to='/customer/orders' className="dropdown-item"><LocalMallOutlinedIcon fontSize='small'/> Order History</Link></li>
+                     <li><Link to='/customer/addressbook' className="dropdown-item"><PinDropOutlinedIcon fontSize='small'/> Address Book</Link></li>
+                     <li><Link to='/contact-us' className="dropdown-item"><SupportAgentOutlinedIcon fontSize='small'/> Contact Us</Link></li>
+                     <li><Link to='/privacy' className="dropdown-item"><GppMaybeOutlinedIcon fontSize='small'/> Privacy</Link></li>
+                     <li><Link to='/terms' className="dropdown-item"><InventoryOutlinedIcon fontSize='small'/> Terms</Link></li>
+                     <li><Link to='' className="dropdown-item" onClick={()=>{dispatch(logout());dispatch(clearOrder())}}><LogoutOutlinedIcon fontSize='small'/> Logout</Link></li>
                   </>
                   :
                   <>
@@ -121,30 +133,37 @@ function fetchProductsData(url){
               }
             </ul>
       </li>
-         <li className="nav-item">
-          <Link to="/customer/wishlist" className="nav-link"><FavoriteBorderOutlinedIcon/></Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/checkout" className="nav-link"><ShoppingBagOutlinedIcon/><span className="badge navbar-cart-badge">{totalItems}</span></Link>
-        </li>
       </ul>
+      </div>
     </div>
   </div>
 </nav>
   </div>
-
         <div className="modal" id="searchModal">
-            <div className="modal-dialog modal-dialog-scrollable">
+            <div className="modal-dialog modal-fullscreen modal-dialog-scrollable">
               <div className="modal-content">
-
-                 <div className="modal-header">
+                 <div className="modal-header" style={{border:'none'}}>
                    <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
                  </div>
-
                  <div className="modal-body pt-0 pb-5">
+                   <h4 className="" style={{marginLeft:'13px'}}>Find your gifts here...</h4>
                  <form>
-                    <div className="mt-4">
-                      <TextField InputProps={{ sx: { borderRadius: 10 } }} id="outlined-search" onChange={(e)=>{fetchSearchData(e.target.value)}} name="search" fullWidth label="Search for gifts" type="search" />
+                    <div className="mt-3 ">
+                      <TextField  
+                      color='warning'
+                      InputProps={{ 
+                        sx: { borderRadius: 10,backgroundColor:'#f8f9fa ' },
+                        startAdornment: (<InputAdornment position="end">
+                                          <SearchOutlinedIcon style={{color:'#fc7e93'}}/>
+                                          </InputAdornment>
+                                        )
+                                   }}
+                      id="outlined-search"
+                      onChange={(e)=>{setSearchQuery(e.target.value);fetchSearchData(searchQuery)}} 
+                      name="search" fullWidth  
+                      type="search"
+                      value={searchQuery}
+                       />
                   </div>
                 </form>
                 {
@@ -160,9 +179,7 @@ function fetchProductsData(url){
                               )})
                             :"loading..."
                         }
-                        
                         </div>
-
                         <p className="text-secondary text-uppercase fw-600">products</p>
                            { !productDataLoading
                             ?
@@ -178,12 +195,59 @@ function fetchProductsData(url){
                         }
                       </div>
                 }
+                <div className=" ">
+                <p className="my-3 text-secondary">Quick search...</p>
+                <div className="row gy-4">
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6 ">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("chocolate");fetchSearchData("chocolate")}} >Chocolate</div>
+                  </div>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("mug");fetchSearchData("mug")}} >Mug</div>
+                  </div>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("bottle");fetchSearchData("bottle")}} >Bottle</div>
+                  </div>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("tshirt");fetchSearchData("tshirt")}} >tshirt</div>
+                  </div>
+                  </div>
+                </div>
+                <div className="row gy-4 mt-2">
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6 ">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("chocolate");fetchSearchData("chocolate")}} >Chocolate</div>
+                  </div>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("mug");fetchSearchData("mug")}} >Mug</div>
+                  </div>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("bottle");fetchSearchData("bottle")}} >Bottle</div>
+                  </div>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
+                  <div className="">
+                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("tshirt");fetchSearchData("tshirt")}} >tshirt</div>
+                  </div>
+                  </div>
+                </div>
+                </div>
+
                  </div>
                </div>
             </div>
     </div>
     </>
-
     )
 }
 export default Navbar; 

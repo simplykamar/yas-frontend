@@ -3,17 +3,7 @@
 	background-color:white !important;
 	border-bottom: 1px solid #dedcdc;
 }
-.navbar-brand{
-	color:#fa284b;
-	font-size:2rem;
-	font-weight:bolder;
-}
-.navbar-brand:hover{
-	color:#fc032c;
-}
-.navbar-brand:focus	{
-	color:#fc032c;
-}
+
 .input-group-text{
 	background-color:white !important;
 }
@@ -22,16 +12,14 @@ input[type="search"]{
 }
 
 .navbar-cart-badge{
-	background-color:#e36f7a;
+	background-color:#fc7e93;
 	position:absolute;
 	border-radius:100%;
 }
 
 .dropdown-item:active{ 
-	background-color:#f56c72;
+	background-color:#fc7e93;
 	}
-
-
 .search-item {
 	display:flex;
 	justify-content:center;
@@ -39,12 +27,19 @@ input[type="search"]{
 	width:100%;
 	z-index:999;
 	background-color:red !important
-
 }
-
 .search-item-list {
 	border-radius:20px;
 	position:relative;
-	background-color:blue !important
 }
+.quick-search{
+	border: 2px solid #fc7e93;
+	border-left: 15px solid #fc7e93;
+	border-radius: 10px;
+	cursor:pointer;
+	transition:all ease 1s;
+}
+.quick-search:hover{
+	border-left: 30px solid #fc7e93;
 
+}

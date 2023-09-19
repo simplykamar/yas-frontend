@@ -13,6 +13,7 @@ import {resetCart} from '../../redux/cartSlice'
 import emptyCart from "../../images/other/emptycart.svg"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import CheckIcon from '@mui/icons-material/Check';
 
 const CheckoutStep2 = () => {
 	const [alignment, setAlignment] = useState('web');
@@ -113,12 +114,12 @@ ${user.user.user.name.toUpperCase()}
 				<div className="stepper-wrapper">
 					  <div className="stepper-item completed">
 					    <div className="step-counter">
-					  <Link to="/checkout-step-1" className="text-white text-decoration-none">
-					    1
+					  <Link to="/checkout-step-1" className="text-decoration-none">
+					   <CheckIcon className="text-dark"/>
 					    </Link>
 					    </div>
 					    <div className="step-name">
-					  <Link to="/checkout-step-1" className="text-decoration-none">
+					  <Link to="/checkout-step-1" className="text-decoration-none text-dark">
 					    Delivery Details
 					    </Link>
 					    </div>
@@ -126,7 +127,6 @@ ${user.user.user.name.toUpperCase()}
 					  <div className="stepper-item active">
 					    <div className="step-counter">
 					  <Link to="#" className="text-decoration-none text-secondary">
-					    2
 					    </Link>
 					    </div>
 					    <div className="step-name  text-secondary">Order Summary</div>
@@ -134,7 +134,6 @@ ${user.user.user.name.toUpperCase()}
 					  <div className="stepper-item ">
 					    <div className="step-counter">
 					  <Link to="#" className="text-secondary text-decoration-none">
-					    3
 					    </Link>
 					    </div>
 					    <div className="step-name">
@@ -151,7 +150,7 @@ ${user.user.user.name.toUpperCase()}
 					<div className="table-responsive ">
 						<div className=" ">
 						<ToggleButtonGroup
-					 sx={{gap:1}}
+					 	  sx={{gap:1}}
 					      color="secondary"
 					      value={alignment}
 					      size="small"
@@ -210,7 +209,7 @@ ${user.user.user.name.toUpperCase()}
 							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
 
 					</div>
-					<Link to='/confirm-order' className="btn btn-danger w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
+					<Link to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
 				</div>
 			</div>
 			</>

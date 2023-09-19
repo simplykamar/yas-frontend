@@ -68,8 +68,8 @@ function App() {
         <Route path="/set-new-password/:uid/:token" element={<IsLogin Component={ForgotPassword}/>}/>
         
         <Route path="/contact-us" element={ <Protected Component={Contact} /> } />
-        <Route path="/terms" element={ <Protected Component={Terms} /> } />
-        <Route path="/privacy" element={ <Protected Component={Privacy} /> } />
+        <Route path="/terms" element={ <Terms/> } />
+        <Route path="/privacy" element={ <Privacy/> } />
         
         <Route path="/customer/addressbook" element={ <Protected Component={Address} /> } />
         <Route path="/customer/orders" element={<Protected Component={Orders} /> }/>
@@ -77,7 +77,7 @@ function App() {
 
         <Route path="/customer/wishlist" element={<Protected Component={CustomerWishlist}/>}/>
         <Route path="/products/:tag/" element={<TagProducts/>}/>
-        <Route path="/confirm-order" element={<Protected Component={ConfirmOrder}/>}/>
+        <Route path="/confirm-order" element={<ConfirmOrder/>}/>
         <Route path="/activate/:uid/:token" element={<IsLogin Component={CustomerAccountActivation}/>}/>
 
         <Route path="/checkout" element={<Checkout/>}/>

@@ -1,9 +1,0 @@
-.uniquegift{
-/*	transform:scale(.2);*/
-	width:160px;
-	height:160px;
-	transition:all ease 1s;
-}
-.uniquegift-container:hover .uniquegift{
-	transform:rotate3d(0, 0, 1, 360deg);
-}

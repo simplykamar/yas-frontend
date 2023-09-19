@@ -12,7 +12,9 @@ import axios from 'axios';
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
-  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'https://simplykamar.tech/api';
+  const BASE_URL = 'http://127.0.0.1:8000/api';
+
   const [products,setProducts] = useState([])
   const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -22,6 +24,7 @@ const CategoryProducts = () => {
             axios.get(url)
               .then((response)=>{
                 setProducts(response.data);
+                console.log(response)
                 setTotalResult(response.data.length)
                 setLoading(false);
               })
@@ -75,7 +78,7 @@ const CategoryProducts = () => {
                   products.map((product)=>{
                     return(
                        <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
-                          <SingleProduct rating={product.rating} id={product.id} image={product.product_imgs[0].image} title={product.title} price={product.price}/>
+                          <SingleProduct isPersonalize={product.is_personalize} rating={product.rating} id={product.id} image={product.product_imgs[0].image} title={product.title} oldPrice={product.old_price} label={product.label} price={product.price} discount={product.discount} />
                         </div>
                       )
                     })

@@ -60,33 +60,33 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #ccc;
   margin-bottom: 6px;
+  border:1px solid #333232;
+  background: white;
+
 }
 
 .stepper-item.active {
   font-weight: bold;
-  color:#5050ff;
+  color:#333232;
   
 }
 .stepper-item.active .step-counter{
   background: white;
-  border: 1px solid #5050ff;
-  color:#5050ff;
+  border: 1px solid #333232;
+  color:#333232;
 }
 
 .stepper-item.completed .step-counter {
-  background-color: #5050ff;
-  color:white;
-  font-weight:600
+  font-weight:600;
 }
 .stepper-item.completed .step-name {
-  color:#5050ff;
+  color:#333232;
 }
 .stepper-item.completed::after {
   position: absolute;
   content: "";
-  border-bottom: 2px solid #5050ff;
+  border-bottom: 2px solid #333232;
   width: 100%;
   top: 20px;
   left: 50%;

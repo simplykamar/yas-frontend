@@ -1,0 +1,24 @@
+.MuiBottomNavigationAction-root.Mui-selected
+{
+	color:#fc7e93 !important
+}
+
+.navigationbar-cart-badge{
+	background-color:#fc7e93;
+	position:absolute;
+	left:92%;
+	border-radius:100%;
+}
+
+.mobile-profile-link{
+	color:#373838;
+	font-size:20px
+}
+
+.mobile-profile-container .mobile-profile-icon{
+	color:#fc7e93;
+}
+
+.mobile-profile-link:hover{
+	background-color:#fafafa;
+}

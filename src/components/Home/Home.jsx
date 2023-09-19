@@ -1,84 +1,81 @@
 import SingleProduct from '../SingleProduct/SingleProduct';
 import'./Home.css'
 import {Link} from 'react-router-dom';
-import samedaydelivery from '../../images/logos/samedaydelivery.svg'
-import cake from '../../images/logos/cake.svg'
-import flower from '../../images/logos/flower.svg'
-import gourmet from '../../images/logos/gourmet.svg'
-import newarival from '../../images/logos/newarival.svg'
-import personalize from '../../images/logos/personalize.svg'
-import plant from '../../images/logos/plant.svg'
-import rakhi from '../../images/logos/rakhi.svg'
 import footersale from '../../images/other/footersale.webp'
 import Slider from '../Slider/Slider';
 import UniqueGift from '../Gift/UniqueGift';
 import CelebrateGift from '../Gift/CelebrateGift';
-import {useEffect} from 'react';
+import {useEffect,useState} from 'react';
+import SearchOutlinedicons from '@mui/icons-material/SearchOutlined';
+import NavigationBar from '../NavigationBar/NavigationBar';
+import axios from 'axios';
+
 const Home = () => {
+    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const [headerMenu,setHeaderMenu] = useState([]);
+    const [premiumGift,setPremiumGift] = useState([]);
+    const [loading,setLoading] = useState(false);
+    function fetchHeaderMenuData(url){
+        setLoading(true);
+        axios.get(url)
+        .then(response=>{
+            console.log(response);
+            setHeaderMenu(response.data);
+            setLoading(false);
+        })
+        .catch(error=>{
+            console.log(error);
+            setLoading(false);
+        })
+    }
+    function fetchPremiumGiftData(url){
+        setLoading(true);
+        axios.get(url)
+        .then(response=>{
+            console.log(response);
+            setPremiumGift(response.data)
+            setLoading(false);
+        })
+        .catch(error=>{
+            console.log(error);
+            setLoading(false);
+        })
+    }
   
    useEffect(()=>{
       document.title="yas: Online Gifts Shopping";
+      fetchHeaderMenuData(BASE_URL+'/header-menu-items')
+      // fetchPremiumGiftData(BASE_URL+'/premium-gift-items')
   },[])
 	return(
       <div className="">
       <div className="container">
-        <header className="mt-4">
-          <div className="row g-0 header-menu-border py-1">
-            <div className="col-lg-2 col-md-2 col-sm-4 col-4">
-            <Link to="/category/rakhi/8" className="text-decoration-none text-dark">
-                <div className="header-menu ">
-                  <img src={rakhi} className="img-fluid header-menu-img"/>
-                  <p className="text-capitalize header-menu-text">rakhi</p>
-                </div>
-              </Link>
-                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
-            </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
-            <Link to="/category/same day delivery/15" className="text-decoration-none text-dark">
-                <div className="header-menu ">
-                  <img src={samedaydelivery} className="img-fluid header-menu-img"/>
-                  <p className="text-capitalize header-menu-text">same day delivery</p>
-                </div>
-              </Link>
-                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
-            </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
-            <Link to="/category/cake/11" className="text-decoration-none text-dark">
-                <div className="d-lg-none d-md-none header-menu border-0">
-                    <img src={cake} className="img-fluid header-menu-img"/>
-                    <p className="text-capitalize header-menu-text">cakes</p>
-                </div>
-                <div className="d-none d-lg-block d-md-block header-menu">
-                    <img src={cake} className="img-fluid header-menu-img"/>
-                    <p className="text-capitalize header-menu-text">cakes</p>
-                </div>
-              </Link>
-                <div className="d-block d-lg-none d-md-none header-menu-border-bottom"></div>
-            </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
-            <Link to="/category/flowers/13" className="text-decoration-none text-dark">
-                <div className="header-menu ">
-                    <img src={flower} className="img-fluid header-menu-img"/>
-                    <p className="text-capitalize header-menu-text">flower</p>
-                </div>
-              </Link>
-            </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-4">
-            <Link to="/category/personalized/14" className="text-decoration-none text-dark">
-                <div className="header-menu ">
-                    <img src={personalize} className="img-fluid header-menu-img"/>
-                    <p className="text-capitalize header-menu-text">personalized</p>
-                </div>
-              </Link>
-            </div>
-            <div className="col-lg-2 col-md-2 col-sm-4 col-4">
-            <Link to="/category/plant/12" className="text-decoration-none text-dark">
-                <div className="header-menu " style={{border:0}}>
-                    <img src={plant} className="img-fluid header-menu-img"/>
-                    <p className="text-capitalize header-menu-text">plant</p>
-                </div>
-              </Link>
-            </div>
+        <header className="">
+        {/* search for mobile view. from here call navbar search modal*/}
+        <span className="text-secondary cursor-pointer d-lg-none d-md-none" data-bs-toggle="modal" data-bs-target="#searchModal">
+            <div className="border my-3 py-1 rounded-5 px-3" style={{boxShadow: '0 0 15px 2px lightgray'}}><SearchOutlinedicons/> <span className="ms-3">Search for gifts...</span></div>
+        </span>
+          <div className="row g-0 header-menu-border mt-3">
+            {
+                !loading
+                ?
+                    headerMenu.map(item=>{
+                        return(
+                                <div className="col-lg-2 col-md-2 col-sm-4 col-4">
+                                    <Link to={`/category/${item.category.title}/${item.category.id}`} className="text-decoration-none text-dark">
+                                        <div className="header-menu">
+                                          <img src={item.image} className="img-fluid header-menu-img" />
+                                          <p className="text-capitalize header-menu-text">{item.title}</p>
+                                        </div>
+                                      </Link>
+                                </div>
+                            )
+                    })
+                :
+                 <div className="text-center">
+                    <div className="spinner-border text-danger"></div>
+                  </div>
+            }
           </div> 
         </header>
         <Slider/>
@@ -109,7 +106,9 @@ const Home = () => {
           </div>
         </section>
       </div>     
-       
+          <div >
+            <NavigationBar/>
+          </div>
       </div>     
 		)
 }

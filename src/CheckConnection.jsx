@@ -22,20 +22,10 @@ const CheckConnection = () => {
     	}
     });
 	return (
-		<div>
-				<img src={wifierror} className="d-none"/>
-			{
-				isOnline ?
-					<App />:
-					<div className="text-center">
-						<img src={wifierror} className="img-fluid"/>
-						<h1 className="text-primary mt-3">Whoops!!</h1>
-						<p className="text-danger mb-1">slow or no internet connectiom</p>
-						<p className="text-danger">Please check your internet settings</p>
-					</div>
-			}
 
-		</div>
+			// <App />
+		<h1 className="text-center text-pink">site under maintenance</h1>
+		
 		)
 			
 }

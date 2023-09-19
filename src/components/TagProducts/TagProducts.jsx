@@ -11,7 +11,9 @@ import TuneIcon from '@mui/icons-material/Tune';
 
 const TagProducts = () => {
   const {tag} = useParams();
-  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'https://simplykamar.tech/api';
+    const BASE_URL = 'http://127.0.0.1:8000/api';
+  
   const [products,setProducts] = useState([])
   const [loading, setLoading] = useState(true);
   const [totalResult,setTotalResult] = useState(0);
@@ -75,7 +77,7 @@ const TagProducts = () => {
               products.map((product)=>{
                 return(
                    <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
-                      <SingleProduct rating={product.rating} image={product.product_imgs[0].image} title={product.title} price={product.price} id={product.id}/>
+                      <SingleProduct isPersonalize={product.is_personalize} rating={product.rating} id={product.id} image={product.product_imgs[0].image} title={product.title} oldPrice={product.old_price} label={product.label} price={product.price} discount={product.discount} />
                     </div>
                   )
               })

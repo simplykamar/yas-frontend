@@ -6,15 +6,15 @@
     bottom: 0px !important;
 }
 .swiper-pagination-bullet {
-	background:#fa284b;
+	background:#fc7e93;
 	}
 .swiper-pagination-bullet-active {
-	background-color: #fa284b !important;
+	background-color: #fc7e93 !important;
 	width:20px;
 	border-radius:5px
 	}
 .swiper-button-next, .swiper-button-prev { 
-	color: #fa284b !important; 
+	color: #fc7e93 !important; 
 }
 .swiper {
   width: 100%;

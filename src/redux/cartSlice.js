@@ -28,7 +28,6 @@ export const cartSlice = createSlice({
       
     },
      deleteFromCart(state,action) {
-        console.log("delete from reducer");
         state.products = state.products.filter(item=>item.id!==action.payload.id)
     },
     resetCart(state) {

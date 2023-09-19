@@ -11,24 +11,24 @@ import marvel from '../../images/uniquegift/marvel.webp'
 import rakhi from '../../images/uniquegift/rakhi.webp'
 import {Link} from 'react-router-dom';
 import wedding from '../../images/uniquegift/wedding.jpg'
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import required modules
-import './UniqueGift.css'
-import {  Pagination } from 'swiper/modules';
 
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
+import './Slider.css'
+import 'swiper/css/free-mode';
 
 const UniqueGift = () => {
 
 	return (
-	<div className="">
+	<div className="mt-2">
 			<div className="d-flex justify-content-center uniquegift-container">
-				<img src={uniquegift} className="img-fluid uniquegift"/>
-				<div className="mt-5">
-				<h2 className="text-capitalize">unique gifts online</h2>
+				<div className="">
+				<h2 className="text-capitalize">Premium gifts</h2>
 				<p>Curated to make every special moment a celebration</p>
 			</div>
 			</div>
@@ -36,7 +36,11 @@ const UniqueGift = () => {
           slidesPerView={6}
 	        centeredSlides={false}
 					spaceBetween={-200}
-	        className="mySwiper pe-5"
+					pagination={{
+	          clickable: true,
+	        }}
+	        modules={[Pagination, Navigation]}
+	        className="mySwiper"
 	         breakpoints={{
             0:{
               slidesPerView:3,

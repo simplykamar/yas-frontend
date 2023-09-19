@@ -4,12 +4,13 @@ import appleapp from '../../images/other/appleapp.webp'
 // import linkdicon from '../../images/other/linkdicon.png'
 // import instaicon from '../../images/other/instaicon.png'
 // import fbicon from '../../images/other/fbicon.png'
-
+import {Link} from 'react-router-dom'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import './Footer.css'
+import yaslogo from '../../images/logos/yaslogo.png'
 
 
 const Footer = () => {
@@ -42,7 +43,11 @@ const Footer = () => {
               Online Gifts Delivery - Buy/Send gifts to India with FREE shipping from yas #1 online gift shop offers rakhis & rakhi gifts, flowers, cakes, personalized gifts delivery in India. Get same day and midnight delivery in over 5+ cities in India. Best Gift Ideas for various occasions and festivals. Get unique gift ideas for family & friends. Easy & fast gift delivery anywhere in India.
                 </p>
               </div>
-              <h1 className="text-center text-pink">yas</h1>
+              <div className="text-center text-pink">
+                <Link className="navbar-brand ms-3" to="/">
+                  <img src={yaslogo} className="img-fluid" style={{width:'50px',height:'30px'}}/>
+                </Link>
+              </div>
               <div className="text-center text-small">yas Gifts India Copyright © 2023. All rights reserved</div>
         </footer>
 
