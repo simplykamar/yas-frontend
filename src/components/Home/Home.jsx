@@ -61,7 +61,7 @@ const Home = () => {
                 ?
                     headerMenu.map(item=>{
                         return(
-                                <div className="col-lg-2 col-md-2 col-sm-4 col-4">
+                                <div className="col-lg-2 col-md-2 col-sm-4 col-4" key={item.id}>
                                     <Link to={`/category/${item.category.title}/${item.category.id}`} className="text-decoration-none text-dark">
                                         <div className="header-menu">
                                           <img src={item.image} className="img-fluid header-menu-img" />

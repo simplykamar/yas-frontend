@@ -32,6 +32,8 @@ const ConfirmOrder = (props) => {
   const [isFetching,setIsFetching] = useState(false);
   const [paymentUTRNumber,setPaymentUTRNumber] = useState('');
   const [paymentReciept,setPaymentReciept] = useState('');
+  const [loading, setLoading] = useState(true);
+
     console.log(order)
    
    function vibrate(){
@@ -51,9 +53,11 @@ function getCartTotalPrice(){
           .then(response=>{
             setTotalAmounts(response.data.totalAmount)
           console.log(response)
+          setLoading(false);
         })
         .catch(error=>{
           console.log(error);
+          setLoading(false);
         })
       }
  useEffect(() => {
@@ -156,33 +160,47 @@ function getCartTotalPrice(){
                                       </div>
                                       <div className="col-lg-6 col-md-6 col-sm-12 col-12 text-center mt-5">
                                       <h2 className="fw-bold">Scan QR Code</h2>
-                                      <div><small className="text-secondary">9634142017@paytm</small></div>
-                                        <QRCode
-                                            value={`upi://pay?pa=9634142017@paytm&pn=YasGifts&tn=YasGifts: Complete Your Order&am=${totalAmounts}&cu=INR`}
-                                            size="200"
-                                            logoImage={yaslogo}
-                                            logoWidth="30"
-                                            logoHeight="30"
-                                            removeQrCodeBehindLogo={true}
-                                            logoPadding={5}
-                                            logoPaddingStyle="circle"
+                                      {
+                                        !loading?
+                                        <>
+                                        <div><small className="text-secondary">9634142017@paytm</small></div>
+                                          <QRCode
+                                              value={`upi://pay?pa=9634142017@paytm&pn=YasGifts&tn=YasGifts: Complete Your Order&am=${totalAmounts}&cu=INR`}
+                                              size="200"
+                                              logoImage={yaslogo}
+                                              logoWidth="30"
+                                              logoHeight="30"
+                                              removeQrCodeBehindLogo={true}
+                                              logoPadding={5}
+                                              logoPaddingStyle="circle"
 
-                                          />
-                                        <div className="fw-bold" style={{backgroundColor:''}}>
-                                          <p className="">Total Amount: <span className="ms-4">₹ {totalAmounts}</span></p>
-                                        </div>
-                                        <Button color="success"  variant="contained" className="px-5 py-2 fw-bold rounded-15" data-bs-toggle="modal" data-bs-target="#paymentConfirmModal">Confirm Payment</Button>
+                                            />
+                                          <div className="fw-bold" style={{backgroundColor:''}}>
+                                            <p className="">Total Amount: <span className="ms-4">₹ {totalAmounts}</span></p>
+                                          </div>
+                                          <Button color="success"  variant="contained" className="px-5 py-2 fw-bold rounded-15" data-bs-toggle="modal" data-bs-target="#paymentConfirmModal">Confirm Payment</Button>
+                                      </>
+                                      :<div className="text-center py-4">
+                                        <div className="spinner-border text-danger"></div>
                                       </div>
-                                      
+                                      }
+                                      </div>
                                     </div>
                                  </div>
                    </div>
                    {/* mobile view */}
                    <div className="d-md-none d-lg-none">
                   <img src={paymentmobile} className="img-fluid" style={{mixBlendMode:'multiply'}}/>
+                  {
+                  !loading?
                   <Button href={`upi://pay?pa=9634142017@paytm&pn=YasGifts&tn=Complete Your Order on YasGifts&am=${totalAmounts}&cu=INR`} fullWidth variant="contained" style={{backgroundColor:'white'}} >
-                    <img src={upi} className="img-fluid my-2" style={{height:'30px'}}/>
+                  <img src={upi} className="img-fluid my-2" style={{height:'30px'}}/>
                   </Button>
+                  :
+                   <div className="text-center py-4">
+                    <div className="spinner-border text-danger"></div>
+                  </div>
+                  }
                    <Button color="secondary" variant="contained" className="mt-3 w-100 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#paymentConfirmModal">Proceed</Button>
                    </div>
                           {/* Payment  Confirmation*/}
