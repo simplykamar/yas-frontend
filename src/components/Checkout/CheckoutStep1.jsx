@@ -17,7 +17,9 @@ import CheckIcon from '@mui/icons-material/Check';
 const CheckoutStep1 = () => {
 	const notifySuccess = (msg) => toast.success(msg);
 	const notifyError = (msg) => toast.error(msg);
-  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'https://simplykamar.tech/api';
+  const BASE_URL = 'http://127.0.0.1:8000/api';
+
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);
@@ -32,6 +34,8 @@ const CheckoutStep1 = () => {
 					mobile:"",
 					pincode:"",
 					landmark:"",
+					city:"",
+					state:"",
 					tag:1,
 	});
 	async function fetchAddresses(url){
@@ -71,6 +75,8 @@ const CheckoutStep1 = () => {
 						formData.append('address',newAddress.address);
 						formData.append('landmark',newAddress.landmark);
 						formData.append('pincode',newAddress.pincode);
+						formData.append('city',newAddress.city);
+						formData.append('state',newAddress.state);
 						formData.append('mobile',newAddress.mobile);
 						formData.append('address_type',newAddress.tag);
 						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
@@ -168,7 +174,7 @@ const CheckoutStep1 = () => {
 
       {/* <!-- Modal Header --> */}
       <div className="modal-header">
-        <h4 className="modal-title">Address new address</h4>
+        <h4 className="modal-title">Add new address</h4>
         <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -181,6 +187,15 @@ const CheckoutStep1 = () => {
          name="name"
          fullWidth
          label="Name"
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
+          type="number"
+         onChange={inputHandler}
+         name="mobile"
+         fullWidth
+         label="Mobile No."
          />
        </div>
        <div className="mt-3">
@@ -208,15 +223,23 @@ const CheckoutStep1 = () => {
          label="Pincode"
          />
        </div>
-       <div className="mt-3">
+        <div className="mt-3">
           <TextField
-          type="number"
          onChange={inputHandler}
-         name="mobile"
+         name="city"
          fullWidth
-         label="Mobile No."
+         label="City"
          />
        </div>
+        <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="state"
+         fullWidth
+         label="State"
+         />
+       </div>
+
          <div className=" mt-3">
          <p className="fw-600">TAG AS</p>
          <div className="d-flex">

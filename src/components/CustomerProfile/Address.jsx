@@ -14,7 +14,9 @@ import TextField from '@mui/material/TextField';
 const CustomerAddress = () => {
 	const notifySuccess = (msg) => toast.success(msg);
 	const notifyError = (msg) => toast.error(msg);
-	const BASE_URL = 'https://simplykamar.tech/api';
+	// const BASE_URL = 'https://simplykamar.tech/api';
+  const BASE_URL = 'http://127.0.0.1:8000/api';
+
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);
@@ -26,6 +28,8 @@ const CustomerAddress = () => {
 					mobile:"",
 					pincode:"",
 					landmark:"",
+					city:"",
+					state:"",
 					tag:1,
 	});
 
@@ -66,6 +70,8 @@ const CustomerAddress = () => {
 						formData.append('address',newAddress.address);
 						formData.append('landmark',newAddress.landmark);
 						formData.append('pincode',newAddress.pincode);
+						formData.append('city',newAddress.city);
+						formData.append('state',newAddress.state);
 						formData.append('mobile',newAddress.mobile);
 						formData.append('address_type',newAddress.tag);
 						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
@@ -120,7 +126,7 @@ const CustomerAddress = () => {
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
 					<div className="custom-shadow bg-white p-4 mb-4" >
 							<p className="fw-bold text-capitalize">
-									add new address
+									Add new address
 							</p>
 							<p className="text-capitalize text-secondary">Place your order to new address</p>
 							<button  className="btn btn-outline-danger text-uppercase" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
@@ -148,6 +154,15 @@ const CustomerAddress = () => {
        </div>
        <div className="mt-3">
           <TextField
+          type="number"
+         onChange={inputHandler}
+         name="mobile"
+         fullWidth
+         label="Mobile No."
+         />
+       </div>
+       <div className="mt-3">
+          <TextField
          onChange={inputHandler}
          name="address"
          fullWidth
@@ -171,13 +186,20 @@ const CustomerAddress = () => {
          label="Pincode"
          />
        </div>
-       <div className="mt-3">
+        <div className="mt-3">
           <TextField
-          type="number"
          onChange={inputHandler}
-         name="mobile"
+         name="city"
          fullWidth
-         label="Mobile No."
+         label="City"
+         />
+       </div>
+        <div className="mt-3">
+          <TextField
+         onChange={inputHandler}
+         name="state"
+         fullWidth
+         label="State"
          />
        </div>
          <div className=" mt-3">

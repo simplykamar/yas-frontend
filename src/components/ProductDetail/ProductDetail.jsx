@@ -20,6 +20,7 @@ import TextField from '@mui/material/TextField';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import Cropper from './ImageCrop';
 
 const ProductDetail = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -545,6 +546,7 @@ const ProductDetail = () => {
 						                                          <input hidden accept="image/*" type="file" 
 						                                          onChange={(e)=>{e.target.files[0]&&uploadImage({id:item.id,image:e.target.files[0],sample_image_url:item.image})}}/>
 				                                         	</Button>
+				                                         	<Cropper/>
 		                                         		</div>
 		                                				</div>
 		                                				)
