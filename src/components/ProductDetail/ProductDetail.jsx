@@ -20,7 +20,7 @@ import TextField from '@mui/material/TextField';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
-import Cropper from './ImageCrop';
+import CropperImg from './ImageCrop';
 
 const ProductDetail = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -38,6 +38,8 @@ const ProductDetail = () => {
 	const cartData = useSelector((state)=>state.cart.products);
 	const [productPersonalizeImgs, setProductPersonalizeImgs] = useState([])
 	const [productPersonalizeText, setProductPersonalizeText] = useState([])
+	const [uploading, setUploading] = useState(false);
+	const [uploadedImage, setUploadedImage] = useState(null)
 	const [inputError,setInputError] = useState(false)
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
@@ -111,26 +113,39 @@ const ProductDetail = () => {
           }
    }
 	 async function uploadImage(item){
+	 	setUploading(true);
    	const formData = new FormData();
    	formData.append('image',item.image);
 	 	await axios.post(BASE_URL+'/upload-image/',formData,{headers:{"Content-Type": 'multipart/form-data'}})
    	.then(response=>{
    		console.log(response);
    		item.image = response.data.image;
-   		item.imageId = response.data.id
+   		item.imageId = response.data.id;
    		productPersonalizeImageHandler(item);
+	 		setUploading(false);
    	})
    	.catch(error=>{
    		console.log(error);
+	 		setUploading(false);
    	})
 	 }
-
+	 async function updatePersonalizeImgs(itemID,serverPersonalizedImg){
+	 	console.log('serverPersonalizedImg',serverPersonalizedImg)
+	   		// update cutomer uploaded image with server personalize image
+				const newSate = productPersonalizeImgs.map(obj=>{
+		   		if (obj.id === itemID){
+		   			return {...obj,image:serverPersonalizedImg,isPersonalized:true};
+		   		}
+   		return obj;
+	   		});
+   		setProductPersonalizeImgs(newSate);
+ 	 }
    function productPersonalizeImageHandler(item){
    	const itemExist = productPersonalizeImgs.find(obj=>obj.id===item.id);
    	if (itemExist){
    		const newSate = productPersonalizeImgs.map(obj=>{
    		if (obj.id === item.id){
-   			return {...obj,image:item.image};
+   			return {...obj,imageId:item.imageId,image:item.image,isPersonalized:item.isPersonalized};
    		}
    		return obj;
    	});
@@ -514,24 +529,37 @@ const ProductDetail = () => {
 			                                		product.product_personalize_imgs.map((item,i)=>{
 			                                			return(
 			                                				<div className="mt-3" key={item.id}>
-			                                						<div className="text-center">
-
+			                                						<div className="text-center" >
 			                                						<img src={item.image} className="img-fluid"/>
-                                            			
 	                                            		{
 	                                            			productPersonalizeImgs.map((obj,imgIndex)=>{
 	                                            				if (obj.id===item.id){
+	                                            					if (obj.isPersonalized){
 	                                            						return (
-	                                            										<small className="d-block text-small mt-2"  key={obj.id}> 
+	                                            									<div key={obj.id}>
+	                                            										<small className="my-2 d-block text-small mt-2" > 
 	                                           									 		 <img src={obj.image} className="img-fluid" style={{width:'30px',height:'30px'}}/> Image {imgIndex+1}<CheckIcon color="success"/> 
 	                                        												</small> 
+	                                        											</div>
 	                                            							)
+	                                            				}else{
+	                                            					return (
+	                                            									!uploading?
+						                                         							<div key={obj.id} className="pt-3">
+						                                         								<CropperImg itemID={item.id} uploadedImgId={obj.imageId} img={obj.image} updatePersonalizeImgs={updatePersonalizeImgs} aspectRatio={item.aspect_ratio}/>
+			                                        										</div>
+				                                         								:<div className="text-center p-2">
+																										                <div className="spinner-border text-danger"></div>
+																										              	<small className="text-small">uploading...</small>
+																										              </div>
+				                                         						)
 	                                            				}
+	                                            			}
 	                                            			})
 	                                            		}
 			                                					</div>
 			                                					<div className="mt-3">
-			                                					<ul className="text-small ">
+			                                					<ul className="text-small">
 								                                	<li>Please upload good quality image.</li>
 								                                	<li>Please ensure you have rights to use the image.</li>
 								                                </ul>
@@ -544,9 +572,8 @@ const ProductDetail = () => {
 				                                            	:<span>Upload image {i+1} <InsertPhotoOutlinedIcon fontSize="small"/></span>
 	                                            		}
 						                                          <input hidden accept="image/*" type="file" 
-						                                          onChange={(e)=>{e.target.files[0]&&uploadImage({id:item.id,image:e.target.files[0],sample_image_url:item.image})}}/>
+						                                          onChange={(e)=>{e.target.files[0]&&uploadImage({id:item.id,image:e.target.files[0],sample_image_url:item.image,isPersonalized:false})}}/>
 				                                         	</Button>
-				                                         	<Cropper/>
 		                                         		</div>
 		                                				</div>
 		                                				)

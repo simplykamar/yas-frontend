@@ -1,77 +1,60 @@
-import { useState } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import test from '../../images/other/test.png'
- 
-function Cropper() {
-    const [src, setSrc] = useState(null);
-    const [crop, setCrop] = useState({ aspect: 16 / 9 });
-    const [image, setImage] = useState(null);
-    const [output, setOutput] = useState(null);
- 
-    const selectImage = (file) => {
-        setSrc(URL.createObjectURL(file));
-    };
- 
-    const cropImageNow = () => {
-        const canvas = document.createElement('canvas');
-        const scaleX = image.naturalWidth / image.width;
-        const scaleY = image.naturalHeight / image.height;
-        canvas.width = crop.width;
-        canvas.height = crop.height;
-        const ctx = canvas.getContext('2d');
- 
-        const pixelRatio = window.devicePixelRatio;
-        canvas.width = crop.width * pixelRatio;
-        canvas.height = crop.height * pixelRatio;
-        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-        ctx.imageSmoothingQuality = 'high';
- 
-        ctx.drawImage(
-            image,
-            crop.x * scaleX,
-            crop.y * scaleY,
-            crop.width * scaleX,
-            crop.height * scaleY,
-            0,
-            0,
-            crop.width,
-            crop.height,
-        );
- 
-        // Converting to base64
-        const base64Image = canvas.toDataURL('image/jpeg');
-        setOutput(base64Image);
-    };
- 
-    return (
-        <div className="App">
-            <center>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                        selectImage(e.target.files[0]);
-                    }}
-                />
-                <br />
-                <br />
-                <div>
-                    {test && (
-                        <div>
-                            <ReactCrop src={test} onImageLoaded={setImage}
-                                crop={crop} onChange={setCrop} />
-                            <br />
-                            <button onClick={cropImageNow}>Crop</button>
-                            <br />
-                            <br />
-                        </div>
-                    )}
-                </div>
-                <div>{output && <img src={output} />}</div>
-            </center>
+import {useState} from 'react'; 
+import Button from "@mui/material/Button";
+import axios from 'axios';
+
+function CropperImg({itemID,uploadedImgId,img,updatePersonalizeImgs,aspectRatio}) {
+    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const [crop, setCrop] = useState({height:0,width:0});
+    const [loading, setLoading] = useState();
+
+async function saveCropdata(){
+    setLoading(true);
+    console.log(crop);
+    const formData = new FormData();
+    formData.append('itemID',JSON.stringify(itemID));
+    formData.append('uploadedImgId',JSON.stringify(uploadedImgId));
+    formData.append('cropData',JSON.stringify(crop));
+    await axios.post(BASE_URL+'/apply-image-personalization/',formData)
+    .then(response=>{
+      console.log(response);
+      const personalizedImg = response.data.personalizeImg;
+      setLoading(false);
+      updatePersonalizeImgs(itemID,personalizedImg);
+    })
+    .catch(error=>{
+      setLoading(false);
+      console.log(error);
+    })
+   }
+  return (
+      <div className="px-5" >
+      {!loading?
+        <div >
+          <ReactCrop
+            crop={crop}
+             aspect={aspectRatio}
+              onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
+              >
+            <img src={img}/>
+          </ReactCrop>
+          <div className="text-end">
+            {
+              (crop.height|crop.width)?
+              <Button variant="outlined" className="text-small" onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}>Save</Button>
+                :""
+            }
+          </div>
         </div>
-    );
+        :
+        <div className="text-center ">
+                <div className="spinner-border text-danger"></div>
+                <div className="text-small">Personalizing...</div>
+              </div>
+      }
+      </div>
+  )
 }
- 
-export default Cropper;
+export default CropperImg;
