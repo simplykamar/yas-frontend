@@ -23,6 +23,9 @@ import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
 import CropperImg from './ImageCrop';
+import Main from '../Loading/Main';
+import Uploading from '../Loading/Uploading';
+import Personalizing from '../Loading/Personalizing';
 
 const ProductDetail = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -41,7 +44,7 @@ const ProductDetail = () => {
 	const [productPersonalizeImgs, setProductPersonalizeImgs] = useState([])
 	const [productPersonalizeText, setProductPersonalizeText] = useState([])
 	const [uploading, setUploading] = useState(false);
-	const [uploadedImage, setUploadedImage] = useState(null)
+	const [textPersonalizing, setTextPersonalizing] = useState(false);
 	const [inputError,setInputError] = useState(false)
 	const [personalizeTextTemp,setPersonalizeTextTemp] = useState(null)
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
@@ -164,6 +167,7 @@ const ProductDetail = () => {
  }
 
 async function applyTextPersonalization(itemID){
+	 	setTextPersonalizing(true);
 		console.log('itemID',itemID);
 		const item = productPersonalizeText.find(item=>item.id===itemID);
 		console.log("item",item);
@@ -172,12 +176,18 @@ async function applyTextPersonalization(itemID){
     formData.append('text',JSON.stringify(item.text));
 			await axios.post(BASE_URL+'/apply-text-personalization/',formData)
 		    .then(response=>{
+		    	if(response.status===200){
 		    	updatePersonalizeTexts(itemID,response.data.image)
 		      console.log(response);
-
+		      setTextPersonalizing(false);
+		    }
+      else if(response.status===400){
+        alert(response.msg)
+      }
 		    })
 		    .catch(error=>{
 		      console.log(error);
+		      setTextPersonalizing(false);
 		    }) 
  	 }
 
@@ -278,6 +288,7 @@ async function applyTextPersonalization(itemID){
  		}
 
  }
+
     useEffect(()=>{
       document.title=product_slug;
     	window.scrollTo(0,0);
@@ -291,6 +302,9 @@ async function applyTextPersonalization(itemID){
 	return(
 		<div className="container-fluid pt-lg-3 pt-md-3">
           <div><Toaster/></div>
+          <Main loading={loading}/>
+          <Uploading uploading={uploading}/>
+          <Personalizing personalizing={textPersonalizing}/>
 		{ !loading
 			?
 			<div className="row">
@@ -622,16 +636,22 @@ async function applyTextPersonalization(itemID){
 			                                				<div className="mt-3 text-center" key={item.id}>
 					                              				<img src={item.image} className="img-fluid w-75"/>
 					                              				 {
-	                                            			productPersonalizeText.map((obj,textIndex)=>{
+	                                            			productPersonalizeText.map((obj)=>{
 	                                            				if (obj.id===item.id){
 	                                            					if (obj.isPersonalized){
 	                                            						return (
+	                                            								!textPersonalizing?
 	                                            									<div key={obj.id}>
 											                      		     							<small className="my-2 d-block text-small mt-2" > 
 	                                           									 		 <img src={obj.image} className="img-fluid me-2" style={{width:'30px',height:'30px'}}/> 
 	                                        													<a href={obj.image} target="blank">View personalize image</a>
 	                                        												</small> 
 	                                        											</div>
+	                                        											:
+	                                        											<div key={obj.id} className="text-center mt-2">
+																									                <div className="spinner-border text-danger"></div>
+																									                <div className="text-small">Personalizing...</div>
+																									              </div>
 	                                            							)
 	                                            					}
 	                                            			}

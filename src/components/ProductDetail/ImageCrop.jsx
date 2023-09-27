@@ -4,11 +4,16 @@ import test from '../../images/other/test.png'
 import {useState} from 'react'; 
 import Button from "@mui/material/Button";
 import axios from 'axios';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Personalizing from '../Loading/Personalizing';
+
 
 function CropperImg({itemID,uploadedImgId,img,updatePersonalizeImgs,aspectRatio}) {
     const BASE_URL = 'http://127.0.0.1:8000/api';
     const [crop, setCrop] = useState({height:0,width:0});
     const [loading, setLoading] = useState();
+    const [loadingImg, setLoadingImg] = useState(true);
 
 async function saveCropdata(){
     setLoading(true);
@@ -19,10 +24,15 @@ async function saveCropdata(){
     formData.append('cropData',JSON.stringify(crop));
     await axios.post(BASE_URL+'/apply-image-personalization/',formData)
     .then(response=>{
-      console.log(response);
-      const personalizedImg = response.data.personalizeImg;
-      setLoading(false);
-      updatePersonalizeImgs(itemID,personalizedImg);
+      if(response.status===200){
+        console.log(response);
+        const personalizedImg = response.data.personalizeImg;
+        setLoading(false);
+        updatePersonalizeImgs(itemID,personalizedImg);
+      }
+      else if(response.status===400){
+        alert(response.msg)
+      }
     })
     .catch(error=>{
       setLoading(false);
@@ -31,6 +41,7 @@ async function saveCropdata(){
    }
   return (
       <div className="" >
+          <Personalizing personalizing={loading}/>
       {!loading?
         <div className="">
           <p className="text-small text-secondary">Drag your finger across your photo to crop </p>
@@ -41,7 +52,7 @@ async function saveCropdata(){
               className="w-75"
               >
             <div className="text-center">
-             <img src={img} className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
+             <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
             </div>
           </ReactCrop>
           <div className="text-end">
@@ -56,6 +67,12 @@ async function saveCropdata(){
         <div className="text-center ">
                 <div className="spinner-border text-danger"></div>
                 <div className="text-small">Personalizing...</div>
+              </div>
+      }
+      {
+        loadingImg&&<div className="text-center ">
+                <div className="spinner-border text-danger"></div>
+                <div className="text-small">loading image...</div>
               </div>
       }
       </div>
