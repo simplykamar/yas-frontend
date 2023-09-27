@@ -20,6 +20,8 @@ import TextField from '@mui/material/TextField';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
 import CropperImg from './ImageCrop';
 
 const ProductDetail = () => {
@@ -41,6 +43,7 @@ const ProductDetail = () => {
 	const [uploading, setUploading] = useState(false);
 	const [uploadedImage, setUploadedImage] = useState(null)
 	const [inputError,setInputError] = useState(false)
+	const [personalizeTextTemp,setPersonalizeTextTemp] = useState(null)
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
  
@@ -129,7 +132,7 @@ const ProductDetail = () => {
 	 		setUploading(false);
    	})
 	 }
-	 async function updatePersonalizeImgs(itemID,serverPersonalizedImg){
+	 function updatePersonalizeImgs(itemID,serverPersonalizedImg){
 	 	console.log('serverPersonalizedImg',serverPersonalizedImg)
 	   		// update cutomer uploaded image with server personalize image
 				const newSate = productPersonalizeImgs.map(obj=>{
@@ -140,6 +143,7 @@ const ProductDetail = () => {
 	   		});
    		setProductPersonalizeImgs(newSate);
  	 }
+
    function productPersonalizeImageHandler(item){
    	const itemExist = productPersonalizeImgs.find(obj=>obj.id===item.id);
    	if (itemExist){
@@ -158,6 +162,34 @@ const ProductDetail = () => {
 
    	}
  }
+
+async function applyTextPersonalization(itemID){
+		console.log('itemID',itemID);
+		const item = productPersonalizeText.find(item=>item.id===itemID);
+		console.log("item",item);
+    const formData = new FormData();
+    formData.append('itemID',JSON.stringify(itemID));
+    formData.append('text',JSON.stringify(item.text));
+			await axios.post(BASE_URL+'/apply-text-personalization/',formData)
+		    .then(response=>{
+		    	updatePersonalizeTexts(itemID,response.data.image)
+		      console.log(response);
+
+		    })
+		    .catch(error=>{
+		      console.log(error);
+		    }) 
+ 	 }
+
+ function updatePersonalizeTexts(itemID,serverPersonalizedImg){
+				const newSate = productPersonalizeText.map(obj=>{
+		   		if (obj.id === itemID){
+		   			return {...obj,image:serverPersonalizedImg,isPersonalized:true};
+		   		}
+   		return obj;
+	   		});
+   		setProductPersonalizeText(newSate);
+ 	 }
 
   function productPersonalizeTextHandler(item){
    	const itemExist = productPersonalizeText.find(obj=>obj.id===item.id)
@@ -515,8 +547,10 @@ const ProductDetail = () => {
                                 <div className="modal-body pt-0">
 	                                <div className="sticky-top bg-white py-1">
 		                                <div className="d-flex justify-content-between">
-		                                	<h5>Start Personalizing</h5>
-		                                	<Link to= "" className="text-decoration-none fw-bold" onClick={()=>{setProductPersonalizeText([]);setProductPersonalizeImgs([])}}>Reset All</Link>	
+		                                	<p className="fw-600">Start Personalizing</p>
+		                                	<Link to= "" className="text-decoration-none fw-bold text-danger" onClick={()=>{setProductPersonalizeText([]);setProductPersonalizeImgs([])}}>
+		                                	<RestoreOutlinedIcon fontSize="small" className="mb-1"/> Reset All
+		                                	</Link>	
 		                                </div>
 	                               	</div>
 		                                <small className="text-small text-secondary"><AccessTimeOutlinedIcon style={{fontSize:'14px'}}/> It takes just about a minute</small>
@@ -530,51 +564,53 @@ const ProductDetail = () => {
 			                                			return(
 			                                				<div className="mt-3" key={item.id}>
 			                                						<div className="text-center" >
-			                                						<img src={item.image} className="img-fluid"/>
+			                                						<img src={item.image} className="img-fluid w-75"/>
 	                                            		{
+	                                            			!uploading?
 	                                            			productPersonalizeImgs.map((obj,imgIndex)=>{
 	                                            				if (obj.id===item.id){
 	                                            					if (obj.isPersonalized){
 	                                            						return (
 	                                            									<div key={obj.id}>
 	                                            										<small className="my-2 d-block text-small mt-2" > 
-	                                           									 		 <img src={obj.image} className="img-fluid" style={{width:'30px',height:'30px'}}/> Image {imgIndex+1}<CheckIcon color="success"/> 
+	                                           									 		 <img src={obj.image} className="img-fluid me-2" style={{width:'30px',height:'30px'}}/> 
+	                                        													<a href={obj.image} target="blank">View personalize image</a>
 	                                        												</small> 
 	                                        											</div>
 	                                            							)
 	                                            				}else{
 	                                            					return (
-	                                            									!uploading?
 						                                         							<div key={obj.id} className="pt-3">
 						                                         								<CropperImg itemID={item.id} uploadedImgId={obj.imageId} img={obj.image} updatePersonalizeImgs={updatePersonalizeImgs} aspectRatio={item.aspect_ratio}/>
 			                                        										</div>
-				                                         								:<div className="text-center p-2">
-																										                <div className="spinner-border text-danger"></div>
-																										              	<small className="text-small">uploading...</small>
-																										              </div>
 				                                         						)
 	                                            				}
 	                                            			}
 	                                            			})
+	                                            			:<div className="text-center mt-2">
+																			                <div className="spinner-border text-danger"></div>
+																			                <div className="text-small">Uploading...</div>
+																			              </div>
 	                                            		}
 			                                					</div>
-			                                					<div className="mt-3">
-			                                					<ul className="text-small">
-								                                	<li>Please upload good quality image.</li>
-								                                	<li>Please ensure you have rights to use the image.</li>
-								                                </ul>
-			                                					</div>
-			                                					<div>
-				                                          <Button variant="outlined" color="error" className="py-2 my-3 rounded-15 w-100" component="label">
+			                                					<div className="text-center">
+				                                          <Button variant="outlined" color="error" className="py-2 my-3 rounded-15 w-75" component="label">
 						                                      	{
 				                                            	productPersonalizeImgs.find(obj=>obj.id===item.id)
-				                                            	?<span>Change image</span>
-				                                            	:<span>Upload image {i+1} <InsertPhotoOutlinedIcon fontSize="small"/></span>
+				                                            	?<span className="text-small fw-bold"><InsertPhotoOutlinedIcon fontSize="small"/> Change image {i+1}</span>
+				                                            	:<span className="text-small fw-bold"><InsertPhotoOutlinedIcon fontSize="small"/> Upload image {i+1}</span>
 	                                            		}
 						                                          <input hidden accept="image/*" type="file" 
 						                                          onChange={(e)=>{e.target.files[0]&&uploadImage({id:item.id,image:e.target.files[0],sample_image_url:item.image,isPersonalized:false})}}/>
 				                                         	</Button>
 		                                         		</div>
+
+			                                					<div className="">
+			                                					<ul className="text-secondary">
+								                                	<li><span className="text-small text-secondary">Please upload good quality image.</span></li>
+								                                	<li><span className="text-small text-secondary">Please ensure you have rights to use the image.</span></li>
+								                                </ul>
+			                                					</div>
 		                                				</div>
 		                                				)
 	                                			})
@@ -584,18 +620,39 @@ const ProductDetail = () => {
 				                              			product.product_personalize_text.map((item,i)=>{
 			                                			return(
 			                                				<div className="mt-3 text-center" key={item.id}>
-					                              				<img src={item.image} className="img-fluid"/>
+					                              				<img src={item.image} className="img-fluid w-75"/>
+					                              				 {
+	                                            			productPersonalizeText.map((obj,textIndex)=>{
+	                                            				if (obj.id===item.id){
+	                                            					if (obj.isPersonalized){
+	                                            						return (
+	                                            									<div key={obj.id}>
+											                      		     							<small className="my-2 d-block text-small mt-2" > 
+	                                           									 		 <img src={obj.image} className="img-fluid me-2" style={{width:'30px',height:'30px'}}/> 
+	                                        													<a href={obj.image} target="blank">View personalize image</a>
+	                                        												</small> 
+	                                        											</div>
+	                                            							)
+	                                            					}
+	                                            			}
+	                                            		})
+	                                            	}
 					                              				<div className="my-3">
-					                              				<div className="text-small text-secondary my-3"><small>Text {i+1} (Upto {item.text_length} characters)</small></div>
-											                      		     <TextField
-													                      		    color="error"
-						                                          	onChange={(e)=>{productPersonalizeTextHandler({id:item.id,text:e.target.value,sample_image_url:item.image})}}
-													                      		    name={`text${i+1}`}
-													                      		    fullWidth
-													                      		    label={`Enter text ${i+1}`}
-													                      		    inputProps={{ maxLength: item.text_length }}
-											                      		   />
-										                        	   </div>
+						                              				<div className="text-small text-secondary my-3">
+						                              					<small>Text {i+1} (Upto {item.text_length} characters)</small>
+						                              				</div>
+												                      		     <TextField
+														                      		    color="error"
+							                                          	onChange={(e)=>{productPersonalizeTextHandler({id:item.id,image:null,text:e.target.value,sample_image_url:item.image,isPersonalized:false})}}
+														                      		    name={`text${i+1}`}
+														                      		    fullWidth
+														                      		    label={`Enter text ${i+1}`}
+														                      		    inputProps={{ maxLength: item.text_length }}
+												                      		   />
+												                      		   <div className="text-end mt-2">
+												                      		   	<Button variant="outlined" className="text-small" onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
+												                      		   </div>
+											                        	   </div>
 		                                				</div>
 		                                				)
 	                                			})

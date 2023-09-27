@@ -30,15 +30,19 @@ async function saveCropdata(){
     })
    }
   return (
-      <div className="px-5" >
+      <div className="" >
       {!loading?
-        <div >
+        <div className="">
+          <p className="text-small text-secondary">Drag your finger across your photo to crop </p>
           <ReactCrop
             crop={crop}
              aspect={aspectRatio}
               onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
+              className="w-75"
               >
-            <img src={img}/>
+            <div className="text-center">
+             <img src={img} className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
+            </div>
           </ReactCrop>
           <div className="text-end">
             {
