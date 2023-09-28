@@ -2,7 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 const Main = ({personalizing}) => {
 	const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -31,8 +31,10 @@ const Main = ({personalizing}) => {
 			  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
 			  open={openBackdrop}
 			>
-			  <CircularProgress />
-			  <p>Personalizing...</p>
+			<Box className="text-center">
+			  <CircularProgress color="inherit"/>
+			  <p className="text-small text-center">Personalizing...</p>
+		    </Box>
 			</Backdrop>
 		)
 

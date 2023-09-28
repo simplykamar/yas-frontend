@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import LinearProgress from '@mui/material/LinearProgress';
-import loading from '../../images/loading/loading.gif'
+import Box from '@mui/material/Box';
 
 const Main = ({uploading}) => {
 	const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -32,10 +32,10 @@ const Main = ({uploading}) => {
 			  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
 			  open={openBackdrop}
 			>
-			  <CircularProgress />
-			  <img src={loading} className="img-fluid w-25" />
-			  <p>Uploading...</p>
-
+			<Box sx={{ width: '75%' }}>
+		      <LinearProgress  color="inherit"/>
+		    	<p className="text-small text-center">Uploading...</p>
+		    </Box>
 			</Backdrop>
 		)
 

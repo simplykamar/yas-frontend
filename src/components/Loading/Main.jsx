@@ -2,6 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const Main = ({loading}) => {
 	const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -30,7 +31,10 @@ const Main = ({loading}) => {
 			  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
 			  open={openBackdrop}
 			>
-			  <CircularProgress color="inherit" />
+			<Box>
+			  <CircularProgress color="inherit"/>
+			  <p className="text-small">loading...</p>
+		    </Box>
 			</Backdrop>
 		)
 
