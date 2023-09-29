@@ -37,6 +37,9 @@ const Navbar = () => {
   const [productDataLoading, setProductDataLoading] = useState(true)
   const [isSearchResult, setIsSearchResult] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [clientSearchedData, setClientSearchedData] = useState(null)
+  const [quickSearch,setQuickSearch] = useState([]);
+
 
   const openModal= ()=> { setIsOpen( true )}
   const closeModal= ()=> { setIsOpen( false )}
@@ -48,6 +51,7 @@ function fetchCategoriesData(url){
       setCategoryDataLoading(false);
     })
     .catch((error)=>{
+    // console.log(error)
   })
 }
 function fetchProductsData(url){
@@ -55,26 +59,66 @@ function fetchProductsData(url){
     .then((response)=>{
       setSearchProducts(response.data)
       setProductDataLoading(false);
-      if(response.data.length){
-        setIsSearchResult(true)
-      }
     })
     .catch((error)=>{
+    // console.log(error)
   })
 }
   function fetchSearchData(q){
-    console.log(q)
-    if(q.length){
-      document.title=q;
+    setSearchQuery(q);
+    if(q.length > 2 ){
+      document.title = q;
       fetchCategoriesData(BASE_URL+`/categories/?q=${q}`);
       fetchProductsData(BASE_URL+`/products/?q=${q}`);
+      setIsSearchResult(true)
+      getClientData(q)
     }else{
-      document.title="yas: Online Gifts Shopping";
+      document.title = "yas: Online Gifts Shopping";
       setSearchProducts([]);
       setCategories([]);
-        setIsSearchResult(false);
+      setIsSearchResult(false);
     }
   }
+  async function getClientData(q){
+    if(clientSearchedData){
+        setSearchedHistory(q)
+      
+    }else{
+        await axios.get('https://ipapi.co/json/')
+          .then(response=>{
+            setClientSearchedData(response.data)
+            setSearchedHistory(q)
+          })
+          .catch(error => {
+            // console.log(error)
+        })
+      }
+  }
+
+  function setSearchedHistory(q){
+      const formData = new FormData()
+      formData.append('query',q)
+      formData.append('state',clientSearchedData.region)
+      formData.append('city',clientSearchedData.city)
+      formData.append('ip_address',clientSearchedData.ip)
+      formData.append('latitude',clientSearchedData.latitude)
+      formData.append('longitude',clientSearchedData.longitude)
+      formData.append('operator',clientSearchedData.org)
+      axios.post(BASE_URL+'/set-searched-history/',formData)
+  }
+  function setQuickSearchData(){
+    axios.get(BASE_URL+'/quick-search')
+    .then(response=>{
+      console.log(response.data)
+      setQuickSearch(response.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
+  useEffect(()=>{
+    setQuickSearchData();
+  },[])
   return(
     <>
     <div className="sticky-top">
@@ -159,7 +203,7 @@ function fetchProductsData(url){
                                         )
                                    }}
                       id="outlined-search"
-                      onChange={(e)=>{setSearchQuery(e.target.value);fetchSearchData(searchQuery)}} 
+                      onChange={(e)=>{fetchSearchData(e.target.value)}} 
                       name="search" fullWidth  
                       type="search"
                       value={searchQuery}
@@ -191,56 +235,30 @@ function fetchProductsData(url){
                                 </div>
                                 </Link>
                               )})
-                            :"loading..."
+                            :<div className="text-center mt-2">
+                               <div className="spinner-border text-danger"></div>
+                               <div className="text-small">loading...</div>
+                             </div>
                         }
                       </div>
                 }
                 <div className=" ">
-                <p className="my-3 text-secondary">Quick search...</p>
-                <div className="row gy-4">
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6 ">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("chocolate");fetchSearchData("chocolate")}} >Chocolate</div>
+                  <p className="my-3 text-secondary">Quick search...</p>
+                  <div className="row gy-4">
+                    {quickSearch.map((item)=>{
+                      return(
+                            <div className="col-lg-3 col-md-3 col-sm-6 col-6" key={item.id}>
+                              <div className="">
+                                <div className="quick-search text-center py-2" onClick={(e)=>{fetchSearchData(item.query)}}>
+                                {item.query}
+                                </div>
+                              </div>
+                            </div>    
+                        )
+                    })
+                    }
+                  
                   </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("mug");fetchSearchData("mug")}} >Mug</div>
-                  </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("bottle");fetchSearchData("bottle")}} >Bottle</div>
-                  </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("tshirt");fetchSearchData("tshirt")}} >tshirt</div>
-                  </div>
-                  </div>
-                </div>
-                <div className="row gy-4 mt-2">
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6 ">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("chocolate");fetchSearchData("chocolate")}} >Chocolate</div>
-                  </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("mug");fetchSearchData("mug")}} >Mug</div>
-                  </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("bottle");fetchSearchData("bottle")}} >Bottle</div>
-                  </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-6">
-                  <div className="">
-                    <div className="quick-search text-center py-2" onClick={(e)=>{setSearchQuery("tshirt");fetchSearchData("tshirt")}} >tshirt</div>
-                  </div>
-                  </div>
-                </div>
                 </div>
 
                  </div>

@@ -578,7 +578,14 @@ async function applyTextPersonalization(itemID){
 			                                			return(
 			                                				<div className="mt-3" key={item.id}>
 			                                						<div className="text-center" >
-			                                						<img src={item.image} className="img-fluid w-75"/>
+			                                						{/* for desktop */}
+			                                						<div className="d-none d-md-block d-lg-block">
+			                                							<img src={item.image} className="img-fluid w-50"/>
+			                                						</div>
+			                                						{/* for mobile */}
+			                                						<div className="d-md-none d-lg-none">
+			                                							<img src={item.image} className="img-fluid w-75"/>
+			                                						</div>
 	                                            		{
 	                                            			!uploading?
 	                                            			productPersonalizeImgs.map((obj,imgIndex)=>{
@@ -634,7 +641,14 @@ async function applyTextPersonalization(itemID){
 				                              			product.product_personalize_text.map((item,i)=>{
 			                                			return(
 			                                				<div className="mt-3 text-center" key={item.id}>
-					                              				<img src={item.image} className="img-fluid w-75"/>
+					                              				{/* for desktop */}
+			                                						<div className="d-none d-md-block d-lg-block">
+			                                							<img src={item.image} className="img-fluid w-50"/>
+			                                						</div>
+			                                						{/* for mobile */}
+			                                						<div className="d-md-none d-lg-none">
+			                                							<img src={item.image} className="img-fluid w-75"/>
+			                                						</div>
 					                              				 {
 	                                            			productPersonalizeText.map((obj)=>{
 	                                            				if (obj.id===item.id){
