@@ -11,6 +11,7 @@ import {addToOrder} from '../../redux/orderSlice';
 import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import {resetCart} from '../../redux/cartSlice'
 import emptyCart from "../../images/other/emptycart.svg"
+import giftcard from "../../images/other/giftcard.jpg"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import CheckIcon from '@mui/icons-material/Check';
@@ -177,7 +178,7 @@ ${user.user.user.name.toUpperCase()}
 					  <p className="">Your Message</p>
 						<textarea className="form-control msg-textarea" onChange={(e)=>{setMsgContent(e.target.value)}} value={msgContent} ></textarea>
 					</div>
-			}
+					}
 				</div>
 				</div>
 				</div>
@@ -197,15 +198,25 @@ ${user.user.user.name.toUpperCase()}
 					</div>
 						)})
 					}
+					{ 
+						msg &&
+					<div className="border p-2 d-flex justify-content-between">
+							<img src={giftcard} className="img-fluid" width="60" height="60"/>
+							<small className="">
+								{msgTitle} gift card
+							</small>
+							<small className="text-danger fw-600">₹ 30</small>	
+					</div>
+					}
 					<div className=" mt-3 bg-light p-3" style={{border:'1px dashed gray'}}>
 					    <div className="">
 								<small>Billing Details</small>
-								<small className="d-flex justify-content-between">Total Items <span>{totalProducts}</span></small>
-								<small className="d-flex justify-content-between">Sub Total <span>₹ {totalAmounts}</span></small>
+								<small className="d-flex justify-content-between">Total Items <span>{msg?totalProducts+1:totalProducts}</span></small>
+								<small className="d-flex justify-content-between">Sub Total <span>₹ {msg?totalAmounts+30:totalAmounts}</span></small>
 								<small className="d-flex justify-content-between">Discount <span>0</span></small>
 								<small className="d-flex justify-content-between">Shipping Charges <span>Free</span></small>
 							</div><hr/>
-							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {totalAmounts}</span></p>
+							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {msg?totalAmounts+30:totalAmounts}</span></p>
 
 					</div>
 					<Link onClick={()=>{dispatch(addToOrder({giftCard:{exist:msg,title:msgTitle,msg:msgContent}}))}} to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>

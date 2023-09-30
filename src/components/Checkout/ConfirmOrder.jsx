@@ -34,7 +34,7 @@ const ConfirmOrder = (props) => {
   const [paymentReciept,setPaymentReciept] = useState('');
   const [loading, setLoading] = useState(true);
 
-    console.log(order)
+    console.log(order.giftCard.exist)
    
    function vibrate(){
     if(!("vibrate" in navigator)){
@@ -49,6 +49,7 @@ const ConfirmOrder = (props) => {
 function getCartTotalPrice(){
       let bodyData = new FormData();
       bodyData.append("cartData", JSON.stringify(cartData));
+      bodyData.append("giftCard", JSON.stringify(order.giftCard.exist));
         axios.post(baseUrl+'cart-total-price/',bodyData,{headers:{"Content-Type": 'multipart/form-data',"Authorization" : `JWT ${user.access}`}})
           .then(response=>{
             setTotalAmounts(response.data.totalAmount)

@@ -56,7 +56,7 @@ const Slider = () => {
                 ?
                     homeBanner.map(item=>{
                         return(
-                                <SwiperSlide>
+                                <SwiperSlide key={item.id}>
 	                                <Link to={`/category/${item.category.title}/${item.category.id}`}>
 	                             	   <img src={item.image} className="img-fluid home-slider-img"/>
 	                                </Link>

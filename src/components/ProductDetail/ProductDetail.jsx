@@ -47,6 +47,7 @@ const ProductDetail = () => {
 	const [textPersonalizing, setTextPersonalizing] = useState(false);
 	const [inputError,setInputError] = useState(false)
 	const [personalizeTextTemp,setPersonalizeTextTemp] = useState(null)
+	const [productImgs, setProductImgs] = useState([])
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
  
@@ -61,6 +62,7 @@ const ProductDetail = () => {
               .then((response)=>{
               	console.log(response)
               	setProduct(response.data);
+              	setProductImgs(response.data.product_imgs)
                 setLoading(false);
                 setProductTags(response.data.product_tags)
             })
@@ -286,7 +288,8 @@ async function applyTextPersonalization(itemID){
  			console.log(personalizeImageValidate)
  			setInputError(true);
  		}
-
+// Add all personalize images to product details view
+ 		 	setProductImgs([...productPersonalizeImgs,...productPersonalizeText,...productImgs]) 
  }
 
     useEffect(()=>{
@@ -312,15 +315,18 @@ async function applyTextPersonalization(itemID){
 					<div className="row">
 						<div className="col-lg-2 col-md-2 d-none d-lg-block d-md-block">
 							{ 
-						product.product_imgs?.map((img,index)=>{return(
-						 <ProgressiveImage src={img.image} placeholder={yas} key={img.id}>
+						productImgs?.map((img,index)=>{return(
+						 <ProgressiveImage src={img.image} placeholder={yas} key={index+1}>
                {(src, loading) => (
+                 
                  <img
                     className={`img-fluid rounded mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
                 		src={src}
                 		alt="product image"
                 		onClick={()=>{setSelectedImage(index)}}
+                		
                  />
+
                  )}
                </ProgressiveImage>
 						// <img src={img.image} key={img.id} className="img-fluid img-thumbnail mt-3 cursor-pointer" onClick={()=>{setSelectedImage(index)}}/>
@@ -328,15 +334,15 @@ async function applyTextPersonalization(itemID){
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-							<InnerImageZoom src={product.product_imgs[selectedImage].image} zoomScale={1.5} zoomType="hover" zoomSrc={product.product_imgs[selectedImage].image} className="set-min-width" />
+							<InnerImageZoom src={productImgs[selectedImage].image} zoomScale={1.5} zoomType="hover" zoomSrc={productImgs[selectedImage].image} className="set-min-width" />
 								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
 					{/* for mobile view */}
 					<div className="row mt-1 d-lg-none d-md-none">
 					{	
-						product.product_imgs?.map((img,index)=>{return(
-						<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={img.id}>
+						productImgs?.map((img,index)=>{return(
+						<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={index+1}>
 							<ProgressiveImage src={img.image} placeholder={yas}>
                {(src, loading) => (
                  <img
@@ -344,6 +350,7 @@ async function applyTextPersonalization(itemID){
                 		src={src}
                 		alt="product image"
                 		onClick={()=>{setSelectedImage(index)}}
+                		style={img.isPersonalized&&{border:'2px solid yellow'}}
                  />
                  )}
                </ProgressiveImage>
@@ -701,9 +708,9 @@ async function applyTextPersonalization(itemID){
 			                           	 {
 			                           	 	cartData.find((item)=>item.id==product_id)
 										 								?
-		                                	<Link to="/checkout" className="btn btn-pink text-uppercase py-2 w-100" >
-		                                	 <span data-bs-dismiss="modal"><ShoppingCartOutlinedIcon />Go to cart</span>
-																			</Link>
+																			<div data-bs-dismiss="modal" className="btn btn-pink text-uppercase py-2 w-100" >
+		                                	 <span ><ShoppingCartOutlinedIcon />Go back</span>
+																			</div>
 			                           	 :
 	                                		<button className="btn btn-pink text-uppercase w-100 py-2" onClick={validate}>
 			                           	 			submit

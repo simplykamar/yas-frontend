@@ -35,7 +35,7 @@ export default function NavigationBar() {
     <div className="d-lg-none d-md-none">
       <Box sx={{position:'fixed',bottom:'0',right:'0',left:'0',zIndex:999 }} style={{boxShadow: '0 0 15px 2px lightgray'}} elevation={4}>
         <BottomNavigation
-        showLabel
+        showLabels
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
@@ -43,7 +43,7 @@ export default function NavigationBar() {
         >
           <BottomNavigationAction label="Home" icon={<HomeOutlinedIcon />} />
           <BottomNavigationAction onClick={()=>{setValue(0)}} label="Search" icon={<SearchOutlinedIcon />} data-bs-toggle="modal" data-bs-target="#searchModal"/>
-           <Link to="/customer/wishlist" className="nav-link"><BottomNavigationAction onClick={()=>{setValue(0)}} label="Wishlist" icon={<FavoriteBorderOutlinedIcon />} /></Link>
+           <BottomNavigationAction onClick={()=>{setValue(0)}} label="Wishlist" icon={<FavoriteBorderOutlinedIcon />} component={Link} to="/customer/wishlist"/>
           <BottomNavigationAction onClick={()=>{setValue(0)}} label="Profile" icon=
               { user.isAuthenticate ? 
                     <span className="fw-600" style={{padding:'0.5px 6px 0.5px 6px',border:'2px solid #545252',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>

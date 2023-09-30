@@ -43,7 +43,7 @@ const Checkout = (props) => {
                       {
                         item.is_personalize
                         &&
-                        <div className="text-small my-2"><BrushOutlinedIcon fontSize="small"/> Personalizable</div>
+                        <div className="text-small my-2"><BrushOutlinedIcon fontSize="small"/> Personalized</div>
                         }
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">

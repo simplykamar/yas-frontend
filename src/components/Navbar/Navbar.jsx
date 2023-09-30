@@ -191,7 +191,7 @@ function fetchProductsData(url){
                  </div>
                  <div className="modal-body pt-0 pb-5">
                    <h4 className="" style={{marginLeft:'13px'}}>Find your gifts here...</h4>
-                 <form>
+                 <form action={`/products/${searchQuery}`}>
                     <div className="mt-3 ">
                       <TextField  
                       color='warning'
