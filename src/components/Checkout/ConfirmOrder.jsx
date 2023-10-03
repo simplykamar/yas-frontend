@@ -5,7 +5,7 @@ import axios from 'axios';
 import {useState,useEffect} from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {clearOrder} from '../../redux/orderSlice';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate,useLocation} from 'react-router-dom';
 import emptyCart from "../../images/other/emptycart.svg"
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { QRCode } from 'react-qrcode-logo';
@@ -21,6 +21,7 @@ import paymentdesktop from '../../images/other/payment-process-desktop-min.png'
 import yaslogo from '../../images/logos/yaslogo.png'
 
 const ConfirmOrder = (props) => {
+  const isNext = useLocation().state;
   const baseUrl = 'http://127.0.0.1:8000/api/';
   const dispatch =useDispatch();
   const [paymentMode, setPaymentMode] = useState('');
@@ -63,6 +64,9 @@ function getCartTotalPrice(){
       }
  useEffect(() => {
       document.title="Checkout | Proceed to payment";
+      if(!isNext){
+      navigate("/page-not-found",{replace:true});
+    }
       window.scrollTo(0,0);
     window.process = {
       ...window.process,
@@ -72,8 +76,8 @@ function getCartTotalPrice(){
   function resetOrder(){
       dispatch(resetCart());
       dispatch(clearOrder());
-      navigate('/order-success',{replace:true,state:true});
       setIsFetching(false);
+      navigate('/order-success',{replace:true,state:true});
   }
 
  const startPayment = async () => {

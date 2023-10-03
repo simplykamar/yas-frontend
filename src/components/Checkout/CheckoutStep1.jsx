@@ -7,7 +7,7 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {addToOrder} from '../../redux/orderSlice';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate,useLocation} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import emptyCart from "../../images/other/emptycart.svg"
@@ -15,6 +15,7 @@ import TextField from '@mui/material/TextField';
 import CheckIcon from '@mui/icons-material/Check';
 
 const CheckoutStep1 = () => {
+	const isNext = useLocation().state;
 	const notifySuccess = (msg) => toast.success(msg);
 	const notifyError = (msg) => toast.error(msg);
   // const BASE_URL = 'https://simplykamar.tech/api';
@@ -49,6 +50,9 @@ const CheckoutStep1 = () => {
     }
 	useEffect(()=>{
       document.title="Checkout | Select Address";
+      if(!isNext){
+			navigate("/page-not-found",{replace:true});
+		}
       window.scrollTo(0,0);
 		fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 	},[])
@@ -87,6 +91,11 @@ const CheckoutStep1 = () => {
 						.catch(error=>{
 							notifyError(error.response.data.msg)
 					})
+
+	}
+	function selectAddress(AddressId){
+		dispatch(addToOrder({address:AddressId}));
+    navigate("/checkout-step-2",{replace:true,state:true});
 
 	}
 	return(
@@ -150,7 +159,7 @@ const CheckoutStep1 = () => {
 							</p>
 							<p className="text-capitalize">{item.address}</p>
 							<p><CallTwoToneIcon/> {item.mobile}</p>
-							<Link onClick={()=>{dispatch(addToOrder({address:item.id}));}} to="/checkout-step-2" className="btn btn-pink text-uppercase">deliver here</Link>
+							<button onClick={()=>{selectAddress(item.id)}} className="btn btn-pink text-uppercase">deliver here</button>
 						</div>)})
 						:""
 					:

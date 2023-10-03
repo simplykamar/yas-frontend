@@ -1,25 +1,51 @@
 import {Link} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
-import {removeFromCart,addToCart,resetCart,deleteFromCart} from '../../redux/cartSlice'
+import {removeFromCart,addToCart,resetCart,deleteFromCart,updateCart} from '../../redux/cartSlice'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined';
 import emptyCart from "../../images/other/emptycart.svg"
-import {useEffect} from 'react';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
+import Alert from '@mui/material/Alert';
+import { useNavigate } from "react-router-dom";
 
 const Checkout = (props) => {
+  const BASE_URL = 'http://127.0.0.1:8000/api';
   const cartData = useSelector((state)=>state.cart.products);
+  console.log(cartData)
+  const [itemsInStock,setItemsInStock] = useState(true);
   const dispatch = useDispatch();
-  const sum=0;
+  const sum = 0;
   const totalProducts = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
   const totalAmounts = cartData.reduce((sum,item)=>{return sum+(item.price*item.quantity)},0)
-  
-   function vibrate(){
+  const navigate = useNavigate();
+ 
+function vibrate(){
     if(!("vibrate" in navigator)){
        return;
   }
   navigator.vibrate(100);
+}
+
+function validateCart(){
+  const formData = new FormData()
+  formData.append('cartData',JSON.stringify(cartData))
+  axios.post(BASE_URL+'/item-stock-check/',formData)
+  .then(response=>{
+    dispatch(updateCart(response.data.cartData))
+    setItemsInStock(response.data.itemsInStock)
+    if(response.data.itemsInStock){
+       navigate("/checkout-step-1",{replace:true,state:true});
+    }
+    console.log(response)
+      window.scrollTo(0,0);
+    
+  })
+  .catch(error=>{
+    console.log(error)
+  })
 }
 
     useEffect(()=>{
@@ -32,13 +58,25 @@ const Checkout = (props) => {
        { cartData.length?
       <>
       <h2 className="text-dark text-center ">Shopping cart</h2>
+      {!itemsInStock&&
+        <Alert variant="outlined" severity="error">
+        Some items are Out Of Stock
+      </Alert>  
+      }
                 {
                   cartData.map((item,i)=>{return(
-                 <div className="row mt-4 border p-2 pb-3 custom-shadow" key={item.id}>
+                 <div className="row mt-4 border p-2 pb-3 custom-shadow" key={item.id}
+                    style={item.isStock?{}:{border:'3px solid #e37064'}}
+                  >
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
                       <Link to={`/product/${item.title}/${item.id}`} className="d-flex text-decoration-none text-dark"> 
                       <img src={item.img} className="img-fluid" style={{width:'100px'}}/> 
-                      <p className="ms-2">{item.title}</p>
+                      <p className="ms-2">
+                      {item.title} 
+                      {!item.isStock&&
+                        <small className="text-danger fw-bold d-block"> Out Of Stock</small>
+                      }
+                      </p>
                       </Link>
                       {
                         item.is_personalize
@@ -74,7 +112,7 @@ const Checkout = (props) => {
                       <h4 className="text-secondary">Total Amounts: <span className="text-danger">₹ {totalAmounts}</span></h4>
                     </div>
                     <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</Link>
+                      <button onClick={validateCart} className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</button>
                     </div>
                 </div>
             </div>
@@ -91,8 +129,8 @@ const Checkout = (props) => {
                     </div>
                 </div>
                 <div className="">
-                      <Link to="/checkout-step-1" className="btn btn-pink d-block py-3 fw-600">PROCEED TO CHECKOUT</Link>
-                    </div>
+                      <button onClick={validateCart} className="btn btn-pink d-block w-100 py-3 fw-600">PROCEED TO CHECKOUT</button>
+                  </div>
             </div>
             </>
          :

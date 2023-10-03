@@ -240,6 +240,7 @@ async function applyTextPersonalization(itemID){
 					title:product.title,
 					price:product.price,
 					detail:product.detail,
+					isStock:true,
 					quantity,
 					img:product.product_imgs[0].image,
 					is_personalize:product.is_personalize,
@@ -258,6 +259,7 @@ async function applyTextPersonalization(itemID){
 					title:product.title,
 					price:product.price,
 					detail:product.detail,
+					isStock:true,
 					quantity,
 					img:product.product_imgs[0].image,
 					is_personalize:product.is_personalize,
@@ -274,6 +276,7 @@ async function applyTextPersonalization(itemID){
 					title:product.title,
 					price:product.price,
 					detail:product.detail,
+					isStock:true,
 					quantity,
 					img:product.product_imgs[0].image,
 					is_personalize:product.is_personalize,
@@ -324,7 +327,7 @@ async function applyTextPersonalization(itemID){
                 		src={src}
                 		alt="product image"
                 		onClick={()=>{setSelectedImage(index)}}
-                		
+                		style={img.isPersonalized&&{border:'2px solid yellow'}}
                  />
 
                  )}
@@ -425,6 +428,7 @@ async function applyTextPersonalization(itemID){
 															title:product.title,
 															price:product.price,
 															detail:product.detail,
+															isStock:true,
 															quantity,
 															img:product.product_imgs[0].image,
 															is_personalize:product.is_personalize
@@ -500,6 +504,7 @@ async function applyTextPersonalization(itemID){
 															title:product.title,
 															price:product.price,
 															detail:product.detail,
+															isStock:true,
 															quantity,
 															img:product.product_imgs[0].image,
 															is_personalize:product.is_personalize

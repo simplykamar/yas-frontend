@@ -31,10 +31,13 @@ export const cartSlice = createSlice({
         state.products = state.products.filter(item=>item.id!==action.payload.id)
     },
     resetCart(state) {
-            state.products=[];
+            state.products = [];
+    },
+    updateCart(state,action) {
+            state.products = action.payload;
     },
   },
 })
 
-export const { addToCart, removeFromCart, resetCart, deleteFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, resetCart, deleteFromCart,updateCart } = cartSlice.actions
 export default cartSlice.reducer

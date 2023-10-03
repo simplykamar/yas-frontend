@@ -130,3 +130,6 @@ select{
 .yas-text-secondary{
 	color: #1c9B97 !important;
 }
+.disabled-link {
+  pointer-events: none;
+}

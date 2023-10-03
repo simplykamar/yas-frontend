@@ -1,4 +1,4 @@
-import {Link,NavLink,useNavigate} from 'react-router-dom'
+import {Link,NavLink,useNavigate,useLocation} from 'react-router-dom'
 import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
@@ -17,6 +17,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import CheckIcon from '@mui/icons-material/Check';
 
 const CheckoutStep2 = () => {
+	const isNext = useLocation().state;
 	const [alignment, setAlignment] = useState('web');
   	const BASE_URL = 'https://simplykamar.tech/api';
 	const [loading, setLoading] = useState(true);
@@ -34,11 +35,20 @@ const CheckoutStep2 = () => {
 
  	useEffect(()=>{
       document.title="Checkout | Order Summary";
+      if(!isNext){
+			navigate("/page-not-found",{replace:true});
+		}
       window.scrollTo(0,0);
  		if(!order.address){
  			navigate('/checkout-step-1', {replace:true})
  		}
  	},[])
+
+	function proceedPayment(){
+		dispatch(addToOrder({giftCard:{exist:msg,title:msgTitle,msg:msgContent}}))
+    navigate("/confirm-order",{replace:true,state:true});
+
+	}
   	function cardClickHandler(cardType){
   		const generalGiftMsg = `To,
 XYZ
@@ -219,7 +229,7 @@ ${user.user.user.name.toUpperCase()}
 							<p className="fw-bold d-flex justify-content-between">Total Amount<span>₹ {msg?totalAmounts+30:totalAmounts}</span></p>
 
 					</div>
-					<Link onClick={()=>{dispatch(addToOrder({giftCard:{exist:msg,title:msgTitle,msg:msgContent}}))}} to='/confirm-order' className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</Link>
+					<button onClick={proceedPayment} className="btn btn-pink w-100 mt-5 py-3">PROCEED TO PAYMENT</button>
 				</div>
 			</div>
 			</>

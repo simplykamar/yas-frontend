@@ -5,7 +5,9 @@ import {useSelector} from 'react-redux';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
 const CustomerWishlist = () => {
-	const BASE_URL = 'https://simplykamar.tech/api';
+	// const BASE_URL = 'https://simplykamar.tech/api';
+  const BASE_URL = 'http://127.0.0.1:8000/api';
+
 	const [wishlists, setWishlists] = useState([]);
   const [totalResult,setTotalResult] = useState(0);
 	const [loading, setLoading] = useState(true);
@@ -14,6 +16,7 @@ const CustomerWishlist = () => {
 	async function fetchWishlist(url){
       await axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then((response)=>{
+                console.log(response)
               	setWishlists(response.data);
                 setTotalResult(response.data.length)
               	setLoading(false);
@@ -43,7 +46,7 @@ const CustomerWishlist = () => {
               wishlists.map((item)=>{
                 return(
                    <div className="col-lg-3 col-md-3 col-sm-6 col-6" key={item.id}>
-                      <SingleProduct rating={item.product.rating} id={item.product.id} image={item.product.product_imgs[0].image} title={item.product.title} price={item.product.price} />
+                      <SingleProduct isPersonalize={item.product.is_personalize} rating={item.product.rating} id={item.product.id} image={item.product.product_imgs[0].image} title={item.product.title} oldPrice={item.product.old_price} label={item.product.label} price={item.product.price} discount={item.product.discount} />
                     </div>
                   )
               })
