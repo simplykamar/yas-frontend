@@ -80,15 +80,7 @@ import sidebarImg from '../../images/other/sidebar.svg'
       <div className="px-3">
         <List onClick={() => setOpen(false)} className="">
           <p className=" ms-2 my-2 fw-600 text-secondary text-uppercase">assistance</p>
-          <ListItem  button component={Link} to={'/customer/profile'}>
-          <PersonOutlineIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"Profile"}/>
-        </ListItem>
-         <ListItem  button component={Link} to={'/customer/orders'}>
-         <LocalMallOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"Order History"}/>
-        </ListItem>
-         <ListItem  button component={Link} to={'/contact-us'}>
+          <ListItem  button component={Link} to={'/contact-us'}>
          <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
           <ListItemText primary={"Customer Service"}/>
         </ListItem>

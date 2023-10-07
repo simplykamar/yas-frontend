@@ -3,7 +3,6 @@ import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom'
 import { useSelector} from 'react-redux';
 import TextField from '@mui/material/TextField';
-
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,7 +12,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const CustomerRegister = () => {
-  const [baseUrl,setBaseUrl] = useState('https://simplykamar.tech/');
+  // const [baseUrl,setBaseUrl] = useState('https://simplykamar.tech/');
+  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
   const [registerFormData,setregisterFormData] = useState({
           'name':'',
           'email':'',

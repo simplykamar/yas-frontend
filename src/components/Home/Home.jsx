@@ -2,6 +2,7 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import'./Home.css'
 import {Link} from 'react-router-dom';
 import footersale from '../../images/other/footersale.webp'
+import mainloading from '../../images/loading/mainloading.gif'
 import Slider from '../Slider/Slider';
 import UniqueGift from '../Gift/UniqueGift';
 import CelebrateGift from '../Gift/CelebrateGift';

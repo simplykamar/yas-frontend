@@ -31,7 +31,9 @@ const TagProducts = () => {
     useEffect(()=>{
       document.title=tag;
         window.scrollTo(0,0);
-        fetchData(BASE_URL+`/products/?q=${tag}`);
+        // fetchData(BASE_URL+`/products/?q=${tag}`);
+        fetchData(BASE_URL+`/get-similar-product/?query=${tag}`);
+        
       },[]);
      
         const fetchFilterData = (e) => {

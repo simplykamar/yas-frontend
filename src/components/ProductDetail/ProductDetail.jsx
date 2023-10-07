@@ -20,12 +20,15 @@ import TextField from '@mui/material/TextField';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
 import CropperImg from './ImageCrop';
 import Main from '../Loading/Main';
 import Uploading from '../Loading/Uploading';
 import Personalizing from '../Loading/Personalizing';
+import RecentlyViewed from './RecentlyViewed'
+import SimilarGifts from './SimilarGifts'
 
 const ProductDetail = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -169,28 +172,31 @@ const ProductDetail = () => {
  }
 
 async function applyTextPersonalization(itemID){
-	 	setTextPersonalizing(true);
 		console.log('itemID',itemID);
 		const item = productPersonalizeText.find(item=>item.id===itemID);
-		console.log("item",item);
-    const formData = new FormData();
-    formData.append('itemID',JSON.stringify(itemID));
-    formData.append('text',JSON.stringify(item.text));
-			await axios.post(BASE_URL+'/apply-text-personalization/',formData)
-		    .then(response=>{
-		    	if(response.status===200){
-		    	updatePersonalizeTexts(itemID,response.data.image)
-		      console.log(response);
-		      setTextPersonalizing(false);
-		    }
-      else if(response.status===400){
-        alert(response.msg)
-      }
-		    })
-		    .catch(error=>{
-		      console.log(error);
-		      setTextPersonalizing(false);
-		    }) 
+		if(item){
+	 			setTextPersonalizing(true);
+				const formData = new FormData();
+		    formData.append('itemID',JSON.stringify(itemID));
+		    formData.append('text',JSON.stringify(item.text));
+					await axios.post(BASE_URL+'/apply-text-personalization/',formData)
+				    .then(response=>{
+				    	if(response.status===200){
+				    	updatePersonalizeTexts(itemID,response.data.image)
+				      console.log(response);
+				      setTextPersonalizing(false);
+				    }
+		      else if(response.status===400){
+		        alert(response.msg)
+		      }
+				    })
+				    .catch(error=>{
+				      console.log(error);
+				      setTextPersonalizing(false);
+				    }) 
+		}else{
+				setInputError(true);
+		}
  	 }
 
  function updatePersonalizeTexts(itemID,serverPersonalizedImg){
@@ -226,7 +232,7 @@ async function applyTextPersonalization(itemID){
  	let personalizeTextValidate = false;
  	let personalizeImageValidate = false;
  		if(product.is_personalize_text && (productPersonalizeText.length===product.product_personalize_text.length)){
- 			personalizeTextValidate = productPersonalizeText.every(item=>item.text.length);
+ 			personalizeTextValidate = productPersonalizeText.every(item=>item.isPersonalized);
  		}
  		if(product.is_personalize_image && (productPersonalizeImgs.length===product.product_personalize_imgs.length)){
  			personalizeImageValidate = true;
@@ -242,12 +248,15 @@ async function applyTextPersonalization(itemID){
 					detail:product.detail,
 					isStock:true,
 					quantity,
-					img:product.product_imgs[0].image,
+					// img:product.product_imgs[0].image,
+					img:productPersonalizeImgs[0].image,
 					is_personalize:product.is_personalize,
 					personalize_imgs:productPersonalizeImgs,
 					personalize_texts:productPersonalizeText
 			 }));
 			 notifySuccess('Item added to cart');
+			 // Add all personalize images to product details view
+ 		 	setProductImgs([...productPersonalizeImgs,...productPersonalizeText,...productImgs]) 
  				}else{
 			 			setInputError(true);
  				}
@@ -261,12 +270,15 @@ async function applyTextPersonalization(itemID){
 					detail:product.detail,
 					isStock:true,
 					quantity,
-					img:product.product_imgs[0].image,
+					// img:product.product_imgs[0].image,
+					img:productPersonalizeText[0].image,
 					is_personalize:product.is_personalize,
-					personalize_imgs:productPersonalizeImgs,
+					// personalize_imgs:productPersonalizeImgs,
 					personalize_texts:productPersonalizeText
 			 }));
 			 notifySuccess('Item added to cart');
+			 // Add all personalize images to product details view
+ 		 	setProductImgs([...productPersonalizeText,...productImgs]) 
  			setInputError(false);
  		}
  		else if(product.is_personalize_image && personalizeImageValidate){
@@ -278,12 +290,14 @@ async function applyTextPersonalization(itemID){
 					detail:product.detail,
 					isStock:true,
 					quantity,
-					img:product.product_imgs[0].image,
+					img:productPersonalizeImgs[0].image,
 					is_personalize:product.is_personalize,
 					personalize_imgs:productPersonalizeImgs,
-					personalize_texts:productPersonalizeText
+					// personalize_texts:productPersonalizeText
 			 }));
 			 notifySuccess('Item added to cart');
+			 // Add all personalize images to product details view
+ 		 	setProductImgs([...productPersonalizeImgs,...productImgs]) 
  			setInputError(false);
  		}
  		else{
@@ -291,9 +305,7 @@ async function applyTextPersonalization(itemID){
  			console.log(personalizeImageValidate)
  			setInputError(true);
  		}
-// Add all personalize images to product details view
- 		 	setProductImgs([...productPersonalizeImgs,...productPersonalizeText,...productImgs]) 
- }
+}
 
     useEffect(()=>{
       document.title=product_slug;
@@ -714,7 +726,7 @@ async function applyTextPersonalization(itemID){
 			                           	 	cartData.find((item)=>item.id==product_id)
 										 								?
 																			<div data-bs-dismiss="modal" className="btn btn-pink text-uppercase py-2 w-100" >
-		                                	 <span ><ShoppingCartOutlinedIcon />Go back</span>
+		                                	 <span ><KeyboardBackspaceOutlinedIcon/> Go back</span>
 																			</div>
 			                           	 :
 	                                		<button className="btn btn-pink text-uppercase w-100 py-2" onClick={validate}>
@@ -730,6 +742,11 @@ async function applyTextPersonalization(itemID){
                               </div>
                             </div>
                           </div>
+         <SimilarGifts productTitle={product_slug} />
+         {
+         	user.isAuthenticate&&
+         	<RecentlyViewed productId={product_id}/>
+					}
 		</div>
 		)
 }

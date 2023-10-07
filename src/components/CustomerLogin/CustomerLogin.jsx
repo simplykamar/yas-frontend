@@ -20,7 +20,7 @@ const CustomerLogin = () => {
         targetUrl="/";
       }
   const dispatch = useDispatch();
-  const [baseUrl,setBaseUrl] = useState('https://simplykamar.tech/');
+  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
   const [loginFormData,setLoginFormData] = useState({
           'email':'',
           'password':''
@@ -58,9 +58,11 @@ const CustomerLogin = () => {
                             navigate(targetUrl, {replace:true});
                         })
                         .catch(error=>{
+                            setIsFetching(false);
                         })
                 })
                 .catch(error=>{
+                            setIsFetching(false);
                 });
         }
       })
