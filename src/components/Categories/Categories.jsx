@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import birthday from '../../images/occasion/birthday.jpg'
 import anniversary from '../../images/occasion/anniversary.webp'
 import babyshower from '../../images/occasion/babyshower.webp'
@@ -12,28 +13,25 @@ const Categories = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
   
   const [categories,setCategories] = useState([])
-  const [totalResult,setTotalResult] = useState(0);
-  const [baseurl,setBaseurl] = useState(BASE_URL+'/categories');
   const [loading, setLoading] = useState(true);
 
-    const fetchData = (baseurl) => {
-      fetch(baseurl)
-              .then((response)=>response.json())
-              .then((data)=>{
-                setCategories(data);
-                setTotalResult(data.count);
+    const fetchData = (url) => {
+      axios.get(url)
+              .then((response)=>{
+                console.log(response);
+                setCategories(response.data);
                 setLoading(false);
+              })
+              .catch((error)=>{
+                alert('server error..!')
+                console.log(error);
               });
     }
     useEffect(()=>{
       document.title="Best Gifts Collections";
       window.scrollTo(0,0);
-        fetchData(baseurl);
-      },[baseurl])
-
-  function changeBaseurl(baseurl){
-      setBaseurl(baseurl);
-    }
+        fetchData(BASE_URL+'/categories');
+      },[])
 
   return(
         <div className="container">

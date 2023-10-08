@@ -1,34 +1,36 @@
-import {Link,useParams,useNavigate} from 'react-router-dom';
-import {useState,useEffect} from 'react';
-import {useSelector,useDispatch} from 'react-redux';
-import {addToCart} from '../../redux/cartSlice';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
-import StarIcon from '@mui/icons-material/Star';
 import './ProductDetail.css';
-import axios from 'axios'
-import toast, { Toaster } from 'react-hot-toast';
-import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
-import ProgressiveImage from "react-progressive-graceful-image";
 import yas from '../../images/other/yas.png'
-import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
-import Button from "@mui/material/Button";
-import TextField from '@mui/material/TextField';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
-import CheckIcon from '@mui/icons-material/Check';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
-import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
-import RotateLeftIcon from '@mui/icons-material/RotateLeft';
-import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
+
 import CropperImg from './ImageCrop';
 import Main from '../Loading/Main';
 import Uploading from '../Loading/Uploading';
 import Personalizing from '../Loading/Personalizing';
 import RecentlyViewed from './RecentlyViewed'
 import SimilarGifts from './SimilarGifts'
+
+import {Link,useParams,useNavigate} from 'react-router-dom';
+import {useState,useEffect} from 'react';
+import {useSelector,useDispatch} from 'react-redux';
+import {addToCart} from '../../redux/cartSlice';
+import axios from 'axios'
+
+import toast, { Toaster } from 'react-hot-toast';
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import ProgressiveImage from "react-progressive-graceful-image";
+
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import StarIcon from '@mui/icons-material/Star';
+import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
+import Button from "@mui/material/Button";
+import TextField from '@mui/material/TextField';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+// import CheckIcon from '@mui/icons-material/Check';
+import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
+import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
 
 const ProductDetail = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -37,13 +39,9 @@ const ProductDetail = () => {
   const [product,setProduct] = useState([])
 	const [productTags,setProductTags] = useState([])  
 	const [ quantity, setQuantity ] = useState(1);
-	const [loading, setLoading] = useState(true);
-	const dispatch = useDispatch();
 	const [ selectedImage, setSelectedImage ] = useState('0');
   const [userWishlist,setUserWishlist] = useState({is_wishlist:false,id:null})
-  const navigate = useNavigate()
-  const user = useSelector((state)=>state.auth);
-	const cartData = useSelector((state)=>state.cart.products);
+	const [loading, setLoading] = useState(true);
 	const [productPersonalizeImgs, setProductPersonalizeImgs] = useState([])
 	const [productPersonalizeText, setProductPersonalizeText] = useState([])
 	const [uploading, setUploading] = useState(false);
@@ -51,6 +49,11 @@ const ProductDetail = () => {
 	const [inputError,setInputError] = useState(false)
 	const [personalizeTextTemp,setPersonalizeTextTemp] = useState(null)
 	const [productImgs, setProductImgs] = useState([])
+	const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const user = useSelector((state)=>state.auth);
+	const cartData = useSelector((state)=>state.cart.products);
+
 	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
  
@@ -69,9 +72,10 @@ const ProductDetail = () => {
                 setLoading(false);
                 setProductTags(response.data.product_tags)
             })
-              .catch((error)=>{
-              	console.log(error)
-              })
+             .catch(error=>{
+	           	notifyError('Server Error!');
+	           	console.log(error)
+	         })
     }
     function removeFromWishlist(id){
           notifySuccess('Remove from wishlist.');
@@ -82,9 +86,10 @@ const ProductDetail = () => {
 
            })
           .catch(error=>{
-           	notifyError('Error try again!');
+           	notifyError('Server Error!');
+           	console.log(error)
          })
-          }
+        }
           else{
               navigate('/customer/login',{replace:true})
           }
@@ -101,7 +106,7 @@ const ProductDetail = () => {
             checkUserWishlist();
            })
            .catch(error=>{
-           	notifyError('Error try again!');
+           	notifyError('Server Error!');
            	console.log(error)
          })
            }
@@ -116,9 +121,10 @@ const ProductDetail = () => {
                 setUserWishlist(response.data)
               })
               .catch(error=>{
-                console.log(error)
-              })
-              }
+	           	notifyError('Server Error!');
+	           	console.log(error)
+	         })
+        }
           else{
               navigate('/customer/login',{replace:true})
           }
@@ -136,7 +142,7 @@ const ProductDetail = () => {
 	 		setUploading(false);
    	})
    	.catch(error=>{
-   		console.log(error);
+   		notifyError('Server Error!');
 	 		setUploading(false);
    	})
 	 }
@@ -191,6 +197,7 @@ async function applyTextPersonalization(itemID){
 		      }
 				    })
 				    .catch(error=>{
+   						notifyError('Server Error!');
 				      console.log(error);
 				      setTextPersonalizing(false);
 				    }) 

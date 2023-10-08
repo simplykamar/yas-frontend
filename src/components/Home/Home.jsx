@@ -1,20 +1,20 @@
-import SingleProduct from '../SingleProduct/SingleProduct';
-import'./Home.css'
+import'./Home.css';
+import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
-import footersale from '../../images/other/footersale.webp'
-import mainloading from '../../images/loading/mainloading.gif'
+import SingleProduct from '../SingleProduct/SingleProduct';
+import footersale from '../../images/other/footersale.webp';
+import mainloading from '../../images/loading/mainloading.gif';
 import Slider from '../Slider/Slider';
 import UniqueGift from '../Gift/UniqueGift';
 import CelebrateGift from '../Gift/CelebrateGift';
-import {useEffect,useState} from 'react';
 import SearchOutlinedicons from '@mui/icons-material/SearchOutlined';
 import NavigationBar from '../NavigationBar/NavigationBar';
+
 import axios from 'axios';
 
 const Home = () => {
     const BASE_URL = 'http://127.0.0.1:8000/api';
     const [headerMenu,setHeaderMenu] = useState([]);
-    const [premiumGift,setPremiumGift] = useState([]);
     const [loading,setLoading] = useState(false);
     function fetchHeaderMenuData(url){
         setLoading(true);
@@ -25,28 +25,16 @@ const Home = () => {
             setLoading(false);
         })
         .catch(error=>{
+            alert('Server error..!');
             console.log(error);
             setLoading(false);
         })
     }
-    function fetchPremiumGiftData(url){
-        setLoading(true);
-        axios.get(url)
-        .then(response=>{
-            console.log(response);
-            setPremiumGift(response.data)
-            setLoading(false);
-        })
-        .catch(error=>{
-            console.log(error);
-            setLoading(false);
-        })
-    }
+   
   
    useEffect(()=>{
       document.title="yas: Online Gifts Shopping";
       fetchHeaderMenuData(BASE_URL+'/header-menu-items')
-      // fetchPremiumGiftData(BASE_URL+'/premium-gift-items')
   },[])
 	return(
       <div className="">

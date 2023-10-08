@@ -1,15 +1,16 @@
+import Sidebar from './Sidebar'
 import {Link} from 'react-router-dom'
+import {useState,useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import axios from 'axios';
 import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
-import {useState,useEffect} from 'react';
-import axios from 'axios';
-import {useSelector} from 'react-redux';
-import Sidebar from './Sidebar'
+import TextField from '@mui/material/TextField';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import TextField from '@mui/material/TextField';
 
 const CustomerAddress = () => {
 	const notifySuccess = (msg) => toast.success(msg);
@@ -40,6 +41,7 @@ const CustomerAddress = () => {
               	setLoading(false);
           })
               .catch(error=>{
+              	alert('server error..!')
             })
     }
 	useEffect(()=>{
@@ -61,7 +63,9 @@ const CustomerAddress = () => {
 							notifySuccess("Address successfully deleted !")
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 						})
-
+						.catch(error=>{
+              	alert('server error..!')
+            })
 		}
 		function addAddress(event){
 						const formData = new FormData();

@@ -3,18 +3,14 @@ import {useSelector,useDispatch} from 'react-redux';
 import {removeFromCart,resetCart} from '../../redux/cartSlice';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {clearOrder} from '../../redux/orderSlice';
 import {useNavigate,useLocation} from 'react-router-dom';
 import emptyCart from "../../images/other/emptycart.svg"
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { QRCode } from 'react-qrcode-logo';
 import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import CheckIcon from '@mui/icons-material/Check';
 import CollectionsIcon from '@mui/icons-material/Collections';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import upi from '../../images/logos/upi.png'
 import paymentmobile from '../../images/other/payment-process-mobile-min.png'
 import paymentdesktop from '../../images/other/payment-process-desktop-min.png'
@@ -62,17 +58,7 @@ function getCartTotalPrice(){
           setLoading(false);
         })
       }
- useEffect(() => {
-      document.title="Checkout | Proceed to payment";
-      if(!isNext){
-      navigate("/page-not-found",{replace:true});
-    }
-      window.scrollTo(0,0);
-    window.process = {
-      ...window.process,
-    };
-    getCartTotalPrice();
-  }, []);
+
   function resetOrder(){
       dispatch(resetCart());
       dispatch(clearOrder());
@@ -111,6 +97,17 @@ function getCartTotalPrice(){
     //   return res;
     // });
 }
+ useEffect(() => {
+      document.title="Checkout | Proceed to payment";
+      if(!isNext){
+      navigate("/page-not-found",{replace:true});
+    }
+      window.scrollTo(0,0);
+    window.process = {
+      ...window.process,
+    };
+    getCartTotalPrice();
+  }, []);
     return (
       <div className=" py-4 bg-light">
       <div className="container">

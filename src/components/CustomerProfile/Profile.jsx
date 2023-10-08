@@ -1,13 +1,13 @@
-import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
+import './CustomerProfile.css';
 import Sidebar from './Sidebar'
 import {Link} from 'react-router-dom';
-import './CustomerProfile.css';
-import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import {useSelector, useDispatch} from 'react-redux';
 import {useState} from 'react';
 import axios from 'axios';
 import {updateUser} from '../../redux/authSlice';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
+import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TextField from '@mui/material/TextField';

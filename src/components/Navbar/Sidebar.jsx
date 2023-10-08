@@ -1,11 +1,11 @@
 import './Sidebar.css';
+import sidebarImg from '../../images/other/sidebar.svg'
+import {Link} from 'react-router-dom';
+import {useState} from 'react';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import HambergerIcon from '../../images/logos/HambergerIcon.svg';
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
-
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -18,7 +18,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';          
-import sidebarImg from '../../images/other/sidebar.svg'
 
  const Sidebar = () => {
   const [open, setOpen] = useState(false);

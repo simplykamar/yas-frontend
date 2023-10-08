@@ -15,9 +15,6 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const ForgotPassword = () => {
   const BASE_URL = 'https://simplykamar.tech/';
-  const notifySuccess = (msg) => toast.success(msg);
-  const notifyError = (msg) => toast.error(msg);
-  const {uid, token} = useParams()
   const [resetPasswordFormData,setResetPasswordFormData] = useState({
           'new_password':'',
           're_new_password':''
@@ -25,7 +22,10 @@ const ForgotPassword = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [isFetching,setIsFetching] = useState(false);
   const [inputError,setInputError] = useState({'msg':"",'type':""})
-
+  const notifySuccess = (msg) => toast.success(msg);
+  const notifyError = (msg) => toast.error(msg);
+  const {uid, token} = useParams()
+ 
   function inputHandler(event){
       setResetPasswordFormData({
             ...resetPasswordFormData,

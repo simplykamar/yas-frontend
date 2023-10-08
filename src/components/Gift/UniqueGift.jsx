@@ -1,3 +1,6 @@
+import {useEffect,useState} from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 import uniquegift from '../../images/uniquegift/uniquegift.svg'
 import birthdaygift from '../../images/uniquegift/birthdaygift.webp'
 import disney from '../../images/uniquegift/disney.webp'
@@ -9,8 +12,8 @@ import anniversary from '../../images/uniquegift/anniversary.jpg'
 import mangocake from '../../images/uniquegift/mangocake.webp'
 import marvel from '../../images/uniquegift/marvel.webp'
 import rakhi from '../../images/uniquegift/rakhi.webp'
-import {Link} from 'react-router-dom';
 import wedding from '../../images/uniquegift/wedding.jpg'
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -19,11 +22,31 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
-import './Slider.css'
+import './UniqueGift.css'
 import 'swiper/css/free-mode';
 
 const UniqueGift = () => {
+    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const [loading,setLoading] = useState(false);
 
+ function fetchPremiumGiftData(url){
+        setLoading(true);
+        axios.get(url)
+        .then(response=>{
+            console.log(response);
+            setPremiumGift(response.data);
+            setLoading(false);
+        })
+        .catch(error=>{
+            alert('Server error..!');
+            console.log(error);
+            setLoading(false);
+        })
+    }  
+   useEffect(()=>{
+      document.title="yas: Online Gifts Shopping";
+      // fetchPremiumGiftData(BASE_URL+'/premium-gift-items')
+  },[])
 	return (
 	<div className="mt-2">
 			<div className="d-flex justify-content-center uniquegift-container">

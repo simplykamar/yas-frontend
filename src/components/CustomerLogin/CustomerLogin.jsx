@@ -1,3 +1,4 @@
+import './CustomerLogin.css';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,23 +13,20 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import './CustomerLogin.css';
 const CustomerLogin = () => {
-  const navigate = useNavigate();
-  let targetUrl = useLocation().state;
-  if(!targetUrl){
-        targetUrl="/";
-      }
-  const dispatch = useDispatch();
-  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
+  const BASE_URL = 'http://127.0.0.1:8000/';
+  const [isFetching,setIsFetching] = useState(false);
+  const [inputError,setInputError] = useState({'msg':"",'type':""})
+  const [showPassword, setShowPassword] = useState(false)
   const [loginFormData,setLoginFormData] = useState({
           'email':'',
           'password':''
   })
   const user = useSelector((state)=>state.auth);
-  const [isFetching,setIsFetching] = useState(false);
-  const [inputError,setInputError] = useState({'msg':"",'type':""})
-  const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  let targetUrl = useLocation().state;
+
   function inputHandler(event){
       setLoginFormData({
             ...loginFormData,
@@ -42,16 +40,16 @@ const CustomerLogin = () => {
     formData.append('email',loginFormData.email)
     formData.append('password',loginFormData.password)
 
-    await axios.post(baseUrl+'auth/jwt/create/',formData)
+    await axios.post(BASE_URL+'auth/jwt/create/',formData)
       .then(res=>{
         if(res.status===200){
           let userID = null;
           let accessToken = res.data.access;
           let jwt_data = res.data
-            axios.get(baseUrl+"auth/users/me/",{headers:{"Authorization" : `JWT ${accessToken}`}})
+            axios.get(BASE_URL+"auth/users/me/",{headers:{"Authorization" : `JWT ${accessToken}`}})
                 .then(res=>{
                    userID = res.data.id;
-                     axios.get(baseUrl+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})
+                     axios.get(BASE_URL+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})
                         .then(res=>{
                             dispatch(loginSuccess({...jwt_data,"user":res.data}));
                             setIsFetching(false);
@@ -59,10 +57,12 @@ const CustomerLogin = () => {
                         })
                         .catch(error=>{
                             setIsFetching(false);
+                            alert('server error..!')
                         })
                 })
                 .catch(error=>{
-                            setIsFetching(false);
+                    setIsFetching(false);
+                    alert('server error..!')
                 });
         }
       })
@@ -75,7 +75,9 @@ const CustomerLogin = () => {
   }
   useEffect(()=>{
       document.title="Login in into yas | Log in or Sign up";
-
+      if(!targetUrl){
+              targetUrl="/";
+            }
   },[])
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(

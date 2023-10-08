@@ -1,17 +1,15 @@
+import './Slider.css'
+import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import axios from 'axios';
-import {useEffect,useState} from 'react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import './Slider.css'
 import 'swiper/css/free-mode';
 
 const Slider = () => {
@@ -28,6 +26,7 @@ const Slider = () => {
             setLoading(false);
         })
         .catch(error=>{
+            alert('Server error..!');
             console.log(error);
             setLoading(false);
         })
@@ -41,7 +40,7 @@ const Slider = () => {
 	        spaceBetween={30}
 	        centeredSlides={true}
 	        autoplay={{
-	          delay: 2500,
+	          delay: 2000,
 	          disableOnInteraction: false,
 	        }}
 	        // pagination={{

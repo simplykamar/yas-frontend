@@ -1,18 +1,18 @@
 import {Link} from 'react-router-dom'
-import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
-import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
-import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
-import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
-import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {addToOrder} from '../../redux/orderSlice';
 import {useNavigate,useLocation} from 'react-router-dom';
+import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
+import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
+import TextField from '@mui/material/TextField';
+import CheckIcon from '@mui/icons-material/Check';
+import {useState,useEffect} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import emptyCart from "../../images/other/emptycart.svg"
-import TextField from '@mui/material/TextField';
-import CheckIcon from '@mui/icons-material/Check';
 
 const CheckoutStep1 = () => {
 	const isNext = useLocation().state;
@@ -20,7 +20,6 @@ const CheckoutStep1 = () => {
 	const notifyError = (msg) => toast.error(msg);
   // const BASE_URL = 'https://simplykamar.tech/api';
   const BASE_URL = 'http://127.0.0.1:8000/api';
-
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);
@@ -46,6 +45,7 @@ const CheckoutStep1 = () => {
               	setLoading(false);
           })
               .catch(error=>{
+    						alert('Server error..!')
             })
     }
 	useEffect(()=>{
@@ -70,7 +70,6 @@ const CheckoutStep1 = () => {
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 							notifySuccess("Address successfully deleted !")
 						})
-
 		}
 		function addAddress(event){
 						const formData = new FormData();
@@ -96,7 +95,6 @@ const CheckoutStep1 = () => {
 	function selectAddress(AddressId){
 		dispatch(addToOrder({address:AddressId}));
     navigate("/checkout-step-2",{replace:true,state:true});
-
 	}
 	return(
 		<div className="py-3 bg-light">

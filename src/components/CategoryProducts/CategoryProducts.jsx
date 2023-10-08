@@ -1,24 +1,22 @@
+import './CategoryProducts.css';
+import loading1 from '../../images/loading/loading1.gif'
 import SingleProduct from '../SingleProduct/SingleProduct';
 import {useState,useEffect} from 'react';
 import {Link,useParams} from 'react-router-dom';
-import './CategoryProducts.css';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TuneIcon from '@mui/icons-material/Tune';
-import axios from 'axios';
-import loading1 from '../../images/loading/loading1.gif'
 
 const CategoryProducts = () => {
   const {category_id} = useParams();
   const {category_slug} = useParams();
   // const BASE_URL = 'https://simplykamar.tech/api';
   const BASE_URL = 'http://127.0.0.1:8000/api';
-
   const [products,setProducts] = useState([])
-  const [totalResult,setTotalResult] = useState(0);
   const [loading, setLoading] = useState(true);
   const [filterBy, setFilterBy] = useState("");
 
@@ -27,10 +25,12 @@ const CategoryProducts = () => {
               .then((response)=>{
                 setProducts(response.data);
                 console.log(response)
-                setTotalResult(response.data.length)
                 setLoading(false);
               })
-              .catch(err=>console.log(err))
+              .catch(error=>{
+                alert('server error..!')
+                console.log(error)
+            })
     }
     useEffect(()=>{
       document.title=category_slug;
@@ -51,7 +51,7 @@ const CategoryProducts = () => {
         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="d-flex justify-content-between">
                 <div className="">
-                  <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>               
+                  <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>               
                   </div>
               <div className="d-flex">
                     <Box sx={{ minWidth: 120 }}>
@@ -80,7 +80,17 @@ const CategoryProducts = () => {
                   products.map((product)=>{
                     return(
                        <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
-                          <SingleProduct isPersonalize={product.is_personalize} rating={product.rating} id={product.id} image={product.product_imgs[0].image} title={product.title} oldPrice={product.old_price} label={product.label} price={product.price} discount={product.discount} />
+                          <SingleProduct
+                           isPersonalize={product.is_personalize} 
+                           rating={product.rating} 
+                           id={product.id} 
+                           image={product.product_imgs[0].image} 
+                           title={product.title} 
+                           oldPrice={product.old_price} 
+                           label={product.label} 
+                           price={product.price} 
+                           discount={product.discount}
+                         />
                         </div>
                       )
                     })

@@ -21,22 +21,20 @@ const CustomerAccountActivation = () => {
         formData.append('uid',uid);
         formData.append('token',token);
        axios.post(BASE_URL+'auth/users/activation/',formData)
-      .then(res=>{
-        if(res.status===204){
-          notifySuccess("Account Activation successfully !")
-          setInputError({'type':"success",'msg':["Account Activation successfully"," Now you can login to your account"]})
-        }
-        setIsFetching(false);
-
-      })
-      .catch(error=>{
-        if(error.response.status===403){
-          notifyError("Activation token expired !")
-          setInputError({'type':"forbidden",'msg':["Activation token expired"]})
-        }
-        setIsFetching(false);
-
-        })
+          .then(res=>{
+            if(res.status===204){
+              notifySuccess("Account Activation successfully !")
+              setInputError({'type':"success",'msg':["Account Activation successfully"," Now you can login to your account"]})
+            }
+            setIsFetching(false);
+          })
+          .catch(error=>{
+            if(error.response.status===403){
+              notifyError("Activation token expired !")
+              setInputError({'type':"forbidden",'msg':["Activation token expired"]})
+            }
+            setIsFetching(false);
+            })
       }
 useEffect(()=>{
       document.title="Activate Your Account";

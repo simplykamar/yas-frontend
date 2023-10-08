@@ -1,15 +1,15 @@
 import Sidebar from './Sidebar'
 import {Link} from 'react-router-dom';
-import img from '../../images/logos/yaslogo.png'
-import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
-import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
-import LoopOutlinedIcon from '@mui/icons-material/LoopOutlined';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
+import img from '../../images/logos/yaslogo.png'
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
+import LoopOutlinedIcon from '@mui/icons-material/LoopOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Rating from '@mui/material/Rating';
+
 import toast, { Toaster } from 'react-hot-toast';
 import rating from '../../images/other/rating.png'
 import rating1 from '../../images/other/rating/1.png'
@@ -48,6 +48,8 @@ import rating5 from '../../images/other/rating/5.png'
               setLoading(false);
             })
             .catch(error=>{
+              alert('server error..!')
+              console.log(error);
             });
     }
   async function addProductRating(orderID){
@@ -58,8 +60,9 @@ import rating5 from '../../images/other/rating/5.png'
       notifySuccess('Rating submit')
       fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`)
     })
-    .catch(err=>{
+    .catch(error=>{
       notifyError('Error! try again..')
+      console.log(error);
     })
   }
     useEffect(()=>{

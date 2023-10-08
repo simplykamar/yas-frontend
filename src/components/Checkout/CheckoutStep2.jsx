@@ -1,17 +1,13 @@
 import {Link,NavLink,useNavigate,useLocation} from 'react-router-dom'
-import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
-import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
-import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
-import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
 import './Checkout.css';
-import {useSelector, useDispatch} from 'react-redux';
-import {addToOrder} from '../../redux/orderSlice';
-import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import {resetCart} from '../../redux/cartSlice'
 import emptyCart from "../../images/other/emptycart.svg"
 import giftcard from "../../images/other/giftcard.jpg"
+import {useSelector, useDispatch} from 'react-redux';
+import {addToOrder} from '../../redux/orderSlice';
+import CardGiftcardTwoToneIcon from '@mui/icons-material/CardGiftcardTwoTone';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import CheckIcon from '@mui/icons-material/Check';
@@ -34,14 +30,14 @@ const CheckoutStep2 = () => {
   	const navigate = useNavigate();
 
  	useEffect(()=>{
-      document.title="Checkout | Order Summary";
       if(!isNext){
 			navigate("/page-not-found",{replace:true});
 		}
-      window.scrollTo(0,0);
  		if(!order.address){
  			navigate('/checkout-step-1', {replace:true})
  		}
+      document.title="Checkout | Order Summary";
+      window.scrollTo(0,0);
  	},[])
 
 	function proceedPayment(){

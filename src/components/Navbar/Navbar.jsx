@@ -1,4 +1,7 @@
-import {Link} from 'react-router-dom';
+import Sidebar from './Sidebar'
+import './Navbar.css';
+import {Link,useNavigate} from 'react-router-dom';
+import {useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { logout } from '../../redux/authSlice';
 import { clearOrder } from '../../redux/orderSlice';
@@ -6,7 +9,6 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PinDropOutlinedIcon from '@mui/icons-material/PinDropOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
@@ -15,18 +17,15 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
 import yaslogo from '../../images/logos/yaslogo.png'
 import axios from 'axios';
-import {useState,useEffect} from 'react';
-
-import Sidebar from './Sidebar'
-import './Navbar.css';
-import TextField from '@mui/material/TextField';
 
 const Navbar = () => {
   // const BASE_URL = 'https://simplykamar.tech/api';
   const BASE_URL = 'http://127.0.0.1:8000/api';
   const cartData = useSelector((state)=>state.cart.products);
+  const navigate = useNavigate();
   const sum=0;
   const totalItems = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
   const user = useSelector((state)=>state.auth);
@@ -47,21 +46,25 @@ const Navbar = () => {
 function fetchCategoriesData(url){
     axios.get(url)
     .then((response)=>{
+      console.log(response)
       setCategories(response.data)
       setCategoryDataLoading(false);
     })
     .catch((error)=>{
-    // console.log(error)
+    console.log(error)
+      alert('Server error..!')
   })
 }
 function fetchProductsData(url){
     axios.get(url)
     .then((response)=>{
+      console.log(response)
       setSearchProducts(response.data)
       setProductDataLoading(false);
     })
     .catch((error)=>{
-    // console.log(error)
+    console.log(error)
+      alert('Server error..!')
   })
 }
   function fetchSearchData(q){
@@ -71,7 +74,7 @@ function fetchProductsData(url){
       fetchCategoriesData(BASE_URL+`/categories/?q=${q}`);
       fetchProductsData(BASE_URL+`/products/?q=${q}`);
       setIsSearchResult(true)
-      getClientData(q)
+      
     }else{
       document.title = "yas: Online Gifts Shopping";
       setSearchProducts([]);
@@ -79,23 +82,25 @@ function fetchProductsData(url){
       setIsSearchResult(false);
     }
   }
-  async function getClientData(q){
+  async function getClientData(e){
+    e.preventDefault()
     if(clientSearchedData){
-        setSearchedHistory(q)
+        setSearchedHistory(searchQuery,clientSearchedData)
       
     }else{
         await axios.get('https://ipapi.co/json/')
           .then(response=>{
+            console.log(response)
             setClientSearchedData(response.data)
-            setSearchedHistory(q)
+            setSearchedHistory(searchQuery,response.data)
           })
           .catch(error => {
-            // console.log(error)
+            console.log(error)
         })
       }
   }
 
-  function setSearchedHistory(q){
+  function setSearchedHistory(q,clientSearchedData){
       const formData = new FormData()
       formData.append('query',q)
       formData.append('state',clientSearchedData.region)
@@ -105,14 +110,20 @@ function fetchProductsData(url){
       formData.append('longitude',clientSearchedData.longitude)
       formData.append('operator',clientSearchedData.org)
       axios.post(BASE_URL+'/set-searched-history/',formData)
+      .then(response=>{
+        console.log(response)
+        document.getElementById('btn-close').click();
+        navigate(`/products/${q}`,{replace:true});
+      })
   }
   function setQuickSearchData(){
     axios.get(BASE_URL+'/quick-search')
     .then(response=>{
-      console.log(response.data)
+      console.log(response)
       setQuickSearch(response.data)
     })
     .catch(error=>{
+      alert('Server error..!')
       console.log(error)
     })
   }
@@ -160,7 +171,6 @@ function fetchProductsData(url){
             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLinks">
               { user.isAuthenticate ? 
                   <>
-                    {/* <li><Link to="/customer/dashboard" className="dropdown-item">Dashboard</Link></li> */}
                      <li><Link to='/customer/profile' className="dropdown-item"><PersonOutlineIcon fontSize='small'/> Profile</Link></li>
                      <li><Link to='/customer/orders' className="dropdown-item"><LocalMallOutlinedIcon fontSize='small'/> Order History</Link></li>
                      <li><Link to='/customer/addressbook' className="dropdown-item"><PinDropOutlinedIcon fontSize='small'/> Address Book</Link></li>
@@ -187,11 +197,11 @@ function fetchProductsData(url){
             <div className="modal-dialog modal-fullscreen modal-dialog-scrollable">
               <div className="modal-content">
                  <div className="modal-header" style={{border:'none'}}>
-                   <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                   <button type="button" className="btn-close" id="btn-close" data-bs-dismiss="modal"></button>
                  </div>
                  <div className="modal-body pt-0 pb-5">
                    <h4 className="" style={{marginLeft:'13px'}}>Find your gifts here...</h4>
-                 <form action={`/products/${searchQuery}`}>
+                 <form onSubmit={(e)=>{getClientData(e)}}>
                     <div className="mt-3 ">
                       <TextField  
                       color='warning'
@@ -257,7 +267,6 @@ function fetchProductsData(url){
                         )
                     })
                     }
-                  
                   </div>
                 </div>
 

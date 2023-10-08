@@ -12,8 +12,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const CustomerRegister = () => {
-  // const [baseUrl,setBaseUrl] = useState('https://simplykamar.tech/');
-  const [baseUrl,setBaseUrl] = useState('http://127.0.0.1:8000/');
+  const BASE_URL = 'http://127.0.0.1:8000/';
+  // const BASE_URL = 'https://simplykamar.tech/';
   const [registerFormData,setregisterFormData] = useState({
           'name':'',
           'email':'',
@@ -21,17 +21,12 @@ const CustomerRegister = () => {
           'password':'',
           're_password':'',
   });
-    const navigate = useNavigate();
-    const user = useSelector((state)=>state.auth);
-    const [isFetching,setIsFetching] = useState(false);
-    const [showPassword, setShowPassword] = useState(false)
-
-    useEffect(()=>{
-    if (user.isAuthenticate){
-        navigate("/", {replace:true});
-    }
-},[]);
+  const [isFetching,setIsFetching] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate();
   const [inputError,setInputError] = useState({'msg':"",'type':""})
+  const user = useSelector((state)=>state.auth);
+
   function inputHandler(event){
       setregisterFormData({
             ...registerFormData,
@@ -39,6 +34,7 @@ const CustomerRegister = () => {
             }
         )
   }
+
   function submitHandler(event){
     setIsFetching(true);
     event.preventDefault();
@@ -49,7 +45,7 @@ const CustomerRegister = () => {
     formData.append('email',registerFormData.email)
     formData.append('account_type',1)
 
-    axios.post(baseUrl+'auth/users/',formData)
+    axios.post(BASE_URL+'auth/users/',formData)
       .then(res=>{
         if(res.status===201){
         navigate("/customer/register/success", {replace:true,state:true});
@@ -67,14 +63,19 @@ const CustomerRegister = () => {
           setInputError({'type':"email",'msg':error.response.data.email})
         }
         setIsFetching(false);
+        alert('server error..!')
       })
   }
     useEffect(()=>{
       document.title="Login in into yas | Log in or Sign up";
-
-  },[])
+      if (user.isAuthenticate){
+          navigate("/", {replace:true});
+      }
+},[]);
+ 
   const buttonEnable = (registerFormData.name!='') && (registerFormData.password!='') &&
    (registerFormData.re_password!='')  && (registerFormData.email!='')
+
 	return(
         <div className="container-fluid">
             <div className="py-4 login-container">
@@ -149,7 +150,6 @@ const CustomerRegister = () => {
                   <li className="text-danger"><small className="text-danger">{inputError.msg[0]}</small></li>
                   </div>
                 }
-               
               </form>
           </div> 
           </div> 

@@ -1,3 +1,4 @@
+import './CelebrateGift.css'
 import {Link} from 'react-router-dom';
 import husband from '../../images/celebrategift/husband.png'
 import wife from '../../images/celebrategift/wife.png'
@@ -8,7 +9,6 @@ import couples from '../../images/celebrategift/couples.png'
 import forhim from '../../images/celebrategift/forhim.png'
 import forher from '../../images/celebrategift/forher.png'
 import flowers from '../../images/celebrategift/flowers.png'
-import './CelebrateGift.css'
 
 const CelebrateGift = () => {
 	return (

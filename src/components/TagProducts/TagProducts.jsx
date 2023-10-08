@@ -1,7 +1,7 @@
 import SingleProduct from '../SingleProduct/SingleProduct';
 import {useState,useEffect} from 'react';
+import axios from 'axios';
 import {Link,useParams} from 'react-router-dom';
-import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,16 +16,17 @@ const TagProducts = () => {
   
   const [products,setProducts] = useState([])
   const [loading, setLoading] = useState(true);
-  const [totalResult,setTotalResult] = useState(0);
   const [filterBy, setFilterBy] = useState("");
 
     const fetchData = (url) => {
-            fetch(url)
-              .then((response)=>response.json())
-              .then((data)=>{
-                setProducts(data);
-                setTotalResult(data.length)
+            axios.get(url)
+              .then((response)=>{
+                setProducts(response.data);
                 setLoading(false);
+              })
+              .catch((error)=>{
+                alert('server error..!')
+                console.log(error);
               });
     }
     useEffect(()=>{
@@ -52,7 +53,7 @@ const TagProducts = () => {
           <div className="d-flex justify-content-between">
                 <div className="">
                 <small className="text-secondary d-block">Showing results for:</small>
-                  <h4 className="text-capitalize d-inline">{tag}</h4><small className="text-secondary ms-2"><span className="fw-bold">{totalResult}</span> Items</small>
+                  <h4 className="text-capitalize d-inline">{tag}</h4><small className="text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>
                </div>
              <div className="d-flex">
                     <Box sx={{ minWidth: 120 }}>
@@ -79,7 +80,17 @@ const TagProducts = () => {
               products.map((product)=>{
                 return(
                    <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
-                      <SingleProduct isPersonalize={product.is_personalize} rating={product.rating} id={product.id} image={product.product_imgs[0].image} title={product.title} oldPrice={product.old_price} label={product.label} price={product.price} discount={product.discount} />
+                        <SingleProduct
+                           isPersonalize={product.is_personalize} 
+                           rating={product.rating} 
+                           id={product.id} 
+                           image={product.product_imgs[0].image} 
+                           title={product.title} 
+                           oldPrice={product.old_price} 
+                           label={product.label} 
+                           price={product.price} 
+                           discount={product.discount}
+                         />
                     </div>
                   )
               })

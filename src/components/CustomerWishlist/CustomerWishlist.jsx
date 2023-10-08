@@ -22,6 +22,7 @@ const CustomerWishlist = () => {
               	setLoading(false);
           })
               .catch(error=>{
+                alert('server error..!')
             })
     }
 	useEffect(()=>{
@@ -43,10 +44,20 @@ const CustomerWishlist = () => {
 					?
             wishlists.length?
 
-              wishlists.map((item)=>{
+              wishlists.map((product)=>{
                 return(
-                   <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={item.id}>
-                      <SingleProduct isPersonalize={item.product.is_personalize} rating={item.product.rating} id={item.product.id} image={item.product.product_imgs[0].image} title={item.product.title} oldPrice={item.product.old_price} label={item.product.label} price={item.product.price} discount={item.product.discount} />
+                   <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
+                       <SingleProduct
+                           isPersonalize={product.is_personalize} 
+                           rating={product.rating} 
+                           id={product.id} 
+                           image={product.product_imgs[0].image} 
+                           title={product.title} 
+                           oldPrice={product.old_price} 
+                           label={product.label} 
+                           price={product.price} 
+                           discount={product.discount}
+                         />
                     </div>
                   )
               })

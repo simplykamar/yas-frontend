@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 const Checkout = (props) => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
   const cartData = useSelector((state)=>state.cart.products);
-  console.log(cartData)
   const [itemsInStock,setItemsInStock] = useState(true);
   const dispatch = useDispatch();
   const sum = 0;
@@ -45,6 +44,7 @@ function validateCart(){
   })
   .catch(error=>{
     console.log(error)
+    alert('Server error..!')
   })
 }
 
