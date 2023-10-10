@@ -1,44 +1,46 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './App.css'
+import React, { lazy, Suspense } from 'react';
+import Footer from './components/Footer/Footer';
+import { Routes, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import Categories from './components/Categories/Categories';
-import CategoryProducts from './components/CategoryProducts/CategoryProducts';
-import AllProducts from './components/AllProducts/AllProducts';
-import ProductDetail from './components/ProductDetail/ProductDetail';
-import PageNotFound from './components/PageNotFound/PageNotFound';
-import Checkout from './components/Checkout/Checkout';
-import CheckoutStep1 from './components/Checkout/CheckoutStep1';
-import CheckoutStep2 from './components/Checkout/CheckoutStep2';
-import ConfirmOrder from './components/Checkout/ConfirmOrder';
-import Thank from './components/Checkout/Thank';
-import CustomerRegister from './components/CustomerRegister/CustomerRegister';
-import CustomerLogin from './components/CustomerLogin/CustomerLogin';
-import ForgotPassword from './components/CustomerLogin/ForgotPassword';
-import GetResetPaswordLink from './components/CustomerLogin/GetResetPaswordLink';
-import CustomerWishlist from './components/CustomerWishlist/CustomerWishlist';
-import Address from './components/CustomerProfile/Address';
-import Profile from './components/CustomerProfile/Profile';
-import Orders from './components/CustomerProfile/Orders';
-import TagProducts from './components/TagProducts/TagProducts';
-import CustomerAccountActivation from './components/CustomerAccountActivation/CustomerAccountActivation';
-import CustomerRegisterSuccess from './components/CustomerRegister/CustomerRegisterSuccess';
-import Contact from './components/PrivacyPolicy/contact/Contact';
-import Terms from './components/PrivacyPolicy/terms/Terms';
-import Privacy from './components/PrivacyPolicy/privacy/Privacy';
-import Footer from './components/Footer/Footer';
+const Home = lazy(()=>import("./components/Home/Home"));
+const Categories = lazy(()=>import("./components/Categories/Categories"));
+const CategoryProducts = lazy(()=>import("./components/CategoryProducts/CategoryProducts"));
+const AllProducts = lazy(()=>import("./components/AllProducts/AllProducts"));
+const ProductDetail = lazy(()=>import("./components/ProductDetail/ProductDetail"));
+const PageNotFound = lazy(()=>import("./components/PageNotFound/PageNotFound"));
+const Checkout = lazy(()=>import("./components/Checkout/Checkout"));
+const CheckoutStep1 = lazy(()=>import("./components/Checkout/CheckoutStep1"));
+const CheckoutStep2 = lazy(()=>import("./components/Checkout/CheckoutStep2"));
+const ConfirmOrder = lazy(()=>import("./components/Checkout/ConfirmOrder"));
+const Thank = lazy(()=>import("./components/Checkout/Thank"));
+const CustomerRegister = lazy(()=>import("./components/CustomerRegister/CustomerRegister"));
+const CustomerLogin = lazy(()=>import("./components/CustomerLogin/CustomerLogin"));
+const ForgotPassword = lazy(()=>import("./components/CustomerLogin/ForgotPassword"));
+const GetResetPaswordLink = lazy(()=>import("./components/CustomerLogin/GetResetPaswordLink"));
+const CustomerWishlist = lazy(()=>import("./components/CustomerWishlist/CustomerWishlist"));
+const Address = lazy(()=>import("./components/CustomerProfile/Address"));
+const Profile = lazy(()=>import("./components/CustomerProfile/Profile"));
+const Orders = lazy(()=>import("./components/CustomerProfile/Orders"));
+const TagProducts = lazy(()=>import("./components/TagProducts/TagProducts"));
+const CustomerAccountActivation = lazy(()=>import("./components/CustomerAccountActivation/CustomerAccountActivation"));
+const CustomerRegisterSuccess = lazy(()=>import("./components/CustomerRegister/CustomerRegisterSuccess"));
+const Contact = lazy(()=>import("./components/PrivacyPolicy/contact/Contact"));
+const Terms = lazy(()=>import("./components/PrivacyPolicy/terms/Terms"));
+const Privacy = lazy(()=>import("./components/PrivacyPolicy/privacy/Privacy"));
+const Protected = lazy(()=>import("./Protected"));
+const IsLogin = lazy(()=>import("./IsLogin"));
 
-import Protected from './Protected';
-import IsLogin from './IsLogin';
-import { Routes, Route} from 'react-router-dom';
 
 function App() {
 
   return (
     <div className="App">
     <Navbar/>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/categories" element={<Categories/>}/>
@@ -67,6 +69,7 @@ function App() {
         <Route path="*" element={<PageNotFound/>}/>
 
       </Routes>
+      </Suspense>
       <Footer/>
     </div>
   )

@@ -1,3 +1,4 @@
+import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import React from 'react';
 import axios from 'axios'
 import {useState,useEffect} from 'react';
@@ -96,14 +97,24 @@ const RecentlyViewed = ({productId}) => {
 			      	products.map(item=>{
 			      		return(
 						        <SwiperSlide className="" key={item.product.id}>
-		                          <SingleProduct isPersonalize={item.product.is_personalize} rating={item.product.rating} id={item.product.id} image={item.product.product_imgs[0].image} title={item.product.title} oldPrice={item.product.old_price} label={item.product.label} price={item.product.price} discount={item.product.discount} />
+		                          <SingleProduct
+		                           isPersonalize={item.product.is_personalize} 
+		                           rating={item.product.rating} 
+		                           id={item.product.id} 
+		                           image={item.product.product_imgs[0].image} 
+		                           title={item.product.title} 
+		                           oldPrice={item.product.old_price} 
+		                           label={item.product.label} 
+		                           price={item.product.price} 
+		                           discount={item.product.discount} />
 						        </SwiperSlide>
 			      			)
 			      	})
 			      }
 			          </Swiper>
 					</div>
-			:'loading...'
+			:
+             <ProductsSkeleton count={4}/>
 			}
 		</div>
 		)

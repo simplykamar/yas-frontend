@@ -18,6 +18,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import CloseIcon from '@mui/icons-material/Close';
 import yaslogo from '../../images/logos/yaslogo.png'
 import axios from 'axios';
 
@@ -197,7 +198,7 @@ function fetchProductsData(url){
             <div className="modal-dialog modal-fullscreen modal-dialog-scrollable">
               <div className="modal-content">
                  <div className="modal-header" style={{border:'none'}}>
-                   <button type="button" className="btn-close" id="btn-close" data-bs-dismiss="modal"></button>
+                   <CloseIcon fontSize="small" className="cursor-pointer btn-close" id="btn-close" data-bs-dismiss="modal"/>
                  </div>
                  <div className="modal-body pt-0 pb-5">
                    <h4 className="" style={{marginLeft:'13px'}}>Find your gifts here...</h4>

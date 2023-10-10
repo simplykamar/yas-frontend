@@ -5,7 +5,6 @@ import {useState} from 'react';
 import Button from "@mui/material/Button";
 import axios from 'axios';
 import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
 import Personalizing from '../Loading/Personalizing';
 
 

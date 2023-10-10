@@ -8,6 +8,7 @@ import {useNavigate,useLocation} from 'react-router-dom';
 import emptyCart from "../../images/other/emptycart.svg"
 import { QRCode } from 'react-qrcode-logo';
 import TextField from '@mui/material/TextField';
+import CloseIcon from '@mui/icons-material/Close';
 import Button from "@mui/material/Button";
 import CheckIcon from '@mui/icons-material/Check';
 import CollectionsIcon from '@mui/icons-material/Collections';
@@ -212,7 +213,7 @@ function getCartTotalPrice(){
 
                                 {/* <!-- Modal Header --> */}
                                 <div className="modal-header" style={{border:'none'}} >
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                  <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
                                 </div>
 
                                 {/* <!-- Modal body --> */}
@@ -235,7 +236,7 @@ function getCartTotalPrice(){
 
                                 {/* <!-- Modal Header --> */}
                                 <div className="modal-header" style={{border:'none'}} >
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                  <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
                                 </div>
 
                                 {/* <!-- Modal body --> */}

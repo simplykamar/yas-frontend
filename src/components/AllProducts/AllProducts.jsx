@@ -1,4 +1,5 @@
 import SingleProduct from '../SingleProduct/SingleProduct';
+import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -17,6 +18,7 @@ const AllProducts = () => {
               .catch((error)=>{
                 alert('server error..!')
                 console.log(error);
+                setLoading(false);
               });
     }
     useEffect(()=>{
@@ -49,10 +51,7 @@ const AllProducts = () => {
                   )
               })
              :
-             <div className="text-center">
-                <div className="spinner-border text-danger"></div>
-              </div>
-
+             <ProductsSkeleton count={8}/>
               }
               </div>
           </div> 

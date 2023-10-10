@@ -1,4 +1,5 @@
 import SingleProduct from '../SingleProduct/SingleProduct';
+import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {Link,useParams} from 'react-router-dom';
@@ -99,9 +100,7 @@ const TagProducts = () => {
           </div> 
           </div> 
           :
-             <div className="text-center py-4">
-                <div className="spinner-border text-danger"></div>
-              </div>
+          <ProductsSkeleton count={8}/>
           }
           </div> 
 

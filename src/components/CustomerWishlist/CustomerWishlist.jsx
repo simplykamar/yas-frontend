@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
@@ -48,15 +49,15 @@ const CustomerWishlist = () => {
                 return(
                    <div className="col-lg-3 col-md-4 col-sm-6 col-6" key={product.id}>
                        <SingleProduct
-                           isPersonalize={product.is_personalize} 
-                           rating={product.rating} 
-                           id={product.id} 
-                           image={product.product_imgs[0].image} 
-                           title={product.title} 
-                           oldPrice={product.old_price} 
-                           label={product.label} 
-                           price={product.price} 
-                           discount={product.discount}
+                           isPersonalize={product.product.is_personalize} 
+                           rating={product.product.rating} 
+                           id={product.product.id} 
+                           image={product.product.product_imgs[0].image} 
+                           title={product.product.title} 
+                           oldPrice={product.product.old_price} 
+                           label={product.product.label} 
+                           price={product.product.price} 
+                           discount={product.product.discount}
                          />
                     </div>
                   )
@@ -66,9 +67,7 @@ const CustomerWishlist = () => {
               <small className="">Oops !! You don’t seem to have any wishlist items.</small>
             </div>
               :
-             <div className="text-center">
-                <div className="spinner-border text-danger"></div>
-              </div>              
+            <ProductsSkeleton count={8}/>
             }
 			</div>
 		</div>

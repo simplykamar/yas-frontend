@@ -1,8 +1,7 @@
 import './ProductDetail.css';
+import ProductViewSkeleton from '../LoadingSkeleton/ProductViewSkeleton';
 import yas from '../../images/other/yas.png'
-
 import CropperImg from './ImageCrop';
-import Main from '../Loading/Main';
 import Uploading from '../Loading/Uploading';
 import Personalizing from '../Loading/Personalizing';
 import RecentlyViewed from './RecentlyViewed'
@@ -20,6 +19,7 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import ProgressiveImage from "react-progressive-graceful-image";
 
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import StarIcon from '@mui/icons-material/Star';
@@ -327,7 +327,6 @@ async function applyTextPersonalization(itemID){
 	return(
 		<div className="container-fluid pt-lg-3 pt-md-3">
           <div><Toaster/></div>
-          <Main loading={loading}/>
           <Uploading uploading={uploading}/>
           <Personalizing personalizing={textPersonalizing}/>
 		{ !loading
@@ -573,9 +572,7 @@ async function applyTextPersonalization(itemID){
 					
 			</div>
 			:
-             <div className="text-center py-4">
-                <div className="spinner-border text-danger"></div>
-              </div>
+        <ProductViewSkeleton/>
 			}
 			{/* Personalize modal */}
                          <div className="modal " id="personalizeModal">
@@ -585,7 +582,7 @@ async function applyTextPersonalization(itemID){
                                 {/* <!-- Modal Header --> */}
                                 <div className="modal-header">
                                   <p className="modal-title fw-600">{product.title}</p>
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                  <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
                                 </div>
 
                                 {/* <!-- Modal body --> */}

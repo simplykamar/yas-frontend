@@ -1,3 +1,4 @@
+import './Checkout.css';
 import {Link} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
 import {removeFromCart,addToCart,resetCart,deleteFromCart,updateCart} from '../../redux/cartSlice'

@@ -1,7 +1,7 @@
+import './Checkout.css';
 import {Link,NavLink,useNavigate,useLocation} from 'react-router-dom'
 import {useState,useEffect} from 'react';
 import axios from 'axios';
-import './Checkout.css';
 import {resetCart} from '../../redux/cartSlice'
 import emptyCart from "../../images/other/emptycart.svg"
 import giftcard from "../../images/other/giftcard.jpg"

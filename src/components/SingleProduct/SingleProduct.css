@@ -1,7 +1,7 @@
 .product-card{
 	position:relative;
-	height:350px
-		}
+/*	height:400;*/
+}
 .product-card-wishlist-icon{
 	z-index:999;
 	position:absolute;

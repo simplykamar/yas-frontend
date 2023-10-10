@@ -2,21 +2,14 @@ import './Sidebar.css';
 import sidebarImg from '../../images/other/sidebar.svg'
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import HambergerIcon from '../../images/logos/HambergerIcon.svg';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';          
 
  const Sidebar = () => {

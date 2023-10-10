@@ -1,3 +1,4 @@
+import './Checkout.css';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
@@ -8,6 +9,7 @@ import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import TextField from '@mui/material/TextField';
+import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import {useState,useEffect} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
@@ -182,7 +184,7 @@ const CheckoutStep1 = () => {
       {/* <!-- Modal Header --> */}
       <div className="modal-header">
         <h4 className="modal-title">Add new address</h4>
-        <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+        <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
       </div>
 
       {/* <!-- Modal body --> */}

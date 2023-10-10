@@ -1,4 +1,5 @@
 import './CategoryProducts.css';
+import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import loading1 from '../../images/loading/loading1.gif'
 import SingleProduct from '../SingleProduct/SingleProduct';
 import {useState,useEffect} from 'react';
@@ -46,8 +47,10 @@ const CategoryProducts = () => {
               }
 	return(
         <div className="container">
-            <div className="my-4">
-            <div className="row ">
+        <div className="my-4">
+      {
+        !loading?
+        <div className="row ">
         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="d-flex justify-content-between">
                 <div className="">
@@ -75,7 +78,6 @@ const CategoryProducts = () => {
          </div>           
          <div className="row g-3 mt-3">
             {
-              !loading?
                 products.length?
                   products.map((product)=>{
                     return(
@@ -95,16 +97,17 @@ const CategoryProducts = () => {
                       )
                     })
                   :<small>No found in this category..!</small>
-              :
-             <div className="text-center">
-                {/* <div className="spinner-border text-danger"></div> */}
-             <img src={loading1}/>
-              </div>
               }
-                
               </div>
           </div> 
           </div> 
+          :
+             <ProductsSkeleton count={8}/>
+             // <div className="text-center">
+             //    {/* <div className="spinner-border text-danger"></div> */}
+             // <img src={loading1}/>
+             //  </div>
+           }
           </div> 
         </div>     
 		)

@@ -1,7 +1,6 @@
 import'./Home.css';
 import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
-import SingleProduct from '../SingleProduct/SingleProduct';
 import footersale from '../../images/other/footersale.webp';
 import mainloading from '../../images/loading/mainloading.gif';
 import Slider from '../Slider/Slider';
