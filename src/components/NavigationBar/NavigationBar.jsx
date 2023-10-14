@@ -17,6 +17,8 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import CloseIcon from '@mui/icons-material/Close';
+
 import{useSelector,useDispatch} from 'react-redux'
 import { logout } from '../../redux/authSlice';
 import { clearOrder } from '../../redux/orderSlice';
@@ -58,13 +60,13 @@ export default function NavigationBar() {
         <div className="modal-dialog modal-fullscreen">
           <div className="modal-content">
             <div className="modal-header" style={{border:'0'}}>
-               <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+            <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
              </div>
              {/* <!-- Modal body --> */}
              <div className="modal-body py-0">
              { user.isAuthenticate ?
                 <>
-               <h4 className="text-capitalize">Hey! hashim ali zaidi</h4>
+               <h4 className="text-capitalize">Hey! {user.user.user.name}</h4>
                   <div className="">
                   <Link to="/customer/orders" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">

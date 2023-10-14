@@ -150,6 +150,7 @@ const CustomerAddress = () => {
       <form>
        <div className="mt-3">
           <TextField
+          color="error"
          onChange={inputHandler}
          name="name"
          fullWidth
@@ -158,8 +159,10 @@ const CustomerAddress = () => {
        </div>
        <div className="mt-3">
           <TextField
+          color="error"
           type="number"
          onChange={inputHandler}
+         InputProps={{ inputProps: { min: 0 } }}
          name="mobile"
          fullWidth
          label="Mobile No."
@@ -167,6 +170,7 @@ const CustomerAddress = () => {
        </div>
        <div className="mt-3">
           <TextField
+          color="error"
          onChange={inputHandler}
          name="address"
          fullWidth
@@ -175,6 +179,7 @@ const CustomerAddress = () => {
        </div>
        <div className="mt-3">
           <TextField
+          color="error"
          onChange={inputHandler}
          name="landmark"
          fullWidth
@@ -183,8 +188,10 @@ const CustomerAddress = () => {
        </div>
        <div className="mt-3">
           <TextField
+          color="error"
           type="number"
          onChange={inputHandler}
+         InputProps={{ inputProps: { min: 0 } }}
          name="pincode"
          fullWidth
          label="Pincode"
@@ -192,6 +199,7 @@ const CustomerAddress = () => {
        </div>
         <div className="mt-3">
           <TextField
+          color="error"
          onChange={inputHandler}
          name="city"
          fullWidth
@@ -200,6 +208,7 @@ const CustomerAddress = () => {
        </div>
         <div className="mt-3">
           <TextField
+          color="error"
          onChange={inputHandler}
          name="state"
          fullWidth

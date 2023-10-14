@@ -6,6 +6,8 @@ import Uploading from '../Loading/Uploading';
 import Personalizing from '../Loading/Personalizing';
 import RecentlyViewed from './RecentlyViewed'
 import SimilarGifts from './SimilarGifts'
+import ProductImageSlider from './ProductImageSlider'
+import ProductReviews from './ProductReviews'
 
 import {Link,useParams,useNavigate} from 'react-router-dom';
 import {useState,useEffect} from 'react';
@@ -37,7 +39,6 @@ const ProductDetail = () => {
   const {product_id} = useParams();
   const {product_slug} = useParams();
   const [product,setProduct] = useState([])
-	const [productTags,setProductTags] = useState([])  
 	const [ quantity, setQuantity ] = useState(1);
 	const [ selectedImage, setSelectedImage ] = useState('0');
   const [userWishlist,setUserWishlist] = useState({is_wishlist:false,id:null})
@@ -70,7 +71,6 @@ const ProductDetail = () => {
               	setProduct(response.data);
               	setProductImgs(response.data.product_imgs)
                 setLoading(false);
-                setProductTags(response.data.product_tags)
             })
              .catch(error=>{
 	           	notifyError('Server Error!');
@@ -316,9 +316,9 @@ async function applyTextPersonalization(itemID){
 
     useEffect(()=>{
       document.title=product_slug;
-    	window.scrollTo(0,0);
     	toast.remove();
-        fetchData(BASE_URL+'/product/'+product_id);
+      fetchData(BASE_URL+'/product/'+product_id);
+    	window.scrollTo(0,0);
           if(user.isAuthenticate){
         			checkUserWishlist();
         }
@@ -332,9 +332,10 @@ async function applyTextPersonalization(itemID){
 		{ !loading
 			?
 			<div className="row">
-				<div className="col-lg-5 col-md-5 col-sm-12 col-12">
-					<div className="row">
-						<div className="col-lg-2 col-md-2 d-none d-lg-block d-md-block">
+				<div className="col-lg-5 col-md-5 col-sm-12 col-12 ">
+				<div className="d-none d-lg-block d-md-block">
+					<div className="row ">
+						<div className="col-lg-2 col-md-2 ">
 							{ 
 						productImgs?.map((img,index)=>{return(
 						 <ProgressiveImage src={img.image} placeholder={yas} key={index+1}>
@@ -359,29 +360,13 @@ async function applyTextPersonalization(itemID){
 								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
+					</div>
 					{/* for mobile view */}
-					<div className="row mt-1 d-lg-none d-md-none">
-					{	
-						productImgs?.map((img,index)=>{return(
-						<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={index+1}>
-							<ProgressiveImage src={img.image} placeholder={yas}>
-               {(src, loading) => (
-                 <img
-                    className={`img-fluid cursor-pointer${loading ? " loading" : " loaded"}`}
-                		src={src}
-                		alt="product image"
-                		onClick={()=>{setSelectedImage(index)}}
-                		style={img.isPersonalized&&{border:'2px solid yellow'}}
-                 />
-                 )}
-               </ProgressiveImage>
-							{/* <img src={img.image} className="img-fluid cursor-pointer" onClick={()=>{setSelectedImage(index)}}/> */}
-						</div>
-						)})
-					}
+					<div className="mt-1 d-lg-none d-md-none">
+						<ProductImageSlider productImgs={productImgs}/>
 					</div>
 				</div>
-				<div className="col-lg-7 col-md-7 col-sm-12 col-12 pb-4">
+				<div className="col-lg-7 col-md-7 col-sm-12 col-12 py-4 ">
 				<small className="yas-text-secondary text-small">
 							{
                 (product.label===2)&& <span>Bestseller</span>
@@ -550,26 +535,8 @@ async function applyTextPersonalization(itemID){
 							<p className="fw-600 mb-1">Product Info</p>
 							<div dangerouslySetInnerHTML={{__html:product.product_info}}></div>
 						</div>
-
 						}
-						
-							<div>
-							<h5>Tags</h5>
-								{!loading
-								?
-									productTags.map(tag=>{
-										return(
-													<Link to={`/products/${tag.title}`} className="badge bg-outline-pink ms-2 text-decoration-none text-capitalize" key={tag.id}>{tag.title}</Link>
-											)
-									})
-								:
-								<p className="text-danger">loading...</p>
-								}
-							
-							</div>
 				</div>
-
-					
 			</div>
 			:
         <ProductViewSkeleton/>
@@ -746,7 +713,13 @@ async function applyTextPersonalization(itemID){
                               </div>
                             </div>
                           </div>
-         <SimilarGifts productTitle={product_slug} />
+         {
+         	!loading&&
+						product.product_reviews.length?
+	         	<ProductReviews productReviews={product.product_reviews}/>
+         	:''
+         }
+         <SimilarGifts productId={product_id}/>
          {
          	user.isAuthenticate&&
          	<RecentlyViewed productId={product_id}/>

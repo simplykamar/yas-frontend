@@ -3,12 +3,13 @@ import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
-import img from '../../images/logos/yaslogo.png'
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import LoopOutlinedIcon from '@mui/icons-material/LoopOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Rating from '@mui/material/Rating';
+import TextField from '@mui/material/TextField';
+import CloseIcon from '@mui/icons-material/Close';
 
 import toast, { Toaster } from 'react-hot-toast';
 import rating from '../../images/other/rating.png'
@@ -19,14 +20,17 @@ import rating4 from '../../images/other/rating/4.png'
 import rating5 from '../../images/other/rating/5.png'
 
   const Orders = () => {
-    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'https://simplykamar.tech/api';
+    const BASE_URL = 'http://127.0.0.1:8000/api'; 
     const [orders,setorders] = useState([]);
     const [loading,setLoading] = useState(true);
     const user= useSelector((state)=>state.auth);
-    const [orderRating, setOrderRating] = useState(0)
+    const [reviewRating, setReviewRating] = useState(0)
+    const [reviewText, setReviewText] = useState('')
+    const [reviewStep, setReviewStep] = useState(0)
+    const [reviewData, setReviewData] = useState([])
     const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
     const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
-
     const ratedLabels = {
            1: 'very bad',
            2: 'bad',
@@ -44,6 +48,7 @@ import rating5 from '../../images/other/rating/5.png'
   const fetchData = (url) => {
           axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
+              console.log(response);
               setorders(response.data);
               setLoading(false);
             })
@@ -52,11 +57,22 @@ import rating5 from '../../images/other/rating/5.png'
               console.log(error);
             });
     }
-  async function addProductRating(orderID){
+   function addProductRating(productId){
+        setReviewData(reviewData=>[...reviewData,{product:productId,review:reviewText,rating:reviewRating}])
+        setReviewText('')
+        setReviewRating(0)
+        setReviewStep(reviewStep+1)
+  }
+  async function submitProductRating(productId,orderId){
+    addProductRating(productId)
+    const data = [...reviewData,{product:productId,review:reviewText,rating:reviewRating}]
     const formData = new FormData();
-    formData.append('rating',orderRating)
-    await axios.patch(BASE_URL+`/customer-order-rating/${orderID}`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
+    formData.append('order',JSON.stringify(orderId))
+    formData.append('reviewData',JSON.stringify(data))
+    formData.append('customer',JSON.stringify(user.user.id))
+    await axios.post(BASE_URL+`/product-review/`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
     .then(response=>{
+      console.log(response)
       notifySuccess('Rating submit')
       fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`)
     })
@@ -64,6 +80,10 @@ import rating5 from '../../images/other/rating/5.png'
       notifyError('Error! try again..')
       console.log(error);
     })
+    setReviewText('')
+    setReviewRating(0) 
+    setReviewStep(0)
+    setReviewData([])
   }
     useEffect(()=>{
       window.scrollTo(0,0);
@@ -84,11 +104,12 @@ import rating5 from '../../images/other/rating/5.png'
                     !loading?
                         orders.length?
                         orders.map(order=>{return(
-                             <div className="row bg-white mt-3" key={order.order.id}>
-                                <div className="col-lg-2 col-md-2 col-sm-12 col-12 text-center">
-                                    <img src={img} className="img-fluid" width="80" height="80"/>
+                        <div key={order.order.id}>
+                             <div className="row bg-white mt-3 g-2" key={order.order.id}>
+                                <div className="col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <img src={order.order_items[0].product.product_imgs[0].image} className="img-fluid rounded-2" />
                                 </div>
-                                <div className="col-lg-10 col-md-10 col-sm-12 col-12 py-lg-3 py-md-3 pb-2">
+                                <div className="col-lg-10 col-md-10 col-sm-10 col-10">
                                  { order.order.isPaid?
                                   <span className="float-end">
                                     <CheckCircleIcon color="success"/>
@@ -135,7 +156,7 @@ import rating5 from '../../images/other/rating/5.png'
                                            {/* for deskop view */}
                                     <div className="d-none d-lg-block d-md-block">
                                       <div className="d-flex justify-content-between">
-                                        <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
+                                        <p className="fw-600">Total Paid: <span className="text-danger">₹ {order.order.order_total}</span></p>
                                         <div className="">
                                           <Link to='/contact-us' className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</Link>
                                           <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-danger"><LoopOutlinedIcon/>REORDER</Link>
@@ -145,7 +166,7 @@ import rating5 from '../../images/other/rating/5.png'
                                   {/* for mobile view */}
                                   <div className="d-lg-none d-md-none">
                                     <div className="d-flex justify-content-between">
-                                        <p className="fw-600">Total Paid: <span className="text-danger">₹{order.order.order_total}</span></p>
+                                        <p className="fw-600">Total Paid: <span className="text-danger">₹ {order.order.order_total}</span></p>
                                          { order.order.isPaid?
                                             order.order.rating ?
                                                 <div className="">
@@ -164,33 +185,70 @@ import rating5 from '../../images/other/rating/5.png'
                                       </div>
                                   </div>
                                 </div>
-                                {/*Modal for product rating */}
-                        <div className="modal" id={order.order.id}>
-                            <div className="modal-dialog modal-dialog-centered">
+                      </div>
+                    {/*Modal for product rating */}
+                        <div className="modal " id={order.order.id}>
+                            <div className="modal-dialog modal-fullscreen" data-bs-backdrop="static">
                               <div className="modal-content">
-
                                 {/* <!-- Modal Header --> */}
                                 <div className="modal-header">
-                                  <h4 className="modal-title">Rate Your Order</h4>
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                  <h4 className="modal-title">Write a Review ( {reviewStep+1}/{order.order_items.length} )</h4>
+                                  <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
                                 </div>
 
                                 {/* <!-- Modal body --> */}
-                                <div className="modal-body text-center h-50">
-                                <h2 className="text-uppercase">{ratedLabels[orderRating]}</h2>
-                                {orderRating?
-                                  <img src={ratedImage[orderRating]} className="img-fluid" style={{width:'150px',height:'150px'}}/>
-                                :
-                                  <img src={rating} className="img-fluid" style={{width:'150px',height:'150px'}}/>
-                                }
-                                  <div>                                
-                                    <Rating name="size-large" value={orderRating} onChange={(e,newValue)=>{setOrderRating(newValue)}} size="large" className="mt-3 d-inline-block"/>
+                                <div className="modal-body">
+                                <div className="">
+                                  {reviewStep < order.order_items.length&&
+                                  <>
+                                        <div className="row">
+                                          <div className="col-lg-2 col-md-2 col-sm-2 col-3">
+                                              <img src={order.order_items[reviewStep].product.product_imgs[0].image} className="img-fluid rounded-2" width="80" height="80"/>
+                                          </div>
+                                          <div className="col-lg-10 col-md-10 col-sm-10 col-9">
+                                                <h4 >{order.order_items[reviewStep].product.title}</h4>
+                                          </div>
+                                        </div>
+                                        <div className="d-flex">
+                                            <Rating name="size-large" value={reviewRating} onChange={(e,newValue)=>{setReviewRating(newValue)}} size="large" className=""/>
+                                            <img src={reviewRating?ratedImage[reviewRating]:rating} className="img-fluid" width="40" />
+                                            <p className="text-uppercase fw-bold">{ratedLabels[reviewRating]&&<span> | </span>}{ratedLabels[reviewRating]}</p>
+                                        </div>
+                                        <div>
+                                          <p className="fw-600">Write your Review</p>
+                                          <TextField
+                                          className="bg-light"
+                                           onChange={(e)=>{setReviewText(e.target.value)}}
+                                           name="review"
+                                           fullWidth
+                                           label="Review"
+                                           multiline={true}
+                                           minRows={3}
+                                           value={reviewText}
+                                           />
+                                           <div className="text-center">
+                                             <small className="d-block text-secondary text-small">Your word makes YasGifts a better place.</small>
+                                             <small className="d-block text-secondary text-small">You are the influence!</small>
+                                           </div>
+                                        </div>
+                                    </>
+                                      }
                                   </div>
                                 </div>
-
-                                {/* <!-- Modal footer --> */}
-                                <div className="modal-footer">
-                                  <button type="button" onClick={()=>{addProductRating(order.order.id)}} className="btn btn-danger w-100 py-2 text-uppercase" data-bs-dismiss="modal">Submit your feedback</button>
+                                <div className="modal-footer" style={{border:'none'}}>
+                                  {reviewRating?
+                                    reviewStep===(order.order_items.length-1)
+                                    ?
+                                    <button type="button" onClick={()=>{submitProductRating(order.order_items[reviewStep].product.id,order.order.id)}} className="btn btn-pink w-100 py-2 text-uppercase" data-bs-dismiss="modal">Submit your review</button>
+                                    :
+                                    <button type="button" onClick={()=>{addProductRating(order.order_items[reviewStep].product.id)}} className="btn btn-pink w-100 py-2 text-uppercase" >Next</button>
+                                  :
+                                  reviewStep===(order.order_items.length-1)
+                                    ?
+                                   <button type="button" className="btn btn-pink-disabled w-100 py-2 text-uppercase" >Submit your review</button>
+                                    :
+                                    <button type="button" className="btn btn-pink-disabled w-100 py-2 text-uppercase" >Next</button>
+                                  }
                                 </div>
                               </div>
                             </div>

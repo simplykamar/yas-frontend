@@ -51,8 +51,12 @@ const CustomerLogin = () => {
                    userID = res.data.id;
                      axios.get(BASE_URL+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})
                         .then(res=>{
+                          console.log(res)
                             dispatch(loginSuccess({...jwt_data,"user":res.data}));
                             setIsFetching(false);
+                            if(!targetUrl){
+                                targetUrl = "/";
+                              }
                             navigate(targetUrl, {replace:true});
                         })
                         .catch(error=>{
@@ -74,10 +78,8 @@ const CustomerLogin = () => {
       })
   }
   useEffect(()=>{
+      window.scrollTo(0,0);
       document.title="Login in into yas | Log in or Sign up";
-      if(!targetUrl){
-              targetUrl="/";
-            }
   },[])
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
@@ -89,12 +91,24 @@ const CustomerLogin = () => {
               <h5 className="card-title text-dark">Sign in to complete your order</h5>
               <p>Don't have an account? <Link to="/customer/register" className="text-decoration-none">Sign up</Link></p>
               <form style={{maxWidth:'500px'}}>
-                <TextField type="email" id="email-input" name="email" label="Email ID" onChange={inputHandler} value={loginFormData.email} fullWidth variant="standard" />
+                <TextField 
+                color="error"
+                type="email" 
+                id="email-input" 
+                name="email" 
+                label="Email ID" 
+                onChange={inputHandler} 
+                value={loginFormData.email} 
+                fullWidth 
+                variant="standard" 
+                />
                   <FormControl fullWidth margin="normal" variant="standard">
                       <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                       <Input
+                        color="error"
                         id="standard-adornment-password"
                         name="password"
+                        
                         value={loginFormData.password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}

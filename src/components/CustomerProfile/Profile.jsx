@@ -86,10 +86,12 @@ const Profile = () => {
                                 <form>
                                    <div className="mt-3">
                                        <TextField
+                                        color="error"
                                         type="number"
-                                      onChange={(e)=>{setMobile(e.target.value)}}
-                                      name="mobile"
-                                      fullWidth
+                                        onChange={(e)=>{setMobile(e.target.value)}}
+                                        InputProps={{ inputProps: { min: 0 } }}
+                                        name="mobile"
+                                        fullWidth
                                         helperText="Please enter your mobile number"
                                         id="demo-helper-text-misaligned"
                                         label="Mobile No."

@@ -10,8 +10,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TuneIcon from '@mui/icons-material/Tune';
 
-const TagProducts = () => {
-  const {tag} = useParams();
+const SearchProducts = () => {
+  const {query} = useParams();
   // const BASE_URL = 'https://simplykamar.tech/api';
     const BASE_URL = 'http://127.0.0.1:8000/api';
   
@@ -31,17 +31,17 @@ const TagProducts = () => {
               });
     }
     useEffect(()=>{
-      document.title=tag;
+      document.title=query;
         window.scrollTo(0,0);
-        // fetchData(BASE_URL+`/products/?q=${tag}`);
-        fetchData(BASE_URL+`/get-similar-product/?query=${tag}`);
+        // fetchData(BASE_URL+`/products/?q=${query}`);
+        fetchData(BASE_URL+`/get-search-product/?query=${query}`);
         
-      },[]);
+      },[query,]);
      
         const fetchFilterData = (e) => {
           setFilterBy(e.target.value);
           if(e.target.value!==""){
-              fetchData(BASE_URL+`/products/?q=${tag}&sort=${e.target.value}`);
+              fetchData(BASE_URL+`/get-search-product/?query=${query}&sort-by=${e.target.value}`);
           }
               }
 
@@ -54,7 +54,7 @@ const TagProducts = () => {
           <div className="d-flex justify-content-between">
                 <div className="">
                 <small className="text-secondary d-block">Showing results for:</small>
-                  <h4 className="text-capitalize d-inline">{tag}</h4><small className="text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>
+                  <h4 className="text-capitalize d-inline">{query}</h4><small className="text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>
                </div>
              <div className="d-flex">
                     <Box sx={{ minWidth: 120 }}>
@@ -107,4 +107,4 @@ const TagProducts = () => {
         </div>         
 		)
 }
-export default TagProducts;
+export default SearchProducts;

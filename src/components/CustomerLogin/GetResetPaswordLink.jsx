@@ -47,7 +47,19 @@ const GetResetPaswordLink = () => {
               			<h5 className="card-title text-dark">Reset your password</h5>
 			            <form style={{maxWidth:'500px'}} onSubmit={getResetLink}>
 			            <small className="text-secondary">Password reset link will be sent to registered email id</small>
-			              <TextField type='email' required={true} margin="normal" id="email-input" name="email" label="Email ID" onChange={(e)=>{setEmail(e.target.value)}} value={email} fullWidth variant="standard" />
+			              <TextField 
+			              color="error"
+			              type='email' 
+			              required={true} 
+			              margin="normal" 
+			              id="email-input" 
+			              name="email" 
+			              label="Email ID" 
+			              onChange={(e)=>{setEmail(e.target.value)}} 
+			              value={email} 
+			              fullWidth 
+			              variant="standard" 
+			              />
 		                  	{
 				                isFetching?
 				                  <button className="mt-3 btn btn-danger w-100 py-2" disabled>

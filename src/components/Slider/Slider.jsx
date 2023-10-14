@@ -1,4 +1,5 @@
 import './Slider.css'
+import Skeleton from '@mui/material/Skeleton';
 import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -49,6 +50,7 @@ const Slider = () => {
 	        // navigation={true}
 	        modules={[Autoplay, Navigation]}
 	        className="mySwiper"
+            loop={true}
 	      >
 	       {
                 !loading
@@ -62,10 +64,8 @@ const Slider = () => {
                                 </SwiperSlide>
                             )
                     })
-                :
-                 <div className="text-center">
-                    <div className="spinner-border text-danger"></div>
-                  </div>
+                : 
+                <Skeleton variant="rounded" height={120} />
             }
 	     
       </Swiper>

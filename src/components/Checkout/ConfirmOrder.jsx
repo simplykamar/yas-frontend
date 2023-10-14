@@ -279,6 +279,7 @@ function getCartTotalPrice(){
                                   <p className="text-center fw-bold">OR</p>
                                   <div className="my-3">
                                     <TextField
+                                    InputProps={{ inputProps: { min: 0 } }}
                                    color="error"
                                    type="number"
                                    onChange={(e)=>{setPaymentUTRNumber(e.target.value)}}

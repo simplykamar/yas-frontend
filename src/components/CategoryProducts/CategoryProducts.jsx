@@ -29,6 +29,7 @@ const CategoryProducts = () => {
                 setLoading(false);
               })
               .catch(error=>{
+                setLoading(false);
                 alert('server error..!')
                 console.log(error)
             })

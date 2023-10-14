@@ -6,12 +6,12 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 
 
-const SimilarGifts = ({productTitle}) => {
+const SimilarGifts = ({ productId }) => {
   	const BASE_URL = 'http://127.0.0.1:8000/api';
   	const [products,setProducts] = useState([])
   	const [loading, setLoading] = useState(true);
 	function getData(){
-		axios.get(BASE_URL+`/get-similar-product/?query=${productTitle}`)
+		axios.get(BASE_URL+`/get-similar-product/?query=${productId}`)
 		.then(response=>{
 			console.log(response)
 			setProducts(response.data)
@@ -25,8 +25,7 @@ const SimilarGifts = ({productTitle}) => {
 	}
 	useEffect(()=>{
 		getData();
-		console.log(productTitle)
-	},[productTitle,])
+	},[productId,])
 	return(
 			<div className="my-3">
 				{ !loading && <h2 className="text-center">Similar Gift Recommendations</h2> }

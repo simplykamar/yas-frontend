@@ -2,7 +2,6 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import {useNavigate,Link} from 'react-router-dom';
-import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -93,6 +92,7 @@ const ForgotPassword = () => {
                         value={resetPasswordFormData.new_password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
+                        color="error"
                       />
                     </FormControl>
                     <FormControl fullWidth margin="normal" variant="standard">
@@ -102,6 +102,7 @@ const ForgotPassword = () => {
                         name="re_new_password"
                         value={resetPasswordFormData.re_new_password}
                         onChange={inputHandler}
+                        color="error"
                         type={showPassword ? 'text' : 'password'}
                         endAdornment={
                           <InputAdornment position="end">

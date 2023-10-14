@@ -18,7 +18,6 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
-import CloseIcon from '@mui/icons-material/Close';
 import yaslogo from '../../images/logos/yaslogo.png'
 import axios from 'axios';
 
@@ -198,7 +197,8 @@ function fetchProductsData(url){
             <div className="modal-dialog modal-fullscreen modal-dialog-scrollable">
               <div className="modal-content">
                  <div className="modal-header" style={{border:'none'}}>
-                   <CloseIcon fontSize="small" className="cursor-pointer btn-close" id="btn-close" data-bs-dismiss="modal"/>
+                    <span id="btn-close" data-bs-dismiss="modal" className="cursor-pointer btn-close">
+                    </span>
                  </div>
                  <div className="modal-body pt-0 pb-5">
                    <h4 className="" style={{marginLeft:'13px'}}>Find your gifts here...</h4>
@@ -255,15 +255,16 @@ function fetchProductsData(url){
                 }
                 <div className=" ">
                   <p className="my-3 text-secondary">Quick search...</p>
-                  <div className="row gy-4">
+                  <div className="row gy-3 g-1">
                     {quickSearch.map((item)=>{
                       return(
-                            <div className="col-lg-3 col-md-3 col-sm-6 col-6" key={item.id}>
-                              <div className="">
-                                <div className="quick-search text-center py-2" onClick={(e)=>{fetchSearchData(item.query)}}>
-                                {item.query}
+                            <div className="col-lg-2 col-md-2 col-sm-4 col-3" key={item.id}>
+                                <div className="quick-search text-center" onClick={(e)=>{fetchSearchData(item.query)}}>
+                                <div className="quick-search-inner">
+                                  <img src={item.image} className="img-fluid w-50 rounded-5 quick-search-img"/>
                                 </div>
-                              </div>
+                                <p className="text-small quick-search-text">{item.query}</p>
+                                </div>
                             </div>    
                         )
                     })

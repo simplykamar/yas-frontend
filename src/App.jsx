@@ -3,6 +3,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import './App.css'
 import React, { lazy, Suspense } from 'react';
 import Footer from './components/Footer/Footer';
+import Main from './components/Loading/Main';
 import { Routes, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
@@ -25,7 +26,7 @@ const CustomerWishlist = lazy(()=>import("./components/CustomerWishlist/Customer
 const Address = lazy(()=>import("./components/CustomerProfile/Address"));
 const Profile = lazy(()=>import("./components/CustomerProfile/Profile"));
 const Orders = lazy(()=>import("./components/CustomerProfile/Orders"));
-const TagProducts = lazy(()=>import("./components/TagProducts/TagProducts"));
+const SearchProducts = lazy(()=>import("./components/SearchProducts/SearchProducts"));
 const CustomerAccountActivation = lazy(()=>import("./components/CustomerAccountActivation/CustomerAccountActivation"));
 const CustomerRegisterSuccess = lazy(()=>import("./components/CustomerRegister/CustomerRegisterSuccess"));
 const Contact = lazy(()=>import("./components/PrivacyPolicy/contact/Contact"));
@@ -40,7 +41,7 @@ function App() {
   return (
     <div className="App">
     <Navbar/>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Main loading={true}/>}>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/categories" element={<Categories/>}/>
@@ -59,7 +60,7 @@ function App() {
         <Route path="/customer/orders" element={<Protected Component={Orders} /> }/>
         <Route path="/customer/profile" element={<Protected Component={Profile}/>}/>
         <Route path="/customer/wishlist" element={<Protected Component={CustomerWishlist}/>}/>
-        <Route path="/products/:tag/" element={<TagProducts/>}/>
+        <Route path="/products/:query/" element={<SearchProducts/>}/>
         <Route path="/confirm-order" element={<Protected Component={ConfirmOrder}/>}/>
         <Route path="/activate/:uid/:token" element={<IsLogin Component={CustomerAccountActivation}/>}/>
         <Route path="/checkout" element={<Checkout/>}/>

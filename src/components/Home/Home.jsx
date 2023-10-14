@@ -8,6 +8,7 @@ import UniqueGift from '../Gift/UniqueGift';
 import CelebrateGift from '../Gift/CelebrateGift';
 import SearchOutlinedicons from '@mui/icons-material/SearchOutlined';
 import NavigationBar from '../NavigationBar/NavigationBar';
+import HeaderMenuSkeleton from '../LoadingSkeleton/HeaderMenuSkeleton';
 
 import axios from 'axios';
 
@@ -30,8 +31,8 @@ const Home = () => {
         })
     }
    
-  
    useEffect(()=>{
+      window.scrollTo(0,0);
       document.title="yas: Online Gifts Shopping";
       fetchHeaderMenuData(BASE_URL+'/header-menu-items')
   },[])
@@ -60,9 +61,7 @@ const Home = () => {
                             )
                     })
                 :
-                 <div className="text-center">
-                    <div className="spinner-border text-danger"></div>
-                  </div>
+              <HeaderMenuSkeleton count={6}/>
             }
           </div> 
         </header>

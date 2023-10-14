@@ -11,8 +11,8 @@ const ProductsSkeleton = ({count}) => {
 				<div className="col-lg-3 col-md-4 col-sm-6 col-6" key={i}>
 			      <Skeleton variant="rectangular" height={100} />
 			      <Skeleton variant="text"  sx={{ fontSize: '1rem' }} />
-			      <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
-			      <Skeleton variant="text" width={100} sx={{ fontSize: '1rem' }} />
+			      <Skeleton variant="text" width={120} sx={{ fontSize: '1rem' }} />
+			      <Skeleton variant="text" width={80} sx={{ fontSize: '1rem' }} />
 			    </div>
 				)
 				})

@@ -32,14 +32,15 @@ input[type="search"]{
 	border-radius:20px;
 	position:relative;
 }
-.quick-search{
-	border: 2px solid #fc7e93;
-	border-left: 15px solid #fc7e93;
-	border-radius: 10px;
-	cursor:pointer;
-	transition:all ease 1s;
-}
-.quick-search:hover{
-	border-left: 30px solid #fc7e93;
 
+.quick-search-img{
+	transition:all ease .5s;
+	cursor:pointer;
+}
+
+.quick-search-img:hover{
+	transform:scale(1.1);
+}
+.quick-search-text{
+	font-weight:600 !important;
 }

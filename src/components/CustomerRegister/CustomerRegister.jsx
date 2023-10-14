@@ -67,6 +67,7 @@ const CustomerRegister = () => {
       })
   }
     useEffect(()=>{
+      window.scrollTo(0,0);
       document.title="Login in into yas | Log in or Sign up";
       if (user.isAuthenticate){
           navigate("/", {replace:true});
@@ -87,8 +88,27 @@ const CustomerRegister = () => {
              </div> 
               <div  className="card-body pt-0">
               <form style={{maxWidth:'500px'}}>
-                <TextField id="name-input" name="name" label="Name" onChange={inputHandler} value={registerFormData.name} fullWidth variant="standard" />
-                <TextField type="email" id="email-input" margin="normal" name="email" label="Email ID" onChange={inputHandler} value={registerFormData.email} fullWidth variant="standard" />
+                <TextField 
+                color="error"
+                id="name-input" 
+                name="name" 
+                label="Name" 
+                onChange={inputHandler} 
+                value={registerFormData.name} 
+                fullWidth 
+                variant="standard" 
+                />
+                <TextField 
+                color="error"
+                type="email" 
+                id="email-input" 
+                margin="normal" 
+                name="email" 
+                label="Email ID" 
+                onChange={inputHandler} 
+                value={registerFormData.email} 
+                fullWidth variant="standard" 
+                />
                 <FormControl fullWidth margin="normal" variant="standard">
                       <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                       <Input
@@ -97,7 +117,7 @@ const CustomerRegister = () => {
                         value={registerFormData.password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
-                        
+                        color="error"
                       />
                     </FormControl>
                     <FormControl fullWidth margin="normal" variant="standard">
@@ -108,6 +128,7 @@ const CustomerRegister = () => {
                         value={registerFormData.re_password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
+                        color="error"
                         endAdornment={
                           <InputAdornment position="end">
                             <IconButton
