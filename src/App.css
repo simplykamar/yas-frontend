@@ -1,5 +1,8 @@
 body{
-	font-family: 'Happy Monkey', cursive;
+	font-family: 'Poppins', sans-serif;
+}
+.text-heading{
+	font-family: 'PT Serif', serif !important;
 }
 .text-black-primary{
 	color:#373838 !important

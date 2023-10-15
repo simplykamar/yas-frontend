@@ -41,6 +41,4 @@ input[type="search"]{
 .quick-search-img:hover{
 	transform:scale(1.1);
 }
-.quick-search-text{
-	font-weight:600 !important;
-}
+

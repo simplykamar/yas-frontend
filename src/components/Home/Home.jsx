@@ -1,15 +1,13 @@
 import'./Home.css';
 import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
-import footersale from '../../images/other/footersale.webp';
 import mainloading from '../../images/loading/mainloading.gif';
 import Slider from '../Slider/Slider';
-import UniqueGift from '../Gift/UniqueGift';
+import PremiumGift from '../Gift/PremiumGift';
 import CelebrateGift from '../Gift/CelebrateGift';
 import SearchOutlinedicons from '@mui/icons-material/SearchOutlined';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import HeaderMenuSkeleton from '../LoadingSkeleton/HeaderMenuSkeleton';
-
 import axios from 'axios';
 
 const Home = () => {
@@ -66,36 +64,10 @@ const Home = () => {
           </div> 
         </header>
         <Slider/>
-        <UniqueGift/>
+        <PremiumGift/>
         <CelebrateGift/>
-         <Link to="/categories"><img src={footersale} className="img-fluid footersale-img"/></Link>
-        <section className="mt-5 ">
-          <div className="row d-none">
-            <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-            <h1 className="stats">Stats</h1>
-          </div>
-            <div className="col-lg-10 col-md-10 col-sm-10 col-10">
-              <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="main-stats-text">5+</h1>
-                    <p className="text-danger stats-text">Cities having same day delivery</p>              
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="main-stats-text">50+</h1>
-                    <p className="text-danger stats-text">Happy cutomer:)</p>              
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <h1 className="main-stats-text">200+</h1>
-                    <p className="text-danger stats-text">Gift boxes delivered</p>              
-                </div>
-              </div>
-          </div>
-          </div>
-        </section>
       </div>     
-          <div >
-            <NavigationBar/>
-          </div>
+        <NavigationBar/>
       </div>     
 		)
 }

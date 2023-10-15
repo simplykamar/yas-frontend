@@ -7,11 +7,10 @@ import appleapp from '../../images/other/appleapp.webp'
 import {Link} from 'react-router-dom'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import './Footer.css'
 import yaslogo from '../../images/logos/yaslogo.png'
-
 
 const Footer = () => {
 	return (
@@ -29,11 +28,10 @@ const Footer = () => {
                 <div className="col-lg-6 col-md-6 col-sm-12 col-12 pt-4 p-lg-0 p-md-0 text-center">
                   <p className="">Follow us on:</p>
                   <div className="">
-                    <FacebookOutlinedIcon className="social-icon" style={{color:"gray"}}/>
+                    <FacebookOutlinedIcon className="social-icon" style={{color:"#5058e6"}}/>
                      <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><InstagramIcon className="social-icon mx-3" style={{color:"rgb(225 42 121)"}}/></a>
-                     <LinkedInIcon className="social-icon" style={{color:"gray"}}/>
-                     {/* <LinkedInIcon className="social-icon" style={{color:"rgb(78 68 175)"}}/> */}
-                    <YouTubeIcon className="social-icon ms-3" style={{color:"gray"}}/>
+                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><LinkedInIcon className="social-icon" style={{color:"#0072b1"}}/></a>
+                    <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><TwitterIcon className="social-icon ms-3" style={{color:"#00acee"}}/></a>
                   </div>
                 </div>
               </div><hr/>

@@ -116,6 +116,7 @@ function fetchProductsData(url){
         navigate(`/products/${q}`,{replace:true});
       })
   }
+  
   function setQuickSearchData(){
     axios.get(BASE_URL+'/quick-search')
     .then(response=>{
@@ -127,16 +128,18 @@ function fetchProductsData(url){
       console.log(error)
     })
   }
+
   useEffect(()=>{
     setQuickSearchData();
   },[])
+
   return(
     <>
     <div className="sticky-top">
       <nav className="navbar navbar-expand navbar-light bg-light ">
   <div className="container">
   <Sidebar/>
-    <Link className="navbar-brand ms-3" to="/"><img src={yaslogo} className="img-fluid" style={{width:'50px',height:'30px'}}/></Link>
+    <Link className="navbar-brand ms-3" to="/"><img src={yaslogo} className="img-fluid" style={{width:'40px',height:'24px'}}/></Link>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav">
           <li className="nav-item d-none d-md-block d-lg-block">
@@ -201,10 +204,11 @@ function fetchProductsData(url){
                     </span>
                  </div>
                  <div className="modal-body pt-0 pb-5">
-                   <h4 className="" style={{marginLeft:'13px'}}>Find your gifts here...</h4>
+                   <h4 className="text-heading" style={{marginLeft:'13px'}}>Find your gifts here...</h4>
                  <form onSubmit={(e)=>{getClientData(e)}}>
                     <div className="mt-3 ">
                       <TextField  
+                      size="small"
                       color='warning'
                       InputProps={{ 
                         sx: { borderRadius: 10,backgroundColor:'#f8f9fa ' },
@@ -263,7 +267,7 @@ function fetchProductsData(url){
                                 <div className="quick-search-inner">
                                   <img src={item.image} className="img-fluid w-50 rounded-5 quick-search-img"/>
                                 </div>
-                                <p className="text-small quick-search-text">{item.query}</p>
+                                <p className="text-small text-capitalize">{item.query}</p>
                                 </div>
                             </div>    
                         )

@@ -1,7 +1,8 @@
 import './Sidebar.css';
+import axios from 'axios';
 import sidebarImg from '../../images/other/sidebar.svg'
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import HambergerIcon from '../../images/logos/HambergerIcon.svg';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -13,8 +14,28 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';          
 
  const Sidebar = () => {
-  const [open, setOpen] = useState(false);
- 
+    const [open, setOpen] = useState(false);
+    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const [loading,setLoading] = useState(false);
+    const [celebrateGift,setCelebrateGift] = useState([]);
+
+   function fetchCelebrateMilestoneGiftData(url){
+        setLoading(true);
+        axios.get(url)
+        .then(response=>{
+            console.log(response);
+            setCelebrateGift(response.data);
+            setLoading(false);
+        })
+        .catch(error=>{
+            alert('Server error..!');
+            console.log(error);
+            setLoading(false);
+        })
+    }  
+ useEffect(()=>{
+  fetchCelebrateMilestoneGiftData(BASE_URL+'/celebrate-milestone-gift-items')
+ },[])
   return (
     <div>
       <SwipeableDrawer 
@@ -32,49 +53,67 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
             </DialogTitle>
       <div className="px-3">
       <List onClick={() => setOpen(false)} className="border p-0" >
-      <div className="text-uppercase fw-bold text-dark py-2 d-flex justify-content-around" style={{backgroundColor:'#e2e8f0'}}>
-        <p>
-          Top Collections
-        </p>
-        <img src={sidebarImg} className="img-fluid"/>
+      <div className="text-uppercase d-flex justify-content-around align-items-center py-1" style={{backgroundColor:'#e2e8f0'}}>
+        <div className="text-heading">
+          Celebrate Milestones
+        </div>
+        <div><img src={sidebarImg} className="img-fluid" width="30" height="30"/></div>
       </div>
-        <ListItem  button component={Link} to={'/category/same day delivery/15'}>
-          <ListItemText primary={"Same Day Delivery Gifts"}/>
-        </ListItem>
-        <ListItem  button component={Link} to={'/category/cake/11'}>
-          <ListItemText primary={"Birthday Gifts"}/>
-        </ListItem>
-        <ListItem  button component={Link} to={'/category/personalized/14'}>
-          <ListItemText primary={"Personalized Gifts"}/>
-        </ListItem>
-        <ListItem  button component={Link} to={'/category/rakhi/8'}>
-          <ListItemText primary={"Rakhi"}/>
-        </ListItem>
-      </List>
-      </div>
-      <div className="px-3">
-      <List onClick={() => setOpen(false)} className="">
-        <p className=" ms-2 my-2 fw-600 text-secondary text-uppercase">Personal occasions</p>
-        <ListItem  button component={Link} to={'/category/plant/12'}>
-          <ListItemText primary={"Plants Gifts"}/>
-        </ListItem>
-         <ListItem  button component={Link} to={'/category/anniversary/17'}>
-          <ListItemText primary={"Anniversary Gifts"}/>
-        </ListItem>
-        <ListItem  button component={Link} to={'/category/wedding/16'}>
-          <ListItemText primary={"Wedding & Engagement"}/>
-        </ListItem>
-        <ListItem  button component={Link} to={'/category/flowers/13'}>
-          <ListItemText primary={"Best Wishes"}/>
-        </ListItem>
+        {
+          !loading&&
+          celebrateGift.map((item)=>{
+            return(
+              <div key={item.id}>
+                <ListItem  button component={Link} to={`/category/${item.category.title}/${item.category.id}`}>
+                  <ListItemText primary={item.title} primaryTypographyProps={{fontSize: '14px',textTransform:'capitalize'}}/>
+                </ListItem>
+              </div>
+              )
+          })
+        } 
+
+      
       </List>
       </div>
       <div className="px-3">
         <List onClick={() => setOpen(false)} className="">
-          <p className=" ms-2 my-2 fw-600 text-secondary text-uppercase">assistance</p>
-          <ListItem  button component={Link} to={'/contact-us'}>
+      <div className="text-heading text-uppercase py-1" style={{backgroundColor:'#e2e8f0'}}>
+        <div className="" style={{marginLeft:'10px'}}>
+          need help?
+        </div>
+      </div>
+      <ListItem  button>
          <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"Customer Service"}/>
+          <ListItemText primary={"+91 9634142017"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
+         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"support@yasgifts.me"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        </ListItem>
+        </List>
+      </div>
+            <div className="px-3">
+        <List onClick={() => setOpen(false)} className="">
+      <div className="text-uppercase py-1" style={{backgroundColor:'#e2e8f0'}}>
+        <div className="text-heading" style={{marginLeft:'10px'}}>
+          follow us
+        </div>
+      </div>
+      <ListItem  button>
+         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"Instagram"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
+         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"Facebook"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
+         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"Twitter"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        </ListItem>
+        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
+         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
+          <ListItemText primary={"LinkedIn"}  primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
         </List>
       </div>
