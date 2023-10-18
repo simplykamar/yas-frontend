@@ -1,12 +1,11 @@
 .sidebar-active.active{
-	color: red !important;
+	color: #fc7e93 !important;
 	background-color:white !important;
 	font-weight: 600 !important;
-	border: 1px solid #ccc !important;
 }
 .profile-image{
-	width:130px;
-	height:130px;
+	width:100px;
+	height:100px;
 	background-color: #33d489;
 	background-image: linear-gradient(132deg, #33d489 0%, #053b09 100%);
 	border-radius:100%;

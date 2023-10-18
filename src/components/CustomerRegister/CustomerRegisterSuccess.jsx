@@ -1,11 +1,8 @@
 import thanks from '../../images/other/thanks.jpg'
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 import {useEffect} from 'react';
 import {useLocation,useNavigate} from 'react-router-dom';
 
 const CustomerRegisterSuccess = () => {
-	const notifySuccess = (msg) => toast.success(msg);
 	const navigate = useNavigate();
 	const isRegistered = useLocation().state;
 
@@ -21,17 +18,14 @@ const CustomerRegisterSuccess = () => {
 		<div>
 		{
 			isRegistered &&
-		<div onLoad={()=>{notifySuccess("Account activation link send !")}}>
+		<div>
 			<div>
-	        <ToastContainer />
 	      </div>
 			<div className="text-center p-3">
 				<div>
 					<img src={thanks} className="img-fluid" style={{width:"100px"}}/>
-					<h4 className="success-msg">Registration Successful!</h4>
-					<div><small>Your registration process is complete.</small></div>
-					<div><small>Account activation link send to your email</small></div>
-					<div><small className="text-danger">Account Not activate!</small></div>
+					<h4 className="success-msg text-heading mt-3">Registration Successful!</h4>
+					<div><p className="text-secondary" style={{fontSize:"10px"}}>Kindly check your email for Account Activation</p></div>
 				</div>
 			</div>
 		</div>

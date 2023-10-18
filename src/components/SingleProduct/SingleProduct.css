@@ -1,22 +1,32 @@
 .product-card{
 	position:relative;
-/*	height:400;*/
+/*	height:300px;*/
+	border:none
 }
+
 .product-card-wishlist-icon{
 	z-index:999;
 	position:absolute;
 	right:0
 }
+.product-card-offer{
+	z-index:999;
+	position:absolute;
+	left:0;
+}
+
 .product-card-img-inner{
 		overflow:hidden;
 	}
 
 .product-card-img{
-		height:200px;
+		height:180px;
 		transition:all ease 1s;
 	}
 		
-.product-card-img:hover{
-		transform:scale(1.2);
-	}
-		
+.card-offer{
+	font-size:11px;
+	border-radius:5px;
+	background-color:#fc7e93;
+	color:white;
+}

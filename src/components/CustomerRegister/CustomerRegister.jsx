@@ -1,10 +1,11 @@
+import '../CustomerLogin/CustomerLogin.css';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom'
 import { useSelector} from 'react-redux';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
@@ -22,9 +23,9 @@ const CustomerRegister = () => {
           're_password':'',
   });
   const [isFetching,setIsFetching] = useState(false);
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const [inputError,setInputError] = useState({'msg':"",'type':""})
+  const [inputError,setInputError] = useState({'msg':"",'type':""});
   const user = useSelector((state)=>state.auth);
 
   function inputHandler(event){
@@ -63,7 +64,6 @@ const CustomerRegister = () => {
           setInputError({'type':"email",'msg':error.response.data.email})
         }
         setIsFetching(false);
-        alert('server error..!')
       })
   }
     useEffect(()=>{
@@ -77,14 +77,14 @@ const CustomerRegister = () => {
   const buttonEnable = (registerFormData.name!='') && (registerFormData.password!='') &&
    (registerFormData.re_password!='')  && (registerFormData.email!='')
 
-	return(
+  return(
         <div className="container-fluid">
             <div className="py-4 login-container">
             <div className="d-flex justify-content-center">
             <div className="card custom-shadow" >
               <div className="card-body">
-              <h5 className="card-title text-dark">Sign in to complete your order</h5>
-              <p>Already have an account? <Link to="/customer/login" className="text-decoration-none">Sign in</Link></p>
+              <h4 className="card-title text-heading">Sign in to complete your order</h4>
+              <p className="fs-12">Already have an account? <Link to="/customer/login" className="text-decoration-none">Log in</Link></p>
              </div> 
               <div  className="card-body pt-0">
               <form style={{maxWidth:'500px'}}>
@@ -95,8 +95,9 @@ const CustomerRegister = () => {
                 label="Name" 
                 onChange={inputHandler} 
                 value={registerFormData.name} 
+                InputLabelProps={{style: {fontSize: '14px'}}}
                 fullWidth 
-                variant="standard" 
+                size="small"
                 />
                 <TextField 
                 color="error"
@@ -107,24 +108,30 @@ const CustomerRegister = () => {
                 label="Email ID" 
                 onChange={inputHandler} 
                 value={registerFormData.email} 
-                fullWidth variant="standard" 
+                InputLabelProps={{style: {fontSize: '14px'}}}
+                fullWidth 
+                size="small"
                 />
-                <FormControl fullWidth margin="normal" variant="standard">
-                      <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                      <Input
+                <FormControl fullWidth margin="normal" variant="outlined">
+                      <InputLabel htmlFor="standard-adornment-password" className="fs-14">Password</InputLabel>
+                      <OutlinedInput
+                        size="small"
                         id="standard-adornment-password"
                         name="password"
+                        label="Password"
                         value={registerFormData.password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
                         color="error"
                       />
                     </FormControl>
-                    <FormControl fullWidth margin="normal" variant="standard">
-                      <InputLabel htmlFor="standard-adornment-password">Confirm Password</InputLabel>
-                      <Input
+                    <FormControl fullWidth margin="normal" variant="outlined">
+                      <InputLabel htmlFor="standard-adornment-password" className="fs-14">Confirm Password</InputLabel>
+                      <OutlinedInput
+                        size="small"
                         id="standard-re-adornment-password"
                         name="re_password"
+                        label="Confirm Password"
                         value={registerFormData.re_password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
@@ -135,6 +142,7 @@ const CustomerRegister = () => {
                               aria-label="toggle password visibility"
                               onClick={()=>setShowPassword(true)}
                               onMouseDown={()=>setShowPassword(false)}
+                              size="small"
                             >
                               {showPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
@@ -144,17 +152,26 @@ const CustomerRegister = () => {
                     </FormControl>
                  {
                 isFetching?
-                  <button className="mt-3 btn btn-danger w-100 py-2" disabled>
-                      <span className="spinner-border spinner-border-sm"> </span>
-                       Loading..
+                 <div className="text-center">
+                  <button className="mt-3 btn btn-danger w-50 py-2 rounded-15 fs-14" disabled>
+                      <span className="spinner-border spinner-border-sm"></span> Loading..
                     </button>
+                   </div>
                 :
-                <button type="submit" onClick={submitHandler} disabled={!buttonEnable} className="btn btn-danger mt-3 w-100 py-2">SIGN UP</button>
+                <div className="text-center">
+                  {
+                    buttonEnable
+                    ?
+                    <button type="submit" className="btn btn-pink mt-3 w-50 fs-14 py-2" onClick={submitHandler}>SIGN UP</button>
+                      :
+                    <button type="submit" className="btn btn-danger rounded-15 mt-3 w-50 fs-14 py-2" disabled={true} >SIGN UP</button>
+                  }
+                </div>
               }
                 
                 { inputError.type=='password' &&
                   <div className="mt-3">
-                  <ul className="text-danger">
+                  <ul className="text-danger" style={{fontSize:'10px'}}>
                      {inputError.msg[0]&&<li><small>{inputError.msg[0]}</small></li>}
                      {inputError.msg[1]&&<li><small>{inputError.msg[1]}</small></li>}
                      {inputError.msg[2]&&<li><small>{inputError.msg[2]}</small></li>}
@@ -163,12 +180,12 @@ const CustomerRegister = () => {
                 }
                 { inputError.type=='non_field_errors' &&
                   <div className="mt-3">
-                  <li className="text-danger"><small className="text-danger">{inputError.msg[0]}</small></li>
+                  <li className="text-danger fs-12"><small className="text-danger">{inputError.msg[0]}</small></li>
                   </div>
                 }
                 { inputError.type=='email' &&
                   <div className="mt-3">
-                  <li className="text-danger"><small className="text-danger">{inputError.msg[0]}</small></li>
+                  <li className="text-danger fs-12"><small className="text-danger">{inputError.msg[0]}</small></li>
                   </div>
                 }
               </form>
@@ -178,6 +195,6 @@ const CustomerRegister = () => {
           </div> 
 
         </div>     
-		)
+    )
 }
 export default CustomerRegister;

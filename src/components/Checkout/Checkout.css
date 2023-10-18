@@ -12,7 +12,7 @@
 .msg-textarea{
     font-size:14px;
 	box-shadow: none!important;
-    min-height: 15rem!important
+    min-height: 14rem!important
 }
 .stepper-wrapper {
   margin-top: auto;
@@ -27,10 +27,11 @@
   flex: 1;
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
-
+.step-name{
+}
 .stepper-item::before {
   position: absolute;
   content: "";
@@ -73,12 +74,13 @@
 }
 .stepper-item.active .step-counter{
   background: white;
-  border: 1px solid #333232;
+  border: 1px solid #fc9aaa;
   color:#333232;
 }
 
 .stepper-item.completed .step-counter {
   font-weight:600;
+  border: 1px solid #fc9aaa;
 }
 .stepper-item.completed .step-name {
   color:#333232;
@@ -86,7 +88,7 @@
 .stepper-item.completed::after {
   position: absolute;
   content: "";
-  border-bottom: 2px solid #333232;
+  border-bottom: 2px solid #fc9aaa;
   width: 100%;
   top: 20px;
   left: 50%;
@@ -98,4 +100,22 @@
 }
 .stepper-item:last-child::after {
   content: none;
+}
+.btn-mui-pink{
+  background-color: #fc7e93 !important;
+  border:none !important;
+  border-radius:15px !important;
+  border-bottom:2px solid #fa375e !important;
+  border-left:2px solid #fa375e !important;
+  color: white !important;
+  font-weight:bold !important;
+}
+
+.btn-mui-pink:active{
+  background-color: #ff6e89 !important;
+}
+.btn-mui-pink:hover{
+  background-image:linear-gradient(to right,#fa375e  , #fc7e93);
+/*background-color: #fa375e !important*/
+  
 }

@@ -28,7 +28,7 @@ const SimilarGifts = ({ productId }) => {
 	},[productId,])
 	return(
 			<div className="my-3">
-				{ !loading && <h2 className="text-center">Similar Gift Recommendations</h2> }
+				{ !loading && <h2 className="text-center text-heading">Similar Gift Recommendations</h2> }
 				<div className="row g-3 mt-3">
 			      {
 			      !loading?
@@ -45,6 +45,7 @@ const SimilarGifts = ({ productId }) => {
 	                           label={product.label} 
 	                           price={product.price} 
 	                           discount={product.discount}
+	                           productReviews={product.product_reviews}
 	                         />
 	                    </div>
 	                  )

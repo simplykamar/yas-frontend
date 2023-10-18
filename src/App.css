@@ -16,11 +16,15 @@ body{
 .text-pink{
 	color: #fc7e93;
 }
+
+.text-hover-pink:hover{
+	color: #fc7e93;
+	border: 1px solid #fc7e93;
+	border-radius:15px !important;
+	
+}
 .btn{
 	border-radius:0 !important;
-}
-.bg-pink{
-	background-color: #fc032c;
 }
 .fw-600{
 	font-weight:600
@@ -39,7 +43,6 @@ body{
 .border-pink{
 	border:1px solid #fc7e93 !important;
 }
-
 .cursor-pointer{
 	cursor:pointer;
 }
@@ -137,4 +140,10 @@ select{
 }
 .MuiInputLabel-shrink{
 	color: #fc7e93 !important;
+}
+.fs-14{
+	font-size:14px !important
+}
+.fs-12{
+	font-size:12px !important
 }

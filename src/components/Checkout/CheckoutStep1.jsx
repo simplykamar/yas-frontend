@@ -12,14 +12,11 @@ import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import {useState,useEffect} from 'react';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 import emptyCart from "../../images/other/emptycart.svg"
+import toast, { Toaster } from 'react-hot-toast';
 
 const CheckoutStep1 = () => {
 	const isNext = useLocation().state;
-	const notifySuccess = (msg) => toast.success(msg);
-	const notifyError = (msg) => toast.error(msg);
   // const BASE_URL = 'https://simplykamar.tech/api';
   const BASE_URL = 'http://127.0.0.1:8000/api';
 	const [addresses, setAddresses] = useState([]);
@@ -28,7 +25,8 @@ const CheckoutStep1 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const cartData = useSelector((state)=>state.cart.products);
-
+	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+	const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 // for add new address
 	const [newAddress, setNewAddress] = useState({
 					name:"",
@@ -69,8 +67,8 @@ const CheckoutStep1 = () => {
 		function deleteAddress(id){
 						axios.delete(BASE_URL+`/customer-address/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
+							notifySuccess('Address deleted !')
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
-							notifySuccess("Address successfully deleted !")
 						})
 		}
 		function addAddress(event){
@@ -86,13 +84,12 @@ const CheckoutStep1 = () => {
 						formData.append('address_type',newAddress.tag);
 						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
-							notifySuccess("New address added !")
+							notifySuccess("New Address Added !")
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 						})
 						.catch(error=>{
 							notifyError(error.response.data.msg)
 					})
-
 	}
 	function selectAddress(AddressId){
 		dispatch(addToOrder({address:AddressId}));
@@ -100,9 +97,7 @@ const CheckoutStep1 = () => {
 	}
 	return(
 		<div className="py-3 bg-light">
-				<div>
-        <ToastContainer />
-      </div>
+			<div><Toaster/></div>
 			<div className="container">
 			  { cartData.length?
 			  <>
@@ -110,11 +105,11 @@ const CheckoutStep1 = () => {
 				<div className="stepper-wrapper">
 					  <div className="stepper-item active">
 					    <div className="step-counter">
-					  <Link to="/checkout-step-1" className="text-decoration-none text-dark">
+					  <Link to="/checkout-step-1" className="text-decoration-none ">
 					    </Link>
 					    </div>
 					    <div className="step-name">
-					  <Link to="/checkout-step-1" className="text-decoration-none text-secondary">
+					  <Link to="/checkout-step-1" className="text-decoration-none text-pink">
 					    Delivery Details
 					    </Link>
 					    </div>
@@ -150,17 +145,23 @@ const CheckoutStep1 = () => {
 										{item.address_type===1 && <HomeTwoToneIcon />}
 										{item.address_type===2 && <WorkTwoToneIcon />}
 										{item.address_type===3 && <LocationOnTwoToneIcon />}
-										<span className="text-danger float-end cursor-pointer" onClick={()=>{deleteAddress(item.id)}}>Delete</span>
-										<span className="ms-2">{item.name}</span>
-										{item.address_type===1 && <span className="ms-2 bg-light fw-light text-dark">Home</span>}
-										{item.address_type===2 && <span className="ms-2 bg-light fw-light text-dark">Work</span>}
-										{item.address_type===3 && <span className="ms-2 bg-light fw-light text-dark">Other</span>}
-									
+										<span className="text-danger float-end cursor-pointer fs-14" onClick={()=>{deleteAddress(item.id)}}>Delete</span>
+										<span className="ms-2 text-capitalize">{item.name}</span>
+										{item.address_type===1 && <span className="ms-2 bg-light fw-light text-dark fs-12">Home</span>}
+										{item.address_type===2 && <span className="ms-2 bg-light fw-light text-dark fs-12">Work</span>}
+										{item.address_type===3 && <span className="ms-2 bg-light fw-light text-dark fs-12">Other</span>}
 							</p>
-							<p className="text-capitalize">{item.address}</p>
-							<p><CallTwoToneIcon/> {item.mobile}</p>
-							<button onClick={()=>{selectAddress(item.id)}} className="btn btn-pink text-uppercase">deliver here</button>
-						</div>)})
+							<div className="row g-0">
+							<div className="col-lg-6 col-md-6 col-sm-6 col-7">
+								<p className="text-capitalize fs-12 ms-4 m-1">{item.address}</p>
+								</div>
+								<div className="col-lg-6 col-md-6 col-sm-6 col-5 text-end ">
+									<button onClick={()=>{selectAddress(item.id)}} className="btn btn-pink fs-12 text-uppercase">deliver here</button>
+								</div>							
+							</div>
+							<p className="text-capitalize fs-12 ms-4">{item.mobile}</p>
+						</div>
+						)})
 						:""
 					:
              <div className="text-center">
@@ -169,13 +170,12 @@ const CheckoutStep1 = () => {
 				}
 				</div>
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
-
 					<div className="custom-shadow bg-white p-4 mb-4" >
 							<p className="fw-bold text-capitalize">
 									add new address
 							</p>
-							<p className="text-capitalize text-secondary">Place your order to new address</p>
-							<button  className="btn btn-pink text-uppercase" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
+							<p className="text-capitalize text-secondary text-small">Place your order to new address</p>
+							<button  className="btn btn-pink text-uppercase fs-12" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
 {/* <!-- The Address Modal --> */}
 <div className="modal" id="addressModal">
   <div className="modal-dialog">
@@ -183,7 +183,7 @@ const CheckoutStep1 = () => {
 
       {/* <!-- Modal Header --> */}
       <div className="modal-header">
-        <h4 className="modal-title">Add new address</h4>
+        <h4 className="modal-title text-heading">Add new address</h4>
         <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
       </div>
 
@@ -197,6 +197,8 @@ const CheckoutStep1 = () => {
          name="name"
          fullWidth
          label="Name"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -208,6 +210,8 @@ const CheckoutStep1 = () => {
          name="mobile"
          fullWidth
          label="Mobile No."
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -217,6 +221,8 @@ const CheckoutStep1 = () => {
          name="address"
          fullWidth
          label="Address"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -226,6 +232,8 @@ const CheckoutStep1 = () => {
          name="landmark"
          fullWidth
          label="Landmark"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -237,6 +245,8 @@ const CheckoutStep1 = () => {
          name="pincode"
          fullWidth
          label="Pincode"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
         <div className="mt-3">
@@ -246,6 +256,8 @@ const CheckoutStep1 = () => {
          name="city"
          fullWidth
          label="City"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
         <div className="mt-3">
@@ -255,31 +267,32 @@ const CheckoutStep1 = () => {
          name="state"
          fullWidth
          label="State"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
-
          <div className=" mt-3">
-         <p className="fw-600">TAG AS</p>
+         <p className="fw-600 fs-14">TAG AS :</p>
          <div className="d-flex">
          <div className=" form-check">
            <input type="radio" id="floatingInputHomeTagGrid" onChange={inputHandler} name="tag" value={1} className="form-check-input" />
-           <label className="form-check-label" htmlFor="floatingInputHomeTagGrid"><HomeTwoToneIcon/>Home</label>
+           <label className="form-check-label fs-14" htmlFor="floatingInputHomeTagGrid"><HomeTwoToneIcon fontSize="small"/>Home</label>
          </div>
          <div className="ms-2 form-check">
            <input type="radio" id="floatingInputWorkTagGrid" onChange={inputHandler} name="tag" value={2} className="form-check-input" />
-           <label className="form-check-label" htmlFor="floatingInputWorkTagGrid"><WorkTwoToneIcon/>Work</label>
+           <label className="form-check-label fs-14" htmlFor="floatingInputWorkTagGrid"><WorkTwoToneIcon fontSize="small"/>Work</label>
          </div>
          <div className="ms-2 form-check">
            <input type="radio" id="floatingInputOtherTagGrid" onChange={inputHandler} name="tag" value={3} className="form-check-input" />
-           <label className="form-check-label" htmlFor="floatingInputOtherTagGrid"><LocationOnTwoToneIcon/>Other</label>
+           <label className="form-check-label fs-14" htmlFor="floatingInputOtherTagGrid"><LocationOnTwoToneIcon fontSize="small"/>Other</label>
          </div>
          </div>
          </div>
          </form>
       </div>
       {/* <!-- Modal footer --> */}
-      <div className="modal-footer">
-        <button type="button" className="btn btn-pink w-100 py-3 text-uppercase" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
+      <div className="modal-footer d-flex justify-content-center">
+        <button type="button" className="btn btn-pink py-2 w-50 text-uppercase fs-12" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
       </div>
 
     </div>

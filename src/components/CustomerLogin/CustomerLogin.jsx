@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { loginSuccess, loginFail, logout } from '../../redux/authSlice';
 import {useNavigate,Link,useLocation} from 'react-router-dom';
 import TextField from '@mui/material/TextField';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -88,8 +89,8 @@ const CustomerLogin = () => {
             <div className="d-flex justify-content-center">
             <div className="card custom-shadow" >
               <div  className="card-body ">
-              <h5 className="card-title text-dark">Sign in to complete your order</h5>
-              <p>Don't have an account? <Link to="/customer/register" className="text-decoration-none">Sign up</Link></p>
+              <h4 className="card-title text-heading">Log In</h4>
+              <p className="fs-12">Don't have an account? <Link to="/customer/register" className="text-decoration-none">Sign up</Link></p>
               <form style={{maxWidth:'500px'}}>
                 <TextField 
                 color="error"
@@ -99,16 +100,18 @@ const CustomerLogin = () => {
                 label="Email ID" 
                 onChange={inputHandler} 
                 value={loginFormData.email} 
+                size="small"
+                InputLabelProps={{style: {fontSize: '14px'}}}
                 fullWidth 
-                variant="standard" 
                 />
-                  <FormControl fullWidth margin="normal" variant="standard">
-                      <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                      <Input
+                  <FormControl fullWidth margin="normal" variant="outlined">
+                      <InputLabel htmlFor="standard-adornment-password" className="fs-14">Password</InputLabel>
+                      <OutlinedInput
+                        size="small"
                         color="error"
                         id="standard-adornment-password"
                         name="password"
-                        
+                        label="password" 
                         value={loginFormData.password}
                         onChange={inputHandler}
                         type={showPassword ? 'text' : 'password'}
@@ -118,6 +121,7 @@ const CustomerLogin = () => {
                               aria-label="toggle password visibility"
                               onClick={()=>setShowPassword(true)}
                               onMouseDown={()=>setShowPassword(false)}
+                              size="small"
                             >
                               {showPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
@@ -127,15 +131,23 @@ const CustomerLogin = () => {
                     </FormControl>
                 {
                 isFetching?
-                  <button className="mt-3 btn btn-danger w-100 py-2" disabled>
-                      <span className="spinner-border spinner-border-sm"> </span>
-                       Loading..
-                    </button>
-                :
-                <button type="submit" className="btn btn-danger mt-3 w-100 py-2" disabled={!buttonEnable} onClick={submitHandler}>SIGN IN</button>
+                  <div className="text-center">
+                    <button className="mt-3 btn btn-danger w-50 py-2 rounded-15 fs-14" disabled>
+                        <span className="spinner-border spinner-border-sm"></span> Loading..
+                      </button>
+                     </div>
+                :<div className="text-center">
+                  {
+                    buttonEnable
+                    ?
+                    <button type="submit" className="btn btn-pink mt-3 w-50 fs-14 py-2" onClick={submitHandler}>LOG IN</button>
+                      :
+                    <button type="submit" className="btn btn-danger rounded-15 mt-3 w-50 fs-14 py-2" disabled={true} onClick={submitHandler}>LOG IN</button>
+                  }
+                </div>
               }
-                 {inputError.type!="" && <small className="text-danger">{inputError.msg}</small>}
-              <div className="d-flex justify-content-end mt-2"><Link to="/reset-password" className="text-decoration-none"><small>Forgot Password?</small></Link></div>
+                 {inputError.type!="" && <small className="text-danger fs-12">{inputError.msg}</small>}
+              <div className="d-flex justify-content-end mt-2 fs-12"><Link to="/reset-password" className="text-decoration-none"><small>Forgot Password?</small></Link></div>
               </form>
           </div> 
           </div> 

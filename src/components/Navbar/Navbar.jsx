@@ -71,7 +71,7 @@ function fetchProductsData(url){
     setSearchQuery(q);
     if(q.length > 2 ){
       document.title = q;
-      fetchCategoriesData(BASE_URL+`/categories/?q=${q}`);
+      fetchCategoriesData(BASE_URL+`/sub-categories/?q=${q}`);
       fetchProductsData(BASE_URL+`/products/?q=${q}`);
       setIsSearchResult(true)
       

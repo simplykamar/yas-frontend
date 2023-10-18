@@ -60,14 +60,15 @@ const CategoryProducts = () => {
               <div className="d-flex">
                     <Box sx={{ minWidth: 120 }}>
                         <FormControl  fullWidth id="price-filter-focus">
-                          <InputLabel id="price-filter" color="error" >
-                           <TuneIcon/>Sort By</InputLabel>
+                          <InputLabel id="price-filter" color="error" size="small">
+                           <TuneIcon fontSize="small"/>Sort By</InputLabel>
                           <Select
                             labelId="price-filter"
                             id="price-filter-select"
                             value={filterBy}
                             label="Sort By......"
                             onChange={fetchFilterData}
+                            size="small"
                           >
                             <MenuItem value="-id">Latest First</MenuItem>
                             <MenuItem value="price">Price Low to High</MenuItem>
@@ -93,6 +94,7 @@ const CategoryProducts = () => {
                            label={product.label} 
                            price={product.price} 
                            discount={product.discount}
+                           productReviews={product.product_reviews}
                          />
                         </div>
                       )

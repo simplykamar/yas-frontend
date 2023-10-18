@@ -10,30 +10,20 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import 'swiper/css/zoom';
-import 'swiper/css/effect-cube';
 import './ProductImageSlider.css';
 
 // import required modules
-import { EffectCube,Zoom,FreeMode,  Thumbs } from 'swiper/modules';
+import { Zoom,FreeMode,  Thumbs } from 'swiper/modules';
 
 function ProductImageSlider({ productImgs }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  console.log(productImgs)
   return (
     <div className='product-image-swiper'>
       <Swiper
-        effect={'cube'}
-        grabCursor={true}
-        cubeEffect={{
-          shadow: false,
-          slideShadows: false,
-          shadowOffset: 20,
-          shadowScale: 0.94,
-        }}
         zoom={true}
         spaceBetween={10}
         thumbs={{ swiper: thumbsSwiper }}
-        modules={[EffectCube,Zoom,FreeMode, Thumbs]}
+        modules={[Zoom,FreeMode, Thumbs]}
         className="product-image-swiper-2"
         loop={true}
       >
@@ -43,7 +33,7 @@ function ProductImageSlider({ productImgs }) {
               <ProgressiveImage src={img.image} placeholder={yas}>
                {(src, loading) => (
                  <img
-                    className={`img-fluid cursor-pointer${loading ? " loading" : " loaded"}`}
+                    className={`img-fluid w-75 cursor-pointer${loading ? " loading" : " loaded"}`}
                     src={src}
                     alt="product image"
                     style={img.isPersonalized&&{border:'2px solid yellow'}}
@@ -55,9 +45,10 @@ function ProductImageSlider({ productImgs }) {
           }
         
       </Swiper>
+      <div className="px-4">
       <Swiper
         onSwiper={setThumbsSwiper}
-        spaceBetween={10}
+        spaceBetween={0}
         slidesPerView={4}
         freeMode={true}
         watchSlidesProgress={true}
@@ -71,7 +62,7 @@ function ProductImageSlider({ productImgs }) {
               <ProgressiveImage src={img.image} placeholder={yas}>
                {(src, loading) => (
                  <img
-                    className={`img-fluid cursor-pointer${loading ? " loading" : " loaded"}`}
+                    className={`img-fluid w-75 cursor-pointer${loading ? " loading" : " loaded"}`}
                     src={src}
                     alt="product image"
                     style={img.isPersonalized&&{border:'2px solid yellow'}}
@@ -82,6 +73,7 @@ function ProductImageSlider({ productImgs }) {
             )})
           }
       </Swiper>
+      </div>
     </div>
   );
 }

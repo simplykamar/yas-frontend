@@ -8,9 +8,8 @@ import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import TextField from '@mui/material/TextField';
-
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import CloseIcon from '@mui/icons-material/Close';
+import toast, { Toaster } from 'react-hot-toast';
 
 const CustomerAddress = () => {
 	const notifySuccess = (msg) => toast.success(msg);
@@ -60,7 +59,7 @@ const CustomerAddress = () => {
 		function deleteAddress(id){
 						axios.delete(BASE_URL+`/customer-address/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
-							notifySuccess("Address successfully deleted !")
+							notifySuccess("Address deleted")
 							fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 						})
 						.catch(error=>{
@@ -80,7 +79,7 @@ const CustomerAddress = () => {
 						formData.append('address_type',newAddress.tag);
 						axios.post(BASE_URL+'/customer-address/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
 						.then(response=>{
-							notifySuccess("New address added !")
+							notifySuccess("New Address Added !")
 						fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 
 						})
@@ -89,51 +88,57 @@ const CustomerAddress = () => {
 						})
 	}
 	return(
-		<div className="bg-light pb-4 pt-lg-4 pt-md-4">
-		<div>
-        <ToastContainer />
-      </div>
+		<div className="pb-4 pt-lg-4 pt-md-4">
+			<div><Toaster/></div>
 			<div className="container">
 							<div className="row">
                 <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-none d-md-block d-lg-block">
                   <Sidebar/>
                 </div>
-         <div className="col-lg-9 col-md-9 col-12 col-sm-12 bg-white py-3">
+         <div className="col-lg-9 col-md-9 col-12 col-sm-12 bg-white">
          	<div className="row">
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
-           <p className="" style={{fontSize:'24px'}}>Address Book</p>
+           <h4 className="text-heading text-center d-lg-none d-md-none mt-3 mt-lg-0 mt-md-0">Address Book</h4>
 				{	!loading
 					?
-						addresses.length?
+					addresses.length?
 						addresses.map((item)=>{return(
 							<div className="custom-shadow bg-white p-4 mb-4" key={item.id}>
 							<p className="fw-bold text-capitalize">
 										{item.address_type===1 && <HomeTwoToneIcon />}
 										{item.address_type===2 && <WorkTwoToneIcon />}
 										{item.address_type===3 && <LocationOnTwoToneIcon />}
-										<span className="text-danger float-end cursor-pointer" onClick={()=>{deleteAddress(item.id)}}>Delete</span>
-										<span className="ms-2">{item.name}</span>
-										{item.address_type===1 && <span className="ms-2 bg-light fw-light text-dark">Home</span>}
-										{item.address_type===2 && <span className="ms-2 bg-light fw-light text-dark">Work</span>}
-										{item.address_type===3 && <span className="ms-2 bg-light fw-light text-dark">Other</span>}
+										<span className="text-danger float-end cursor-pointer fs-14" onClick={()=>{deleteAddress(item.id)}}>Delete</span>
+										<span className="ms-2 text-capitalize">{item.name}</span>
+										{item.address_type===1 && <span className="ms-2 bg-light fw-light text-dark fs-12">Home</span>}
+										{item.address_type===2 && <span className="ms-2 bg-light fw-light text-dark fs-12">Work</span>}
+										{item.address_type===3 && <span className="ms-2 bg-light fw-light text-dark fs-12">Other</span>}
 							</p>
-							<p className="text-capitalize">{item.address}</p>
-							<p><CallTwoToneIcon/> {item.mobile}</p>
-						</div>)})
+							<div className="row g-0">
+							<div className="col-lg-6 col-md-6 col-sm-6 col-7">
+								<p className="text-capitalize fs-12 ms-4 m-1">{item.address}</p>
+								</div>
+								<div className="col-lg-6 col-md-6 col-sm-6 col-5 text-end ">
+									<button onClick={()=>{selectAddress(item.id)}} className="btn btn-pink fs-12 text-uppercase">deliver here</button>
+								</div>							
+							</div>
+							<p className="text-capitalize fs-12 ms-4">{item.mobile}</p>
+						</div>
+						)})
 						:""
 					:
              <div className="text-center">
-                <div className="spinner-border text-danger"></div>
+                <div className="spinner-border text-pink"></div>
               </div>
 				}
 				</div>
 				<div className="col-lg-6 col-md-6 col-sm-12 col-12">
-					<div className="custom-shadow bg-white p-4 mb-4" >
+					<div className="custom-shadow bg-white p-4" >
 							<p className="fw-bold text-capitalize">
-									Add new address
+									add new address
 							</p>
-							<p className="text-capitalize text-secondary">Place your order to new address</p>
-							<button  className="btn btn-outline-danger text-uppercase" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
+							<p className="text-capitalize text-secondary text-small">Place your order to new address</p>
+							<button  className="btn btn-pink text-uppercase fs-12" data-bs-toggle="modal" data-bs-target="#addressModal">add new address</button>
 {/* <!-- The Address Modal --> */}
 <div className="modal" id="addressModal">
   <div className="modal-dialog">
@@ -141,8 +146,8 @@ const CustomerAddress = () => {
 
       {/* <!-- Modal Header --> */}
       <div className="modal-header">
-        <h4 className="modal-title">Address new address</h4>
-        <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+        <h4 className="modal-title text-heading">Add new address</h4>
+        <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
       </div>
 
       {/* <!-- Modal body --> */}
@@ -155,6 +160,8 @@ const CustomerAddress = () => {
          name="name"
          fullWidth
          label="Name"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -166,6 +173,8 @@ const CustomerAddress = () => {
          name="mobile"
          fullWidth
          label="Mobile No."
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -175,6 +184,8 @@ const CustomerAddress = () => {
          name="address"
          fullWidth
          label="Address"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -184,6 +195,8 @@ const CustomerAddress = () => {
          name="landmark"
          fullWidth
          label="Landmark"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
        <div className="mt-3">
@@ -195,6 +208,8 @@ const CustomerAddress = () => {
          name="pincode"
          fullWidth
          label="Pincode"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
         <div className="mt-3">
@@ -204,6 +219,8 @@ const CustomerAddress = () => {
          name="city"
          fullWidth
          label="City"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
         <div className="mt-3">
@@ -213,37 +230,40 @@ const CustomerAddress = () => {
          name="state"
          fullWidth
          label="State"
+         size="small"
+         InputLabelProps={{style: {fontSize: '14px'}}}
          />
        </div>
          <div className=" mt-3">
-         <p className="fw-600">TAG AS</p>
+         <p className="fw-600 fs-14">TAG AS :</p>
          <div className="d-flex">
          <div className=" form-check">
            <input type="radio" id="floatingInputHomeTagGrid" onChange={inputHandler} name="tag" value={1} className="form-check-input" />
-           <label className="form-check-label" htmlFor="floatingInputHomeTagGrid"><HomeTwoToneIcon/>Home</label>
+           <label className="form-check-label fs-14" htmlFor="floatingInputHomeTagGrid"><HomeTwoToneIcon fontSize="small"/>Home</label>
          </div>
          <div className="ms-2 form-check">
            <input type="radio" id="floatingInputWorkTagGrid" onChange={inputHandler} name="tag" value={2} className="form-check-input" />
-           <label className="form-check-label" htmlFor="floatingInputWorkTagGrid"><WorkTwoToneIcon/>Work</label>
+           <label className="form-check-label fs-14" htmlFor="floatingInputWorkTagGrid"><WorkTwoToneIcon fontSize="small"/>Work</label>
          </div>
          <div className="ms-2 form-check">
            <input type="radio" id="floatingInputOtherTagGrid" onChange={inputHandler} name="tag" value={3} className="form-check-input" />
-           <label className="form-check-label" htmlFor="floatingInputOtherTagGrid"><LocationOnTwoToneIcon/>Other</label>
+           <label className="form-check-label fs-14" htmlFor="floatingInputOtherTagGrid"><LocationOnTwoToneIcon fontSize="small"/>Other</label>
          </div>
          </div>
          </div>
          </form>
       </div>
       {/* <!-- Modal footer --> */}
-      <div className="modal-footer">
-        <button type="button" className="btn btn-danger w-100 py-3 text-uppercase" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
+      <div className="modal-footer d-flex justify-content-center">
+        <button type="button" className="btn btn-pink py-2 w-50 text-uppercase fs-12" onClick={addAddress} data-bs-dismiss="modal">save & deliver</button>
       </div>
+
     </div>
   </div>
 </div>
 						</div>
-
 			</div>
+
 			</div>
 			</div>
 			</div>

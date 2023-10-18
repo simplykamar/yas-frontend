@@ -1,10 +1,10 @@
 .form-wrapper{
-    border: 1px solid rgb(205, 23, 23);
+    border: 1px solid #fc7e93;
     padding: 20px;
 
 }
 .contact{
-    border-left: 3px solid rgb(205, 23, 23);
+    border-left: 3px solid #fc7e93;
     padding-left: 10px;
 }
 .icon{

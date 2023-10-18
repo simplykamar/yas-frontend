@@ -34,9 +34,9 @@ const CustomerWishlist = () => {
 	},[])
 
 	return(
-		<div className="py-4 bg-light">
+		<div className="py-4">
 			<div className="container">
-      <h4 className="text-capitalize text-center">
+      <h4 className="text-capitalize text-center text-heading">
         My Wishlist
         <span className="text-secondary"> ({totalResult})</span> 
       </h4>
@@ -58,6 +58,7 @@ const CustomerWishlist = () => {
                            label={product.product.label} 
                            price={product.product.price} 
                            discount={product.product.discount}
+                           productReviews={product.product.product_reviews}
                          />
                     </div>
                   )

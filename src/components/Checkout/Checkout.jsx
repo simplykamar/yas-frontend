@@ -54,13 +54,13 @@ function validateCart(){
       window.scrollTo(0,0);
     },[]);
     return (
-      <div className="container " >
+      <div className="container">
        <div className="my-4">
        { cartData.length?
       <>
-      <h2 className="text-dark text-center ">Shopping cart</h2>
+      <h1 className="text-center text-heading">Shopping cart</h1>
       {!itemsInStock&&
-        <Alert variant="outlined" severity="error">
+        <Alert variant="outlined" className="px-3 py-0 fs-12 fw-bold" severity="error">
         Some items are Out Of Stock
       </Alert>  
       }
@@ -75,14 +75,14 @@ function validateCart(){
                       <p className="ms-2">
                       {item.title} 
                       {!item.isStock&&
-                        <small className="text-danger fw-bold d-block"> Out Of Stock</small>
+                        <small className="text-danger text-small fw-bold d-block"> Out Of Stock</small>
                       }
                       </p>
                       </Link>
                       {
                         item.is_personalize
                         &&
-                        <div className="text-small my-2"><BrushOutlinedIcon fontSize="small"/> Personalized</div>
+                        <div className="my-2" style={{fontSize:'10px'}}><BrushOutlinedIcon fontSize="small"/> Personalized</div>
                         }
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
@@ -91,8 +91,21 @@ function validateCart(){
                       </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
+                    {/* For desktop view */}
+                        <div className="d-none d-md-block d-lg-block">
                         <div className="float-end ">
-                          <p className=" fw-600 ms-2 text-danger">₹ {item.price*item.quantity}</p>
+                          <p className=" fw-600 ms-2 text-pink">₹ {item.price*item.quantity}</p>
+                          <span  className=" border p-1 px-2 rounded-15">
+                            <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(removeFromCart(item))}}><RemoveIcon/></span>
+                            <span className="mx-3">{item.quantity}</span>
+                            <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(addToCart(item))}}><AddIcon/></span>
+                          </span>
+                          <DeleteOutlineIcon className="ms-5 cursor-pointer" onClick={()=>{vibrate();dispatch(deleteFromCart(item))}} />
+                      </div>
+                      </div>
+                      {/* For mobile view */}
+                       <div className="d-lg-none d-md-none">
+                          <p className=" fw-600 ms-2 text-pink">₹ {item.price*item.quantity}</p>
                           <span  className=" border p-1 px-2 rounded-15">
                             <span className="cursor-pointer" onClick={()=>{vibrate();dispatch(removeFromCart(item))}}><RemoveIcon/></span>
                             <span className="mx-3">{item.quantity}</span>
@@ -104,33 +117,30 @@ function validateCart(){
                     </div>
                     )})
                   }
+                  {/* For desktop view */}
             <div className="mt-5 d-none d-md-block d-lg-block">
                 <div className="d-flex justify-content-between ">
                     <div className="">
-                      <h4 className="text-secondary">Total Products: <span className="text-danger">{totalProducts}</span></h4>
+                      <h4 className="text-secondary">Total Products: <span className="text-pink">{totalProducts}</span></h4>
                     </div>
                     <div className="">
-                      <h4 className="text-secondary">Total Amounts: <span className="text-danger">₹ {totalAmounts}</span></h4>
+                      <h4 className="text-secondary">Total Amounts: <span className="text-pink">₹ {totalAmounts}</span></h4>
                     </div>
                     <div className="">
-                      <button onClick={validateCart} className="btn btn-pink px-4 py-2 fw-600">PROCEED TO CHECKOUT</button>
+                      <button onClick={validateCart} className="btn btn-pink  py-2 fw-600">PROCEED TO CHECKOUT</button>
                     </div>
                 </div>
             </div>
-            <div className="mt-5 d-lg-none d-md-none custom-shadow p-1">
-                <div className="d-flex justify-content-between text-center">
-                    <div className="">
-                      <p className="text-secondary fw-bold">Total Products: <span className="text-danger">{totalProducts}</span></p>
-                    </div>
-                    <div className="">
-                      |
-                    </div>
-                    <div className="">
-                      <p className="text-secondary fw-bold">Total Amounts: <span className="text-danger">₹ {totalAmounts}</span></p>
+            {/* For mobile view */}
+            <div className="mt-3 d-lg-none d-md-none custom-shadow p-3">
+                <div className="">
+                      <div>
+                      <small className="text-secondary d-block fw-bold">Total Products: <span className="text-pink">{totalProducts}</span></small>
+                      <small className="text-secondary d-block fw-bold">Total Amounts: <span className="text-pink">₹ {totalAmounts}</span></small>
                     </div>
                 </div>
-                <div className="">
-                      <button onClick={validateCart} className="btn btn-pink d-block w-100 py-3 fw-600">PROCEED TO CHECKOUT</button>
+                <div className="mt-3 text-center ">
+                      <button onClick={validateCart} className="btn btn-pink py-2 fw-600 fs-14">PROCEED TO CHECKOUT</button>
                   </div>
             </div>
             </>

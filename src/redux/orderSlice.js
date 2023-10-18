@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = { 
-  // customer:null,
-  // orderItems:null,
   address:null,
   giftCard:null,
  }
@@ -23,8 +21,7 @@ export const orderSlice = createSlice({
     },
     clearOrder(state) {
         state.address = null;      
-        state.customer = null; 
-        state.orderItems = null;
+        state.giftCard = null;
     },
   },
 })

@@ -1,9 +1,5 @@
 import androidapp from '../../images/other/androidapp.webp'
 import appleapp from '../../images/other/appleapp.webp'
-// import yticon from '../../images/other/yticon.png'
-// import linkdicon from '../../images/other/linkdicon.png'
-// import instaicon from '../../images/other/instaicon.png'
-// import fbicon from '../../images/other/fbicon.png'
 import {Link} from 'react-router-dom'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -28,10 +24,10 @@ const Footer = () => {
                 <div className="col-lg-6 col-md-6 col-sm-12 col-12 pt-4 p-lg-0 p-md-0 text-center">
                   <p className="">Follow us on:</p>
                   <div className="">
-                    <FacebookOutlinedIcon className="social-icon" style={{color:"#5058e6"}}/>
-                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><InstagramIcon className="social-icon mx-3" style={{color:"rgb(225 42 121)"}}/></a>
-                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><LinkedInIcon className="social-icon" style={{color:"#0072b1"}}/></a>
-                    <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><TwitterIcon className="social-icon ms-3" style={{color:"#00acee"}}/></a>
+                    <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><FacebookOutlinedIcon className="social-icon facebook-icon" /></a>
+                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><InstagramIcon className="social-icon instagram-icon mx-3" /></a>
+                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><LinkedInIcon className="social-icon linkedin-icon" /></a>
+                    <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><TwitterIcon className="social-icon twitter-icon ms-3" /></a>
                   </div>
                 </div>
               </div><hr/>
@@ -43,7 +39,7 @@ const Footer = () => {
               </div>
               <div className="text-center text-pink">
                 <Link className="navbar-brand ms-3" to="/">
-                  <img src={yaslogo} className="img-fluid" style={{width:'50px',height:'30px'}}/>
+                  <img src={yaslogo} className="img-fluid" style={{width:'40px',height:'24px'}}/>
                 </Link>
               </div>
               <div className="text-center text-small">yas Gifts India Copyright © 2023. All rights reserved</div>

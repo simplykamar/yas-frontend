@@ -60,7 +60,7 @@ const RecentlyViewed = ({productId}) => {
 			!loading
 				?
 				<div className="my-4">
-				<h2 className="mb-4 text-center">Recently Viewed Products</h2>
+				<h2 className="mb-4 text-center text-heading">Recently Viewed Products</h2>
 				<Swiper
 		          slidesPerView={6}
 			        centeredSlides={false}
@@ -106,7 +106,9 @@ const RecentlyViewed = ({productId}) => {
 		                           oldPrice={item.product.old_price} 
 		                           label={item.product.label} 
 		                           price={item.product.price} 
-		                           discount={item.product.discount} />
+		                           discount={item.product.discount}
+		                           productReviews={item.product.product_reviews}
+		                            />
 						        </SwiperSlide>
 			      			)
 			      	})

@@ -2,27 +2,30 @@ import './CustomerProfile.css';
 import Sidebar from './Sidebar'
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {useState} from 'react';
+import {useState,useRef} from 'react';
 import axios from 'axios';
 import {updateUser} from '../../redux/authSlice';
 import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import TextField from '@mui/material/TextField';
+import CloseIcon from '@mui/icons-material/Close';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Profile = () => {
-    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'https://simplykamar.tech/api';
+    const BASE_URL = 'http://127.0.0.1:8000/api';
     const [mobile,setMobile] = useState(null);
-    const notifySuccess = (msg) => toast.success(msg);
-    const notifyError = (msg) => toast.error(msg);
+    const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+    const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
     const [loading, setLoading] = useState(true);
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const dispatch = useDispatch()
-    const [errorMsg, setErrorMsg] = useState({msg:'',type:'',status:''});
+    const closeMobileModal = useRef();
 
-    function addMobile(){
+    function addMobile(e){
+      e.preventDefault()
+    closeMobileModal.current.click()
             const formData = new FormData();
             formData.append('mobile',mobile);
             axios.patch(BASE_URL+`/customer/${user.user.id}`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
@@ -30,61 +33,53 @@ const Profile = () => {
               notifySuccess("Mobile no. successfully added !")
               dispatch(updateUser({user:response.data}))
               setUser({...user,user:response.data})
-              setErrorMsg({msg:'',type:'',status:''})
             })
             .catch(error=>{
               notifyError(error.response.data.mobile[0])
-              if(error.response.status==400){
-                setErrorMsg({msg:error.response.data.mobile,type:'error',status:400})
-              }
           })
   }
   return(
-        <div className="bg-light pb-4 pt-lg-4 pt-md-4">
-              <div>
-              <ToastContainer />
-            </div>
+        <div className=" pb-4 pt-lg-4 pt-md-4">
+          <div><Toaster/></div>
             <div className="container">
               <div className="row">
                 <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-none d-md-block d-lg-block">
                   <Sidebar/>
                 </div>
-                <div className="col-lg-9 col-md-9 col-12 col-sm-12 bg-white py-3">
-                   <div className="row g-0">
-                      <div className="col-lg-5 col-md-3 col-12 col-sm-12 d-flex justify-content-center">
-                          <div className="profile-image">{user.user.user.name[0].toUpperCase()}</div>
+                <div className="col-lg-9 col-md-9 col-12 col-sm-12 ">
+                   <div className="row g-0 ">
+                      <div className="col-lg-3 col-md-3 col-12 col-sm-12 d-flex justify-content-center">
+                          <div className="profile-image mt-2 mt-lg-0 mt-md-0">{user.user.user.name[0].toUpperCase()}</div>
                       </div>
-                      <div className="col-lg-7 col-md-9 col-12 col-sm-12 text-secondary d-flex justify-content-center">
-                         
+                      <div className="col-lg-9 col-md-9 col-12 col-sm-12 text-secondary px-5">
                          <div className=" ">
-                         <h4 className="text-uppercase text-dark text-center">{user.user.user.name}</h4> <hr/>
-                         <p><MailOutlineOutlinedIcon className="me-2 "/> {user.user.user.email}</p>
+                         <h2 className="fw-bold text-capitalize text-dark text-center d-lg-none d-md-none">{user.user.user.name}</h2>
+                         <h2 className="fw-bold text-capitalize text-dark d-none d-lg-block d-md-block">{user.user.user.name}</h2> <hr/>
+                         <p className="fs-14"><MailOutlineOutlinedIcon className="me-2 fs-14"/> {user.user.user.email}</p>
                          {
                           user.user.mobile?
-                         <p><CallOutlinedIcon className="me-2"/> +91{user.user.mobile}</p>
+                         <p className="fs-14"><CallOutlinedIcon className="me-2 fs-14"/> +91 {user.user.mobile}</p>
                          :
-                         <p className="text-danger cursor-pointer " data-bs-toggle="modal" data-bs-target="#mobileaddModal"><CallOutlinedIcon className="me-2"/> Add mobile no.</p>
+                         <p className="text-pink cursor-pointer fs-14" data-bs-toggle="modal" data-bs-target="#mobileaddModal">
+                         <CallOutlinedIcon className="me-2 fs-14"/> Add mobile no.</p>
                          }
                          
-                         <p><LocationOnOutlinedIcon className="me-2"/> India</p>
-                         {
-                          errorMsg.status==400&&
-                          <p className="text-danger">{errorMsg.msg}</p>
-                         }
+                         <p className="fs-14"><LocationOnOutlinedIcon className="me-2 fs-14"/> India</p>
                          <div className="modal" id="mobileaddModal">
                             <div className="modal-dialog">
                               <div className="modal-content">
 
                                 {/* <!-- Modal Header --> */}
-                                <div className="modal-header">
-                                  <h4 className="modal-title">Add mobile no.</h4>
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                <div className="modal-header" style={{border:'none'}}>
+                                  <h4 className="modal-title text-heading text-dark">Add mobile No.</h4>
+                                  <span ref={closeMobileModal} data-bs-dismiss="modal" className="cursor-pointer btn-close">
+                                  </span> 
                                 </div>
 
                                 {/* <!-- Modal body --> */}
                                 <div className="modal-body">
-                                <form>
-                                   <div className="mt-3">
+                                <form onSubmit={(e)=>{addMobile(e)}}>
+                                   <div className="">
                                        <TextField
                                         color="error"
                                         type="number"
@@ -92,17 +87,16 @@ const Profile = () => {
                                         InputProps={{ inputProps: { min: 0 } }}
                                         name="mobile"
                                         fullWidth
-                                        helperText="Please enter your mobile number"
                                         id="demo-helper-text-misaligned"
                                         label="Mobile No."
+                                       InputLabelProps={{style: {fontSize: '14px'}}}
+                                       size="small"
                                       />
                                     </div>
+                                    <div className="text-center mt-3">
+                                    <button type="submit" className="btn btn-pink py-2 w-25 text-uppercase fs-12">Submit</button>
+                                  </div>
                                    </form>
-                                </div>
-
-                                {/* <!-- Modal footer --> */}
-                                <div className="modal-footer">
-                                  <button type="button" className="btn btn-danger w-100 py-2 text-uppercase" onClick={addMobile} data-bs-dismiss="modal">Add mobile no.</button>
                                 </div>
                               </div>
                             </div>

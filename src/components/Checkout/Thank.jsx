@@ -6,7 +6,8 @@ const Thank = () => {
 	const isOrdered = useLocation().state;
 
 	useEffect(()=>{
-      document.title="Order Successfully placed";
+    	window.scrollTo(0,0);
+      	document.title="Order Successfully placed";
 		if(!isOrdered){
 			navigate("/page-not-found",{replace:true});
 		}
@@ -15,11 +16,11 @@ const Thank = () => {
 	return (
 		<div>
 		{ isOrdered &&
-		<div className="text-center bg-light py-4">
-		<p className="fw-bold">Your order has been received</p>
+		<div className="text-center py-4">
+		<h4 className="text-heading">Your order has been received</h4>
 			<img src={thanks} className="img-fluid"/>
-			<p>Thank you for your purchase</p>
-			<Link to="/" className="btn btn-danger text-uppercase">Continue shopping</Link>
+			<p className="fs-12">Thank you for your purchase</p>
+			<Link to="/" className="btn btn-pink fs-12 text-uppercase">Continue shopping</Link>
 		</div>
 	}
 	</div>

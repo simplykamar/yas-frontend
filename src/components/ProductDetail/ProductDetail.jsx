@@ -9,6 +9,10 @@ import SimilarGifts from './SimilarGifts'
 import ProductImageSlider from './ProductImageSlider'
 import ProductReviews from './ProductReviews'
 
+import StarsIcon from '@mui/icons-material/Stars';
+import DiamondIcon from '@mui/icons-material/Diamond';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import {Link,useParams,useNavigate} from 'react-router-dom';
 import {useState,useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
@@ -83,7 +87,6 @@ const ProductDetail = () => {
             axios.delete(BASE_URL+`/customer-wishlist/${id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
             checkUserWishlist();
-
            })
           .catch(error=>{
            	notifyError('Server Error!');
@@ -340,7 +343,6 @@ async function applyTextPersonalization(itemID){
 						productImgs?.map((img,index)=>{return(
 						 <ProgressiveImage src={img.image} placeholder={yas} key={index+1}>
                {(src, loading) => (
-                 
                  <img
                     className={`img-fluid rounded mt-3 cursor-pointer${loading ? " loading" : " loaded"}`}
                 		src={src}
@@ -366,26 +368,25 @@ async function applyTextPersonalization(itemID){
 						<ProductImageSlider productImgs={productImgs}/>
 					</div>
 				</div>
-				<div className="col-lg-7 col-md-7 col-sm-12 col-12 py-4 ">
+				<div className="col-lg-7 col-md-7 col-sm-12 col-12 pt-3 pt-lg-0 pt-md-0 ">
 				<small className="yas-text-secondary text-small">
 							{
-                (product.label===2)&& <span>Bestseller</span>
+                (product.label===2)&& <span className=" rounded-3 px-2 fs-12" style={{color:'white',backgroundColor:'#fc7e93'}}>Bestseller <StarsIcon fontSize=""/></span>
               }
               {
-                (product.label===3)&& <span>Special Offer</span>
+                (product.label===3)&& <span className=" rounded-3 px-2 fs-12" style={{color:'white',backgroundColor:'#fc7e93'}}>Special Offer <StarsIcon fontSize=""/></span>
               }
               {
-                (product.label===4)&& <span>Premium</span>
+                (product.label===4)&& <span className="rounded-3 px-2 fs-12" style={{color:'white',backgroundColor:'#fc7e93'}}>Premium <DiamondIcon fontSize=""/></span>
               }
               {
-                (product.label===5)&& <span>Value Pack</span>
+                (product.label===5)&& <span className=" rounded-3 px-2 fs-12" style={{color:'white',backgroundColor:'#fc7e93'}}>Value Pack <CurrencyRupeeIcon fontSize=""/></span>
               }
               {
-                (product.label===6)&& <span>Top Rated</span>
+                (product.label===6)&& <span className=" rounded-3 px-2 fs-12" style={{color:'white',backgroundColor:'#fc7e93'}}>Top Rated #1</span>
               }
 				</small>
 					<h4 className="text-dark">{product.title}</h4>
-					<small className="text-secondary">{product.rating}</small><StarIcon style={{color:'#ffd400'}} fontSize=""/>
 					 <h5>₹ {product.price}
 					  {
                (product.discount!==0)&&
@@ -400,12 +401,11 @@ async function applyTextPersonalization(itemID){
            {
            	product.is_stock
            	?
-           	(product.available_quantity<4)&& <small className="text-small text-pink">Only {product.available_quantity} Items left in stock</small>
+           	(product.available_quantity<5)&& <small className="text-small" style={{color:'#d8392b'}}>Only {product.available_quantity} Items left in stock</small>
            	:""
            }
-					 <p className="text-success fw-600">inclusive of all taxes</p>
-					 {!product.is_stock && <small className="text-small text-pink">This product is currently out of stock.</small>}
-					 {(product.is_personalize && product.is_stock) && <small className="text-small text-dark">This product need to be personalized before adding to the cart.</small>}													 
+					 <p className="text-success fw-600 text-small">inclusive of all taxes</p>
+					 {!product.is_stock && <small className="text-small" style={{color:'#d8392b'}}>This product is currently out of stock.</small>}
 						{/* desktop view */}
 						<div className="d-none d-lg-block d-md-block">
 						 	<div className="mt-4 d-flex">
@@ -450,12 +450,12 @@ async function applyTextPersonalization(itemID){
 	               	!loading?
 	                userWishlist.is_wishlist
 	                ?
-	                <div><button className="btn btn-white ms-5 border fw-600" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
+	                <div><button className="btn text-hover-pink ms-5 fw-600" onClick={()=>{removeFromWishlist(userWishlist.id)}}>
 	               		<FavoriteIcon className="text-danger me-1"/>
 									Wishlist
 								 </button></div>
 								 :
-	                <div><button className="btn btn-white ms-5 border fw-600" onClick={()=>{addToWishlist(product_id)}}>
+	                <div><button className="btn text-hover-pink ms-5 fw-600" onClick={()=>{addToWishlist(product_id)}}>
 									<FavoriteBorderOutlinedIcon className="me-1"/>
 									Wishlist
 								 </button></div>
@@ -471,14 +471,14 @@ async function applyTextPersonalization(itemID){
                 userWishlist.is_wishlist
                 ?
                 <div>
-	                <button className="btn btn-white me-5 py-2" onClick={()=>{vibrate();removeFromWishlist(userWishlist.id)}}>
+	                <button className="btn text-hover-pink me-5 py-2" onClick={()=>{vibrate();removeFromWishlist(userWishlist.id)}}>
 	               		<FavoriteIcon className="text-danger me-1"/>
 									Wishlist
 								 </button>
 							 </div>
 							 :
                 <div>
-	                <button className="btn btn-white me-5 py-2" onClick={()=>{vibrate();addToWishlist(product_id)}}>
+	                <button className="btn text-hover-pink me-5 py-2" onClick={()=>{vibrate();addToWishlist(product_id)}}>
 									<FavoriteBorderOutlinedIcon className="me-1"/>
 									Wishlist
 								 </button>
@@ -497,7 +497,7 @@ async function applyTextPersonalization(itemID){
 												product.is_personalize
 												?
 												<>
-												<button className="btn btn-pink text-uppercase fw-600" data-bs-toggle="modal" data-bs-target="#personalizeModal" >
+												<button className="btn btn-pink text-uppercase fw-600 fs-14" data-bs-toggle="modal" data-bs-target="#personalizeModal" >
 													 <DriveFileRenameOutlineOutlinedIcon className="mb-1 me-1"/>personalize now
 												</button>
 												</>
@@ -527,13 +527,13 @@ async function applyTextPersonalization(itemID){
 						<div className="mt-4">
 							<p className="fw-600 mb-1">Description</p>
 							{/* <p className=" text-secondary text-justify">{product.detail}</p> */}
-							<div dangerouslySetInnerHTML={{__html:product.detail}}></div>
+							<div dangerouslySetInnerHTML={{__html:product.detail}} style={{fontSize:'12px'}}></div>
 						</div>
 						{
 							product.product_info &&
 						<div className="mt-3">
 							<p className="fw-600 mb-1">Product Info</p>
-							<div dangerouslySetInnerHTML={{__html:product.product_info}}></div>
+							<div dangerouslySetInnerHTML={{__html:product.product_info}} style={{fontSize:'12px'}}></div>
 						</div>
 						}
 				</div>

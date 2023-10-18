@@ -70,54 +70,54 @@ export default function NavigationBar() {
                   <div className="">
                   <Link to="/customer/orders" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><LocalMallOutlinedIcon/> Orders</span>
+                      <span className="text-capitalize text-dark"><LocalMallOutlinedIcon fontSize="small"/> Orders</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link><Link to="/customer/wishlist" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><FavoriteBorderOutlinedIcon/> wishlist</span>
+                      <span className="text-capitalize text-dark"><FavoriteBorderOutlinedIcon fontSize="small"/> wishlist</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/customer/profile" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><PersonOutlineIcon/> update profile</span>
+                      <span className="text-capitalize text-dark"><PersonOutlineIcon fontSize="small"/> update profile</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/customer/addressbook" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><PinDropOutlinedIcon/> saved addresses</span>
+                      <span className="text-capitalize text-dark"><PinDropOutlinedIcon fontSize="small"/> saved addresses</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/contact-us" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><SupportAgentOutlinedIcon/> Help Center</span>
+                      <span className="text-capitalize text-dark"><SupportAgentOutlinedIcon fontSize="small"/> Help Center</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" onClick={()=>{dispatch(logout());dispatch(clearOrder())}} data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><LogoutOutlinedIcon/> logout</span>
+                      <span className="text-capitalize text-dark"><LogoutOutlinedIcon fontSize="small"/> logout</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><InfoOutlinedIcon/> about us</span>
+                      <span className="text-capitalize text-dark"><InfoOutlinedIcon fontSize="small"/> about us</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/terms" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><GppMaybeOutlinedIcon/> terms of use</span>
+                      <span className="text-capitalize text-dark"><GppMaybeOutlinedIcon fontSize="small"/> terms of use</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/privacy" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><InventoryOutlinedIcon/> privacy policy</span>
+                      <span className="text-capitalize text-dark"><InventoryOutlinedIcon fontSize="small"/> privacy policy</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
@@ -125,59 +125,58 @@ export default function NavigationBar() {
               </>
                 :
                 <>
-                  <h4 >Hey there!</h4>
-                  <small className="text-secondary">Sign in or join to do a lot more with your Yas account</small>
-                  <div data-bs-toggle="modal" >
-                  <Link to="/customer/login" className="text-capitalize w-100 py-2 btn btn-pink border-0" >sign in</Link>
+                  <h4 className="text-heading">Hey there!</h4>
+                  <div data-bs-toggle="modal" className="text-center mt-3">
+                  <Link to="/customer/login" className="text-capitalize w-50 py-2 fs-14 btn btn-pink border-0" >Log in</Link>
                   </div>
-                  <div className="text-center text-secondary my-2" data-bs-toggle="modal" >
-                    <small>New to yas? <Link to="/customer/register" className="text-secondary" >Join us</Link></small>
+                  <div className="text-center text-secondary my-2 fs-12" data-bs-toggle="modal" >
+                    <small>New to yasgifts? <Link to="/customer/register" className="text-secondary" >Sign Up</Link></small>
                   </div>
-                  <div className="mt-">
+                  <div className="mt-2">
                   <Link to="" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><LocalMallOutlinedIcon/> Orders</span>
-                      <LockOutlinedIcon/>
+                      <span className="text-capitalize text-dark"><LocalMallOutlinedIcon fontSize="small"/> Orders</span>
+                      <LockOutlinedIcon fontSize="small"/>
                       </div>
                     </Link><Link to="" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><FavoriteBorderOutlinedIcon/> wishlist</span>
-                      <LockOutlinedIcon/>
+                      <span className="text-capitalize text-dark"><FavoriteBorderOutlinedIcon fontSize="small"/> wishlist</span>
+                      <LockOutlinedIcon fontSize="small"/>
                       </div>
                     </Link>
                     <Link to="" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><PersonOutlineIcon/> update profile</span>
-                      <LockOutlinedIcon/>
+                      <span className="text-capitalize text-dark"><PersonOutlineIcon fontSize="small"/> update profile</span>
+                      <LockOutlinedIcon fontSize="small"/>
                       </div>
                     </Link>
                     <Link to="" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><PinDropOutlinedIcon/> saved addresses</span>
-                      <LockOutlinedIcon/>
+                      <span className="text-capitalize text-dark"><PinDropOutlinedIcon fontSize="small"/> saved addresses</span>
+                      <LockOutlinedIcon fontSize="small"/>
                       </div>
                     </Link>
                     <Link to="" className="text-decoration-none text-dark ">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><SupportAgentOutlinedIcon/> Help Center</span>
-                      <LockOutlinedIcon/>
+                      <span className="text-capitalize text-dark"><SupportAgentOutlinedIcon fontSize="small"/> Help Center</span>
+                      <LockOutlinedIcon fontSize="small"/>
                       </div>
                     </Link>
                     <Link to="" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><InfoOutlinedIcon/> about us</span>
+                      <span className="text-capitalize text-dark"><InfoOutlinedIcon fontSize="small"/> about us</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/terms" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><GppMaybeOutlinedIcon/> terms of use</span>
+                      <span className="text-capitalize text-dark"><GppMaybeOutlinedIcon fontSize="small"/> terms of use</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
                     <Link to="/privacy" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
-                      <span className="text-capitalize text-dark"><InventoryOutlinedIcon/> privacy policy</span>
+                      <span className="text-capitalize text-dark"><InventoryOutlinedIcon fontSize="small"/> privacy policy</span>
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>

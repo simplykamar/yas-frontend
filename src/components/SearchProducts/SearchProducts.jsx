@@ -57,7 +57,7 @@ const SearchProducts = () => {
                   <h4 className="text-capitalize d-inline">{query}</h4><small className="text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>
                </div>
              <div className="d-flex">
-                    <Box sx={{ minWidth: 120 }}>
+                    <Box sx={{ minWidth: 120}}>
                         <FormControl  fullWidth id="price-filter-focus">
                           <InputLabel id="price-filter" color="error" >
                            <TuneIcon/>Sort By</InputLabel>
@@ -67,6 +67,7 @@ const SearchProducts = () => {
                             value={filterBy}
                             label="Sort By......"
                             onChange={fetchFilterData}
+                            sx={{height:'50px'}}
                           >
                             <MenuItem value="-id">Latest First</MenuItem>
                             <MenuItem value="price">Price Low to High</MenuItem>
@@ -91,6 +92,7 @@ const SearchProducts = () => {
                            label={product.label} 
                            price={product.price} 
                            discount={product.discount}
+                           productReviews={product.product_reviews}
                          />
                     </div>
                   )

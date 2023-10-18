@@ -10,7 +10,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
-
+import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import toast, { Toaster } from 'react-hot-toast';
 import rating from '../../images/other/rating.png'
 import rating1 from '../../images/other/rating/1.png'
@@ -91,7 +91,7 @@ import rating5 from '../../images/other/rating/5.png'
       },[]);
 
   return(
-        <div className="bg-light pb-4 pt-lg-4 pt-md-4">
+        <div className="pb-4 pt-lg-4 pt-md-4">
          <div><Toaster /></div>
         <div className="container">
               <div className="row">
@@ -99,28 +99,42 @@ import rating5 from '../../images/other/rating/5.png'
                   <Sidebar/>
                 </div>
                 <div className="col-lg-9 col-md-9 col-12 col-sm-12">
-                <p className="mt-2" style={{fontSize:'24px'}}>Past Orders</p>
+                <h4 className="text-heading text-center d-lg-none d-md-none my-3 mt-lg-0 mt-md-0">Past Orders</h4>
                   {
                     !loading?
                         orders.length?
                         orders.map(order=>{return(
                         <div key={order.order.id}>
-                             <div className="row bg-white mt-3 g-2" key={order.order.id}>
+                             <div className="row bg-white mb-3 g-2" key={order.order.id}>
                                 <div className="col-lg-2 col-md-2 col-sm-2 col-2">
                                     <img src={order.order_items[0].product.product_imgs[0].image} className="img-fluid rounded-2" />
                                 </div>
                                 <div className="col-lg-10 col-md-10 col-sm-10 col-10">
-                                 { order.order.isPaid?
-                                  <span className="float-end">
-                                    <CheckCircleIcon color="success"/>
-                                  </span>
-                                  :
-                                  <span className="float-end">
-                                    <CancelIcon className="text-danger"/>
+                                 { order.order.payment_status===1&&
+                                   <span className="float-end">
+                                    <span>
+                                    <small className="me-2 text-secondary" style={{fontSize:'10px'}}>Waiting for confirmation</small>
+                                    <SellOutlinedIcon fontSize="small" className="text-warning"/>
+                                    </span>
                                   </span>
                                 }
-
-                                  <p className="fw-600 m-0">{order.order_items[0].product.title.slice(0,30)}... 
+                                { order.order.payment_status===2&&
+                                  <span className="float-end">
+                                    <span>
+                                    <small className="me-2 text-secondary" style={{fontSize:'10px'}}>Order Success</small>
+                                    <CheckCircleIcon fontSize="small" color="success"/>
+                                    </span>
+                                  </span>
+                                }
+                                { order.order.payment_status===3&&
+                                  <span className="float-end">
+                                    <span>
+                                    <small className="me-2 text-secondary" style={{fontSize:'10px'}}>Order Failed</small>
+                                    <CancelIcon fontSize="small" className="text-pink"/>
+                                    </span>
+                                  </span>
+                                }
+                                  <p className="fw-600 m-0 fs-14">{order.order_items[0].product.title.slice(0,30)}... 
                                   { order.order_items.length>1 ?
                                     <span>
                                       and {order.order_items.length} more items
@@ -129,15 +143,13 @@ import rating5 from '../../images/other/rating/5.png'
                                     :""
                                   }
                                   </p>
-
-                                  <small className="text-secondary text-capitalize">{order.order.address} | {order.order.address_type==1&&"Home"}{order.order.address_type==2&&"Work"}{order.order.address_type==3&&"Other"}</small>
-                                  <small className="text-secondary d-block">ORDER <mark style={{backgroundColor:'#fcf8e3'}}>#{order.order.id}</mark> | {order.order.order_time}</small>
+                                  <small className="text-secondary text-capitalize fs-12">{order.order.address} | {order.order.address_type==1&&"Home"}{order.order.address_type==2&&"Work"}{order.order.address_type==3&&"Other"}</small>
+                                  <small className="text-secondary d-block fs-12">ORDER <mark style={{backgroundColor:'#fcf8e3'}}>#{order.order.id}</mark> | {order.order.order_time}</small>
                                   {
                                     order.order_items.map(product=>{return(
-                                    <small key={product.product.id} className="d-block"> {product.product.title.slice(0,40)}... <span className="fw-bold">x {product.qty}</span> </small>
+                                    <small key={product.product.id} className="d-block fs-12"> {product.product.title.slice(0,40)}... <span className="fw-bold">x {product.qty}</span> </small>
                                       )})
                                   }  
-                                  
                                    <div className="d-none d-lg-block d-md-block">
                                     { order.order.isPaid?
                                       order.order.rating ?
@@ -151,22 +163,21 @@ import rating5 from '../../images/other/rating/5.png'
                                   :""
                                 } 
                                     </div>
-                                                     
                                   <hr/>    
-                                           {/* for deskop view */}
+                                    {/* for deskop view */}
                                     <div className="d-none d-lg-block d-md-block">
                                       <div className="d-flex justify-content-between">
-                                        <p className="fw-600">Total Paid: <span className="text-danger">₹ {order.order.order_total}</span></p>
+                                        <p className="fw-600">Total Paid: <span className="text-pink">₹ {order.order.order_total}</span></p>
                                         <div className="">
-                                          <Link to='/contact-us' className="btn text-danger border-pink me-4 px-4"><SupportAgentOutlinedIcon/>HELP</Link>
-                                          <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-danger"><LoopOutlinedIcon/>REORDER</Link>
+                                          <Link to='/contact-us' className="btn bg-outline-pink rounded-15 fs-12 fw-bold me-3"><SupportAgentOutlinedIcon fontSize="small"/>HELP</Link>
+                                          <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-pink fs-12"><LoopOutlinedIcon fontSize="small"/>REORDER</Link>
                                         </div>
                                     </div>  
                                   </div>  
                                   {/* for mobile view */}
                                   <div className="d-lg-none d-md-none">
                                     <div className="d-flex justify-content-between">
-                                        <p className="fw-600">Total Paid: <span className="text-danger">₹ {order.order.order_total}</span></p>
+                                        <p className="fw-600 fs-14">Total Paid: <span className="text-pink">₹ {order.order.order_total}</span></p>
                                          { order.order.isPaid?
                                             order.order.rating ?
                                                 <div className="">
@@ -180,8 +191,8 @@ import rating5 from '../../images/other/rating/5.png'
                                         }
                                   </div>
                                       <div className="d-flex justify-content-between">
-                                          <Link to='/contact-us' className="btn text-danger border-pink px-4"><SupportAgentOutlinedIcon/>HELP</Link>
-                                          <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-danger"><LoopOutlinedIcon/>REORDER</Link>
+                                          <Link to='/contact-us' className="btn bg-outline-pink rounded-15 fs-12 fw-bold px-4 py-2"><SupportAgentOutlinedIcon fontSize="small"/>HELP</Link>
+                                          <Link to={`/product/${order.order_items[0].product.title}/${order.order_items[0].product.id}`} className="btn btn-pink fs-12 py-2"><LoopOutlinedIcon fontSize="small"/>REORDER</Link>
                                       </div>
                                   </div>
                                 </div>
@@ -195,7 +206,6 @@ import rating5 from '../../images/other/rating/5.png'
                                   <h4 className="modal-title">Write a Review ( {reviewStep+1}/{order.order_items.length} )</h4>
                                   <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
                                 </div>
-
                                 {/* <!-- Modal body --> */}
                                 <div className="modal-body">
                                 <div className="">
@@ -206,7 +216,7 @@ import rating5 from '../../images/other/rating/5.png'
                                               <img src={order.order_items[reviewStep].product.product_imgs[0].image} className="img-fluid rounded-2" width="80" height="80"/>
                                           </div>
                                           <div className="col-lg-10 col-md-10 col-sm-10 col-9">
-                                                <h4 >{order.order_items[reviewStep].product.title}</h4>
+                                                <h4>{order.order_items[reviewStep].product.title}</h4>
                                           </div>
                                         </div>
                                         <div className="d-flex">
@@ -255,10 +265,10 @@ import rating5 from '../../images/other/rating/5.png'
                           </div>
                       </div>
                         )})
-                      :<div className="text-center"><small >No Order Items Found...!</small></div>
+                      :<div className="text-center fs-12"><small >No Order Items Found...!</small></div>
                   :
              <div className="text-center">
-                <div className="spinner-border text-danger"></div>
+                <div className="spinner-border text-pink"></div>
               </div>
                   }
                 </div>

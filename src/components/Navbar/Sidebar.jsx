@@ -1,4 +1,3 @@
-import './Sidebar.css';
 import axios from 'axios';
 import sidebarImg from '../../images/other/sidebar.svg'
 import {Link} from 'react-router-dom';

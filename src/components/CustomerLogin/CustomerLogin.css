@@ -2,11 +2,10 @@
 	background-image: url('../../images/other/loginbg.svg');
 	background-size:100% 100%;
 	background-repeat:no-repeat;
-	background-color:#f3f1f1;
 	width:100%;
 }
 
-.login-container input[type='email'],input[type='password'],input[type='text'],input[type='number']{
+/*.login-container input[type='email'],input[type='password'],input[type='text'],input[type='number']{
 	border: 0!important;
 	border-radius:0
-}
+}*/
