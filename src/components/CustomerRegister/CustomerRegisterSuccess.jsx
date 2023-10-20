@@ -1,13 +1,18 @@
-import thanks from '../../images/other/thanks.jpg'
-import {useEffect} from 'react';
+import thanks1 from '../../images/other/thanks1.gif'
+import thanks2 from '../../images/other/thanks2.png'
+import {useEffect,useState} from 'react';
 import {useLocation,useNavigate} from 'react-router-dom';
 
 const CustomerRegisterSuccess = () => {
 	const navigate = useNavigate();
-	const isRegistered = useLocation().state;
+	const isRegistered = useLocation().state;;
+	const [successImage,setSuccessImage] = useState(true);
 
 	useEffect(()=>{
       document.title="Account Successfully Created";
+      setTimeout(function() {
+      		setSuccessImage(false)
+      	}, 2900);
       window.scrollTo(0,0);
 		if(!isRegistered){
 			navigate("/page-not-found",{replace:true});
@@ -21,11 +26,17 @@ const CustomerRegisterSuccess = () => {
 		<div>
 			<div>
 	      </div>
-			<div className="text-center p-3">
+			<div className="text-center py-4">
 				<div>
-					<img src={thanks} className="img-fluid" style={{width:"100px"}}/>
-					<h4 className="success-msg text-heading mt-3">Registration Successful!</h4>
-					<div><p className="text-secondary" style={{fontSize:"10px"}}>Kindly check your email for Account Activation</p></div>
+				{
+					successImage
+					?
+					<img src={thanks1} className="img-fluid my-4" width="130" height="130"/>
+					:
+					<img src={thanks2} className="img-fluid my-4" width="100" height="100"/>
+				}
+				<h4 className="success-msg text-heading">Registration Successful!</h4>
+					<div><p className="text-secondary fs-12">Kindly check your email for Account Activation</p></div>
 				</div>
 			</div>
 		</div>

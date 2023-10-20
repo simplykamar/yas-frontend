@@ -83,6 +83,7 @@ function getCartTotalPrice(){
       console.log(response)
     })
     .catch(error=>{
+      setIsFetching(false);
       alert('server error!')
       console.log(error);
     })
@@ -122,7 +123,7 @@ function getCartTotalPrice(){
               </Link>
               </div>
               <div className="step-name">
-              <Link to="/checkout-step-2" className="text-decoration-none text-pink">
+              <Link to="#" className="text-decoration-none text-pink">
               Order Summary
               </Link>
               </div>
@@ -297,8 +298,8 @@ function getCartTotalPrice(){
                                      />
                                    </div>
                                  </div>
-                                 <div className="mt-3">
-                                     <div className="text-end" style={{marginRight:'35px'}}>
+                                 <div className="mt-3 ">
+                                     <div className="text-end w-75 ms-5" >
                                       {
                                       paymentUTRNumber
                                       ?
@@ -316,10 +317,10 @@ function getCartTotalPrice(){
         </div>
         </>
       :
-        <div className="text-secondary text-center mt-5">
-                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+       <div className="text-secondary text-center">
+                <p className="">Your <span className="text-pink">Gift Box</span> Looks Empty!</p>
                <img src={emptyCart} className="img-fluid"/>
-             </div>        
+             </div>       
         }  
         </div>
         </div>

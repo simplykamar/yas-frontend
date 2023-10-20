@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import './CustomerLogin.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 const GetResetPaswordLink = () => {
   const BASE_URL = 'http://127.0.0.1:8000/';
@@ -10,6 +11,8 @@ const GetResetPaswordLink = () => {
   const [email,setEmail] = useState('');
   const [isFetching,setIsFetching] = useState(false);
   const [inputError,setInputError] = useState({type:'',msg:''})
+	const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+  const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
 
 	async function getResetLink(e){
 		setIsFetching(true);
@@ -18,7 +21,9 @@ const GetResetPaswordLink = () => {
 		formData.append('email',email)
 		await axios.post(BASE_URL+`auth/users/reset_password/`,formData)
 			.then(response=>{
+				console.log(response)
 				if(response.status===204){
+					notifySuccess("Password reset link sent!")
 					setInputError()
 					setInputError({type:'success',msg:"password reset link sent.!"})
 				}
@@ -27,6 +32,7 @@ const GetResetPaswordLink = () => {
 			})
 			.catch(err=>{
 				if(err.response.status==400){
+					notifyError('Email not registered with us!')
 					setInputError({type:'error',msg:"Email not registered with us.!"})
 				}
 				setIsFetching(false);
@@ -37,8 +43,7 @@ const GetResetPaswordLink = () => {
   },[])
 	return (
 		<div className="container-fluid">
-			<div>
-	      </div>
+				<div><Toaster/></div>
            <div className="login-container py-4">
 	            <div className="d-flex justify-content-center">
 			            <div className="card custom-shadow" >

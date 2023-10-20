@@ -37,7 +37,7 @@ function validateCart(){
     dispatch(updateCart(response.data.cartData))
     setItemsInStock(response.data.itemsInStock)
     if(response.data.itemsInStock){
-       navigate("/checkout-step-1",{replace:true,state:true});
+       navigate("/checkout-step-1");
     }
     console.log(response)
       window.scrollTo(0,0);
@@ -145,8 +145,8 @@ function validateCart(){
             </div>
             </>
          :
-            <div className="text-secondary text-center mt-3">
-                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+            <div className="text-secondary text-center">
+                <p className="">Your <span className="text-pink">Gift Box</span> Looks Empty!</p>
                <img src={emptyCart} className="img-fluid"/>
              </div>        
         }   

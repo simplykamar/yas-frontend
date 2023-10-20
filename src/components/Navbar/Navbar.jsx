@@ -26,7 +26,7 @@ const Navbar = () => {
   const BASE_URL = 'http://127.0.0.1:8000/api';
   const cartData = useSelector((state)=>state.cart.products);
   const navigate = useNavigate();
-  const sum=0;
+  const sum = 0;
   const totalItems = cartData.reduce((sum,item)=>{return sum+item.quantity},0)
   const user = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
@@ -71,8 +71,8 @@ function fetchProductsData(url){
     setSearchQuery(q);
     if(q.length > 2 ){
       document.title = q;
-      fetchCategoriesData(BASE_URL+`/sub-categories/?q=${q}`);
-      fetchProductsData(BASE_URL+`/products/?q=${q}`);
+      fetchCategoriesData(BASE_URL+`/get-navbarsearch-subcategory/?query=${q}`);
+      fetchProductsData(BASE_URL+`/get-navbarsearch-product/?query=${q}`);
       setIsSearchResult(true)
       
     }else{
@@ -166,7 +166,7 @@ function fetchProductsData(url){
       <li className="nav-item dropdown ms-4">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinks" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 { user.isAuthenticate ? 
-                    <span className="fw-600" style={{padding:'1px 6px 1px 6px',border:'2px solid #545252',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>
+                    <span className="fw-600" style={{padding:'1px 7px 1px 7px',border:'2px solid #545252',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>
                     :
                      <AccountCircleOutlinedIcon/>
               }
@@ -233,7 +233,7 @@ function fetchProductsData(url){
                         { !categoryDataLoading
                             ?
                               categories.map((item)=>{return(
-                                <p className="line-height-8" key={item.id}><Link to={`/category/${item.title}/${item.id}`} className="text-dark text-capitalize text-decoration-none">{item.title}</Link></p>
+                                <p className="line-height-8" key={item.id}><Link to={`/sub-category/${item.title}/${item.id}`} className="text-dark text-capitalize text-decoration-none">{item.title}</Link></p>
 
                               )})
                             :"loading..."

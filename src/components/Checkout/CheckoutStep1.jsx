@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {addToOrder} from '../../redux/orderSlice';
-import {useNavigate,useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import CallTwoToneIcon from '@mui/icons-material/CallTwoTone';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
@@ -16,7 +16,6 @@ import emptyCart from "../../images/other/emptycart.svg"
 import toast, { Toaster } from 'react-hot-toast';
 
 const CheckoutStep1 = () => {
-	const isNext = useLocation().state;
   // const BASE_URL = 'https://simplykamar.tech/api';
   const BASE_URL = 'http://127.0.0.1:8000/api';
 	const [addresses, setAddresses] = useState([]);
@@ -50,9 +49,6 @@ const CheckoutStep1 = () => {
     }
 	useEffect(()=>{
       document.title="Checkout | Select Address";
-      if(!isNext){
-			navigate("/page-not-found",{replace:true});
-		}
       window.scrollTo(0,0);
 		fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 	},[])
@@ -303,10 +299,10 @@ const CheckoutStep1 = () => {
 			</div>
 			</>
 			:
-			  <div className="text-secondary text-center">
-                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+			 <div className="text-secondary text-center">
+                <p className="">Your <span className="text-pink">Gift Box</span> Looks Empty!</p>
                <img src={emptyCart} className="img-fluid"/>
-             </div>        
+             </div>         
         }   
 		</div>
 		</div>

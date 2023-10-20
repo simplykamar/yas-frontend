@@ -250,8 +250,8 @@ ${user.user.user.name.toUpperCase()}
 			</div>
 			</>
 			:
-			  <div className="text-secondary text-center mt-5">
-                <h4 className="">Your <span className="text-danger">Gift Box</span> Looks Empty!</h4>
+			  <div className="text-secondary text-center">
+                <p className="">Your <span className="text-pink">Gift Box</span> Looks Empty!</p>
                <img src={emptyCart} className="img-fluid"/>
              </div>        
         }  

@@ -1,4 +1,3 @@
-import './CategoryProducts.css';
 import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import loading1 from '../../images/loading/loading1.gif'
 import SingleProduct from '../SingleProduct/SingleProduct';
@@ -12,9 +11,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TuneIcon from '@mui/icons-material/Tune';
 
-const CategoryProducts = () => {
-  const {category_id} = useParams();
-  const {category_slug} = useParams();
+const SubCategoryProducts = () => {
+  const {sub_category_id} = useParams();
+  const {sub_category_slug} = useParams();
   // const BASE_URL = 'https://simplykamar.tech/api';
   const BASE_URL = 'http://127.0.0.1:8000/api';
   const [products,setProducts] = useState([])
@@ -35,15 +34,15 @@ const CategoryProducts = () => {
             })
     }
     useEffect(()=>{
-      document.title=category_slug;
+      document.title=sub_category_slug;
       window.scrollTo(0,0);
-        fetchData(BASE_URL+`/get-category-products/?query=${category_slug}`);
-      },[category_slug,]);
+        fetchData(BASE_URL+`/get-subcategory-products/?query=${sub_category_slug}`);
+      },[sub_category_slug,]);
     
         const fetchFilterData = (e) => {
           setFilterBy(e.target.value);
           if(e.target.value!==""){
-              fetchData(BASE_URL+`/get-category-products/?query=${category_slug}&sort=${e.target.value}`);
+              fetchData(BASE_URL+`/get-subcategory-products/?query=${sub_category_slug}&sort=${e.target.value}`);
           }
               }
 	return(
@@ -55,7 +54,7 @@ const CategoryProducts = () => {
         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="d-flex justify-content-between">
                 <div className="">
-                  <h4 className="text-capitalize d-inline">{category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>               
+                  <h4 className="text-capitalize d-inline">{sub_category_slug}</h4><small className="d-block d-lg-inline d-md-inline text-secondary ms-2"><span className="fw-bold">{products.length}</span> Items</small>               
                   </div>
               <div className="d-flex">
                     <Box sx={{ minWidth: 120 }}>
@@ -115,4 +114,4 @@ const CategoryProducts = () => {
         </div>     
 		)
 }
-export default CategoryProducts;
+export default SubCategoryProducts;

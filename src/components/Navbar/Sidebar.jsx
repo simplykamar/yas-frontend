@@ -11,6 +11,11 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';          
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import './Sidebar.css';
 
  const Sidebar = () => {
     const [open, setOpen] = useState(false);
@@ -70,8 +75,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
               )
           })
         } 
-
-      
       </List>
       </div>
       <div className="px-3">
@@ -95,24 +98,24 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
         <List onClick={() => setOpen(false)} className="">
       <div className="text-uppercase py-1" style={{backgroundColor:'#e2e8f0'}}>
         <div className="text-heading" style={{marginLeft:'10px'}}>
-          follow us
+          follow us on
         </div>
       </div>
-      <ListItem  button>
-         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"Instagram"}  primaryTypographyProps={{fontSize: '14px'}}/>
+      <ListItem  button component={Link} to="https://instagram.com/yasgiftsindia" target="_blank" className="instagram-icon-text">
+         <InstagramIcon className="sidebar-social-icon instagram-icon me-2" fontSize="large" />
+          <ListItemText primary={"Instagram"} primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
-        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
-         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"Facebook"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        <ListItem  button component={Link} to="https://www.facebook.com/yasgiftsindia" target="_blank" className="facebook-icon-text">
+         <FacebookOutlinedIcon className="sidebar-social-icon facebook-icon me-2"fontSize="large"  />
+          <ListItemText primary={"Facebook"} primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
-        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
-         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"Twitter"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        <ListItem  button component={Link} to="https://x.com/yasgiftsindia" target="_blank" className="twitter-icon-text">
+         <TwitterIcon className="sidebar-social-icon twitter-icon me-2" fontSize="large" />
+          <ListItemText primary={"Twitter"} className="twitter-icon-text"  primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
-        <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
-         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"LinkedIn"}  primaryTypographyProps={{fontSize: '14px'}}/>
+        <ListItem  button component={Link} to="https://www.linkedin.com/company/yasgiftsindia" target="_blank" className="linkedin-icon-text">
+         <LinkedInIcon className="sidebar-social-icon linkedin-icon me-2"fontSize="large" />
+          <ListItemText primary={"LinkedIn"} className="linkedin-icon-text"  primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
         </List>
       </div>

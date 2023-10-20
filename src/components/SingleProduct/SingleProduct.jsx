@@ -89,7 +89,7 @@ const SingleProduct = (props) => {
                           ?
                           <div className="">
                             <small className="text-secondary text-small">{avgRating}</small>
-                            <StarIcon style={{color:'#ffd400'}} fontSize=""/>
+                            <StarIcon style={{color:'#ffd400'}} fontSize=""/> <small className="text-secondary text-small"> ({props.productReviews.length})</small>
                           </div>
                           :''
                         }

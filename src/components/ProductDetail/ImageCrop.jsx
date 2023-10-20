@@ -43,7 +43,7 @@ async function saveCropdata(){
           <Personalizing personalizing={loading}/>
       {!loading?
         <div className="">
-          <p className="text-small text-secondary">Drag your finger across your photo to crop </p>
+          <p className="text-small text-dark">Drag your finger across your photo to crop </p>
           <ReactCrop
             crop={crop}
              aspect={aspectRatio}
@@ -51,13 +51,20 @@ async function saveCropdata(){
               className="w-75"
               >
             <div className="text-center">
-             <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
+            {/* for desktop */}
+              <div className="d-none d-md-block d-lg-block">
+             <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid w-50" style={{border:'5px solid #1d1b1b'}}/>
+              </div>
+            {/* for mobile */}
+              <div className="d-md-none d-lg-none">
+             <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid  w-100" style={{border:'5px solid #1d1b1b'}}/>
+              </div>
             </div>
           </ReactCrop>
           <div className="text-end">
             {
               (crop.height|crop.width)?
-              <Button variant="outlined" className="text-small" onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}>Save</Button>
+              <Button variant="outlined" color="error" className="rounded-15 fw-bold" style={{fontSize:'10px'}} onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}>Save</Button>
                 :""
             }
           </div>

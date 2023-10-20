@@ -16,15 +16,13 @@ const ProductReviews = ({productReviews}) => {
 		calculateRating();
 	},[])
 	return(
-		<div className="">
-			<div className="row g-2">
-			<div className="col-lg-6 col-md-6 col-sm-12 col-12" >
-				<div className="text-center">
+		<div className="mt-md-3 container-fluid">
+				<div className="text-center mb-5">
 					<h1 className="fw-600">{avgRating}</h1>
-			        <Rating name="size-large" size="small" value={avgRating} readOnly />
+			        <Rating name="size-large" size="small" value={avgRating} precision={0.5} readOnly />
 			        <small className="d-block text-secondary text-small fw-600">based on {productReviews.length} reviews</small>
 				</div>
-			</div>
+			<div className="row g-3">
 				{
 					productReviews.map(review=>{
 						return(

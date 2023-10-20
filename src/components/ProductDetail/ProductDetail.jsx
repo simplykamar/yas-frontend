@@ -548,7 +548,7 @@ async function applyTextPersonalization(itemID){
 
                                 {/* <!-- Modal Header --> */}
                                 <div className="modal-header">
-                                  <p className="modal-title fw-600">{product.title}</p>
+                                  <p className="modal-title fw-600 text-heading">{product.title}</p>
                                   <CloseIcon fontSize="small" className="cursor-pointer btn-close" data-bs-dismiss="modal"/>
                                 </div>
 
@@ -556,9 +556,9 @@ async function applyTextPersonalization(itemID){
                                 <div className="modal-body pt-0">
 	                                <div className="sticky-top bg-white py-1">
 		                                <div className="d-flex justify-content-between">
-		                                	<p className="fw-600">Start Personalizing</p>
-		                                	<Link to= "" className="text-decoration-none fw-bold text-danger" onClick={()=>{setProductPersonalizeText([]);setProductPersonalizeImgs([])}}>
-		                                	<RestoreOutlinedIcon fontSize="small" className="mb-1"/> Reset All
+		                                	<p className="fw-600 text-heading">Start Personalizing</p>
+		                                	<Link to= "" className="text-decoration-none fs-14 fw-bold text-danger" onClick={()=>{setProductPersonalizeText([]);setProductPersonalizeImgs([])}}>
+		                                	<RestoreOutlinedIcon className="mb-1 fs-14"/> Reset All
 		                                	</Link>	
 		                                </div>
 	                               	</div>
@@ -575,7 +575,7 @@ async function applyTextPersonalization(itemID){
 			                                						<div className="text-center" >
 			                                						{/* for desktop */}
 			                                						<div className="d-none d-md-block d-lg-block">
-			                                							<img src={item.image} className="img-fluid w-50"/>
+			                                							<img src={item.image} className="img-fluid w-25"/>
 			                                						</div>
 			                                						{/* for mobile */}
 			                                						<div className="d-md-none d-lg-none">
@@ -610,22 +610,22 @@ async function applyTextPersonalization(itemID){
 	                                            		}
 			                                					</div>
 			                                					<div className="text-center">
-				                                          <Button variant="outlined" color="error" className="py-2 my-3 rounded-15 w-75" component="label">
+				                                          <Button variant="outlined" color="error" className="py-1 my-3 rounded-15 " component="label">
 						                                      	{
 				                                            	productPersonalizeImgs.find(obj=>obj.id===item.id)
-				                                            	?<span className="text-small fw-bold"><InsertPhotoOutlinedIcon fontSize="small"/> Change image {i+1}</span>
-				                                            	:<span className="text-small fw-bold"><InsertPhotoOutlinedIcon fontSize="small"/> Upload image {i+1}</span>
+				                                            	?<span className=" fw-bold" style={{fontSize:'10px'}}><InsertPhotoOutlinedIcon fontSize="small"/> Change image {i+1}</span>
+				                                            	:<span className=" fw-bold" style={{fontSize:'10px'}}><InsertPhotoOutlinedIcon fontSize="small"/> Upload image {i+1}</span>
 	                                            		}
 						                                          <input hidden accept="image/*" type="file" 
 						                                          onChange={(e)=>{e.target.files[0]&&uploadImage({id:item.id,image:e.target.files[0],sample_image_url:item.image,isPersonalized:false})}}/>
 				                                         	</Button>
 		                                         		</div>
 
-			                                					<div className="">
-			                                					<ul className="text-secondary">
-								                                	<li><span className="text-small text-secondary">Please upload good quality image.</span></li>
-								                                	<li><span className="text-small text-secondary">Please ensure you have rights to use the image.</span></li>
-								                                </ul>
+			                                					<div className="d-flex justify-content-center">
+				                                					<ul className="text-secondary">
+									                                	<li><span className="text-secondary" style={{fontSize:'10px'}}>Please upload good quality image.</span></li>
+									                                	<li><span className="text-secondary" style={{fontSize:'10px'}}>Please ensure you have rights to use the image.</span></li>
+									                                </ul>
 			                                					</div>
 		                                				</div>
 		                                				)
@@ -638,7 +638,7 @@ async function applyTextPersonalization(itemID){
 			                                				<div className="mt-3 text-center" key={item.id}>
 					                              				{/* for desktop */}
 			                                						<div className="d-none d-md-block d-lg-block">
-			                                							<img src={item.image} className="img-fluid w-50"/>
+			                                							<img src={item.image} className="img-fluid w-25"/>
 			                                						</div>
 			                                						{/* for mobile */}
 			                                						<div className="d-md-none d-lg-none">
@@ -666,21 +666,49 @@ async function applyTextPersonalization(itemID){
 	                                            			}
 	                                            		})
 	                                            	}
-					                              				<div className="my-3">
-						                              				<div className="text-small text-secondary my-3">
-						                              					<small>Text {i+1} (Upto {item.text_length} characters)</small>
-						                              				</div>
-												                      		     <TextField
-														                      		    color="error"
-							                                          	onChange={(e)=>{productPersonalizeTextHandler({id:item.id,image:null,text:e.target.value,sample_image_url:item.image,isPersonalized:false})}}
-														                      		    name={`text${i+1}`}
-														                      		    fullWidth
-														                      		    label={`Enter text ${i+1}`}
-														                      		    inputProps={{ maxLength: item.text_length }}
-												                      		   />
-												                      		   <div className="text-end mt-2">
-												                      		   	<Button variant="outlined" className="text-small" onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
-												                      		   </div>
+											                        	   {/* For mobile view */}
+					                              				<div className="my-3 d-lg-none d-md-none">
+						                              				<div className=" ">
+							                              				<div className="text-small text-secondary my-3">
+							                              					<small>Text {i+1} (Upto {item.text_length} characters)</small>
+							                              				</div>
+													                      		     <TextField
+															                      		    color="error"
+								                                          	onChange={(e)=>{productPersonalizeTextHandler({id:item.id,image:null,text:e.target.value,sample_image_url:item.image,isPersonalized:false})}}
+															                      		    name={`text${i+1}`}
+															                      		    fullWidth
+															                      		    label={`Enter text ${i+1}`}
+															                      		    inputProps={{ maxLength: item.text_length }}
+															                      		    InputLabelProps={{style: {fontSize: '14px'}}}
+															                      		    size="small"
+													                      		   />
+													                      		   <div className="text-end mt-2">
+													                      		   	<Button variant="outlined" color="error" className="rounded-15 fw-bold" style={{fontSize:'10px'}} onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
+													                      		   </div>
+												                        	   </div>
+											                        	   </div>
+											                        	   {/* For desktop view */}
+											                        	   <div className="my-3 d-none d-md-block d-lg-block">
+												                        	   <div className="d-flex justify-content-center">
+													                        	   <div className="w-50">
+									                              				<div className="text-small text-secondary my-2">
+									                              					<small>Text {i+1} (Upto {item.text_length} characters)</small>
+									                              				</div>
+															                      		     <TextField
+																	                      		    color="error"
+										                                          	onChange={(e)=>{productPersonalizeTextHandler({id:item.id,image:null,text:e.target.value,sample_image_url:item.image,isPersonalized:false})}}
+																	                      		    name={`text${i+1}`}
+																	                      		    fullWidth
+																	                      		    label={`Enter text ${i+1}`}
+																	                      		    inputProps={{ maxLength: item.text_length }}
+																	                      		    InputLabelProps={{style: {fontSize: '14px'}}}
+																	                      		    size="small"
+															                      		   />
+															                      		   <div className="text-end mt-2">
+															                      		   	<Button variant="outlined" color="error" className="rounded-15 fw-bold" style={{fontSize:'10px'}} onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
+															                      		   </div>
+													                        	   </div>
+												                        	   </div>
 											                        	   </div>
 		                                				</div>
 		                                				)
@@ -691,18 +719,22 @@ async function applyTextPersonalization(itemID){
 	                                	{
 			                           	 	inputError
 			                           	 	&&
-	            		                   	<div className="text-small text-pink mb-3 fw-bold">This product need to be personalized before adding to the cart.</div>
+	            		                   	<div className="text-pink mb-3 fw-bold" style={{fontSize:'10px'}}>This product needs to be personalized before adding to the cart.</div>
 			                           	 }
 			                           	 {
 			                           	 	cartData.find((item)=>item.id==product_id)
 										 								?
-																			<div data-bs-dismiss="modal" className="btn btn-pink text-uppercase py-2 w-100" >
+																			<div className="text-center">
+	                                		<button data-bs-dismiss="modal" className="btn btn-pink fs-14 text-uppercase py-1 px-5 py-md-2 px-md-5 ">
 		                                	 <span ><KeyboardBackspaceOutlinedIcon/> Go back</span>
-																			</div>
+																			</button>
+			                           	 	</div>
 			                           	 :
-	                                		<button className="btn btn-pink text-uppercase w-100 py-2" onClick={validate}>
+			                           	 	<div className="text-center">
+	                                		<button className="btn btn-pink fs-14 text-uppercase py-1 px-5 py-md-2 px-md-5 " onClick={validate}>
 			                           	 			submit
 			                           	 		</button>
+			                           	 	</div>
 			                           	 }
 	                                </div>
                                 </div>

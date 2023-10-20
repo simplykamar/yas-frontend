@@ -27,7 +27,7 @@ const SimilarGifts = ({ productId }) => {
 		getData();
 	},[productId,])
 	return(
-			<div className="my-3">
+			<div className="mt-5">
 				{ !loading && <h2 className="text-center text-heading">Similar Gift Recommendations</h2> }
 				<div className="row g-3 mt-3">
 			      {

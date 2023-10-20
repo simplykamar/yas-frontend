@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 const Home = lazy(()=>import("./components/Home/Home"));
 const Categories = lazy(()=>import("./components/Categories/Categories"));
 const CategoryProducts = lazy(()=>import("./components/CategoryProducts/CategoryProducts"));
+const SubCategoryProducts = lazy(()=>import("./components/SubCategoryProducts/SubCategoryProducts"));
 const AllProducts = lazy(()=>import("./components/AllProducts/AllProducts"));
 const ProductDetail = lazy(()=>import("./components/ProductDetail/ProductDetail"));
 const PageNotFound = lazy(()=>import("./components/PageNotFound/PageNotFound"));
@@ -45,6 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/categories" element={<Categories/>}/>
+        <Route path="/sub-category/:sub_category_slug/:sub_category_id" element={<SubCategoryProducts/>}/>
         <Route path="/category/:category_slug/:category_id" element={<CategoryProducts/>}/>
         <Route path="/products" element={<AllProducts/>}/>
         <Route path="/product/:product_slug/:product_id" element={<ProductDetail/>}/>

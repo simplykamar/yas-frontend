@@ -9,6 +9,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ForgotPassword = () => {
   // const BASE_URL = 'https://simplykamar.tech/';
@@ -21,6 +22,8 @@ const ForgotPassword = () => {
   const [isFetching,setIsFetching] = useState(false);
   const [inputError,setInputError] = useState({'msg':"",'type':""})
   const {uid, token} = useParams()
+  const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
+  const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
  
   function inputHandler(event){
       setResetPasswordFormData({
@@ -51,7 +54,7 @@ const ForgotPassword = () => {
           'new_password':'',
           're_new_password':''
         });
-        alert('password successfully changed!')
+        notifySuccess("Password successfully changed!")
       })
       .catch(err=>{
         setIsFetching(false);
@@ -67,7 +70,7 @@ const ForgotPassword = () => {
         }
         else{
           console.log(err)
-          alert("Invalid user id or user doesn't exist.")
+          notifyError("Invalid user id or user doesn't exist.")
         }
       })
   }
@@ -78,8 +81,7 @@ const ForgotPassword = () => {
     const buttonEnable =(resetPasswordFormData.new_password!='') && (resetPasswordFormData.re_new_password!='') 
   return(
        <div className="container-fluid">
-            <div>
-          </div>
+       <div><Toaster/></div>
             <div className="login-container py-4">
             <div className="d-flex justify-content-center">
             <div className="card custom-shadow" >

@@ -24,10 +24,10 @@ const Footer = () => {
                 <div className="col-lg-6 col-md-6 col-sm-12 col-12 pt-4 p-lg-0 p-md-0 text-center">
                   <p className="">Follow us on:</p>
                   <div className="">
-                    <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><FacebookOutlinedIcon className="social-icon facebook-icon" /></a>
-                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><InstagramIcon className="social-icon instagram-icon mx-3" /></a>
-                     <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><LinkedInIcon className="social-icon linkedin-icon" /></a>
-                    <a href="https://www.instagram.com/yasgiftsofficial/" target="blank"><TwitterIcon className="social-icon twitter-icon ms-3" /></a>
+                    <a href="https://www.facebook.com/yasgiftsindia" target="blank"><FacebookOutlinedIcon className="social-icon facebook-icon" /></a>
+                     <a href="https://instagram.com/yasgiftsindia" target="blank"><InstagramIcon className="social-icon instagram-icon mx-3" /></a>
+                     <a href="https://www.linkedin.com/company/yasgiftsindia" target="blank"><LinkedInIcon className="social-icon linkedin-icon" /></a>
+                    <a href="https://x.com/yasgiftsindia" target="blank"><TwitterIcon className="social-icon twitter-icon ms-3" /></a>
                   </div>
                 </div>
               </div><hr/>

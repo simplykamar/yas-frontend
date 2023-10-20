@@ -47,7 +47,7 @@ export default function NavigationBar() {
            <BottomNavigationAction onClick={()=>{setValue(0)}} label="Wishlist" icon={<FavoriteBorderOutlinedIcon />} component={Link} to="/customer/wishlist"/>
           <BottomNavigationAction onClick={()=>{setValue(0)}} label="Profile" icon=
               { user.isAuthenticate ? 
-                    <span className="fw-600" style={{padding:'0.5px 6px 0.5px 6px',border:'2px solid #545252',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>
+                    <span className="fw-600" style={{padding:'0.5px 7px 0.5px 7px',border:'2px solid #545252',borderRadius:'100%'}}>{user.user.user.name[0].toUpperCase()}</span>
                     :
                      <AccountCircleOutlinedIcon/>
               }
