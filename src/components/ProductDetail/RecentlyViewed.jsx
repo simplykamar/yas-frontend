@@ -70,6 +70,7 @@ const RecentlyViewed = ({productId}) => {
 			        }}
 			        modules={[Pagination, Navigation]}
 			        className="mySwiper"
+			        loop={true}
 			         breakpoints={{
 		            0:{
 		              slidesPerView:2,

@@ -26,6 +26,7 @@ const CategoryProducts = () => {
               .then((response)=>{
                 setProducts(response.data);
                 console.log(response)
+                response.data.forEach(item=>console.log(item.sub_category))
                 setLoading(false);
               })
               .catch(error=>{
@@ -37,13 +38,13 @@ const CategoryProducts = () => {
     useEffect(()=>{
       document.title=category_slug;
       window.scrollTo(0,0);
-        fetchData(BASE_URL+`/get-category-products/?query=${category_slug}`);
-      },[category_slug,]);
+        fetchData(BASE_URL+`/get-category-products/?query=${category_id}`);
+      },[category_id,]);
     
         const fetchFilterData = (e) => {
           setFilterBy(e.target.value);
           if(e.target.value!==""){
-              fetchData(BASE_URL+`/get-category-products/?query=${category_slug}&sort=${e.target.value}`);
+              fetchData(BASE_URL+`/get-category-products/?query=${category_id}&sort=${e.target.value}`);
           }
               }
 	return(

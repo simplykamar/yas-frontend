@@ -16,6 +16,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import './Sidebar.css';
+import mail from '../../images/logos/mail.jpg';
+import phone from '../../images/logos/phone.png';
 
  const Sidebar = () => {
     const [open, setOpen] = useState(false);
@@ -85,12 +87,12 @@ import './Sidebar.css';
         </div>
       </div>
       <ListItem  button>
-         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"+91 9634142017"}  primaryTypographyProps={{fontSize: '14px'}}/>
+         <img src={phone} className="img-fluid me-1" width='25' height='25'/>
+          <ListItemText primary={"+91 9634142017"} primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
         <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
-         <SupportAgentOutlinedIcon fontSize='small' className="me-2"/>
-          <ListItemText primary={"support@yasgifts.me"}  primaryTypographyProps={{fontSize: '14px'}}/>
+         <img src={mail} className="img-fluid me-1" width='25' height='25'/>
+          <ListItemText primary={"support@yasgifts.me"} primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
         </List>
       </div>

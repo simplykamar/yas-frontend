@@ -36,13 +36,13 @@ const SubCategoryProducts = () => {
     useEffect(()=>{
       document.title=sub_category_slug;
       window.scrollTo(0,0);
-        fetchData(BASE_URL+`/get-subcategory-products/?query=${sub_category_slug}`);
-      },[sub_category_slug,]);
+        fetchData(BASE_URL+`/get-subcategory-products/?query=${sub_category_id}`);
+      },[sub_category_id,]);
     
         const fetchFilterData = (e) => {
           setFilterBy(e.target.value);
           if(e.target.value!==""){
-              fetchData(BASE_URL+`/get-subcategory-products/?query=${sub_category_slug}&sort=${e.target.value}`);
+              fetchData(BASE_URL+`/get-subcategory-products/?query=${sub_category_id}&sort=${e.target.value}`);
           }
               }
 	return(

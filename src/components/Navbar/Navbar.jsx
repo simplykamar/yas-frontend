@@ -267,7 +267,7 @@ function fetchProductsData(url){
                                 <div className="quick-search-inner">
                                   <img src={item.image} className="img-fluid w-50 rounded-5 quick-search-img"/>
                                 </div>
-                                <p className="text-small text-capitalize">{item.query}</p>
+                                <p className="text-small text-capitalize cursor-pointer">{item.query}</p>
                                 </div>
                             </div>    
                         )
