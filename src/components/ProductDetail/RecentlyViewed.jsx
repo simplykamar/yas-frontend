@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
-import './Slider.css'
+import './slider.css'
 import 'swiper/css/free-mode';
 
 
