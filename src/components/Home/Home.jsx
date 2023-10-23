@@ -13,6 +13,7 @@ import axios from 'axios';
 
 const Home = () => {
     const BASE_URL = 'http://127.0.0.1:8000/api';
+    // const BASE_URL = 'http://yasonlinegifting.pythonanywhere.com/api';
     const [headerMenu,setHeaderMenu] = useState([]);
     const [loading,setLoading] = useState(false);
     function fetchHeaderMenuData(url){
