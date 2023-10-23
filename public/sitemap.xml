@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
-      <loc>http://www.yasgifts.me/</loc>
+      <loc>https://www.yasgifts.me/</loc>
       <lastmod>2023-10-10</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1</priority>
    </url>
    <url>
-      <loc>http://www.yasgifts.me/category/personalized/14</loc>
+      <loc>https://www.yasgifts.me/category/personalized/14</loc>
       <lastmod>2023-10-10</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1</priority>
    </url>
    <url>
-      <loc>http://www.yasgifts.me/customer/login</loc>
+      <loc>https://www.yasgifts.me/customer/login</loc>
       <lastmod>2023-10-10</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1</priority>
    </url>
    <url>
-      <loc>http://www.yasgifts.me/customer/register</loc>
+      <loc>https://www.yasgifts.me/customer/register</loc>
       <lastmod>2023-10-10</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
