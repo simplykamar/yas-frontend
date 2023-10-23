@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import './Checkout.css';
 import {Link,NavLink,useNavigate,useLocation} from 'react-router-dom'
 import {useState,useEffect} from 'react';
@@ -37,7 +38,6 @@ const CheckoutStep2 = () => {
  		if(!order.address){
  			navigate('/checkout-step-1', {replace:true})
  		}
-      document.title="Checkout | Order Summary";
       window.scrollTo(0,0);
  	},[])
 
@@ -128,6 +128,9 @@ ${user.user.user.name.toUpperCase()}
   	}
 	return(
 		<div className=" py-3 bg-light">
+		<Helmet>
+          <title>Checkout | Order Summary</title>
+      </Helmet>
 			<div className="container">
 			{ cartData.length?
 			  <>

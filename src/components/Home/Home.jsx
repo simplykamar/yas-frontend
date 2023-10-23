@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import'./Home.css';
 import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
@@ -31,11 +32,22 @@ const Home = () => {
    
    useEffect(()=>{
       window.scrollTo(0,0);
-      document.title="yas: Online Gifts Shopping";
       fetchHeaderMenuData(BASE_URL+'/header-menu-items')
   },[])
 	return(
       <div className="">
+          <Helmet>
+          <meta charSet="utf-8"/>
+        <title>Online Gifts Delivery, Buy/Send Gifts to India, Gift Items Online, Personalizable gift</title>
+        <meta  
+          name="description"
+          content="Online Gifts Delivery - Send Gifts Online to India with FREE Shipping from yasgifts. Buy unique gift items online from India's Best Online Gift Shop. Get best gift ideas for all occasions. Personalizable gift"
+          />
+        <meta
+          name="keywords" 
+          content="online gifts, online gift delivery, buy gifts online, online gift shop, send gifts, gifts to india, indian gift portal, indian gifts, send gifts to india, send gifts online, same day delivery, gift items online shopping, unique gifts online india, online gift shopping sites, best online gift sites, online shopping gift items, gift items online india, cheap gifts online, online gifts delivery in one day, online gift shopping, gift store, personalizable gift, personalize gift, personalized gift, yas gift yasgift, yasgifts"
+          />
+        </Helmet>
       <div className="container">
         <header className="">
         {/* search for mobile view. from here call navbar search modal*/}

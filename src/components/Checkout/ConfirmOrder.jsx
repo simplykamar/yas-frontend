@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import upi from '../../images/logos/upi.png'
 import paymentmobile from '../../images/other/payment-process-mobile-min.png'
 import paymentdesktop from '../../images/other/payment-process-desktop-min.png'
@@ -89,7 +90,6 @@ function getCartTotalPrice(){
     })
 }
  useEffect(() => {
-    document.title="Checkout | Proceed to payment";
     window.scrollTo(0,0);
     window.process = {
       ...window.process,
@@ -98,6 +98,9 @@ function getCartTotalPrice(){
   }, []);
     return (
       <div className=" py-4 bg-light">
+      <Helmet>
+          <title>Checkout | Proceed to payment</title>
+      </Helmet>
       <Main loading={isFetching}/>
       <div className="container">
         { cartData.length?

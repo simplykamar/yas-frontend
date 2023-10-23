@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import {useState,useEffect} from 'react';
@@ -31,7 +32,6 @@ const SearchProducts = () => {
               });
     }
     useEffect(()=>{
-      document.title=query;
         window.scrollTo(0,0);
         // fetchData(BASE_URL+`/products/?q=${query}`);
         fetchData(BASE_URL+`/get-search-product/?query=${query}`);
@@ -47,6 +47,18 @@ const SearchProducts = () => {
 
 	return(
        <div className="container">
+       <Helmet>
+          <meta charSet="utf-8"/>
+          <title>{query}</title>
+          <meta
+           name="description"
+           content="Search Personalized Gifts India - Buy/Send Unique Personalised Gifts Online from yasgifts Customized Gift Shop. Order Magic Mugs, Cushions, Caricature, LED Lamps, Photo Gifts, Keychains, bottle, Photo Frames with Free Shipping. Order Now!"
+          />
+          <meta
+           name="keywords"
+           content="search personalized gifts, search customized gifts, search unique search personalised gifts, search customized gifts online, search customized gifts search online india, search buy personalised gifts, search send personalised gifts to india, search personalized photo gifts, search personalised gifts, search custom gifts online, search Magic Mugs, Cushions, search LED Lamps, Photo Gifts, Keychains, bottle, Photo Frames."
+          />
+      </Helmet>
             <div className="my-4">
           {!loading?
             <div className="row ">

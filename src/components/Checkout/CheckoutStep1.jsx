@@ -1,4 +1,5 @@
 import './Checkout.css';
+import {Helmet} from 'react-helmet';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
@@ -48,7 +49,6 @@ const CheckoutStep1 = () => {
             })
     }
 	useEffect(()=>{
-      document.title="Checkout | Select Address";
       window.scrollTo(0,0);
 		fetchAddresses(BASE_URL+`/customer-address/?customer=${user.user.id}`);
 	},[])
@@ -93,6 +93,9 @@ const CheckoutStep1 = () => {
 	}
 	return(
 		<div className="py-3 bg-light">
+		<Helmet>
+          <title>Checkout | Select Address</title>
+      </Helmet>
 			<div><Toaster/></div>
 			<div className="container">
 			  { cartData.length?
@@ -161,7 +164,7 @@ const CheckoutStep1 = () => {
 						:""
 					:
              <div className="text-center">
-                <div className="spinner-border text-danger"></div>
+                <div className="spinner-border text-pink"></div>
               </div>
 				}
 				</div>

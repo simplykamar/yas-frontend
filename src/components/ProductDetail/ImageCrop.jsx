@@ -1,12 +1,11 @@
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-import test from '../../images/other/test.png'
 import {useState} from 'react'; 
 import Button from "@mui/material/Button";
 import axios from 'axios';
 import Backdrop from '@mui/material/Backdrop';
 import Personalizing from '../Loading/Personalizing';
-
+import CropIcon from '@mui/icons-material/Crop';
 
 function CropperImg({itemID,uploadedImgId,img,updatePersonalizeImgs,aspectRatio}) {
     const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -44,41 +43,48 @@ async function saveCropdata(){
       {!loading?
         <div className="">
           <p className="text-small text-dark">Drag your finger across your photo to crop </p>
-          <ReactCrop
-            crop={crop}
-             aspect={aspectRatio}
-              onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
-              className="w-75"
-              >
-            <div className="text-center">
-            {/* for desktop */}
-              <div className="d-none d-md-block d-lg-block">
-             <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid w-50" style={{border:'5px solid #1d1b1b'}}/>
+            {/*For Deskop view  */}
+          <div className="d-none d-lg-block d-md-block">
+            <ReactCrop
+              crop={crop}
+               aspect={aspectRatio}
+                onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
+                className="w-25"
+                >
+              <div className="text-center">
+                <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
               </div>
-            {/* for mobile */}
-              <div className="d-md-none d-lg-none">
-             <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid  w-100" style={{border:'5px solid #1d1b1b'}}/>
-              </div>
+            </ReactCrop>
             </div>
-          </ReactCrop>
+            
+            {/*For Mobile view  */}
+            <div className="d-md-none d-lg-none">
+            <ReactCrop
+              crop={crop}
+               aspect={aspectRatio}
+                onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
+                className="w-75"
+                >
+              <div className="text-center">
+                 <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
+              </div>
+            </ReactCrop>
+            </div>
+
           <div className="text-end">
             {
               (crop.height|crop.width)?
-              <Button variant="outlined" color="error" className="rounded-15 fw-bold" style={{fontSize:'10px'}} onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}>Save</Button>
+              <Button variant="outlined" color="error" className="rounded-15 fs-12" onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}><CropIcon fontSize="small"/> Upload</Button>
                 :""
             }
           </div>
         </div>
-        :
-        <div className="text-center ">
-                <div className="spinner-border text-danger"></div>
-                <div className="text-small">Personalizing...</div>
-              </div>
+        :''
       }
       {
         loadingImg&&<div className="text-center ">
-                <div className="spinner-border text-danger"></div>
-                <div className="text-small">loading image...</div>
+                <div className="spinner-border text-pink"></div>
+                <div className="fs-12">loading image...</div>
               </div>
       }
       </div>

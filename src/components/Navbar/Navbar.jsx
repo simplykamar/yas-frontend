@@ -70,13 +70,12 @@ function fetchProductsData(url){
   function fetchSearchData(q){
     setSearchQuery(q);
     if(q.length > 2 ){
-      document.title = q;
       fetchCategoriesData(BASE_URL+`/get-navbarsearch-subcategory/?query=${q}`);
       fetchProductsData(BASE_URL+`/get-navbarsearch-product/?query=${q}`);
       setIsSearchResult(true)
+      document.title = q;
       
     }else{
-      document.title = "yas: Online Gifts Shopping";
       setSearchProducts([]);
       setCategories([]);
       setIsSearchResult(false);
@@ -265,7 +264,7 @@ function fetchProductsData(url){
                             <div className="col-lg-2 col-md-2 col-sm-4 col-3" key={item.id}>
                                 <div className="quick-search text-center" onClick={(e)=>{fetchSearchData(item.query)}}>
                                 <div className="quick-search-inner">
-                                  <img src={item.image} className="img-fluid w-50 rounded-5 quick-search-img"/>
+                                  <img src={item.image} className="img-fluid rounded-5 quick-search-img" width="50" height="50"/>
                                 </div>
                                 <p className="text-small text-capitalize cursor-pointer">{item.query}</p>
                                 </div>

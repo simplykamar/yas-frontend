@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import thanks1 from '../../images/other/thanks1.gif'
 import thanks2 from '../../images/other/thanks2.png'
 import {useState} from 'react';
@@ -10,7 +11,6 @@ const Thank = () => {
 	
 	useEffect(()=>{
     	window.scrollTo(0,0);
-      	document.title="Order Successfully placed";
       	setTimeout(function() {
       		setSuccessImage(false)
       	}, 2900);
@@ -21,6 +21,9 @@ const Thank = () => {
 
 	return (
 		<div>
+		<Helmet>
+          <title>Order Successfully placed</title>
+      </Helmet>
 		{ isOrdered &&
 		<div className="text-center py-4">
 		<h2 className="text-heading">Your order has been received</h2>

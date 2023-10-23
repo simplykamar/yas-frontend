@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import './ProductDetail.css';
 import ProductViewSkeleton from '../LoadingSkeleton/ProductViewSkeleton';
 import yas from '../../images/other/yas.png'
@@ -318,7 +319,6 @@ async function applyTextPersonalization(itemID){
 }
 
     useEffect(()=>{
-      document.title=product_slug;
     	toast.remove();
       fetchData(BASE_URL+'/product/'+product_id);
     	window.scrollTo(0,0);
@@ -329,6 +329,18 @@ async function applyTextPersonalization(itemID){
  
 	return(
 		<div className="container-fluid pt-lg-3 pt-md-3">
+		<Helmet>
+          <meta charSet="utf-8"/>
+          <title>{product_slug}</title>
+          <meta
+           name="description"
+           content={product.detail}
+          />
+         <meta
+           name="keywords"
+           content="personalized gifts, customized gifts, unique personalised gifts, customized gifts online, customized gifts online india, buy personalised gifts, send personalised gifts to india, personalized photo gifts, personalised gifts, custom gifts online, Magic Mugs, Cushions, Caricature, LED Lamps, Photo Gifts, Keychains, bottle, Photo Frames."
+          />
+      </Helmet>
           <div><Toaster/></div>
           <Uploading uploading={uploading}/>
           <Personalizing personalizing={textPersonalizing}/>
@@ -527,13 +539,13 @@ async function applyTextPersonalization(itemID){
 						<div className="mt-4">
 							<p className="fw-600 mb-1">Description</p>
 							{/* <p className=" text-secondary text-justify">{product.detail}</p> */}
-							<div dangerouslySetInnerHTML={{__html:product.detail}} style={{fontSize:'12px'}}></div>
+							<div dangerouslySetInnerHTML={{__html:product.detail}} className="fs-14 text-justify"></div>
 						</div>
 						{
 							product.product_info &&
 						<div className="mt-3">
 							<p className="fw-600 mb-1">Product Info</p>
-							<div dangerouslySetInnerHTML={{__html:product.product_info}} style={{fontSize:'12px'}}></div>
+							<div dangerouslySetInnerHTML={{__html:product.product_info}} className="fs-14"></div>
 						</div>
 						}
 				</div>
@@ -553,12 +565,12 @@ async function applyTextPersonalization(itemID){
                                 </div>
 
                                 {/* <!-- Modal body --> */}
-                                <div className="modal-body pt-0">
+                                <div className="modal-body pt-1">
 	                                <div className="sticky-top bg-white py-1">
 		                                <div className="d-flex justify-content-between">
 		                                	<p className="fw-600 text-heading">Start Personalizing</p>
-		                                	<Link to= "" className="text-decoration-none fs-14 fw-bold text-danger" onClick={()=>{setProductPersonalizeText([]);setProductPersonalizeImgs([])}}>
-		                                	<RestoreOutlinedIcon className="mb-1 fs-14"/> Reset All
+		                                	<Link to= "" className="text-decoration-none fw-bold text-danger" onClick={()=>{setProductPersonalizeText([]);setProductPersonalizeImgs([])}}>
+		                                	<RestoreOutlinedIcon className="mb-1" fontSize="small"/> Reset All
 		                                	</Link>	
 		                                </div>
 	                               	</div>
@@ -603,18 +615,15 @@ async function applyTextPersonalization(itemID){
 	                                            				}
 	                                            			}
 	                                            			})
-	                                            			:<div className="text-center mt-2">
-																			                <div className="spinner-border text-danger"></div>
-																			                <div className="text-small">Uploading...</div>
-																			              </div>
+	                                            			:''
 	                                            		}
 			                                					</div>
 			                                					<div className="text-center">
 				                                          <Button variant="outlined" color="error" className="py-1 my-3 rounded-15 " component="label">
 						                                      	{
 				                                            	productPersonalizeImgs.find(obj=>obj.id===item.id)
-				                                            	?<span className=" fw-bold" style={{fontSize:'10px'}}><InsertPhotoOutlinedIcon fontSize="small"/> Change image {i+1}</span>
-				                                            	:<span className=" fw-bold" style={{fontSize:'10px'}}><InsertPhotoOutlinedIcon fontSize="small"/> Upload image {i+1}</span>
+				                                            	?<span className="fs-12"><InsertPhotoOutlinedIcon fontSize="small"/> Change image {i+1}</span>
+				                                            	:<span className="fs-12"><InsertPhotoOutlinedIcon fontSize="small"/> Upload image {i+1}</span>
 	                                            		}
 						                                          <input hidden accept="image/*" type="file" 
 						                                          onChange={(e)=>{e.target.files[0]&&uploadImage({id:item.id,image:e.target.files[0],sample_image_url:item.image,isPersonalized:false})}}/>
@@ -623,8 +632,8 @@ async function applyTextPersonalization(itemID){
 
 			                                					<div className="d-flex justify-content-center">
 				                                					<ul className="text-secondary">
-									                                	<li><span className="text-secondary" style={{fontSize:'10px'}}>Please upload good quality image.</span></li>
-									                                	<li><span className="text-secondary" style={{fontSize:'10px'}}>Please ensure you have rights to use the image.</span></li>
+									                                	<li><span className="text-secondary fs-12">Please upload good quality image.</span></li>
+									                                	<li><span className="text-secondary fs-12">Please ensure you have rights to use the image.</span></li>
 									                                </ul>
 			                                					</div>
 		                                				</div>
@@ -657,10 +666,7 @@ async function applyTextPersonalization(itemID){
 	                                        												</small> 
 	                                        											</div>
 	                                        											:
-	                                        											<div key={obj.id} className="text-center mt-2">
-																									                <div className="spinner-border text-danger"></div>
-																									                <div className="text-small">Personalizing...</div>
-																									              </div>
+	                                        											''
 	                                            							)
 	                                            					}
 	                                            			}
@@ -669,7 +675,7 @@ async function applyTextPersonalization(itemID){
 											                        	   {/* For mobile view */}
 					                              				<div className="my-3 d-lg-none d-md-none">
 						                              				<div className=" ">
-							                              				<div className="text-small text-secondary my-3">
+							                              				<div className="fs-12 text-secondary my-3">
 							                              					<small>Text {i+1} (Upto {item.text_length} characters)</small>
 							                              				</div>
 													                      		     <TextField
@@ -683,7 +689,7 @@ async function applyTextPersonalization(itemID){
 															                      		    size="small"
 													                      		   />
 													                      		   <div className="text-end mt-2">
-													                      		   	<Button variant="outlined" color="error" className="rounded-15 fw-bold" style={{fontSize:'10px'}} onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
+													                      		   	<Button variant="outlined" color="error" className="rounded-15 fs-12" onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
 													                      		   </div>
 												                        	   </div>
 											                        	   </div>
@@ -705,7 +711,7 @@ async function applyTextPersonalization(itemID){
 																	                      		    size="small"
 															                      		   />
 															                      		   <div className="text-end mt-2">
-															                      		   	<Button variant="outlined" color="error" className="rounded-15 fw-bold" style={{fontSize:'10px'}} onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
+															                      		   	<Button variant="outlined" color="error" className="rounded-15 fs-12" onClick={()=>{applyTextPersonalization(item.id)}}>Save</Button>
 															                      		   </div>
 													                        	   </div>
 												                        	   </div>
@@ -719,7 +725,7 @@ async function applyTextPersonalization(itemID){
 	                                	{
 			                           	 	inputError
 			                           	 	&&
-	            		                   	<div className="text-pink mb-3 fw-bold" style={{fontSize:'10px'}}>This product needs to be personalized before adding to the cart.</div>
+	            		                   	<div className="text-pink mb-3 fw-bold fs-12">This product needs to be personalized before adding to the cart.</div>
 			                           	 }
 			                           	 {
 			                           	 	cartData.find((item)=>item.id==product_id)
@@ -731,7 +737,7 @@ async function applyTextPersonalization(itemID){
 			                           	 	</div>
 			                           	 :
 			                           	 	<div className="text-center">
-	                                		<button className="btn btn-pink fs-14 text-uppercase py-1 px-5 py-md-2 px-md-5 " onClick={validate}>
+	                                		<button className="btn btn-pink fs-14 text-uppercase py-2 px-5 py-md-2 px-md-5 " onClick={validate}>
 			                           	 			submit
 			                           	 		</button>
 			                           	 	</div>

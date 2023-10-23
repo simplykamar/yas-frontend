@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import './CategoryProducts.css';
 import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
 import loading1 from '../../images/loading/loading1.gif'
@@ -36,7 +37,6 @@ const CategoryProducts = () => {
             })
     }
     useEffect(()=>{
-      document.title=category_slug;
       window.scrollTo(0,0);
         fetchData(BASE_URL+`/get-category-products/?query=${category_id}`);
       },[category_id,]);
@@ -48,7 +48,19 @@ const CategoryProducts = () => {
           }
               }
 	return(
-        <div className="container">
+      <div className="container">
+        <Helmet>
+          <meta charSet="utf-8"/>
+          <title>{category_slug}</title>
+          <meta
+           name="description"
+           content="Personalized Gifts India - Buy/Send Unique Personalised Gifts Online from yasgifts Customized Gift Shop. Order Magic Mugs, Cushions, Caricature, LED Lamps, Photo Gifts, Keychains, bottle, Photo Frames with Free Shipping. Order Now!"
+          />
+          <meta
+           name="keywords"
+           content="personalized gifts, customized gifts, unique personalised gifts, customized gifts online, customized gifts online india, buy personalised gifts, send personalised gifts to india, personalized photo gifts, personalised gifts, custom gifts online, Magic Mugs, Cushions, Caricature, LED Lamps, Photo Gifts, Keychains, bottle, Photo Frames."
+          />
+      </Helmet>
         <div className="my-4">
       {
         !loading?

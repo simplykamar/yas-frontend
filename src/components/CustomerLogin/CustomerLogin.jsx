@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import './CustomerLogin.css';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
@@ -80,11 +81,19 @@ const CustomerLogin = () => {
   }
   useEffect(()=>{
       window.scrollTo(0,0);
-      document.title="Login in into yas | Log in or Sign up";
   },[])
   const buttonEnable = (loginFormData.email!='') && (loginFormData.password!='')
 	return(
         <div className="container-fluid">
+        <Helmet>
+        <title>Login in into yasgifts | Log in or Sign up</title>
+        <meta name="description" content="Log on to yasgifts to start gifting, gift, Personalized gifts to your Shopping Cart. Connect with your friends, family and people you know."
+        />
+        <meta
+          name="keywords" 
+          content="online gifts, online gift delivery, buy gifts online, online gift shop, send gifts, gifts to india, indian gift portal, indian gifts, send gifts to india, send gifts online, same day delivery, gift items online shopping, unique gifts online india, online gift shopping sites, best online gift sites, online shopping gift items, gift items online india, cheap gifts online, online gifts delivery in one day, online gift shopping, gift store, personalizable gift, personalize gift, personalized gift, yas gift yasgift, yasgifts"
+          />
+        </Helmet>
             <div className="login-container py-4">
             <div className="d-flex justify-content-center">
             <div className="card custom-shadow" >

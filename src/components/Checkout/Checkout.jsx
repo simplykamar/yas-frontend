@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import './Checkout.css';
 import {Link} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
@@ -50,11 +51,13 @@ function validateCart(){
 }
 
     useEffect(()=>{
-      document.title="Shopping cart";
       window.scrollTo(0,0);
     },[]);
     return (
       <div className="container">
+      <Helmet>
+          <title>Shopping Cart</title>
+      </Helmet>
        <div className="my-4">
        { cartData.length?
       <>
@@ -82,7 +85,7 @@ function validateCart(){
                       {
                         item.is_personalize
                         &&
-                        <div className="my-2" style={{fontSize:'10px'}}><BrushOutlinedIcon fontSize="small"/> Personalized</div>
+                        <div className="my-2 fs-12"><BrushOutlinedIcon fontSize="small"/> Personalized</div>
                         }
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12 col-12">
