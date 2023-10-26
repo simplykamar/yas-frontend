@@ -55,6 +55,15 @@ async function saveCropdata(){
                 <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
               </div>
             </ReactCrop>
+              <div className="">
+                <div className=" w-75 text-end">
+                  {
+                    (crop.height|crop.width)?
+                    <Button variant="outlined" color="error" className="rounded-15 fs-12" onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}><CropIcon fontSize="small"/> Upload</Button>
+                      :""
+                  }
+                </div>
+              </div>
             </div>
             
             {/*For Mobile view  */}
@@ -69,15 +78,15 @@ async function saveCropdata(){
                  <img src={img} onLoad={()=>setLoadingImg(false)}  className="img-fluid" style={{border:'5px solid #1d1b1b'}}/>
               </div>
             </ReactCrop>
+              <div className="text-end">
+              {
+                (crop.height|crop.width)?
+                <Button variant="outlined" color="error" className="rounded-15 fs-12" onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}><CropIcon fontSize="small"/> Upload</Button>
+                  :""
+              }
+            </div>
             </div>
 
-          <div className="text-end">
-            {
-              (crop.height|crop.width)?
-              <Button variant="outlined" color="error" className="rounded-15 fs-12" onClick={()=>{saveCropdata(itemID,uploadedImgId,crop)}}><CropIcon fontSize="small"/> Upload</Button>
-                :""
-            }
-          </div>
         </div>
         :''
       }

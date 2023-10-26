@@ -244,13 +244,13 @@ function fetchProductsData(url){
                               searchProducts.map((item)=>{return(
                                 <Link to={`/product/${item.title}/${item.id}`} key={item.id} className="text-dark text-capitalize text-decoration-none">
                                 <div className="d-flex list-group-item mb-2" data-bs-dismiss="modal">
-                                <img src={item.product_imgs[0].image} className="img-fluid" width='50'/>
+                                <img src={item.product_imgs.length&&item.product_imgs[0].image} className="img-fluid" width='50'/>
                                   <p className="line-height-8 mt-2 ms-2">{item.title.slice(0,60)}...</p>
                                 </div>
                                 </Link>
                               )})
                             :<div className="text-center mt-2">
-                               <div className="spinner-border text-danger"></div>
+                               <div className="spinner-border text-pink"></div>
                                <div className="text-small">loading...</div>
                              </div>
                         }

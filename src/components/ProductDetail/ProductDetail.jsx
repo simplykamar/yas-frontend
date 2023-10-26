@@ -370,14 +370,14 @@ async function applyTextPersonalization(itemID){
 					}
 						</div>
 						<div className="col-lg-9 col-md-9 col-sm-12 col-12">
-							<InnerImageZoom src={productImgs[selectedImage].image} zoomScale={1.5} zoomType="hover" zoomSrc={productImgs[selectedImage].image} className="set-min-width" />
+							<InnerImageZoom src={productImgs.length?productImgs[selectedImage].image:yas} zoomScale={1.5} zoomType="hover" zoomSrc={productImgs.length?productImgs[selectedImage].image:yas} className="set-min-width" />
 								{/* <img src={product.product_imgs[selectedImage].image} className="img-fluid" style={{minWidth:'100%'}}/>							 */}
 						</div>
 					</div>
 					</div>
 					{/* for mobile view */}
 					<div className="mt-1 d-lg-none d-md-none">
-						<ProductImageSlider productImgs={productImgs}/>
+						<ProductImageSlider productImgs={productImgs.length?productImgs:[yas,]}/>
 					</div>
 				</div>
 				<div className="col-lg-7 col-md-7 col-sm-12 col-12 pt-3 pt-lg-0 pt-md-0 ">
@@ -540,6 +540,7 @@ async function applyTextPersonalization(itemID){
 							<p className="fw-600 mb-1">Description</p>
 							{/* <p className=" text-secondary text-justify">{product.detail}</p> */}
 							<div dangerouslySetInnerHTML={{__html:product.detail}} className="fs-14 text-justify"></div>
+							<small className="text-uppercase fs-12"><span style={{color:'#4f4f4f',fontWeight:'bold'}}>sku:</span> <span className="px-2 py-1 rounded-1" style={{color:'#4f4f4f',backgroundColor:'#f6f6f6',letterSpacing:'1px'}}>{product.sku}</span></small>
 						</div>
 						{
 							product.product_info &&

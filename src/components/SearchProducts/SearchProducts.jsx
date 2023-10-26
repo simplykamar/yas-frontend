@@ -98,7 +98,7 @@ const SearchProducts = () => {
                            isPersonalize={product.is_personalize} 
                            rating={product.rating} 
                            id={product.id} 
-                           image={product.product_imgs[0].image} 
+                           image={product.product_imgs.length&&product.product_imgs[0].image} 
                            title={product.title} 
                            oldPrice={product.old_price} 
                            label={product.label} 

@@ -42,7 +42,7 @@ const Footer = () => {
                   <img src={yaslogo} className="img-fluid" style={{width:'40px',height:'24px'}}/>
                 </Link>
               </div>
-              <div className="text-center text-small">yas Gifts India Copyright © 2023. All rights reserved</div>
+              <div className="text-center text-small">YasGifts India Copyright © 2023. All rights reserved</div>
         </footer>
 
 		)

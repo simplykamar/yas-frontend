@@ -102,7 +102,7 @@ const RecentlyViewed = ({productId}) => {
 		                           isPersonalize={item.product.is_personalize} 
 		                           rating={item.product.rating} 
 		                           id={item.product.id} 
-		                           image={item.product.product_imgs[0].image} 
+		                           image={item.product.product_imgs.length&&item.product.product_imgs[0].image} 
 		                           title={item.product.title} 
 		                           oldPrice={item.product.old_price} 
 		                           label={item.product.label} 
