@@ -2,6 +2,7 @@
 .celebrate-img{
 	transition:all ease 1s;
 	cursor:pointer;
+	height:180px
 }
 .celebrate-img:hover{
 	transform:scale(1.1);

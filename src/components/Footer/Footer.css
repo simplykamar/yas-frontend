@@ -5,14 +5,27 @@ footer{
 	color: #b7b2b2!important
 }*/
 .facebook-icon{
-	color:#5058e6 !important;
+	color:#5f67f5 !important;
 }
 .instagram-icon{
-	color:rgb(225 42 121) !important;
+	color: #ed3785 !important;
 }
 .linkedin-icon{
-	color:#0072b1 !important;
+	color:#147db8 !important;
 }
 .twitter-icon{
+	color:#2cadde !important;
+}
+
+.facebook-icon:hover{
+	color:#5058e6 !important;
+}
+.instagram-icon:hover{
+	color:rgb(225 42 121) !important;
+}
+.linkedin-icon:hover{
+	color:#0072b1 !important;
+}
+.twitter-icon:hover{
 	color:#00acee !important;
 }
