@@ -12,7 +12,7 @@ const CustomerRegisterSuccess = () => {
       document.title="Account Successfully Created";
       setTimeout(function() {
       		setSuccessImage(false)
-      	}, 2900);
+      	}, 2500);
       window.scrollTo(0,0);
 		if(!isRegistered){
 			navigate("/page-not-found",{replace:true});
