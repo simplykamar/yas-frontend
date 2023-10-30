@@ -1,18 +1,18 @@
 footer{
 	font-family: verdana;
 }
-.social-icon{
+/*.social-icon{
 	color: #b7b2b2!important
-}
-.facebook-icon:hover{
+}*/
+.facebook-icon{
 	color:#5058e6 !important;
 }
-.instagram-icon:hover{
+.instagram-icon{
 	color:rgb(225 42 121) !important;
 }
-.linkedin-icon:hover{
+.linkedin-icon{
 	color:#0072b1 !important;
 }
-.twitter-icon:hover{
+.twitter-icon{
 	color:#00acee !important;
 }
