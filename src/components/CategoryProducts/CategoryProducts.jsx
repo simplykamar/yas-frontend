@@ -1,7 +1,6 @@
 import {Helmet} from 'react-helmet';
 import './CategoryProducts.css';
 import ProductsSkeleton from '../LoadingSkeleton/ProductsSkeleton';
-import loading1 from '../../images/loading/loading1.gif'
 import SingleProduct from '../SingleProduct/SingleProduct';
 import {useState,useEffect} from 'react';
 import {Link,useParams} from 'react-router-dom';
@@ -118,10 +117,6 @@ const CategoryProducts = () => {
           </div> 
           :
              <ProductsSkeleton count={8}/>
-             // <div className="text-center">
-             //    {/* <div className="spinner-border text-danger"></div> */}
-             // <img src={loading1}/>
-             //  </div>
            }
           </div> 
         </div>     

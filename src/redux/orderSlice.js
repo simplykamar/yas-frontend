@@ -10,7 +10,6 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     addToOrder(state,action) {
-      console.log("order slice",action.payload)
       if(action.payload.address)
         state.address = action.payload.address;      
       else if(action.payload.giftCard)

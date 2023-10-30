@@ -273,7 +273,7 @@ function getCartTotalPrice(){
                                       <div className="mt-3 d-flex justify-content-around">
                                           <Button variant="outlined" className="btn btn-mui-pink text-uppercase py-1"  component="label">
                                             Browse
-                                            <input hidden accept="image/*" type="file" name="paymentReciept" onChange={(e)=>{setPaymentReciept(e.target.files[0]))}}/>
+                                            <input hidden accept="image/*" type="file" name="paymentReciept" onChange={(e)=>{setPaymentReciept(e.target.files[0])}}/>
                                            </Button>
                                           {
                                             paymentReciept
