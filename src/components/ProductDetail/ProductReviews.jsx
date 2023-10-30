@@ -29,7 +29,7 @@ const ProductReviews = ({productReviews}) => {
 								<div className="col-lg-6 col-md-6 col-sm-12 col-12" key={review.id}>
 									<div className="row g-2">
 										<div className="col-lg-1 col-md-1 col-sm-1 col-1">
-											<div className="profile-image">{review.customer.user.name[0].toUpperCase()}</div>
+											<div className="product-review-profile-image">{review.customer.user.name[0].toUpperCase()}</div>
 										</div>
 										<div className="col-lg-11 col-md-11 col-sm-11 col-11 px-3 ">
 											<div className="d-flex justify-content-between">

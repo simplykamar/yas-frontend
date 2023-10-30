@@ -15,7 +15,8 @@ import './PremiumGift.css'
 import 'swiper/css/free-mode';
 
 const PremiumGift = () => {
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [loading,setLoading] = useState(false);
     const [premiumGift,setPremiumGift] = useState([]);
 
@@ -23,13 +24,13 @@ const PremiumGift = () => {
         setLoading(true);
         axios.get(url)
         .then(response=>{
-            console.log(response);
+            // console.log(response);
             setPremiumGift(response.data);
             setLoading(false);
         })
         .catch(error=>{
             alert('Server error..!');
-            console.log(error);
+            // console.log(error);
             setLoading(false);
         })
     }  

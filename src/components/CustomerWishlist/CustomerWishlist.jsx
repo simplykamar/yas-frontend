@@ -6,8 +6,8 @@ import {useSelector} from 'react-redux';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
 const CustomerWishlist = () => {
-	// const BASE_URL = 'https://simplykamar.tech/api';
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+	const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'http://127.0.0.1:8000/api';
 
 	const [wishlists, setWishlists] = useState([]);
   const [totalResult,setTotalResult] = useState(0);
@@ -17,7 +17,7 @@ const CustomerWishlist = () => {
 	async function fetchWishlist(url){
       await axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
               .then((response)=>{
-                console.log(response)
+                // console.log(response)
               	setWishlists(response.data);
                 setTotalResult(response.data.length)
               	setLoading(false);

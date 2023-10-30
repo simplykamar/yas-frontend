@@ -12,8 +12,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import toast, { Toaster } from 'react-hot-toast';
 
 const ForgotPassword = () => {
-  // const BASE_URL = 'https://simplykamar.tech/';
-  const BASE_URL = 'http://127.0.0.1:8000/';
+  const BASE_URL = 'https://simplykamar.tech/';
+  // const BASE_URL = 'http://127.0.0.1:8000/';
   const [resetPasswordFormData,setResetPasswordFormData] = useState({
           'new_password':'',
           're_new_password':''
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
           setInputError({'type':"non_field_errors",'msg':err.response.data.non_field_errors})
         }
         else{
-          console.log(err)
+          // console.log(err)
           notifyError("Invalid user id or user doesn't exist.")
         }
       })
@@ -138,7 +138,7 @@ const ForgotPassword = () => {
                         { inputError.type=='success' &&
                   <div className="">
                   <ul className="text-success text-start">
-                   <li><small className="" style={{fontSize:'10px'}}>{inputError.msg}</small></li>
+                   <li><small className="fs-12">{inputError.msg}</small></li>
                    </ul>
                   </div>
                 }
@@ -154,24 +154,24 @@ const ForgotPassword = () => {
                { inputError.type=='email' &&
                   <div className="mt-3">
                   <ul className="text-danger">
-                   <li><small className="" style={{fontSize:'10px'}}>{inputError.msg[0]}</small></li>
-                   <li><small className="" style={{fontSize:'10px'}}>{inputError.msg[1]}</small></li>
-                   <li><small className="" style={{fontSize:'10px'}}>{inputError.msg[2]}</small></li>
+                   <li><small className="fs-12">{inputError.msg[0]}</small></li>
+                   <li><small className="fs-12">{inputError.msg[1]}</small></li>
+                   <li><small className="fs-12">{inputError.msg[2]}</small></li>
                    </ul>
                   </div>
                 }
                  { inputError.type=='non_field_errors' &&
                   <div className="mt-3">
-                  <li className="text-danger " style={{fontSize:'10px'}}><small >{inputError.msg[0]}</small></li>
+                  <li className="text-danger fs-12"><small >{inputError.msg[0]}</small></li>
                   </div>
                 }
                 { inputError.type=='token' &&
                   <div className="mt-3">
-                  <li className="text-danger " style={{fontSize:'10px'}}><small >{inputError.msg[0]}</small></li>
+                  <li className="text-danger fs-12"><small >{inputError.msg[0]}</small></li>
                   </div>
                 }
                   <div className="mt-2 text-center text-secondary">
-                  <p className="" style={{fontSize:'10px'}}>or login to continue</p>
+                  <p className="fs-12">or login to continue</p>
                 </div>
                 <div className="mt-3 text-center">
                   <Link to="/customer/login" className="btn btn-dark bg-white text-dark w-50 rounded-15 fs-12 text-uppercase">Login</Link>

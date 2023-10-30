@@ -14,8 +14,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const CustomerRegister = () => {
-  const BASE_URL = 'http://127.0.0.1:8000/';
-  // const BASE_URL = 'https://simplykamar.tech/';
+  // const BASE_URL = 'http://127.0.0.1:8000/';
+  const BASE_URL = 'https://simplykamar.tech/';
   const [registerFormData,setregisterFormData] = useState({
           'name':'',
           'email':'',
@@ -181,7 +181,7 @@ const CustomerRegister = () => {
                 
                 { inputError.type=='password' &&
                   <div className="mt-3">
-                  <ul className="text-danger" style={{fontSize:'10px'}}>
+                  <ul className="text-danger fs-12" >
                      {inputError.msg[0]&&<li><small>{inputError.msg[0]}</small></li>}
                      {inputError.msg[1]&&<li><small>{inputError.msg[1]}</small></li>}
                      {inputError.msg[2]&&<li><small>{inputError.msg[2]}</small></li>}

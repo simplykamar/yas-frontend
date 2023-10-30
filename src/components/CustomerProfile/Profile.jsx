@@ -13,8 +13,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Profile = () => {
-    // const BASE_URL = 'https://simplykamar.tech/api';
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [mobile,setMobile] = useState(null);
     const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
     const notifyError = (text) => toast.error(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});

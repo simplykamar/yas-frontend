@@ -15,8 +15,8 @@ import {useSelector} from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Contact =()=>{
-    // const BASE_URL = 'https://simplykamar.tech/api';
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [user,setUser] = useState(useSelector((state)=>state.auth))
     const [isFetching,setIsFetching] = useState(false);
     const notifySuccess = (text) => toast.success(text,{style:{boxShadow:'none',border:'.5px solid #f5f7f6'}});
@@ -40,7 +40,7 @@ const Contact =()=>{
         formData.append('customer',user.user.id)
         await axios.post(BASE_URL+`/contact-us/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
         .then(response=>{
-            console.log(response)
+            // console.log(response)
             notifySuccess("Ticket Raised! Check your mail");
             setContactUSFormData({
                 'name':'',
@@ -52,7 +52,7 @@ const Contact =()=>{
           setIsFetching(false);
         })
         .catch(err=>{
-            console.log(err)
+            // console.log(err)
             if(err.response.data.msg){
                 notifyError(err.response.data.msg)
             }

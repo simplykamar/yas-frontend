@@ -17,8 +17,8 @@ import emptyCart from "../../images/other/emptycart.svg"
 import toast, { Toaster } from 'react-hot-toast';
 
 const CheckoutStep1 = () => {
-  // const BASE_URL = 'https://simplykamar.tech/api';
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'http://127.0.0.1:8000/api';
 	const [addresses, setAddresses] = useState([]);
 	const [loading, setLoading] = useState(true);
   const user = useSelector((state)=>state.auth);

@@ -20,8 +20,9 @@ import CheckIcon from '@mui/icons-material/Check';
 import CollectionsIcon from '@mui/icons-material/Collections';
 
 const ConfirmOrder = (props) => {
+  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'http://127.0.0.1:8000/api';
   const isNext = useLocation().state;
-  const baseUrl = 'http://127.0.0.1:8000/api/';
   const dispatch =useDispatch();
   const [paymentMode, setPaymentMode] = useState('');
   const cartData = useSelector((state)=>state.cart.products);
@@ -45,20 +46,20 @@ function getCartTotalPrice(){
       let bodyData = new FormData();
       bodyData.append("cartData", JSON.stringify(cartData));
       bodyData.append("giftCard", JSON.stringify(order.giftCard.exist));
-        axios.post(baseUrl+'cart-total-price/',bodyData,{headers:{"Content-Type": 'multipart/form-data',"Authorization" : `JWT ${user.access}`}})
+        axios.post(BASE_URL+'/cart-total-price/',bodyData,{headers:{"Content-Type": 'multipart/form-data',"Authorization" : `JWT ${user.access}`}})
           .then(response=>{
             setTotalAmounts(response.data.totalAmount)
-          console.log(response)
+          // console.log(response)
           setLoading(false);
         })
         .catch(error=>{
-          console.log(error);
+          // console.log(error);
           setLoading(false);
         })
       }
 
   function resetOrder(){
-    console.log(isFetching)
+    // console.log(isFetching)
       dispatch(resetCart());
       dispatch(clearOrder());
       setIsFetching(false);
@@ -67,7 +68,7 @@ function getCartTotalPrice(){
   }
 
  const startPayment = async () => {
-    console.log('in payment process')
+    // console.log('in payment process')
     closePaymentModal.current.click()
     setIsFetching(true);
     let bodyData = new FormData();
@@ -78,15 +79,15 @@ function getCartTotalPrice(){
     bodyData.append("paymentReciept", paymentReciept);
     bodyData.append("paymentUTRNumber", JSON.stringify(paymentUTRNumber));
 
-    await axios.post(`${baseUrl}pay/`,bodyData,{headers:{"Content-Type": 'multipart/form-data',"Authorization" : `JWT ${user.access}`}})
+    await axios.post(`${BASE_URL}/pay/`,bodyData,{headers:{"Content-Type": 'multipart/form-data',"Authorization" : `JWT ${user.access}`}})
     .then(response=>{
       resetOrder()
-      console.log(response)
+      // console.log(response)
     })
     .catch(error=>{
       setIsFetching(false);
       alert('server error!')
-      console.log(error);
+      // console.log(error);
     })
 }
  useEffect(() => {
@@ -272,7 +273,7 @@ function getCartTotalPrice(){
                                       <div className="mt-3 d-flex justify-content-around">
                                           <Button variant="outlined" className="btn btn-mui-pink text-uppercase py-1"  component="label">
                                             Browse
-                                            <input hidden accept="image/*" type="file" name="paymentReciept" onChange={(e)=>{setPaymentReciept(e.target.files[0]);console.log(e.target.files[0])}}/>
+                                            <input hidden accept="image/*" type="file" name="paymentReciept" onChange={(e)=>{setPaymentReciept(e.target.files[0]))}}/>
                                            </Button>
                                           {
                                             paymentReciept

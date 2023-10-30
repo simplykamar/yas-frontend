@@ -5,7 +5,8 @@ import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
 
 const CelebrateGift = () => {
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+	const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [loading,setLoading] = useState(false);
     const [celebrateGift,setCelebrateGift] = useState([]);
 
@@ -13,13 +14,13 @@ const CelebrateGift = () => {
         setLoading(true);
         axios.get(url)
         .then(response=>{
-            console.log(response);
+            // console.log(response);
             setCelebrateGift(response.data);
             setLoading(false);
         })
         .catch(error=>{
             alert('Server error..!');
-            console.log(error);
+            // console.log(error);
             setLoading(false);
         })
     }  

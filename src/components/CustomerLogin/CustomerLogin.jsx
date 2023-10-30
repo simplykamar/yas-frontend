@@ -16,7 +16,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const CustomerLogin = () => {
-  const BASE_URL = 'http://127.0.0.1:8000/';
+  const BASE_URL = 'https://simplykamar.tech/';
+  // const BASE_URL = 'http://127.0.0.1:8000/';
   const [isFetching,setIsFetching] = useState(false);
   const [inputError,setInputError] = useState({'msg':"",'type':""})
   const [showPassword, setShowPassword] = useState(false)
@@ -53,7 +54,7 @@ const CustomerLogin = () => {
                    userID = res.data.id;
                      axios.get(BASE_URL+`api/customer/${userID}`,{headers:{"Authorization" : `JWT ${accessToken}`}})
                         .then(res=>{
-                          console.log(res)
+                          // console.log(res)
                             dispatch(loginSuccess({...jwt_data,"user":res.data}));
                             setIsFetching(false);
                             if(!targetUrl){

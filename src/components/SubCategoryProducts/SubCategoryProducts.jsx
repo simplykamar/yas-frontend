@@ -15,8 +15,8 @@ import TuneIcon from '@mui/icons-material/Tune';
 const SubCategoryProducts = () => {
   const {sub_category_id} = useParams();
   const {sub_category_slug} = useParams();
-  // const BASE_URL = 'https://simplykamar.tech/api';
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'http://127.0.0.1:8000/api';
   const [products,setProducts] = useState([])
   const [loading, setLoading] = useState(true);
   const [filterBy, setFilterBy] = useState("");
@@ -25,13 +25,13 @@ const SubCategoryProducts = () => {
             axios.get(url)
               .then((response)=>{
                 setProducts(response.data);
-                console.log(response)
+                // console.log(response)
                 setLoading(false);
               })
               .catch(error=>{
                 setLoading(false);
                 alert('server error..!')
-                console.log(error)
+                // console.log(error)
             })
     }
     useEffect(()=>{

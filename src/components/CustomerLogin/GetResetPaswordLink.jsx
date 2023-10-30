@@ -6,8 +6,8 @@ import './CustomerLogin.css';
 import toast, { Toaster } from 'react-hot-toast';
 
 const GetResetPaswordLink = () => {
-  const BASE_URL = 'http://127.0.0.1:8000/';
-  // const BASE_URL = 'https://simplykamar.tech/';
+  // const BASE_URL = 'http://127.0.0.1:8000/';
+  const BASE_URL = 'https://simplykamar.tech/';
   const [email,setEmail] = useState('');
   const [isFetching,setIsFetching] = useState(false);
   const [inputError,setInputError] = useState({type:'',msg:''})
@@ -21,7 +21,7 @@ const GetResetPaswordLink = () => {
 		formData.append('email',email)
 		await axios.post(BASE_URL+`auth/users/reset_password/`,formData)
 			.then(response=>{
-				console.log(response)
+				// console.log(response)
 				if(response.status===204){
 					notifySuccess("Password reset link sent!")
 					setInputError()

@@ -17,9 +17,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 const CheckoutStep2 = () => {
+  	const BASE_URL = 'https://simplykamar.tech/api';
 	const isNext = useLocation().state;
 	const [giftCard, setGiftCard] = useState(1);
-  	const BASE_URL = 'https://simplykamar.tech/api';
 	const [loading, setLoading] = useState(true);
   	const user = useSelector((state)=>state.auth);
   	const order = useSelector((state)=>state.order);

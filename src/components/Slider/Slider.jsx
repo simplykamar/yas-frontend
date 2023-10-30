@@ -14,7 +14,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/free-mode';
 
 const Slider = () => {
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [homeBanner,setHomeBanner] = useState([]);
     const [loading,setLoading] = useState(false);
 
@@ -22,13 +23,13 @@ const Slider = () => {
         setLoading(true);
         axios.get(url)
         .then(response=>{
-            console.log(response);
+            // console.log(response);
             setHomeBanner(response.data)
             setLoading(false);
         })
         .catch(error=>{
             alert('Server error..!');
-            console.log(error);
+            // console.log(error);
             setLoading(false);
         })
     }

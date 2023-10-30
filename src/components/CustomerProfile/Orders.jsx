@@ -22,8 +22,8 @@ import rating4 from '../../images/other/rating/4.png'
 import rating5 from '../../images/other/rating/5.png'
 
   const Orders = () => {
-    // const BASE_URL = 'https://simplykamar.tech/api';
-    const BASE_URL = 'http://127.0.0.1:8000/api'; 
+    const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api'; 
     const [orders,setorders] = useState([]);
     const [loading,setLoading] = useState(true);
     const user= useSelector((state)=>state.auth);
@@ -43,13 +43,13 @@ import rating5 from '../../images/other/rating/5.png'
   const fetchData = (url) => {
           axios.get(url,{headers:{"Authorization" : `JWT ${user.access}`}})
             .then(response=>{
-              console.log(response);
+              // console.log(response);
               setorders(response.data);
               setLoading(false);
             })
             .catch(error=>{
               alert('server error..!')
-              console.log(error);
+              // console.log(error);
             });
     }
    function addProductRating(productId){
@@ -67,13 +67,13 @@ import rating5 from '../../images/other/rating/5.png'
     formData.append('customer',JSON.stringify(user.user.id))
     await axios.post(BASE_URL+`/product-review/`,formData,{headers:{"Authorization":`JWT ${user.access}`}})
     .then(response=>{
-      console.log(response)
+      // console.log(response)
       notifySuccess('Rating submit')
       fetchData(BASE_URL+`/order-detail/?customer=${user.user.id}`)
     })
     .catch(error=>{
       notifyError('Error! try again..')
-      console.log(error);
+      // console.log(error);
     })
     setReviewText('')
     setReviewRating(0) 
@@ -162,7 +162,7 @@ import rating5 from '../../images/other/rating/5.png'
                                       )})
                                   }  
                                    <div className="d-none d-lg-block d-md-block">
-                                    { order.order.payment_status===2?
+                                    { order.order.payment_status===4?
                                       order.order.rating ?
                                                <div className="d-flex justify-content-end">
                                                  <Rating name="size-large" size="large" value={order.order.rating} readOnly />
@@ -189,7 +189,7 @@ import rating5 from '../../images/other/rating/5.png'
                                   <div className="d-lg-none d-md-none">
                                     <div className="d-flex justify-content-between">
                                         <p className="fw-600 fs-14">Total Paid: <span className="text-pink">₹ {order.order.order_total}</span></p>
-                                         { order.order.payment_status===2?
+                                         { order.order.payment_status===4?
                                             order.order.rating ?
                                                 <div className="">
                                                   <Rating name="size-medium" value={order.order.rating} readOnly />

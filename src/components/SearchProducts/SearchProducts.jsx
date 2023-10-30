@@ -13,8 +13,8 @@ import TuneIcon from '@mui/icons-material/Tune';
 
 const SearchProducts = () => {
   const {query} = useParams();
-  // const BASE_URL = 'https://simplykamar.tech/api';
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
   
   const [products,setProducts] = useState([])
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ const SearchProducts = () => {
               })
               .catch((error)=>{
                 alert('server error..!')
-                console.log(error);
+                // console.log(error);
               });
     }
     useEffect(()=>{

@@ -14,7 +14,8 @@ import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
 
 const Checkout = (props) => {
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
+  // const BASE_URL = 'http://127.0.0.1:8000/api';
   const cartData = useSelector((state)=>state.cart.products);
   const [itemsInStock,setItemsInStock] = useState(true);
   const dispatch = useDispatch();
@@ -40,12 +41,12 @@ function validateCart(){
     if(response.data.itemsInStock){
        navigate("/checkout-step-1");
     }
-    console.log(response)
+    // console.log(response)
       window.scrollTo(0,0);
     
   })
   .catch(error=>{
-    console.log(error)
+    // console.log(error)
     alert('Server error..!')
   })
 }

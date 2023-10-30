@@ -6,9 +6,8 @@ import {useParams} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 const CustomerAccountActivation = () => {
-  // const BASE_URL = 'https://simplykamar.tech/';
-  const BASE_URL = 'http://127.0.0.1:8000/';
-
+  const BASE_URL = 'https://simplykamar.tech/';
+  // const BASE_URL = 'http://127.0.0.1:8000/';
   const {uid, token} = useParams()
   const [isFetching,setIsFetching] = useState(false);
   const [isActivate,setIsActivate] = useState(false);
@@ -56,14 +55,14 @@ useEffect(()=>{
                   {
                     isActivatationValid
                       ?
-                        <button type="submit" className="btn btn-pink mt-3 fs-14 py-2" onClick={activate} >VERIFY</button>
+                        <button type="submit" className="btn btn-pink mt-3 fs-14 py-2 px-3" onClick={activate} >VERIFY</button>
                       :
                       isActivate
                       &&
                         <div className='text-center'>
-                        <button type="submit" className="btn btn-danger rounded-15 mt-3 fs-14 py-2 fw-bold" disabled={true} >VERIFY</button>
-                          <p className="text-success mt-3 px-4 m-0" style={{fontSize:'10px'}}>Account Activation Successful.</p>
-                          <small className="text-success px-4" style={{fontSize:'10px'}}>You can now login to your Account.</small>
+                        <button type="submit" className="btn btn-danger rounded-15 mt-3 fs-14 py-2 px-3 fw-bold" disabled={true} >VERIFY</button>
+                          <p className="text-success mt-3 px-4 m-0 fs-12" >Account Activation Successful.</p>
+                          <small className="text-success px-4 fs-12" >You can now login to your Account.</small>
                          <div className="mt-3 text-center">
                             <Link to="/customer/login" className="btn btn-dark bg-white text-dark rounded-15 fs-12 text-uppercase">Login</Link>
                           </div>

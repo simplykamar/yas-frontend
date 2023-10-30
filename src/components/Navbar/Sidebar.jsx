@@ -20,8 +20,9 @@ import mail from '../../images/logos/mail.jpg';
 import phone from '../../images/logos/phone.png';
 
  const Sidebar = () => {
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
     const [open, setOpen] = useState(false);
-    const BASE_URL = 'http://127.0.0.1:8000/api';
     const [loading,setLoading] = useState(false);
     const [celebrateGift,setCelebrateGift] = useState([]);
 
@@ -29,13 +30,13 @@ import phone from '../../images/logos/phone.png';
         setLoading(true);
         axios.get(url)
         .then(response=>{
-            console.log(response);
+            // console.log(response);
             setCelebrateGift(response.data);
             setLoading(false);
         })
         .catch(error=>{
             alert('Server error..!');
-            console.log(error);
+            // console.log(error);
             setLoading(false);
         })
     }  

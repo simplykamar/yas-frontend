@@ -8,14 +8,15 @@ import Personalizing from '../Loading/Personalizing';
 import CropIcon from '@mui/icons-material/Crop';
 
 function CropperImg({itemID,uploadedImgId,img,updatePersonalizeImgs,aspectRatio}) {
-    const BASE_URL = 'http://127.0.0.1:8000/api';
+    // const BASE_URL = 'http://127.0.0.1:8000/api';
+    const BASE_URL = 'https://simplykamar.tech/api';
     const [crop, setCrop] = useState({height:0,width:0});
     const [loading, setLoading] = useState();
     const [loadingImg, setLoadingImg] = useState(true);
 
 async function saveCropdata(){
     setLoading(true);
-    console.log(crop);
+    // console.log(crop);
     const formData = new FormData();
     formData.append('itemID',JSON.stringify(itemID));
     formData.append('uploadedImgId',JSON.stringify(uploadedImgId));
@@ -23,7 +24,7 @@ async function saveCropdata(){
     await axios.post(BASE_URL+'/apply-image-personalization/',formData)
     .then(response=>{
       if(response.status===200){
-        console.log(response);
+        // console.log(response);
         const personalizedImg = response.data.personalizeImg;
         setLoading(false);
         updatePersonalizeImgs(itemID,personalizedImg);
@@ -34,7 +35,7 @@ async function saveCropdata(){
     })
     .catch(error=>{
       setLoading(false);
-      console.log(error);
+      // console.log(error);
     })
    }
   return (
@@ -48,7 +49,7 @@ async function saveCropdata(){
             <ReactCrop
               crop={crop}
                aspect={aspectRatio}
-                onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
+                onChange={(px,percent) => {setCrop(percent)}}
                 className="w-25"
                 >
               <div className="text-center">
@@ -71,7 +72,7 @@ async function saveCropdata(){
             <ReactCrop
               crop={crop}
                aspect={aspectRatio}
-                onChange={(px,percent) => {console.log(crop);setCrop(percent)}}
+                onChange={(px,percent) => {setCrop(percent)}}
                 className="w-75"
                 >
               <div className="text-center">

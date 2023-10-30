@@ -17,7 +17,8 @@ import 'swiper/css/free-mode';
 
 
 const RecentlyViewed = ({productId}) => {
-  	const BASE_URL = 'http://127.0.0.1:8000/api';
+  	const BASE_URL = 'https://simplykamar.tech/api';
+  	// const BASE_URL = 'http://127.0.0.1:8000/api';
   	const [products,setProducts] = useState([])
   	const [loading,setLoading] = useState(true)
   	const user = useSelector((state)=>state.auth);
@@ -25,13 +26,13 @@ const RecentlyViewed = ({productId}) => {
 	function getProductViewed(){
 		axios.get(BASE_URL+`/get-recently-view-product?customer=${user.user.id}`,{headers:{"Authorization" : `JWT ${user.access}`}})
 		.then(response=>{
-			console.log(response)
+			// console.log(response)
 			setProducts(response.data)
 			setLoading(false)
 			setProductViewed();
 		})
 		.catch(error=>{
-			console.log(error)
+			// console.log(error)
 			setLoading(false)
 		})
 	}
@@ -41,11 +42,11 @@ const RecentlyViewed = ({productId}) => {
 		formData.append('product',productId);
 		axios.post(BASE_URL+'/get-recently-view-product/',formData,{headers:{"Authorization" : `JWT ${user.access}`}})
 		.then(response=>{
-			console.log(response)
+			// console.log(response)
 			setLoading(false)
 		})
 		.catch(error=>{
-			console.log(error)
+			// console.log(error)
 			setLoading(false)
 		})
 	}

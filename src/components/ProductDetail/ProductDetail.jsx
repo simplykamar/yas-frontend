@@ -40,7 +40,8 @@ import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspace
 import RestoreOutlinedIcon from '@mui/icons-material/RestoreOutlined';
 
 const ProductDetail = () => {
-  const BASE_URL = 'http://127.0.0.1:8000/api';
+  // const BASE_URL = 'http://127.0.0.1:8000/api';
+  const BASE_URL = 'https://simplykamar.tech/api';
   const {product_id} = useParams();
   const {product_slug} = useParams();
   const [product,setProduct] = useState([])
@@ -72,14 +73,14 @@ const ProductDetail = () => {
   const fetchData = async (baseurl) => {
       await axios.get(baseurl)
               .then((response)=>{
-              	console.log(response)
+              	// console.log(response)
               	setProduct(response.data);
               	setProductImgs(response.data.product_imgs)
                 setLoading(false);
             })
              .catch(error=>{
 	           	notifyError('Server Error!');
-	           	console.log(error)
+	           	// console.log(error)
 	         })
     }
     function removeFromWishlist(id){
@@ -91,7 +92,7 @@ const ProductDetail = () => {
            })
           .catch(error=>{
            	notifyError('Server Error!');
-           	console.log(error)
+           	// console.log(error)
          })
         }
           else{
@@ -106,12 +107,12 @@ const ProductDetail = () => {
           formData.append('customer',user.user.id);
            axios.post(BASE_URL+`/customer-wishlist/`,formData,{headers:{"Authorization" : `JWT ${user.access}`}})
            .then(response=>{
-             console.log(response);
+             // console.log(response);
             checkUserWishlist();
            })
            .catch(error=>{
            	notifyError('Server Error!');
-           	console.log(error)
+           	// console.log(error)
          })
            }
           else{
@@ -126,7 +127,7 @@ const ProductDetail = () => {
               })
               .catch(error=>{
 	           	notifyError('Server Error!');
-	           	console.log(error)
+	           	// console.log(error)
 	         })
         }
           else{
@@ -139,7 +140,7 @@ const ProductDetail = () => {
    	formData.append('image',item.image);
 	 	await axios.post(BASE_URL+'/upload-image/',formData,{headers:{"Content-Type": 'multipart/form-data'}})
    	.then(response=>{
-   		console.log(response);
+   		// console.log(response);
    		item.image = response.data.image;
    		item.imageId = response.data.id;
    		productPersonalizeImageHandler(item);
@@ -151,7 +152,7 @@ const ProductDetail = () => {
    	})
 	 }
 	 function updatePersonalizeImgs(itemID,serverPersonalizedImg){
-	 	console.log('serverPersonalizedImg',serverPersonalizedImg)
+	 	// console.log('serverPersonalizedImg',serverPersonalizedImg)
 	   		// update cutomer uploaded image with server personalize image
 				const newSate = productPersonalizeImgs.map(obj=>{
 		   		if (obj.id === itemID){
@@ -172,17 +173,17 @@ const ProductDetail = () => {
    		return obj;
    	});
    		setProductPersonalizeImgs(newSate);
-   		console.log(productPersonalizeImgs)
+   		// console.log(productPersonalizeImgs)
    	}else{
-   		console.log("item not exist")
+   		// console.log("item not exist")
    		setProductPersonalizeImgs(productPersonalizeImgs=>[...productPersonalizeImgs,item])
-   	console.log(productPersonalizeImgs)
+   	// console.log(productPersonalizeImgs)
 
    	}
  }
 
 async function applyTextPersonalization(itemID){
-		console.log('itemID',itemID);
+		// console.log('itemID',itemID);
 		const item = productPersonalizeText.find(item=>item.id===itemID);
 		if(item){
 	 			setTextPersonalizing(true);
@@ -193,7 +194,7 @@ async function applyTextPersonalization(itemID){
 				    .then(response=>{
 				    	if(response.status===200){
 				    	updatePersonalizeTexts(itemID,response.data.image)
-				      console.log(response);
+				      // console.log(response);
 				      setTextPersonalizing(false);
 				    }
 		      else if(response.status===400){
@@ -202,7 +203,7 @@ async function applyTextPersonalization(itemID){
 				    })
 				    .catch(error=>{
    						notifyError('Server Error!');
-				      console.log(error);
+				      // console.log(error);
 				      setTextPersonalizing(false);
 				    }) 
 		}else{
@@ -230,11 +231,11 @@ async function applyTextPersonalization(itemID){
    		return obj;
    	});
    		setProductPersonalizeText(newSate);
-   		console.log(productPersonalizeText)
+   		// console.log(productPersonalizeText)
    	}else{
    		console.log("text item not exist")
    		setProductPersonalizeText(productPersonalizeText=>[...productPersonalizeText,item])
-   	console.log(productPersonalizeText)
+   	// console.log(productPersonalizeText)
 
    	}
  }
@@ -312,8 +313,8 @@ async function applyTextPersonalization(itemID){
  			setInputError(false);
  		}
  		else{
- 			console.log(personalizeTextValidate)
- 			console.log(personalizeImageValidate)
+ 			// console.log(personalizeTextValidate)
+ 			// console.log(personalizeImageValidate)
  			setInputError(true);
  		}
 }
@@ -360,7 +361,7 @@ async function applyTextPersonalization(itemID){
                 		src={src}
                 		alt="product image"
                 		onClick={()=>{setSelectedImage(index)}}
-                		style={img.isPersonalized&&{border:'2px solid yellow'}}
+                		style={img.isPersonalized&&{border:'1px solid yellow'}}
                  />
 
                  )}
