@@ -13,7 +13,7 @@ const Thank = () => {
     	window.scrollTo(0,0);
       	setTimeout(function() {
       		setSuccessImage(false)
-      	}, 2500);
+      	}, 2450);
 		if(!isOrdered){
 			navigate("/page-not-found",{replace:true});
 		}
