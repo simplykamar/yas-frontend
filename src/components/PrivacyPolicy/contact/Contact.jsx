@@ -85,19 +85,19 @@ const Contact =()=>{
                     
                     <div className='contact mt-4' >  
                         <p className='fw-600 m-0 fs-14'>Email:</p>
-                        <a href="mailto:kamar@yasgifts.me" className='d-block fs-12 m-0' style={{color:'var(--gray)'}} >kamar@yasgifts.me</a>
-                        <a href="mailto:contact@yasgifts.me" className='d-block fs-12 mt-1' style={{color:'var(--gray)'}} >contact@yasgifts.me</a>
+                        <a href="mailto:kamar@yasgifts.me" className='d-block fs-14 m-0' style={{color:'var(--gray)'}} >kamar@yasgifts.me</a>
+                        <a href="mailto:contact@yasgifts.me" className='d-block fs-14 mt-1' style={{color:'var(--gray)'}} >contact@yasgifts.me</a>
                     </div>
 
                     <div className='contact mt-4'>
                         <p className='fw-600 m-0 fs-14'>Phone:</p>
-                        <p className='d-block fs-12 m-0' style={{color:'var(--gray)'}} >+91 9634142017</p>
-                        <p className='d-block fs-12 m-0' style={{color:'var(--gray)'}} >+91 9839193615</p>
-                        <p className='d-block text-secondary' style={{fontSize:'10px'}}>(9 AM to 10 PM throuhout the week)</p>
+                        <p className='d-block fs-14 m-0' style={{color:'var(--gray)'}} >+91 9634142017</p>
+                        <p className='d-block fs-14 m-0' style={{color:'var(--gray)'}} >+91 9839193615</p>
+                        <p className='d-block text-secondary fs-12'>(9 AM to 10 PM throuhout the week)</p>
                     </div>
                     <div className='contact mt-4 '>
                         <p className='fw-600 m-0 fs-14'>Address:</p>
-                            <p className="fs-12">Unit no 2 , A wing<br/>
+                            <p className="fs-14">Unit no 2 , A wing<br/>
                                 2nd Floor , Sheesh Mahal<br/>
                                 near Clock Tower ,<br/>
                                 Lucknow - 226003<br/>
