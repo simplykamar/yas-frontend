@@ -41,7 +41,7 @@ const PremiumGift = () => {
     <>
     {
       !loading?
-	<div className="mt-2">
+	<div className="">
 			<div className="d-flex justify-content-center uniquegift-container">
 				<div className="">
 				<h2 className="text-capitalize text-heading">Premium gifts</h2>

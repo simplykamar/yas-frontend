@@ -37,9 +37,8 @@ const Slider = () => {
       fetchHomeBannerData(BASE_URL+'/home-banner-items')
   },[])
 	return (
-	<div className="mt-4">
+	<div className="mt-2">
 		<Swiper
-	        spaceBetween={30}
 	        centeredSlides={true}
 	        autoplay={{
 	          delay: 2000,
@@ -49,7 +48,7 @@ const Slider = () => {
 	        //   clickable: true,
 	        // }}
 	        // navigation={true}
-	        modules={[Autoplay, Navigation]}
+	        modules={[Autoplay,]}
 	        className="mySwiper"
             loop={true}
 	      >

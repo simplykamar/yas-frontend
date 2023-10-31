@@ -93,7 +93,7 @@ import phone from '../../images/logos/phone.png';
         </ListItem>
         <ListItem  button component={Link} to={'mailto:support@yasgifts.me'}>
          <img src={mail} className="img-fluid me-1" width='25' height='25'/>
-          <ListItemText primary={"support@yasgifts.me"} primaryTypographyProps={{fontSize: '14px'}}/>
+          <ListItemText primary={"contact@yasgifts.me"} primaryTypographyProps={{fontSize: '14px'}}/>
         </ListItem>
         </List>
       </div>

@@ -15,7 +15,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+// import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -103,12 +103,12 @@ export default function NavigationBar() {
                       <ChevronRightOutlinedIcon/>
                       </div>
                     </Link>
-                    <Link to="" className="text-decoration-none text-dark">
-                      <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><InfoOutlinedIcon fontSize="small"/> about us</span>
-                      <ChevronRightOutlinedIcon/>
-                      </div>
-                    </Link>
+                    {/* <Link to="" className="text-decoration-none text-dark"> */}
+                    {/*   <div className="d-flex justify-content-between mobile-profile-link py-2"> */}
+                    {/*   <span className="text-capitalize text-dark"><InfoOutlinedIcon fontSize="small"/> about us</span> */}
+                    {/*   <ChevronRightOutlinedIcon/> */}
+                    {/*   </div> */}
+                    {/* </Link> */}
                     <Link to="/terms" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
                       <span className="text-capitalize text-dark"><GppMaybeOutlinedIcon fontSize="small"/> terms of use</span>
@@ -162,12 +162,12 @@ export default function NavigationBar() {
                       <LockOutlinedIcon fontSize="small"/>
                       </div>
                     </Link>
-                    <Link to="" className="text-decoration-none text-dark">
-                      <div className="d-flex justify-content-between mobile-profile-link py-2">
-                      <span className="text-capitalize text-dark"><InfoOutlinedIcon fontSize="small"/> about us</span>
-                      <ChevronRightOutlinedIcon/>
-                      </div>
-                    </Link>
+                    {/* <Link to="" className="text-decoration-none text-dark"> */}
+                    {/*   <div className="d-flex justify-content-between mobile-profile-link py-2"> */}
+                    {/*   <span className="text-capitalize text-dark"><InfoOutlinedIcon fontSize="small"/> about us</span> */}
+                    {/*   <ChevronRightOutlinedIcon/> */}
+                    {/*   </div> */}
+                    {/* </Link> */}
                     <Link to="/terms" className="text-decoration-none text-dark">
                       <div className="d-flex justify-content-between mobile-profile-link py-2" data-bs-dismiss="modal">
                       <span className="text-capitalize text-dark"><GppMaybeOutlinedIcon fontSize="small"/> terms of use</span>
