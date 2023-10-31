@@ -140,7 +140,7 @@ import rating5 from '../../images/other/rating/5.png'
                                 { order.order.payment_status===5&&
                                   <span className="float-end">
                                     <span>
-                                    <small className="me-1 text-secondary" style={{fontSize:'10px'}}>Order Failed</small>
+                                    <small className="me-1 text-secondary" style={{fontSize:'10px'}}>Payment Not Verified</small>
                                     <CancelIcon fontSize="small" className="text-pink"/>
                                     </span>
                                   </span>
