@@ -86,7 +86,7 @@ const Contact =()=>{
                     <div className='contact mt-4' >  
                         <p className='fw-600 m-0 fs-14'>Email:</p>
                         {/* <a href="mailto:kamar@yasgifts.me" className='d-block fs-14 m-0' style={{color:'var(--gray)'}} >kamar@yasgifts.me</a> */}
-                        <a href="mailto:contact@yasgifts.me" className='d-block fs-14 mt-1' style={{color:'var(--gray)'}} >contact@yasgifts.me</a>
+                        <a href="mailto:Contact@yasgifts.me" className='d-block fs-14 mt-1' style={{color:'var(--gray)'}} >Contact@yasgifts.me</a>
                     </div>
 
                     <div className='contact mt-4'>
@@ -97,10 +97,10 @@ const Contact =()=>{
                     </div>
                     <div className='contact mt-4 '>
                         <p className='fw-600 m-0 fs-14'>Address:</p>
-                            <p className="fs-14">Unit no 2 , A wing<br/>
-                                2nd Floor , Sheesh Mahal<br/>
-                                near Clock Tower ,<br/>
-                                Lucknow - 226003<br/>
+                            <p className="fs-14">1D, Lutf Homes,<br/>
+                                Durga Devi Marg,<br/>
+                                Hussainabad,<br/>
+                                Lucknow - 226003,<br/>
                                 Uttar Pradesh</p>
                     </div>
                 </div>
