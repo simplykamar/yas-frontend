@@ -12,7 +12,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <BrowserRouter>
         <CheckConnection/>
-
       </BrowserRouter>
     </Provider>
 

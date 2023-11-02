@@ -10,7 +10,7 @@ import CropIcon from '@mui/icons-material/Crop';
 function CropperImg({itemID,uploadedImgId,img,updatePersonalizeImgs,aspectRatio}) {
     // const BASE_URL = 'http://127.0.0.1:8000/api';
     const BASE_URL = 'https://simplykamar.tech/api';
-    const [crop, setCrop] = useState({height:0,width:0});
+    const [crop, setCrop] = useState({unit: '%',x:25,y:25,height:50,width:50});
     const [loading, setLoading] = useState();
     const [loadingImg, setLoadingImg] = useState(true);
 

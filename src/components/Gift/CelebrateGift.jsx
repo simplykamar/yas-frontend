@@ -3,12 +3,14 @@ import {Link} from 'react-router-dom';
 import {useEffect,useState} from 'react';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
+import toast, { Toaster } from 'react-hot-toast';
 
 const CelebrateGift = () => {
 	const BASE_URL = 'https://simplykamar.tech/api';
     // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [loading,setLoading] = useState(false);
     const [celebrateGift,setCelebrateGift] = useState([]);
+    const notifyError = (msg) => toast.error(msg);
 
    function fetchCelebrateMilestoneGiftData(url){
         setLoading(true);
@@ -19,7 +21,7 @@ const CelebrateGift = () => {
             setLoading(false);
         })
         .catch(error=>{
-            alert('Server error..!');
+            notifyError('Server error..!');
             // console.log(error);
             setLoading(false);
         })
@@ -29,6 +31,7 @@ const CelebrateGift = () => {
  },[])	
 	return (
 		<>
+    <div><Toaster/></div>
 		{
 		!loading?
 	<div className="my-3">

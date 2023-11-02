@@ -39,7 +39,6 @@ function App() {
 
   return (
     <div className="App">
-    
     <Navbar/>
     <Suspense fallback={<Main loading={true}/>}>
       <Routes>
@@ -67,7 +66,6 @@ function App() {
         <Route path="/checkout-step-1" element={<Protected Component={CheckoutStep1}/>}/>
         <Route path="/checkout-step-2" element={<Protected Component={CheckoutStep2}/>}/>
         <Route path="*" element={<PageNotFound/>}/>
-
       </Routes>
       </Suspense>
       <Footer/>

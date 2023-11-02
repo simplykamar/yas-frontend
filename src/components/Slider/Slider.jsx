@@ -12,12 +12,14 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/free-mode';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Slider = () => {
     const BASE_URL = 'https://simplykamar.tech/api';
     // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [homeBanner,setHomeBanner] = useState([]);
     const [loading,setLoading] = useState(false);
+    const notifyError = (msg) => toast.error(msg);
 
     function fetchHomeBannerData(url){
         setLoading(true);
@@ -28,7 +30,7 @@ const Slider = () => {
             setLoading(false);
         })
         .catch(error=>{
-            alert('Server error..!');
+            notifyError('Server error..!');
             // console.log(error);
             setLoading(false);
         })
@@ -38,6 +40,7 @@ const Slider = () => {
   },[])
 	return (
 	<div className="mt-2">
+        <div><Toaster/></div>
 		<Swiper
 	        centeredSlides={true}
 	        autoplay={{

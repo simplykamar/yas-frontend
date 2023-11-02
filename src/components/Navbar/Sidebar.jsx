@@ -18,6 +18,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import './Sidebar.css';
 import mail from '../../images/logos/mail.jpg';
 import phone from '../../images/logos/phone.png';
+import toast, { Toaster } from 'react-hot-toast';
 
  const Sidebar = () => {
     // const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -25,6 +26,7 @@ import phone from '../../images/logos/phone.png';
     const [open, setOpen] = useState(false);
     const [loading,setLoading] = useState(false);
     const [celebrateGift,setCelebrateGift] = useState([]);
+    const notifyError = (msg) => toast.error(msg);
 
    function fetchCelebrateMilestoneGiftData(url){
         setLoading(true);
@@ -35,7 +37,7 @@ import phone from '../../images/logos/phone.png';
             setLoading(false);
         })
         .catch(error=>{
-            alert('Server error..!');
+            notifyError('Server error..!');
             // console.log(error);
             setLoading(false);
         })
@@ -45,6 +47,7 @@ import phone from '../../images/logos/phone.png';
  },[])
   return (
     <div>
+    <div><Toaster/></div>
       <SwipeableDrawer 
       open={open} anchor={"left"} 
       onClose={() => setOpen(false)} 

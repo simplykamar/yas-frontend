@@ -10,12 +10,15 @@ import SearchOutlinedicons from '@mui/icons-material/SearchOutlined';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import HeaderMenuSkeleton from '../LoadingSkeleton/HeaderMenuSkeleton';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Home = () => {
     // const BASE_URL = 'http://127.0.0.1:8000/api';
     const BASE_URL = 'https://simplykamar.tech/api';
     const [headerMenu,setHeaderMenu] = useState([]);
     const [loading,setLoading] = useState(false);
+    const notifyError = (msg) => toast.error(msg);
+
     function fetchHeaderMenuData(url){
         setLoading(true);
         axios.get(url)
@@ -25,7 +28,7 @@ const Home = () => {
             setLoading(false);
         })
         .catch(error=>{
-            alert('Server error..!');
+            notifyError('Server error..!');
             // console.log(error);
             setLoading(false);
         })
@@ -37,6 +40,7 @@ const Home = () => {
   },[])
 	return(
       <div className="">
+         <div><Toaster/></div>
           <Helmet>
           <meta charSet="utf-8"/>
         <title>Online Gifts Delivery, Buy/Send Gifts to India, Gift Items Online, Personalizable gift</title>

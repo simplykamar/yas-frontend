@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -19,6 +20,7 @@ const PremiumGift = () => {
     // const BASE_URL = 'http://127.0.0.1:8000/api';
     const [loading,setLoading] = useState(false);
     const [premiumGift,setPremiumGift] = useState([]);
+    const notifyError = (msg) => toast.error(msg);
 
  function fetchPremiumGiftData(url){
         setLoading(true);
@@ -29,7 +31,7 @@ const PremiumGift = () => {
             setLoading(false);
         })
         .catch(error=>{
-            alert('Server error..!');
+            notifyError('Server error..!');
             // console.log(error);
             setLoading(false);
         })
@@ -39,6 +41,7 @@ const PremiumGift = () => {
   },[])
 	return (
     <>
+    <div><Toaster/></div>
     {
       !loading?
 	<div className="">

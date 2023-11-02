@@ -20,6 +20,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import yaslogo from '../../images/logos/yaslogo.png'
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
   const BASE_URL = 'https://simplykamar.tech/api';
@@ -38,6 +39,7 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [clientSearchedData, setClientSearchedData] = useState(null)
   const [quickSearch,setQuickSearch] = useState([]);
+    const notifyError = (msg) => toast.error(msg);
 
 
   const openModal= ()=> { setIsOpen( true )}
@@ -52,7 +54,7 @@ function fetchCategoriesData(url){
     })
     .catch((error)=>{
     // console.log(error)
-      alert('Server error..!')
+      notifyError('Server error..!')
   })
 }
 function fetchProductsData(url){
@@ -64,7 +66,7 @@ function fetchProductsData(url){
     })
     .catch((error)=>{
     // console.log(error)
-      alert('Server error..!')
+      notifyError('Server error..!')
   })
 }
   function fetchSearchData(q){
@@ -123,7 +125,7 @@ function fetchProductsData(url){
       setQuickSearch(response.data)
     })
     .catch(error=>{
-      alert('Server error..!')
+      notifyError('Server error..!')
       // console.log(error)
     })
   }
@@ -134,6 +136,7 @@ function fetchProductsData(url){
 
   return(
     <>
+    <div><Toaster/></div>
     <div className="sticky-top">
       <nav className="navbar navbar-expand navbar-light bg-light ">
   <div className="container">
