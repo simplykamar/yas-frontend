@@ -16,6 +16,7 @@ function CropperImg({itemID,uploadedImgId,img,updatePersonalizeImgs,aspectRatio}
 
 async function saveCropdata(){
     setLoading(true);
+    // console.log("save cropdata");
     // console.log(crop);
     const formData = new FormData();
     formData.append('itemID',JSON.stringify(itemID));

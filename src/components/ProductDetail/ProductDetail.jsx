@@ -247,7 +247,13 @@ async function applyTextPersonalization(itemID){
  			personalizeTextValidate = productPersonalizeText.every(item=>item.isPersonalized);
  		}
  		if(product.is_personalize_image && (productPersonalizeImgs.length===product.product_personalize_imgs.length)){
- 			personalizeImageValidate = true;
+ 			let validatePersonalized = false;
+ 			validatePersonalized = productPersonalizeImgs.every(item=>item.isPersonalized)
+ 			console.log(productPersonalizeImgs)
+ 			console.log(validatePersonalized)
+ 			if(validatePersonalized){
+ 				personalizeImageValidate = true;
+ 			}
  		}
  		if(product.is_personalize_text && product.is_personalize_image){
  			if(personalizeTextValidate && personalizeImageValidate){
