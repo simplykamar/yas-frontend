@@ -2,17 +2,17 @@ import './Slider.css'
 import Skeleton from '@mui/material/Skeleton';
 import {useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/free-mode';
-import toast, { Toaster } from 'react-hot-toast';
 
 const Slider = () => {
     const BASE_URL = 'https://simplykamar.tech/api';
@@ -41,37 +41,40 @@ const Slider = () => {
 	return (
 	<div className="mt-2">
         <div><Toaster/></div>
-		<Swiper
-	        centeredSlides={true}
-	        autoplay={{
-	          delay: 2000,
-	          disableOnInteraction: false,
-	        }}
-	        // pagination={{
-	        //   clickable: true,
-	        // }}
-	        // navigation={true}
-	        modules={[Autoplay,]}
-	        className="mySwiper"
+        {
+            !loading
+            ?
+            <Swiper
+          slidesPerView={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            // navigation={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Autoplay,Pagination,Navigation]}
+            className="mySwiper"
             loop={true}
-	      >
-	       {
-                !loading
-                ?
+          >
+                   {
                     homeBanner.map(item=>{
                         return(
                                 <SwiperSlide key={item.id}>
-	                                <Link to={`/category/${item.category.title}/${item.category.id}`}>
-	                             	   <img src={item.image} className="img-fluid home-slider-img"/>
-	                                </Link>
+                                    <Link to={`/category/${item.category.title}/${item.category.id}`}>
+                                       <img src={item.image} className="img-fluid home-slider-img"/>
+                                    </Link>
                                 </SwiperSlide>
                             )
                     })
-                : 
+                }        
+      </Swiper>
+             : 
                 <Skeleton variant="rounded" height={120} />
             }
-	     
-      </Swiper>
+		
 	</div>
 		)
 }
