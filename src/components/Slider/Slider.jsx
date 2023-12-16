@@ -45,17 +45,17 @@ const Slider = () => {
             !loading
             ?
             <Swiper
-          slidesPerView={1}
+          // slidesPerView={1}
             centeredSlides={true}
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
             }}
             // navigation={true}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Autoplay,Pagination,Navigation]}
+            // pagination={{
+            //   clickable: true,
+            // }}
+            modules={[Autoplay]}
             className="mySwiper"
             loop={true}
           >
