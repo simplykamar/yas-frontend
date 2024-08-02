@@ -11,8 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <CheckConnection/> */}
-        <h1 style={{textAlign:"center",color:"red"}}>Under maintenance</h1>
+        <CheckConnection/>
       </BrowserRouter>
     </Provider>
 
